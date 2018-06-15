@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2018/06/15/surfaceview_VelocityTable/</loc>
+        <lastmod>2018-06-15T05:59:24.265Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/06/15/surfaceview_virtualjoystick/</loc>
+        <lastmod>2018-06-15T05:59:24.265Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2017/03/18/hexo-theme-beantech/</loc>
         <lastmod>2018-06-15T05:47:03.488Z</lastmod>
         <changefreq>weekly</changefreq>
