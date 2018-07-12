@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Aerber Joy
+          [Android] 利用surfaceview制作自定义组件 - Aerber Joy
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/tags/Notes/">
+    <link rel="canonical" href="http://yoursite.com/2017/04/18/利用surfaceview制作自定义组件/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/undefined')
-            /*page*/
+            background-image: url('../img/Iron-Man-3.jpg')
+            /*post*/
         
     }
     
@@ -87,10 +87,20 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>Aerber Joy</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Practise, Temawork, New Thing, Better.</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                              <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                            
+                        </div>
+                        <h1>[Android] 利用surfaceview制作自定义组件</h1>
+                        <h2 class="subheading">surfaceView系列00</h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2017-04-18
+                        </span>
                     </div>
                 
 
@@ -193,287 +203,214 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h1><span id="一surfaceview和view最本质的区别">一.SurfaceView和View最本质的区别</span></h1>
+<p>surfaceview继承自view,但是同view由本质上的区别,即是surfaceview开一个新线程进行绘制,view是在UI主线程中进行绘制</p>
+<p>SurfaceView和View最本质的区别在于，surfaceView是在一个新起的单独线程中可以重新绘制画面而View必须在UI的主线程中更新画面。可以在主线程之外的线程中向屏幕绘图。这样可以避免画图任务繁重的时候造成主线程阻塞，从而提高了程序的反应速度。</p>
+<p>那么在UI的主线程中更新画面 可能会引发问题，比如你更新画面的时间过长，那么你的主UI线程会被你正在画的函数阻塞。那么将无法响应按键，触屏等消息。</p>
+<p>当使用surfaceView 由于是在新的线程中更新画面所以不会阻塞你的UI主线程。但这也带来了另外一个问题，就是事件同步。比如你触屏了一下，你需要surfaceView中thread处理，一般就需要有一个event queue的设计来保存touch event，这会稍稍复杂一点，因为涉及到线程同步。</p>
+<p>所以基于以上，根据游戏特点，一般分成两类。</p>
+<p>(1) 被动更新画面的。比如棋类，这种用view就好了。因为画面的更新是依赖于 onTouch 来更新，可以直接使用 invalidate。 因为这种情况下，这一次Touch和下一次的Touch需要的时间比较长些，不会产生影响。</p>
+<p>(2) 主动更新。比如一个人在一直跑动。这就需要一个单独的thread不停的重绘人的状态，避免阻塞main UI thread。所以显然view不合适，需要surfaceView来控制。</p>
+<h1><span id="二需要重写的方法">二.需要重写的方法</span></h1>
+<pre><code> （1）public void surfaceChanged(SurfaceHolder holder,int format,int width,int height){}
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
-                    <span class="tag-text">2017</span>
-                </span>
-                <ul>
+     //在surface的大小发生改变时激发
+
+ （2）public void surfaceCreated(SurfaceHolder holder){}
+
+     //在创建时激发，一般在这里调用画图的线程。
+
+ （3）public void surfaceDestroyed(SurfaceHolder holder) {}
+
+     //销毁时激发，一般在这里将画图的线程停止、释放。
+</code></pre>
+<h2><span id="原因">原因:</span></h2>
+<p>使用SurfaceView 有一个原则，所有的绘图工作必须得在Surface 被创建之后才能开始,changed和created都是创建的过程.这样可以被直接复制到显存从而显示出来，这使得显示速度会非常快.<br>
+而在surface被销毁之前surfaceview必须被销毁<br>
+故Callback 中的surfaceCreated 和surfaceDestroyed 就成了绘图处理代码的边界。</p>
+<h2><span id="整个自定义surfaceview的绘制过程">整个自定义surfaceview的绘制过程:</span></h2>
+<pre><code>继承surfaceview
+通过surface.getholder()获得当前画面的surfaceholder对象
+添加回调函数 surfaceholder.addcallback(callback),并实现surfaceholder.callback接口,即重载 surfaceChanged surfaceCreated surfaceDestroyed三个函数
+    在surfaceCreated中启动一个新线程,在线程中进行draw()操作
+    在surfaceDestroyed中把那个线程终止并把线程置空
+通过surfaceholder.lockcanvas()返回canvas对象,锁定画布
+canvas画图
+surfaceholder.unlockcanvas()解锁画布,提交改变,显示画图
+</code></pre>
+<h1><span id="三surfaceholder是什么">三.surfaceholder是什么</span></h1>
+<p>相当于是surface的控制器,用于操控surface,处理canvas上面的对象</p>
+<p>几个需要注意的方法：</p>
+<pre><code>(1)、abstract void addCallback(SurfaceHolder.Callback callback);
+// 给SurfaceView当前的持有者一个回调对象。
+(2)、abstract Canvas lockCanvas();
+// 锁定画布，一般在锁定后就可以通过其返回的画布对象Canvas，在其上面画图等操作了。
+(3)、abstract Canvas lockCanvas(Rect dirty);
+// 锁定画布的某个区域进行画图等..因为画完图后，会调用下面的unlockCanvasAndPost来改变显示内容。
+// 相对部分内存要求比较高的游戏来说，可以不用重画dirty外的其它区域的像素，可以提高速度。
+(4)、abstract void unlockCanvasAndPost(Canvas canvas);
+// 结束锁定画图，并提交改变。
+</code></pre>
+<h1><span id="四构造函数中的-attributeset-属性">四.构造函数中的 attributeset 属性</span></h1>
+<p>attributeset属性相当于给这个控件一个属性</p>
+<p>这个属性在构造函数中使用默认样式,在xml文件中可以自定义# 利用surfaceview制作自定义组件</p>
+
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/04/18/利用surfaceview制作自定义组件/" style="color: #0085a1">
-                        <span>
-                            [Android] 利用surfaceview制作自定义组件
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/04/18/surfaceview中的canvas的变换和操作/" style="color: #0085a1">
-                        <span>
-                            [Android] surfaceview中的canvas的变换和操作
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/04/18/surfaceview_virtualjoystick/" style="color: #0085a1">
-                        <span>
-                            [Android] surfaceView中VirtualJoystick虚拟摇杆
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/04/18/surfaceview_VelocityTable/" style="color: #0085a1">
-                        <span>
-                            [Android] surfaceView中VelocityTable速率盘
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/04/18/MemoryTable_surfaceview/" style="color: #0085a1">
-                        <span>
-                            [Android] surfaceview之MemoryTable动态内存显示表
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/03/18/hexo-theme-beantech/" style="color: #0085a1">
-                        <span>
-                            [Hexo] Theme BeanTech
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/04/18/surfaceview中的canvas的变换和操作/" data-toggle="tooltip" data-placement="top" title="[Android] surfaceview中的canvas的变换和操作">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
             </div>
             
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一.SurfaceView和View最本质的区别</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二.需要重写的方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">原因:</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">整个自定义surfaceview的绘制过程:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三.surfaceholder是什么</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">四.构造函数中的 attributeset 属性</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
 
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
         </div>
     </div>
-</div>
+</article>
 
-                <!-- 如果开启评论功能 -->
-                
-            </div>
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#Android" title="Android" rel="5">Android</a>
-            
-        
-            
-            <a href="/tags/#Notes" title="Notes" rel="5">Notes</a>
-            
-        
-            
-        
-            
-        
-    </div>
-</section>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "http://yoursite.com/2017/04/18/利用surfaceview制作自定义组件/";
+    var disqus_url = "http://yoursite.com/2017/04/18/利用surfaceview制作自定义组件/";
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.jpg" />
-        
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
 
-        
-            <p>赤子之心，严己宽人</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
-                <li>
-                    <a target="_blank" href="http://weibo.com/3479268957">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
 
-            
-                <li>
-                    <a target="_blank" href="https://www.facebook.com/NullAerber">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/NullAerber">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2017/04/18/MemoryTable_surfaceview/">[Android] surfaceview之MemoryTable动态内存显示表</a>
-        </li>
-      
-        <li>
-          <a href="/2017/04/18/surfaceview_VelocityTable/">[Android] surfaceView中VelocityTable速率盘</a>
-        </li>
-      
-        <li>
-          <a href="/2017/04/18/surfaceview_virtualjoystick/">[Android] surfaceView中VirtualJoystick虚拟摇杆</a>
-        </li>
-      
-        <li>
-          <a href="/2017/04/18/surfaceview中的canvas的变换和操作/">[Android] surfaceview中的canvas的变换和操作</a>
-        </li>
-      
-        <li>
-          <a href="/2017/04/18/利用surfaceview制作自定义组件/">[Android] 利用surfaceview制作自定义组件</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
-    
-        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
-    
-</ul>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->

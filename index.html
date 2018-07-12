@@ -90,7 +90,7 @@
                     <div class="site-heading">
                         <h1>Aerber Joy</h1>
                         <!--<hr class="small">-->
-                        <span class="subheading">Practise, Temawork, New Things, Better.</span>
+                        <span class="subheading">Practise, Temawork, New Thing, Better.</span>
                     </div>
                 
 
@@ -136,7 +136,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -150,7 +150,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -213,19 +213,50 @@
 
 <div class="post-preview">
 
-    <a href="/2017/04/18/surfaceview_VelocityTable/">
+    <a href="/2017/04/18/MemoryTable_surfaceview/">
         <h2 class="post-title">
-            surfaceView中VelocityTable速率盘
+            [Android] surfaceview之MemoryTable动态内存显示表
         </h2>
         <h3 class="post-subtitle">
-            surfaceView 
+            surfaceView系列03
         </h3>
         <div class="post-content-preview">
-            surfaceView中VelocityTable速率盘
-一.大体
+            一.变量和方法
+变量：
+12345678910111213141516171819//刷新频率public int frequency = 8;//内存表上的最大时间public float time = 60;//单位数据宽度private float pwidth;private Thread thread;private SurfaceHolder holder;private Pai......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-04-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/18/surfaceview_VelocityTable/">
+        <h2 class="post-title">
+            [Android] surfaceView中VelocityTable速率盘
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列02
+        </h3>
+        <div class="post-content-preview">
+            一.大体
 一些和VJ中差不多作用或者用法的就不再细说了
 变量：
-123456789101112131415161718192021//设置表盘的最大值public double valueMax = 100;private Thread thread;private SurfaceHolder holder;private Paint......
+123456789101112131415161718192021//设置表盘的最大值public double valueMax = 100;private Thread thread;private SurfaceHolder holder;private Paint paint;//@param shader : 用于绘制......
         </div>
     </a>
     
@@ -249,19 +280,86 @@
 
     <a href="/2017/04/18/surfaceview_virtualjoystick/">
         <h2 class="post-title">
-            surfaceView中VirtualJoystick虚拟摇杆
+            [Android] surfaceView中VirtualJoystick虚拟摇杆
         </h2>
         <h3 class="post-subtitle">
-            surfaceView系列第一篇
+            surfaceView系列01
         </h3>
         <div class="post-content-preview">
-            surfaceView中VirtualJoystick虚拟摇杆
-以下代码均来自hopeful，渣渣我只是解读一下
+            以下代码均来自hopeful，渣渣我只是解读一下
 一.大体
 首先在自定义插件VirtualJoystick（后称VJ）中我们需要实现的通过UI进行交互的功能有：
 1.跟随手指在屏幕上进行移动
 2.在松手时回到中心
-3.实现和MemoryTable以及VelocityTable之间数据的交互（主要实现方法还是在MemoryTabl......
+3.实现和MemoryTable以及VelocityTable之间数据的交互（主要实现方法还是在MemoryTable以及VelocityTable中）
+4.根据传达回来的重力感应......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-04-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/18/surfaceview中的canvas的变换和操作/">
+        <h2 class="post-title">
+            [Android] surfaceview中的canvas的变换和操作
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列04
+        </h3>
+        <div class="post-content-preview">
+            个人觉得这篇很好.先放上来.
+http://blog.csdn.net/harvic880925/article/details/39080931/
+很多理解,这个博客中的图片很好的进行了每一步的解释.
+零、canvas的概念
+屏幕显示和每一步的canvas的操作不是同一个概念
+每一次canvas.draw()系列函数,都是在屏幕显示的基础上重新建立一个新的图层,然后这个canvas.dra......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-04-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/18/利用surfaceview制作自定义组件/">
+        <h2 class="post-title">
+            [Android] 利用surfaceview制作自定义组件
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列00
+        </h3>
+        <div class="post-content-preview">
+            一.SurfaceView和View最本质的区别
+surfaceview继承自view,但是同view由本质上的区别,即是surfaceview开一个新线程进行绘制,view是在UI主线程中进行绘制
+SurfaceView和View最本质的区别在于，surfaceView是在一个新起的单独线程中可以重新绘制画面而View必须在UI的主线程中更新画面。可以在主线程之外的线程中向屏幕绘图。这样可......
         </div>
     </a>
     
@@ -352,15 +450,15 @@ I publish the whole project f......
     <div class="tags">
         
             
-        
+            <a href="/tags/#Android" title="Android" rel="5">Android</a>
             
         
             
-            <a href="/tags/#Android" title="Android" rel="2">Android</a>
+            <a href="/tags/#Notes" title="Notes" rel="5">Notes</a>
             
         
             
-            <a href="/tags/#Notes" title="Notes" rel="2">Notes</a>
+        
             
         
     </div>
@@ -374,11 +472,11 @@ I publish the whole project f......
     <div class="short-about">
 
         
-            <img id = "avatar_pic" src="/img/ironman-draw.png" />
+            <img id = "avatar_pic" src="/img/ironman-draw.jpg" />
         
 
         
-            <p>Hi, i&#39;m John Doe</p>
+            <p>赤子之心，严己宽人</p>
         
 
         <!-- SNS Link -->
@@ -433,15 +531,23 @@ I publish the whole project f......
     <ul>
       
         <li>
-          <a href="/2017/04/18/surfaceview_VelocityTable/">surfaceView中VelocityTable速率盘</a>
+          <a href="/2017/04/18/MemoryTable_surfaceview/">[Android] surfaceview之MemoryTable动态内存显示表</a>
         </li>
       
         <li>
-          <a href="/2017/04/18/surfaceview_virtualjoystick/">surfaceView中VirtualJoystick虚拟摇杆</a>
+          <a href="/2017/04/18/surfaceview_VelocityTable/">[Android] surfaceView中VelocityTable速率盘</a>
         </li>
       
         <li>
-          <a href="/2017/03/18/hexo-theme-beantech/">[Hexo] Theme BeanTech</a>
+          <a href="/2017/04/18/surfaceview_virtualjoystick/">[Android] surfaceView中VirtualJoystick虚拟摇杆</a>
+        </li>
+      
+        <li>
+          <a href="/2017/04/18/surfaceview中的canvas的变换和操作/">[Android] surfaceview中的canvas的变换和操作</a>
+        </li>
+      
+        <li>
+          <a href="/2017/04/18/利用surfaceview制作自定义组件/">[Android] 利用surfaceview制作自定义组件</a>
         </li>
       
     </ul>
@@ -455,7 +561,7 @@ I publish the whole project f......
 <ul class="list-inline">
 
     
-        <li><a href="http://aerber.cn" target="_blank">Aerber Blog</a></li>
+        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
     
         <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
     

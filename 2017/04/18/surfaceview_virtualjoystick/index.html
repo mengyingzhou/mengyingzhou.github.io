@@ -14,7 +14,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          surfaceView中VirtualJoystick虚拟摇杆 - Aerber Joy
+          [Android] surfaceView中VirtualJoystick虚拟摇杆 - Aerber Joy
         
     </title>
 
@@ -95,8 +95,8 @@
                               <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
                             
                         </div>
-                        <h1>surfaceView中VirtualJoystick虚拟摇杆</h1>
-                        <h2 class="subheading">surfaceView系列第一篇</h2>
+                        <h1>[Android] surfaceView中VirtualJoystick虚拟摇杆</h1>
+                        <h2 class="subheading">surfaceView系列01</h2>
                         <span class="meta">
                             Posted by Aerber Zhou on
                             2017-04-18
@@ -146,7 +146,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -160,7 +160,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -216,8 +216,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="surfaceview中virtualjoystick虚拟摇杆">surfaceView中VirtualJoystick虚拟摇杆</span></h1>
-<p><em>以下代码均来自hopeful，渣渣我只是解读一下</em></p>
+                <p><em>以下代码均来自hopeful，渣渣我只是解读一下</em></p>
 <h2><span id="一大体">一.大体</span></h2>
 <h3><span id="首先在自定义插件virtualjoystick后称vj中我们需要实现的通过ui进行交互的功能有">首先在自定义插件VirtualJoystick（后称VJ）中我们需要实现的通过UI进行交互的功能有：</span></h3>
 <p>1.跟随手指在屏幕上进行移动</p>
@@ -259,12 +258,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/04/18/surfaceview_VelocityTable/" data-toggle="tooltip" data-placement="top" title="surfaceView中VelocityTable速率盘">&larr; Previous Post</a>
+                            <a href="/2017/04/18/surfaceview_VelocityTable/" data-toggle="tooltip" data-placement="top" title="[Android] surfaceView中VelocityTable速率盘">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
+                            <a href="/2017/04/18/surfaceview中的canvas的变换和操作/" data-toggle="tooltip" data-placement="top" title="[Android] surfaceview中的canvas的变换和操作">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -294,7 +293,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">surfaceView中VirtualJoystick虚拟摇杆</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一.大体</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">首先在自定义插件VirtualJoystick（后称VJ）中我们需要实现的通过UI进行交互的功能有：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">我们先大体看一下这个类中有几个变量和几个方法：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二.public VirtualJoystick（）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">三.get函数和set函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">四.private void init（）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">五、@Override</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">六、private void mDraw()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">七、public boolean onTouchEvent(MotionEvent event)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">八、public void setOnJoystickMoveListener  &amp;&amp; public interface onJoystickMoveListener</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">九、public void JoystickChangeByGravity(int which)</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一.大体</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">首先在自定义插件VirtualJoystick（后称VJ）中我们需要实现的通过UI进行交互的功能有：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">我们先大体看一下这个类中有几个变量和几个方法：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二.public VirtualJoystick（）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三.get函数和set函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">四.private void init（）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">五、@Override</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">六、private void mDraw()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">七、public boolean onTouchEvent(MotionEvent event)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">八、public void setOnJoystickMoveListener  &amp;&amp; public interface onJoystickMoveListener</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">九、public void JoystickChangeByGravity(int which)</span></a></li></ol>
         
         </div>
       </aside>
@@ -329,7 +328,7 @@
                 <ul class="list-inline">
 
                     
-                        <li><a href="http://aerber.cn" target="_blank">Aerber Blog</a></li>
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
                     
                         <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
                     

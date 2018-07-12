@@ -7,8 +7,24 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/04/18/surfaceview_virtualjoystick/</loc>
-        <lastmod>2018-06-15T14:02:46.143Z</lastmod>
+        <loc>http://yoursite.com/2017/04/18/%E5%88%A9%E7%94%A8surfaceview%E5%88%B6%E4%BD%9C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/</loc>
+        <lastmod>2018-07-12T15:56:36.963Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/04/18/surfaceview%E4%B8%AD%E7%9A%84canvas%E7%9A%84%E5%8F%98%E6%8D%A2%E5%92%8C%E6%93%8D%E4%BD%9C/</loc>
+        <lastmod>2018-07-12T15:56:31.141Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/04/18/MemoryTable_surfaceview/</loc>
+        <lastmod>2018-07-12T15:50:48.887Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +32,15 @@
 
     <url>
         <loc>http://yoursite.com/2017/04/18/surfaceview_VelocityTable/</loc>
-        <lastmod>2018-06-15T13:58:33.947Z</lastmod>
+        <lastmod>2018-07-12T15:48:08.142Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/04/18/surfaceview_virtualjoystick/</loc>
+        <lastmod>2018-07-12T15:46:21.883Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
