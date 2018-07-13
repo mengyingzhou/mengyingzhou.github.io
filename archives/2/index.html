@@ -213,7 +213,118 @@
 
 <div class="post-preview">
 
-    <a href="/2016/07/21/[paper]DMDS-conclusionandfuturework-/">
+    <a href="/2017/03/18/[Android]surfaceview_self_component/">
+        <h2 class="post-title">
+            [Android] 利用surfaceview制作自定义组件
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列00
+        </h3>
+        <div class="post-content-preview">
+            一.SurfaceView和View最本质的区别
+surfaceview继承自view,但是同view由本质上的区别,即是surfaceview开一个新线程进行绘制,view是在UI主线程中进行绘制
+SurfaceView和View最本质的区别在于，surfaceView是在一个新起的单独线程中可以重新绘制画面而View必须在UI的主线程中更新画面。可以在主线程之外的线程中向屏幕绘图。这样可......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-03-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/30/[linux]GitNote/">
+        <h2 class="post-title">
+            [Linux] Git 痛定思痛笔记
+        </h2>
+        <h3 class="post-subtitle">
+            学习gir的重要性
+        </h3>
+        <div class="post-content-preview">
+            https://git-scm.com/book/zh/v2
+git 安装
+由于直接使用apt-get下载安装的hgit版本太低,所以我们使用PPA源的方法
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+
+安装完成后，检查是否安装成功
+git --version
+显示......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-30
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Git" title="Git">Git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[linux]PrintChineseInAs/">
+        <h2 class="post-title">
+            [Linux] AS不能输入中文的解决方法
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            http://blog.sina.com.cn/s/blog_c92554b40102vynb.html
+
+
+前提条件是用的是fcitx
+1.用gedit或者vi打开studio.sh
+2.在很多#的后面加上三行代码
+12345export XMODIFIERS=&quot;@im=fcitx&quot;export GTK_IM_MODULE=&quot;fcitx&quot;export......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[paper]DMDS_conclusionandfuturework/">
         <h2 class="post-title">
             [Paper Notes]  Conclusion And Future Work——云计算下基于二进制文件特点的恶意软件分布式侦测
         </h2>
@@ -288,7 +399,7 @@
 
 <div class="post-preview">
 
-    <a href="/2016/07/20/[paper]DMDS-experimentalresultandanalysis-/">
+    <a href="/2016/07/20/[paper]DMDS_experimentalresultandanalysis/">
         <h2 class="post-title">
             [Paper Notes]  Experimental Result And Analysis——云计算下基于二进制文件特点的恶意软件分布式侦测
         </h2>
@@ -330,7 +441,7 @@ Precision（精确度）：Precision in this paper is the fraction of retrieved 
 
 <div class="post-preview">
 
-    <a href="/2016/07/19/[paper]DMDS-relatedwork/">
+    <a href="/2016/07/19/[paper]DMDS_relatedwork/">
         <h2 class="post-title">
             [Paper Notes]  Related Work——云计算下基于二进制文件特点的恶意软件分布式侦测
         </h2>
@@ -349,6 +460,59 @@ http://blog.csdn.net/icvpr/......
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Aerber Zhou on
             2016-07-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Paper" title="Paper">Paper</a>
+            
+              <a href="/tags/#Security" title="Security">Security</a>
+            
+              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
+            
+              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/18/[paper]DMDS_designandalgorithm/">
+        <h2 class="post-title">
+            [Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测
+        </h2>
+        <h3 class="post-subtitle">
+            02-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
+        </h3>
+        <div class="post-content-preview">
+            总体规划介绍和几个在scheme中使用的算法简述
+总体规划
+工作流程如下：
+1.恶意软件提取过程（DMGM算法  【这个将在第二部分进行介绍】）
+
+
+恶意软件代码像素化
+用8bit的无符号整数读恶意软件二进制文件，通过灰度图像达到可视化
+
+
+纹理描述提取
+通过使用GIST算法，得到320维的特征描述
+
+
+2.DELSH（Distributed ELSH）过程
+
+偏移量的选取
+预处理：剔除重复......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-18
         </p>
         <div class="tags">
             
@@ -405,60 +569,7 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
 
 <div class="post-preview">
 
-    <a href="/2016/07/18/[paper]DMDS-designandalgorithm-/">
-        <h2 class="post-title">
-            [Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测
-        </h2>
-        <h3 class="post-subtitle">
-            02-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
-        </h3>
-        <div class="post-content-preview">
-            总体规划介绍和几个在scheme中使用的算法简述
-总体规划
-工作流程如下：
-1.恶意软件提取过程（DMGM算法  【这个将在第二部分进行介绍】）
-
-
-恶意软件代码像素化
-用8bit的无符号整数读恶意软件二进制文件，通过灰度图像达到可视化
-
-
-纹理描述提取
-通过使用GIST算法，得到320维的特征描述
-
-
-2.DELSH（Distributed ELSH）过程
-
-偏移量的选取
-预处理：剔除重复......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-              <a href="/tags/#Paper" title="Paper">Paper</a>
-            
-              <a href="/tags/#Security" title="Security">Security</a>
-            
-              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
-            
-              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/07/17/[paper]DMDS-Introduction/">
+    <a href="/2016/07/17/[paper]DMDS_Introduction/">
         <h2 class="post-title">
             [Paper Notes]  Introduction——云计算下基于二进制文件特点的恶意软件分布式侦测
         </h2>
@@ -518,6 +629,10 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
         </li>
     
     
+        <li class="next">
+            <a href="/archives/3/">Older Posts &rarr;</a>
+        </li>
+    
 </ul>
 
 
@@ -547,7 +662,9 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
             
         
             
-            <a href="/tags/#Notes" title="Notes" rel="17">Notes</a>
+            <a href="/tags/#Notes" title="Notes" rel="22">Notes</a>
+            
+        
             
         
             
@@ -570,6 +687,18 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
             <a href="/tags/#Malware Detection" title="Malware Detection" rel="5">Malware Detection</a>
             
         
+            
+            <a href="/tags/#Linux" title="Linux" rel="3">Linux</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Manjaro" title="Manjaro" rel="2">Manjaro</a>
+            
+        
+            
+            <a href="/tags/#SQL" title="SQL" rel="2">SQL</a>
             
         
     </div>
@@ -642,6 +771,10 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
     <ul>
       
         <li>
+          <a href="/2018/07/13/[linux]CreateStarterFileInUbuntu/">(no title)</a>
+        </li>
+      
+        <li>
           <a href="/2018/06/01/[lecture]text-topic-model-application/">[Lecture Notes] 文本主题模型运用</a>
         </li>
       
@@ -655,10 +788,6 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
       
         <li>
           <a href="/2017/09/01/[lecture]ACMTURCShangHai/">[Lecture Notes] 2017年ACM图灵大会</a>
-        </li>
-      
-        <li>
-          <a href="/2017/07/18/[notes]2016.7.19/">[Android] surfaceview相关知识补充</a>
         </li>
       
     </ul>
