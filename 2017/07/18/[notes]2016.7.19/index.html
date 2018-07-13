@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          About - Aerber Joy
+          [Android] surfaceview相关知识补充 - Aerber Joy
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/about/">
+    <link rel="canonical" href="http://yoursite.com/2017/07/18/[notes]2016.7.19/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/Iron-Man-3.jpg')
-            /*page*/
+            background-image: url('../img/Iron-Man-3.jpg')
+            /*post*/
         
     }
     
@@ -87,10 +87,20 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>About</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Wish for the Best, Prepare for the Worst</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                            
+                              <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                            
+                        </div>
+                        <h1>[Android] surfaceview相关知识补充</h1>
+                        <h2 class="subheading">surfaceView系列05</h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2017-07-18
+                        </span>
                     </div>
                 
 
@@ -193,208 +203,237 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <blockquote>
-<p>光有好奇心而不去實踐，等於自願放棄成功機會<br>
-別為自己畫地自限，Just Do It！！</p>
-</blockquote>
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="一自定义控件的使用">一.自定义控件的使用</span></h1>
+<p>需要把在bluetoothchat中传输过来的数据显示在memorytable上,可以new个thread在bluetoothchat中,然后在通过类似于textview一样的内置控件,根据findviewbyid来实例化memorytable,再设置这个memorytable其中的数据</p>
+<h1><span id="二thread">二.thread</span></h1>
+<p>thread(new runnable(){<br>
+	public void run()<br>
+	})</p>
+<h1><span id="三super">三.super</span></h1>
+<p>“super”。它和&quot;this&quot;类似，但是也有不同的地方。</p>
+<p>1。表示调用父类的构造函数。也是一个特殊语法，不是变量，没有什么类型。</p>
+<p>2。可以在一个类的非static成员内部使用。比如super.method()。<br>
+但是，注意，这个super.method()只是长得跟some_var.method()一样，一个语法糖而已。实质上，&quot;super&quot;根本不是一个变量。</p>
+<p>为什么不是？因为如果是就坏了。java里面有一个金科玉律：任何public非static函数的调用都是多态的。</p>
+<p>所以，如果super是个变量，也指向当前对象，那么，不管super的静态类型是什么super.method()必然调用的是子类的那个版本，而不会是我们期望的，静态地选择父类的那个版本。</p>
+<p>所以，你只要把super.xxx看成一个特殊的语法，比如理解为“super::xxx”就好了。</p>
+<p>既然super不是一个变量，那么不能把它象一个普通变量那样&quot;==&quot;，或者传递给某个函数就看起来很正常了，是么？何况，你其实也用不着它，有this你这些要求就都可以办到了。</p>
+<p>3。super的另外一个作用是调用父类的protected函数。只有通过&quot;super&quot;这个魔咒，我们才能操作父类的protected成员，别无它法。</p>
+<h1><span id="四-draw用法中的-porterduffmode画笔模式">四. draw用法中的 PorterDuff.Mode画笔模式</span></h1>
+<pre><code>1.PorterDuff.Mode.CLEAR
+所绘制不会提交到画布上。
+
+      清屏
+       c.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 
 
-                <!-- 如果开启评论功能 -->
+2.PorterDuff.Mode.SRC
+显示上层绘制图片
+
+3.PorterDuff.Mode.DST
+显示下层绘制图片
+
+4.PorterDuff.Mode.SRC_OVER
+正常绘制显示，上下层绘制叠盖。
+
+5.PorterDuff.Mode.DST_OVER
+上下层都显示。下层居上显示。
+
+6.PorterDuff.Mode.SRC_IN
+取两层绘制交集。显示上层。
+
+7.PorterDuff.Mode.DST_IN
+取两层绘制交集。显示下层。
+
+8.PorterDuff.Mode.SRC_OUT
+取上层绘制非交集部分。
+
+9.PorterDuff.Mode.DST_OUT
+取下层绘制非交集部分。
+
+10.PorterDuff.Mode.SRC_ATOP
+取下层非交集部分与上层交集部分
+
+11.PorterDuff.Mode.DST_ATOP
+取上层非交集部分与下层交集部分
+
+12.PorterDuff.Mode.XOR
+取两层绘制非交集。两层绘制非交集。
+
+13.PorterDuff.Mode.DARKEN
+上下层都显示。变暗
+
+14.PorterDuff.Mode.LIGHTEN
+上下层都显示。变量
+
+15.PorterDuff.Mode.MULTIPLY
+取两层绘制交集
+
+16.PorterDuff.Mode.SCREEN
+上下层都显示。
+</code></pre>
+<p><img src="a2cff9d4-4b16-41a2-8337-8e5d62033489.jpg" alt=""></p>
+<h1><span id="五onmeasure重载">五.onMeasure()重载</span></h1>
+<p>如果不重载onMeasure(),则默认测量最大范围</p>
+<h1><span id="六在自定义控件外套一个fragment">六.在自定义控件外套一个fragment</span></h1>
+<p>令fragment的width和height为0后,再通过weight的设置来给每个控件分配屏幕的空间大小</p>
+
                 
-                    <hr>
 
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/2018/03/18/[Android]splashactivity/" data-toggle="tooltip" data-placement="top" title="[Android] App应用之启动界面SplashActivity的使用">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/06/18/[Android]surfaceview_canvas/" data-toggle="tooltip" data-placement="top" title="[Android] surfaceview中的canvas的变换和操作">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-                    
-                    <!-- disqus 评论框 start -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
                     <div class="comment">
                         <div id="disqus_thread" class="disqus-thread"></div>
                     </div>
-                    <!-- disqus 评论框 end -->
-                    
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一.自定义控件的使用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二.thread</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三.super</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">四. draw用法中的 PorterDuff.Mode画笔模式</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">五.onMeasure()重载</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">六.在自定义控件外套一个fragment</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
 
-                    
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-                    
-                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES * * */
-                        var disqus_shortname = "your-disqus-ID";
-                        var disqus_identifier = "http://yoursite.com/about/index.html";
-                        var disqus_url = "http://yoursite.com/about/index.html";
-
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
                         
-                    </script>
-                    <!-- disqus 公共JS代码 end -->
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
                     
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#Android" title="Android" rel="9">Android</a>
-            
-        
-            
-            <a href="/tags/#Notes" title="Notes" rel="10">Notes</a>
-            
-        
-            
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.jpg" />
-        
 
-        
-            <p>赤子之心，严己宽人</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "http://yoursite.com/2017/07/18/[notes]2016.7.19/";
+    var disqus_url = "http://yoursite.com/2017/07/18/[notes]2016.7.19/";
 
-            
-                <li>
-                    <a target="_blank" href="http://weibo.com/3479268957">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
 
-            
-                <li>
-                    <a target="_blank" href="https://www.facebook.com/NullAerber">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/NullAerber">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2018/03/18/[Framework]MVCframework/">[Framework] MVC架构</a>
-        </li>
-      
-        <li>
-          <a href="/2018/03/18/[Android]splashactivity/">[Android] App应用之启动界面SplashActivity的使用</a>
-        </li>
-      
-        <li>
-          <a href="/2017/07/18/[notes]2016.7.19/">[Android] surfaceview相关知识补充</a>
-        </li>
-      
-        <li>
-          <a href="/2017/06/18/[Android]surfaceview_canvas/">[Android] surfaceview中的canvas的变换和操作</a>
-        </li>
-      
-        <li>
-          <a href="/2017/05/18/[Android]MemoryTable_surfaceview/">[Android] surfaceview之MemoryTable动态内存显示表</a>
-        </li>
-      
-    </ul>
-  </div>
 
-        <hr>
-    
-        <!-- Friends Blog -->
 
-<h5>FRIENDS</h5>
-<ul class="list-inline">
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-    
-        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
-    
-        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
-    
-</ul>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
