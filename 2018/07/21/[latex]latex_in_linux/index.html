@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Framework] MVC架构 - Aerber Joy
+          [LaTeX] 在manjaro中搭建中文LaTeX排版工具 - Aerber Joy
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2018/03/18/[Framework]MVCframework/">
+    <link rel="canonical" href="http://yoursite.com/2018/07/21/[latex]latex_in_linux/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -92,14 +92,16 @@
                             
                               <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
                             
-                              <a class="tag" href="/tags/#Framework" title="Framework">Framework</a>
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#LaTeX" title="LaTeX">LaTeX</a>
                             
                         </div>
-                        <h1>[Framework] MVC架构</h1>
+                        <h1>[LaTeX] 在manjaro中搭建中文LaTeX排版工具</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Aerber Zhou on
-                            2018-03-18
+                            2018-07-21
                         </span>
                     </div>
                 
@@ -216,34 +218,61 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>MVC架构指的是<strong>module view control 模型 视图 控制</strong>三层结构，相当于把以前耦合性很高的代码分层三个模块。</p>
-<blockquote>
-<p>UI界面的代码放入view模块中，专门负责和用户连接的界面。</p>
-<p>数据处理层的代码放入module模块中来处理和数据增删改的操作，例如mysql数据库的操作。</p>
-</blockquote>
-<blockquote>
-<p>连接view模块和module模块的控制，相当于把view中用户事件产生的数据通过control模块来传递给module模块中进行数据的操作。</p>
-</blockquote>
-<br>
-<blockquote>
-<p>Module模块的以service后缀</p>
-<p>View模块的以UI后缀</p>
-<p>Control模块的以manager后缀</p>
-</blockquote>
-<h2><span id="举个栗子">举个栗子</span></h2>
-<h3><span id="在一个c的名叫test的项目集合中包含了三个项目目前来说">在一个C#的名叫test的项目集合中包含了三个项目（目前来说）</span></h3>
-<p>我们这么命名文件：</p>
-<blockquote>
-<p>LoginFrm —— view模块中的一个类 —— test.USL(User Show Layer)项目中的一个文件</p>
-<p>LoginService  —— module模块中的一个类 —— test.DAL(Data Access Layer)项目中的一个文件</p>
-<p>LoginManager  —— control模块中的一个类 —— test.BLL(Business Logic Layer)项目中的一个文件</p>
-</blockquote>
-<p><strong>然后三个项目之间，view和control之间相互添加引用，control和module之间相互添加引用。</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LoginFrm.cs</span></span><br><span class="line">Using Systetm;</span><br><span class="line">Using test.BLL;</span><br><span class="line"></span><br><span class="line">Namespace test.USL&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginFrm</span> :</span> From&#123;</span><br><span class="line"></span><br><span class="line"><span class="function">Public <span class="title">LoginFrm</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//此处初始化操作在C#中程序会自动生成一个initiator函数，内容包括当前窗口上所有控件的实例化和初始化。</span></span><br><span class="line">Initiator();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Public <span class="title">bottom_click</span><span class="params">()</span></span>&#123;</span><br><span class="line">LoginManager loginManager = null;</span><br><span class="line">If(loginManager.Login(textbox_user.tostring(),textbox_password.tostring()))&#123;</span><br><span class="line">Message.show(“Login success !”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> Message.show(“Login failure!”);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LoginControl.cs</span></span><br><span class="line">Using System;</span><br><span class="line">Using test.DAL;</span><br><span class="line">Using test.USL;</span><br><span class="line"></span><br><span class="line">Namespace test.BLL&#123;</span><br><span class="line"><span class="function">Public class <span class="title">LoginManager</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="function">Public <span class="keyword">bool</span> <span class="title">Login</span><span class="params">(<span class="built_in">string</span> usrname, <span class="built_in">string</span> password)</span></span>&#123;</span><br><span class="line">LoginService loginservce = null;</span><br><span class="line">If(loginservice.login(username, password))</span><br><span class="line">Return <span class="literal">true</span>;</span><br><span class="line">Else retrun <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LoginService.cs</span></span><br><span class="line">Using system;</span><br><span class="line">Using test.BLL;</span><br><span class="line"></span><br><span class="line">Namespace test.DAl&#123;</span><br><span class="line"><span class="function">Public class <span class="title">LoginManager</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="function">Public <span class="keyword">bool</span> <span class="title">login</span><span class="params">(<span class="built_in">string</span> usrname, <span class="built_in">string</span> password)</span></span>&#123;</span><br><span class="line"><span class="comment">//进行sql语句查询之类的</span></span><br><span class="line"><span class="comment">//.........</span></span><br><span class="line"></span><br><span class="line">If(password == sql.password)</span><br><span class="line">Return <span class="literal">true</span>;</span><br><span class="line">Else <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>看起来好像是做了两遍一样的功能，但是这样有效的分开了代码，把作用相同的代码放在了一起，便于管理。</p>
-<p>然后，后期我们可以通过委托或者static方法来进行优化。</p>
+                <p>搭建LaTeX的工具是今年五月的时候要写专业英语的时候，那个时候只支持英文就行，所以对于包管理器很好的manjaro来说，pacman一下就ok了。</p>
+<p>后来信安课程里面也需要写论文，然后重新又捣鼓了一下中文系统的支持。</p>
+<p>【虽然我手上还有一堆论文还没有看orz…但是这个拖的实在是难受…】</p>
+<h1><span id="环境介绍">环境介绍</span></h1>
+<p>我在Linux下用的是texlive+visual-studio-code+LaTeX workshop。因为vscode我用的比较多，装一个插件就可以用，比较轻量化。虽然我的LaTeX大佬建议我装texstudio，但是我觉得太冗余了。</p>
+<p>另外说明，因为manjaro是在archlinux的基础上进行打包的，所以对于manjaro现在社区还不是很完善的情况下，如果有相关问题可以参考相关archlinux的解决方案。</p>
+<h1><span id="安装texlive及其相关组件">安装texlive及其相关组件</span></h1>
+<p>单纯安装Latex是比较简单的，直接pacman就行了。</p>
+<pre><code>sudo pacman -S texlive-core texlive-bin texlive-langcjk texlive-latex3 texlive-latexextra
+</code></pre>
+<h1><span id="安装vscode和其插件">安装vscode和其插件</span></h1>
+<p>安装vscode也很简单</p>
+<pre><code>sudo pacman -S visual-studio-code-bin
+</code></pre>
+<p>在插件商店中安装<strong>Latex compile,Latex Preview,Latex Workshop,latex-formatter</strong>四个插件即可。</p>
+<h1><span id="测试英文文档">测试英文文档</span></h1>
+<p>如果没有什么中文或者其他的特殊需求，上面那几个包就足够了，安装完成之后记得重启一次机器。重启之后，Latex就可以用了，你可以编辑一个简单的tex文件来测试一下：</p>
+<pre><code>% hello.tex
+\documentclass{article}
+\begin{document}
+Hello Latex!
+\end{document}
+</code></pre>
+<p>然后直接ctrl+S保存就可以看预览了。</p>
+<p><img src="en.png" alt="英文显示"></p>
+<h1><span id="配置中文支持">配置中文支持</span></h1>
+<p>目前Tex处理中文的解决方案我所了解主要有以下两种：</p>
+<ol>
+<li>
+<p>pdflatex + CJK</p>
+<p>第一种应该是用的最广泛的，但是我用的模板里面有一些字体不支持，换成第二种就行。如果不用模板，写纯的tex的话现在也可以了。</p>
+<p><img src="zh1.png" alt="pdflatex + CJK的中文支持"></p>
+<p>如果用的是第一种方案，需要自己生成一些供Tex使用的中文字体，网上也有现成的字体可用，比如YueWang做的那个中文字体包。不过当我把YueWang的那个字体下载下来之后，发现这些字体在我的电脑上表现的不好，字体很虚而且字的周围会有杂色。没办法，只能自己动手编译字体了。<br>
+具体编译字体的过程可以自己找一下，因为我就是没有找到相关的文章，然后用了传统的编译文字的方法最后没有效果才转到了第二种方法Xetex上。</p>
+<p>这里有一篇是Ubuntu上的编译字体的<a href="http://blog.51cto.com/cmdblock/204591" target="_blank" rel="noopener">文章</a>（文中的脚本已经无效了）</p>
+<p>还有<a href="https://blog.csdn.net/baccon/article/details/51301683" target="_blank" rel="noopener">一篇</a>,可以作为参考</p>
+</li>
+<li>
+<p>XeLaTex + ctex</p>
+<p>XeLaTex可以直接使用系统的字体，也是比较好的选择。我用就是这种。</p>
+<p>在vccode中默认选择用pdflatex对LaTeX进行编译。所以如果直接将第一种的那个tex代码的话会出错。需要对vscode进行设置修改。<br>
+具体如下：</p>
+<p><strong>文件 -&gt; 首选项 -&gt; 设置</strong></p>
+<p>然后把这一段设置代码放在左侧进行覆盖即可。</p>
+ <figure class="highlight plain"><figcaption><span>"xelatex",</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&quot;latexCompile.compiler&quot;: &quot;xelatex&quot;,</span><br><span class="line"></span><br><span class="line">&quot;latex-workshop.latex.recipes&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;xelatex -&gt; bibtex -&gt; xelatex*2&quot;,</span><br><span class="line">        &quot;tools&quot;: [</span><br><span class="line">            &quot;xelatex&quot;,</span><br><span class="line">            &quot;bibtex&quot;,</span><br><span class="line">            &quot;xelatex&quot;,</span><br><span class="line">            &quot;xelatex&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">],</span><br><span class="line">&quot;latex-workshop.latex.tools&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;bibtex&quot;,</span><br><span class="line">        &quot;command&quot;: &quot;bibtex&quot;,</span><br><span class="line">        &quot;args&quot;: [</span><br><span class="line">          &quot;%DOCFILE%&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;xelatex&quot;,</span><br><span class="line">        &quot;command&quot;: &quot;xelatex&quot;,</span><br><span class="line">        &quot;args&quot;: [</span><br><span class="line">            &quot;-synctex=1&quot;,</span><br><span class="line">            &quot;-interaction=nonstopmode&quot;,</span><br><span class="line">            &quot;-file-line-error&quot;,</span><br><span class="line">            &quot;-shell-escape&quot;,</span><br><span class="line">            &quot;%DOC%&quot; </span><br><span class="line">        ],</span><br><span class="line">    &#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>设置完效果如图<img src="setting.png" alt="XeLatex vscode 设置"></p>
+<p>保存以后就可以ctex包了。<br>
+如图<img src="zh2.png" alt=""></p>
+<p>在图上可以看到有几个警告，这是因为默认的Xelatex编译会自动使用文献编译bibtex，但是此处并没有文献。这个并不影响预览。关于这个的详细解释可以参考我的<a href="https://nullaerber.github.io/2018/07/21/%5Blatex%5DBiBTeX_found_no%20_itation_commands/" target="_blank" rel="noopener">另外一篇关于这个的文章</a></p>
+</li>
+</ol>
+<h1><span id="相关资料">相关资料</span></h1>
+<p>LaTeX 模板网站: <a href="http://www.latexstudio.net/" target="_blank" rel="noopener">http://www.latexstudio.net/</a></p>
+<p>TeX Live (简体中文) - ArchWiki: <a href="https://wiki.archlinux.org/index.php/TeX_Live_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/TeX_Live_(简体中文)#.E5.AE.89.E8.A3.85</a></p>
+<p>LaTeX 实战经验：新手须知: <a href="https://blog.csdn.net/simple_the_best/article/details/51244631" target="_blank" rel="noopener">https://blog.csdn.net/simple_the_best/article/details/51244631</a></p>
 
                 
 
@@ -252,12 +281,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2018/03/18/[Android]splashactivity/" data-toggle="tooltip" data-placement="top" title="[Android] App应用之启动界面SplashActivity的使用">&larr; Previous Post</a>
+                            <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/" data-toggle="tooltip" data-placement="top" title="[LaTeX] Latex中 BiBTeX found no citation commands 解决办法">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/09/01/[lecture]ACMTURCShangHai/" data-toggle="tooltip" data-placement="top" title="[Lecture Notes] 2017年ACM图灵大会">Next Post &rarr;</a>
+                            <a href="/2018/06/01/[lecture]text-topic-model-application/" data-toggle="tooltip" data-placement="top" title="[Lecture Notes] 文本主题模型运用">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -287,7 +316,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">举个栗子</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">在一个C#的名叫test的项目集合中包含了三个项目（目前来说）</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">环境介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装texlive及其相关组件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">安装vscode和其插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">测试英文文档</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">配置中文支持</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">相关资料</span></a></li></ol>
         
         </div>
       </aside>
@@ -309,7 +338,9 @@
                        
                           <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
                         
-                          <a class="tag" href="/tags/#Framework" title="Framework">Framework</a>
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#LaTeX" title="LaTeX">LaTeX</a>
                         
                     </div>
                 </section>
@@ -340,8 +371,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite.com/2018/03/18/[Framework]MVCframework/";
-    var disqus_url = "http://yoursite.com/2018/03/18/[Framework]MVCframework/";
+    var disqus_identifier = "http://yoursite.com/2018/07/21/[latex]latex_in_linux/";
+    var disqus_url = "http://yoursite.com/2018/07/21/[latex]latex_in_linux/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
