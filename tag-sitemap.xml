@@ -58,13 +58,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Manjaro/</loc>
-        <lastmod>2018-07-13T05:50:25.603Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/Git/</loc>
         <lastmod>2018-07-13T05:55:26.741Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -72,22 +65,36 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Notes/</loc>
+        <loc>http://yoursite.com/tags/Ubuntu/</loc>
         <lastmod>2018-07-13T06:00:54.460Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Manjaro/</loc>
+        <lastmod>2018-07-21T02:32:43.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Notes/</loc>
+        <lastmod>2018-07-21T02:39:27.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Linux/</loc>
-        <lastmod>2018-07-13T06:00:54.460Z</lastmod>
+        <lastmod>2018-07-21T02:39:27.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Ubuntu/</loc>
-        <lastmod>2018-07-13T06:00:54.460Z</lastmod>
+        <loc>http://yoursite.com/tags/LaTeX/</loc>
+        <lastmod>2018-07-21T02:39:27.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
