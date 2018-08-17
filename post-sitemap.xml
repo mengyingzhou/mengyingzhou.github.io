@@ -8,7 +8,7 @@
 
     <url>
         <loc>http://yoursite.com/2018/08/17/%5Bpaper%5Dzju_paper_1/</loc>
-        <lastmod>2018-08-17T16:22:59.943Z</lastmod>
+        <lastmod>2018-08-17T16:34:04.154Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -95,15 +95,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
-        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <loc>http://yoursite.com/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -119,7 +111,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
+        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -127,15 +119,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/21/%5Bnotes%5D2016.7.21/</loc>
-        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
+        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -151,6 +135,22 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2016/07/21/%5Bnotes%5D2016.7.21/</loc>
+        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
+        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -159,7 +159,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
+        <loc>http://yoursite.com/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -175,7 +175,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
+        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
