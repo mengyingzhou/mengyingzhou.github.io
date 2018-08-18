@@ -486,7 +486,16 @@
     }
 </style>
 
-
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+            appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true // 阅读量统计
+        })
+    </script>
 
     <!-- Footer -->
     <!-- Footer -->
@@ -652,16 +661,7 @@
 <!-- Image to hack wechat -->
 <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
-<div id="vcomments"></div>
-    <script>
-        new Valine({
-            el: '#vcomments',
-            appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
-            appKey: 's9n02dNw41r6yqXsoJzvaEEz',
-			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
-			visitor: true // 阅读量统计
-        })
-    </script>
+
 </body>
 
 </html>
