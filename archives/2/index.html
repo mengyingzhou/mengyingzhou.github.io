@@ -213,6 +213,41 @@
 
 <div class="post-preview">
 
+    <a href="/2017/06/18/[Android]surfaceview_canvas/">
+        <h2 class="post-title">
+            [Android] surfaceview中的canvas的变换和操作
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列04
+        </h3>
+        <div class="post-content-preview">
+            个人觉得这篇很好.先放上来.
+http://blog.csdn.net/harvic880925/article/details/39080931/
+很多理解,这个博客中的图片很好的进行了每一步的解释.
+零、canvas的概念
+屏幕显示和每一步的canvas的操作不是同一个概念
+每一次canvas.draw()系列函数,都是在屏幕显示的基础上重新建立一个新的图层,然后这个canvas.dra......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-06-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2017/05/18/[Android]MemoryTable_surfaceview/">
         <h2 class="post-title">
             [Android] surfaceview之MemoryTable动态内存显示表
@@ -387,19 +422,21 @@ git --version
 
 <div class="post-preview">
 
-    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
+    <a href="/2016/07/21/[linux]PrintChineseInAs/">
         <h2 class="post-title">
-            [Linux] 命令行建启动器
+            [Linux] AS不能输入中文的解决方法
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
-引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
-但是对于ubuntu+gnome来说，只有命令行最实用。
-个人也比较偏向于命令行方式。
-http://......
+            http://blog.sina.com.cn/s/blog_c92554b40102vynb.html
+
+
+前提条件是用的是fcitx
+1.用gedit或者vi打开studio.sh
+2.在很多#的后面加上三行代码
+12345export XMODIFIERS=&quot;@im=fcitx&quot;export GTK_IM_MODULE=&quot;fcitx&quot;export......
         </div>
     </a>
     
@@ -413,7 +450,7 @@ http://......
             
               <a href="/tags/#Linux" title="Linux">Linux</a>
             
-              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
+              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
             
         </div>
     
@@ -465,21 +502,19 @@ http://......
 
 <div class="post-preview">
 
-    <a href="/2016/07/21/[linux]PrintChineseInAs/">
+    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
         <h2 class="post-title">
-            [Linux] AS不能输入中文的解决方法
+            [Linux] 命令行建启动器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            http://blog.sina.com.cn/s/blog_c92554b40102vynb.html
-
-
-前提条件是用的是fcitx
-1.用gedit或者vi打开studio.sh
-2.在很多#的后面加上三行代码
-12345export XMODIFIERS=&quot;@im=fcitx&quot;export GTK_IM_MODULE=&quot;fcitx&quot;export......
+            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
+引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
+但是对于ubuntu+gnome来说，只有命令行最实用。
+个人也比较偏向于命令行方式。
+http://......
         </div>
     </a>
     
@@ -493,7 +528,7 @@ http://......
             
               <a href="/tags/#Linux" title="Linux">Linux</a>
             
-              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
             
         </div>
     
@@ -527,48 +562,6 @@ http://......
               <a href="/tags/#Android" title="Android">Android</a>
             
               <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/07/20/[paper]DMDS_experimentalresultandanalysis/">
-        <h2 class="post-title">
-            [Paper Notes]  Experimental Result And Analysis——云计算下基于二进制文件特点的恶意软件分布式侦测
-        </h2>
-        <h3 class="post-subtitle">
-            04-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
-        </h3>
-        <div class="post-content-preview">
-            测试结果和相关分析
-测试环境
-机器：IBM机群
-数据集：总数8410个恶意软件，25个恶意软件家族
-性能指标
-精确度、响应度、F值度量、查询时间
-Precision（精确度）：Precision in this paper is the fraction of retrieved malware descriptor vector that are relevant to the targe......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-              <a href="/tags/#Paper" title="Paper">Paper</a>
-            
-              <a href="/tags/#Security" title="Security">Security</a>
-            
-              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
-            
-              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
             
         </div>
     
@@ -624,8 +617,6 @@ Precision（精确度）：Precision in this paper is the fraction of retrieved 
             
         
             
-        
-            
             <a href="/tags/#Linux" title="Linux" rel="7">Linux</a>
             
         
@@ -646,7 +637,9 @@ Precision（精确度）：Precision in this paper is the fraction of retrieved 
             
         
             
-            <a href="/tags/#Paper" title="Paper" rel="6">Paper</a>
+        
+            
+            <a href="/tags/#Paper" title="Paper" rel="7">Paper</a>
             
         
             
@@ -662,15 +655,23 @@ Precision（精确度）：Precision in this paper is the fraction of retrieved 
             
         
             
+            <a href="/tags/#Internship" title="Internship" rel="2">Internship</a>
+            
+        
+            
+            <a href="/tags/#Deep Learning" title="Deep Learning" rel="2">Deep Learning</a>
+            
+        
+            
+            <a href="/tags/#Knowledge Graph" title="Knowledge Graph" rel="2">Knowledge Graph</a>
+            
+        
+            
+        
+            
+        
+            
             <a href="/tags/#SQL" title="SQL" rel="2">SQL</a>
-            
-        
-            
-        
-            
-        
-            
-        
             
         
     </div>
@@ -743,6 +744,10 @@ Precision（精确度）：Precision in this paper is the fraction of retrieved 
     <ul>
       
         <li>
+          <a href="/2018/08/18/[paper]zju_paper_2/">[Paper Notes]  浙江大学实习期间看的一些论文和写的一些代码-02</a>
+        </li>
+      
+        <li>
           <a href="/2018/08/17/[paper]zju_paper_1/">[Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码</a>
         </li>
       
@@ -756,10 +761,6 @@ Precision（精确度）：Precision in this paper is the fraction of retrieved 
       
         <li>
           <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">[LaTeX] Latex中 BiBTeX found no citation commands 解决办法</a>
-        </li>
-      
-        <li>
-          <a href="/2018/06/01/[lecture]text-topic-model-application/">[Lecture Notes] 文本主题模型运用</a>
         </li>
       
     </ul>

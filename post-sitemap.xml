@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2018/08/18/%5Bpaper%5Dzju_paper_2/</loc>
+        <lastmod>2018-08-18T09:13:09.790Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/08/17/%5Bpaper%5Dzju_paper_1/</loc>
         <lastmod>2018-08-18T08:22:48.828Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -95,14 +103,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
-        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -111,7 +111,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <loc>http://yoursite.com/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
+        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -127,7 +135,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
+        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -151,6 +159,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
+        <lastmod>2018-07-13T05:32:15.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -167,7 +183,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
+        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -176,14 +192,6 @@
 
     <url>
         <loc>http://yoursite.com/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
-        <lastmod>2018-07-13T05:32:15.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码 - Aerber Joy
+          [Paper Notes]  浙江大学实习期间看的一些论文和写的一些代码-02 - Aerber Joy
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2018/08/17/[paper]zju_paper_1/">
+    <link rel="canonical" href="http://yoursite.com/2018/08/18/[paper]zju_paper_2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -98,14 +98,14 @@
                             
                               <a class="tag" href="/tags/#Knowledge Graph" title="Knowledge Graph">Knowledge Graph</a>
                             
-                              <a class="tag" href="/tags/#CNN" title="CNN">CNN</a>
+                              <a class="tag" href="/tags/#Attention Based Model" title="Attention Based Model">Attention Based Model</a>
                             
                         </div>
-                        <h1>[Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码</h1>
+                        <h1>[Paper Notes]  浙江大学实习期间看的一些论文和写的一些代码-02</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Aerber Zhou on
-                            2018-08-17
+                            2018-08-18
                         </span>
                     </div>
                 
@@ -223,114 +223,114 @@
                 post-container">
 
                 <h1><span id="outline">Outline</span></h1>
-<p>主要会讲几篇论文的aims，background，innovation，model details，毕竟概述性质将，有兴趣的可以自己找paper看一下，数学公式或者证明的相对来说比较少。</p>
-<p>一方面毕竟machine learning这一块本来解释性也不是很多，照着实现就行；另一方面我一两周中看的论文比较多，比较粗略，这个只是用来做一个总结记录。</p>
-<p>里面有几篇我是有相关的实现，或者是参考其中一部分实现在我其他的模型上的。Github地址：<a href="https://github.com/NullAerber/ZJU_Internship" target="_blank" rel="noopener">https://github.com/NullAerber/ZJU_Internship</a></p>
-<p>第一篇主要是针对NLP任务的一些比较出色的典型Model</p>
+<p>上一篇主要挑了几篇针对NLP任务的一些比较出色的典型Model，把Model details写了一下。</p>
+<p>这次主要是Attention Based Model，注意力机制模型。</p>
+<p>Attention需要最先说明的就是，Attention Based Model并不算是一种实实在在的类似CNN或者RNN这种的模型，它应该算是一种机制。所以有时候会叫做Attention Mechanism，是通过一种加权重或者max pooling等的方式对输入的某些部分给以不同大小的系数，以达到不同程度的关注度。</p>
+<p>部分实现代码：Github地址：<a href="https://github.com/NullAerber/ZJU_Internship" target="_blank" rel="noopener">https://github.com/NullAerber/ZJU_Internship</a></p>
+<p>此文中会涉及到的论文：</p>
 <ol>
-<li>（TextCNN）Convolutional Neural Networks for Sentence Classification</li>
-<li>Convolutional 2D Knowledge Graph Embeddings</li>
-<li>Bilateral Multi-Perspective Matching for Natural Language Sentences</li>
+<li>Hierarchical Attention Networks for Document Classification</li>
+<li>DKN: Deep Knowledge-Aware Network for News Recommendation</li>
+<li>Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</li>
 </ol>
-<h1><span id="textcnnconvolutional-neural-networks-for-sentence-classification">(TextCNN）Convolutional Neural Networks for Sentence Classification</span></h1>
+<h1><span id="hierarchical-attention-networks-for-document-classification">Hierarchical Attention Networks for Document Classification）</span></h1>
 <h2><span id="aims">Aims</span></h2>
-<p>众所周知，CNN神经网络在计算机视觉方面(Krizhevsky et al., 2012)和语音识别(Graves et al., 2013)表现很出色，这是因为CNN可以提取local feature的能力很强。</p>
-<p>所以作者就想说，NLP中也有这样的任务是需要提取相关的局部特征的，CNN正好提供了这样优秀的能力，反倒是LSTM、GRU这种的可能就不是很适合。因此尝试着用一层卷积层来做分类任务。</p>
+<p>利用Attention Mechanism去做文档分类。</p>
 <h2><span id="innovation">Innovation</span></h2>
-<p>提出将CV中的CNN的模型运用在NLP中。</p>
-<h2><span id="model">Model</span></h2>
-<p>整个模型十分的简单。<br>
-一层embedding，一层CNN，一层full connection，做分类的话最后还有一层softmax。<br>
-<img src="text_cnn_model.png" alt="text cnn model"></p>
-<p>和普通的CNN的区别有2点：</p>
 <ol>
-<li>就图上而言，普通做CV的CNN是图像长度x图像宽带xRGB三色通道的，然而对于序列来说，一方面图像宽度是固定的，是每个词的word embedding，另一方面是word embedding中的每一个数值都是最小单位，所有句子所构成的这个图是只有一个通道的，不像图片是有RGB三通道，或者是带透明四通道的。</li>
-<li>一般做TextCNN的时候卷积核的大小会选择和embedding size 一样大，原因是embedding代表的是一个词在文字向量空间位置综合体现，embedding中的每一个数值单独进行操作都是没有实际意义的。</li>
+<li>提供层次结构, 反映文件中word，sentence两个粒度的层次结构。</li>
+<li>对两个粒度做Attention Mechanism, 分别是word粒度和sentence粒度, 使其能够在构建文档表示时，对不重要和重要的内容进行差异化表示。</li>
+</ol>
+<h2><span id="model">Model</span></h2>
+<p><img src="HAN.png" alt="HAN"></p>
+<ol>
+<li>
+<p>word embedding layer：首先在word粒度进行embedding。</p>
+</li>
+<li>
+<p>word encoder layer： 采用双向GRU得到隐藏状态。</p>
+</li>
+<li>
+<p>word attention：</p>
+<p>用attention Mechanism将上一层从双向GRU得到的隐藏状态同需要被关注的对象u进行交互。</p>
+<p>这里的交互是普通的矩阵相乘-&gt;softmax-&gt;矩阵求和。同时这个矩阵求和的维度是以句子的长度而定，会把原本是一个句子的词，在通过以上几层网络的操作后加起来得到sentence embedding。</p>
+<p>需要注意的是u是通过word embedding经过一层MLP（Multi-Layer Perceptron多层感知器）得到的。</p>
+</li>
+<li>
+<p>sentence embedding layer： 在上一层输出中得到句子的sentence embedding。</p>
+</li>
+<li>
+<p>sentence encoder layer： 同样采用双向GRU得到隐藏状态。</p>
+</li>
+<li>
+<p>sentence attention： 与第3层的word attention的机制相似。最终得到context粒度的表达。</p>
+</li>
+<li>
+<p>softmax： 对context embedding进行softmax得到最终分类得分。</p>
+</li>
 </ol>
 <h2><span id="implemention">Implemention</span></h2>
-<p><strong>具体实现：<a href="https://github.com/NullAerber/ZJU_Internship/tree/master/TextCNN" target="_blank" rel="noopener">TextCNN</a></strong></p>
-<p><strong>输入:</strong></p>
-<p>影评文字</p>
-<p><strong>输出:</strong></p>
-<p>情感倾向，正面评价还是负面评价。</p>
-<p><strong>PS.:</strong></p>
-<p>这边我提供了两种的TextCNN的实现方式，一种比较简单易明白，另一种比较难看懂，但是更加灵活。</p>
-<p>同时word embedding那一块训练的预料是Google的text8，<a href="http://mattmahoney.net/dc/text8.zip" target="_blank" rel="noopener">下载地址在这</a> word embedding训练的代码已经在代码中写好了。</p>
-<h1><span id="convolutional-2d-knowledge-graph-embeddings">Convolutional 2D Knowledge Graph Embeddings</span></h1>
-<p>上一篇CNN在NLP中表现的还算不错，因此后面有人想到用CNN延伸到Knowledge Graph（KG）中。甚至最近机器之心发了一篇推文说CNN基本上已经可以取代RNN的一系列模型。</p>
+<p><strong>具体实现：<a href="https://github.com/NullAerber/ZJU_Internship/tree/master/Attention_Text_Classification" target="_blank" rel="noopener">Attention mechanism for text classification tasks</a></strong></p>
+<p>fork别人得到。修改了部分代码以使用Python3.6。</p>
+<h1><span id="dkn-deep-knowledge-aware-network-for-news-recommendation">DKN: Deep Knowledge-Aware Network for News Recommendation</span></h1>
 <h2><span id="aims">Aims</span></h2>
-<p>在许多的大型知识图谱中，实体一般比较齐全，但是实体和实体之间的关系则相对来说比较少，缺少度比较大，一些关系人类是可以通过一定的推理和解析得到的。但是由于现实实体之间的关系千千万万种，目前机器不可能通过硬规则实现。因此考虑通过CNN的方式学习相关的实体关系链路。</p>
+<p>本文提出了 DKN 模型，将知识图谱表示融入新闻推荐中。DKN 是一个基于内容的点击率的深度推荐模型。</p>
 <h2><span id="innovation">Innovation</span></h2>
 <ol>
-<li>
-<p>该模型的主要特点是通过2D embedding CNN来得出分数。</p>
-<p><strong>对于这个2D的解释，我们可以先简单理解为将一维的embedding通过复制、交互进行维数拓展。</strong></p>
-<p>接下来我们进行详细的解释。</p>
-<p>使用2D而不是1D增加了模型通过embedding之间的附加的相互作用的表达性。例如，考虑concat两行1D embedding，a和b的shape为[m,n] = [1,3]：<br>
-<img src="1D.png" alt="1D"></p>
-<p>在这种情况下，filter size为k = 3的过滤器可以获取到a和b之间的交互。</p>
-<p>那么如果采用堆的方式进行对embedding进行复制，例如此时a和b的shape为[m,n] = [2,3]:<br>
-<img src="2D.png" alt="2D"></p>
-<p>此时，filter size为k = 3×3的2D卷积将能够模拟整个级联线周围的相互作用（与n和k成比例的相互作用的数目）。</p>
-<p>甚至可以采用其他交替模式，例如：</p>
-<p><img src="2D_2.png" alt="2D interaction"></p>
-<p>在这种情况下，2D卷积运算能够模拟a和b之间的更多相互作用（具有与m、n和k成比例的相互作用的数目）。因此，与1D卷积相比，2D卷积能够提取两个嵌入之间的更多特征交互。</p>
-</li>
-<li>
-<p>不同于采取实体对和关系作为三重（e1，rel，e2）的其他链路预测模型和得分方式（1-1 score），此文章采取（e1，rel）二元组的方式，并且得分为（1-N score）。</p>
-<p>1-1 score的意思是一个sample只有一个分数，即(e1,rel,e2)三者限定出的一个分数。</p>
-<p>1-N score则是一个sample会有N个分数，即(e1,rel)两者同N个e2候选者之间进行计算得到的N个分数。</p>
-<p>下图的模型可以解释的更清晰。</p>
-</li>
+<li>引入融合语义水平和知识水平的知识感知卷积神经网络（KCNN）。</li>
+<li>KCNN将word、entity、context这三个粒度当成三通道，采用卷积的方式，卷积过程中保持这三者的对齐。</li>
 </ol>
 <h2><span id="model">Model</span></h2>
-<p><img src="2D_CNN_linker_prediction.png" alt="2D_CNN_linker_prediction"></p>
+<p><img src="DKN.png" alt="DKN"></p>
 <ol>
-<li>Embedding layer：将（实体，关系）对的两者分别进行embedding得到其向量。</li>
-<li>Concat：将embedding后的(e1,rel)从1D扩充到2D，用innovation中的提到的几种拓展方式进行拓展。</li>
-<li>CNN：普通CNN layer。</li>
-<li>Full connection： 普通的全连接层。</li>
-<li>Logits：将full connection后得到的值和需要预测的tail实体candidates矩阵进行矩阵相乘。就是full connection的结果乘上候选实体的embedding矩阵得到值。</li>
-<li>Predict score： 得到最终的预测结果，根据分数高低，在candidates中得出最终和此(e1,rel)相匹配的e2。</li>
+<li>
+<p>DKN 的输入包括候选新闻（标题），通过 KCNN 提取特征得到 embedding 表示，相较传统的 CNN，KCNN 可以融合知识图谱中的信息，来得到一个更好的句子表示。</p>
+</li>
+<li>
+<p>对用户点击的历史新闻（标题）如法炮制，得到历史新闻的 embedding，结合 Attention 机制同候选新闻计算权重后加权，得到用户的 embedding。</p>
+</li>
+<li>
+<p>将候选新闻的 embedding 和用户 embedding 拼在一起，通过一个几层full connection，最终计算点击的概率。</p>
+</li>
 </ol>
-<h1><span id="bilateral-multi-perspective-matching-for-natural-language-sentences">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></h1>
+<p>其中关于融合知识图谱、Entity embedding、context embedding的可以参考下面这个reference和原文。附上这两种embedding的图示：<br>
+<img src="DKN_2.png" alt="DKN_2"><br>
+<img src="DKN_3.png" alt="DKN_3"></p>
+<h2><span id="reference">Reference</span></h2>
+<p><a href="https://qiufengyu.github.io/2018/04/17/reading14/" target="_blank" rel="noopener">结合知识图谱中的表示学习，加上神经网络，进行新闻推荐。</a></p>
+<h2><span id="extend">Extend</span></h2>
+<ol>
+<li>Bahdanau D, Cho K, Bengio Y. Neural Machine Translation by Jointly Learning to Align and Translate[J]. Computer Science, 2014.</li>
+<li>Seo M, Kembhavi A, Farhadi A, et al. Bidirectional Attention Flow for Machine Comprehension[J]. 2016.</li>
+</ol>
+<h1><span id="show-attend-and-tell-neural-image-caption-generation-with-visual-attention">Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</span></h1>
 <h2><span id="aims">Aims</span></h2>
-<p>为了针对NLP文本匹配任务在传统的RNN，CNN是单向匹配、交互方式单粒度的弊端，提出了双向多粒度匹配模型（BIMPM Model）</p>
+<p>生成图片描述。</p>
 <h2><span id="innovation">Innovation</span></h2>
-<ol>
-<li>
-<p>双向匹配<br>
-在一般的文本匹配问题中，一般都是A匹配B，或者是B去匹配A，而不是两者进行交互，相互进行匹配。因此在本文中采用了A against B，同时B against A的形式。</p>
-</li>
-<li>
-<p>多粒度<br>
-在一般的文本匹配问题中，都是word和word之间或者sentence和sentence之间进行交互，很少有小粒度和大粒度之间的交互。在此文中则体现了word和sentence之间的交互。</p>
-</li>
-</ol>
+<p>在image caption中使用了attention mechanism，使得caption生成更加完美和贴切。同时文章采用了可视化的方式表示了在生成每一个词的时候，模型在图像上的注意区域。</p>
 <h2><span id="model">Model</span></h2>
-<p><img src="BIMPM1.png" alt="BIMPM"></p>
+<p><img src="Image_Caption_Generation.png" alt="Image_Caption_Generation"></p>
 <ol>
-<li>
-<p>word embedding layer： 普通的embedding layer。</p>
-</li>
-<li>
-<p>Context representation layer： 将embedding layer的结果输入到BiLSTM中。</p>
-</li>
-<li>
-<p>Mathcing layer： 这一层重点体现了前面的innovbilstmation。<br>
-首先，bilstm得到隐藏状态hidden states（图中向上的箭头），最终状态final states（bilstm最终引出的）。</p>
-<p>其次，hidden states代表的还是word粒度，final states代表的则是sentence粒度。两者在红色的x(multi-perspective matching operation)进行了多粒度交互。这种多粒度交互的方式也有四种：<br>
-<img src="BIMPM2.png" alt="BIMPM"></p>
-<p>分别是full-matching(取final state)、maxpooling-matching（取最大值）、attention-matching（做attention取值）、max-attention-matching（attention后取最大）。</p>
-<p>然后，双向匹配体现在，上述的多粒度交互不仅仅是P对Q进行，Q也会对P进行，图中体现的比较清楚。</p>
-<p>最终输出双向多粒度匹配的结果。</p>
-</li>
-<li>
-<p>Aggregation layer： 对于双向多粒度匹配的结果再进行BiLSTM，并将得到的四个final states（P的正向、反向2个，Q的正向、反向2个）取出进行concat。</p>
-</li>
-<li>
-<p>Prediction： 将上一层的结果输入softmaxs输出预测结果。</p>
-</li>
+<li>Deep Visual CNN：用VGG19预先训练好的模型得到每张图片的特征。</li>
+<li>Attention Mechanism： 将得到的所有图片特征，依次都输入到attention cell中。Attention中的图示参考下图：<br>
+<img src="Image_Caption_Generation_Attention.png" alt="Image_Caption_Generation_Attention"></li>
+</ol>
+<p>同时此文还采用了soft attention和hard attention两种，result会展示两者在可视化上的区别，具体的数学表达式可以参考reference中<strong>深度解析注意力模型(attention model) — image_caption的应用</strong>的描述。</p>
+<ol start="3">
+<li>LSTM output layer： 按照设置的最长sequence length，LSTM依次接收attention输出的结果，通过LSTM得到相应的word，并将此输出传递给下一个LSTM。</li>
+</ol>
+<h2><span id="result">Result</span></h2>
+<p>此文的另一个特点就是用可视化的方式表示了在生成每一个词的时候，模型在图像上的注意区域。<br>
+<img src="visual1.png" alt="visual1"><br>
+<img src="visual2.png" alt="visual2"><br>
+<img src="visual3.png" alt="visual3"><br>
+<img src="visual4.png" alt="visual4"></p>
+<h2><span id="reference">Reference</span></h2>
+<ol>
+<li><a href="https://github.com/yunjey/show-attend-and-tell" target="_blank" rel="noopener">tensorflow复现github 地址</a></li>
+<li><a href="https://segmentfault.com/a/1190000011744246" target="_blank" rel="noopener">深度解析注意力模型(attention model) — image_caption的应用</a></li>
+<li><a href="https://blog.heuritech.com/2016/01/20/attention-mechanism/" target="_blank" rel="noopener">heuritech.com - ATTENTION MECHANISM</a></li>
+<li><a href="https://blog.csdn.net/wuzqchom/article/details/75792501" target="_blank" rel="noopener">浅谈Attention-based Model【原理篇】</a></li>
 </ol>
 
                 
@@ -339,13 +339,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/08/18/[paper]zju_paper_2/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  浙江大学实习期间看的一些论文和写的一些代码-02">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/07/21/[linux]linux_count_filenumber/" data-toggle="tooltip" data-placement="top" title="[Linux] Linux统计文件夹、文件数量的命令">Next Post &rarr;</a>
+                            <a href="/2018/08/17/[paper]zju_paper_1/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -375,7 +371,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">(TextCNN）Convolutional Neural Networks for Sentence Classification</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Convolutional 2D Knowledge Graph Embeddings</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Hierarchical Attention Networks for Document Classification）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">DKN: Deep Knowledge-Aware Network for News Recommendation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Reference</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">Extend</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">Result</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">Reference</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -403,7 +399,7 @@
                         
                           <a class="tag" href="/tags/#Knowledge Graph" title="Knowledge Graph">Knowledge Graph</a>
                         
-                          <a class="tag" href="/tags/#CNN" title="CNN">CNN</a>
+                          <a class="tag" href="/tags/#Attention Based Model" title="Attention Based Model">Attention Based Model</a>
                         
                     </div>
                 </section>
@@ -434,8 +430,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite.com/2018/08/17/[paper]zju_paper_1/";
-    var disqus_url = "http://yoursite.com/2018/08/17/[paper]zju_paper_1/";
+    var disqus_identifier = "http://yoursite.com/2018/08/18/[paper]zju_paper_2/";
+    var disqus_url = "http://yoursite.com/2018/08/18/[paper]zju_paper_2/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
