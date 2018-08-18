@@ -111,15 +111,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
-        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -135,7 +127,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
+        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
