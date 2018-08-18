@@ -8,7 +8,7 @@
 
     <url>
         <loc>http://yoursite.com/2018/08/17/%5Bpaper%5Dzju_paper_1/</loc>
-        <lastmod>2018-08-18T08:10:48.517Z</lastmod>
+        <lastmod>2018-08-18T08:22:48.828Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -119,7 +119,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
+        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -127,7 +127,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
+        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -167,6 +167,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
+        <lastmod>2018-07-13T05:32:15.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -176,14 +184,6 @@
 
     <url>
         <loc>http://yoursite.com/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
-        <lastmod>2018-07-13T05:32:15.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
