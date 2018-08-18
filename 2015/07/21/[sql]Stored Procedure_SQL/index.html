@@ -206,123 +206,7 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
 
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <p><a href="http://www.cnblogs.com/knowledgesea/archive/2013/01/02/2841588.html" target="_blank" rel="noopener">存储过程详解</a></p>
-<p>存储过程（Stored Procedure）是在大型数据库系统中，<strong>一组为了完成特定功能的SQL 语句集</strong>，存储在数据库中，经过第一次编译后再次调用不需要再次编译，用户通过指定存储过程的名字并<strong>给出参数（如果该存储过程带有参数）来执行它</strong>。存储过程是数据库中的一个重要对象，任何一个设计良好的数据库应用程序都应该用到存储过程</p>
-<p>使用带有参数的存储过程，也是很好的防止了SQL注入攻击</p>
-<h1 id="创建存储过程">创建存储过程</h1>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> sp_name</span><br><span class="line">@[参数名] [类型],@[参数名] [类型]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">.........</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>以上格式还可以简写成：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc sp_name</span><br><span class="line">@[参数名] [类型],@[参数名] [类型]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">.........</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">/*注：“sp_name”为需要创建的存储过程的名字，该名字不可以以阿拉伯数字开头*/</span></span><br></pre></td></tr></table></figure>
-<p>我个人觉得，创建存储过程就像是创建一个类。</p>
-<p>类中的变量就是  “@[参数名] [类型],@[参数名] [类型]”</p>
-<p>而这个类中的方法也只有一个，就是</p>
-<p>“as<br><br>
-begin<br><br>
-…<br><br>
-end“<br></p>
-<h1 id="调用存储过程">调用存储过程</h1>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.基本语法：exec sp_name [参数名]</span><br></pre></td></tr></table></figure>
-<h1 id="删除存储过程">删除存储过程</h1>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.基本语法：</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> sp_name</span><br><span class="line"><span class="number">2.</span>注意事项</span><br><span class="line">(<span class="number">1</span>)不能在一个存储过程中删除另一个存储过程，只能调用另一个存储过程</span><br></pre></td></tr></table></figure>
-<h1 id="其他常用命令">其他常用命令</h1>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.show procedure status</span><br><span class="line">显示数据库中所有存储的存储过程基本信息，包括所属数据库，存储过程名称，创建时间等</span><br><span class="line">2.show <span class="keyword">create</span> <span class="keyword">procedure</span> sp_name</span><br><span class="line">显示某一个mysql存储过程的详细信息</span><br><span class="line"><span class="number">3</span>、exec sp_helptext sp_name</span><br><span class="line">显示你这个sp_name这个对象创建文本</span><br></pre></td></tr></table></figure>
-                
-
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/2016/07/17/[paper]DMDS_Introduction/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  Introduction——云计算下基于二进制文件特点的恶意软件分布式侦测">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/2015/07/21/[linux]archlinuxvbox/" data-toggle="tooltip" data-placement="top" title="[Linux] manjaro下安装oracle virtual box">Next Post &rarr;</a>
-                        </li>
-                    
-                </ul>
-
-                <!-- duoshuo Share start -->
-                
-                <!-- 多说 Share end-->
-
-                <!-- 多说评论框 start -->
-                
-                <!-- 多说评论框 end -->
-
-                <!-- disqus comment start -->
-                
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                
-                <!-- disqus comment end -->
-            </div>
-            
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
-
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#创建存储过程"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">创建存储过程</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#调用存储过程"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">调用存储过程</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#删除存储过程"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">删除存储过程</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#其他常用命令"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">其他常用命令</span></a></li></ol>
-        
-        </div>
-      </aside>
-    
-
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
-                        
-                          <a class="tag" href="/tags/#SQL" title="SQL">SQL</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
-                    
-                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
-                    
-                </ul>
-                
-            </div>
-        </div>
-    </div>
-</article>
 
 
 
@@ -380,7 +264,9 @@ end“<br></p>
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
+<article>
+    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
+</article>
     <script>
         new Valine({
             el: '#vcomments',

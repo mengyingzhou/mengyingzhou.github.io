@@ -206,132 +206,7 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
 
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <p>MVC架构指的是<strong>module view control 模型 视图 控制</strong>三层结构，相当于把以前耦合性很高的代码分层三个模块。</p>
-<blockquote>
-<p>UI界面的代码放入view模块中，专门负责和用户连接的界面。</p>
-<p>数据处理层的代码放入module模块中来处理和数据增删改的操作，例如mysql数据库的操作。</p>
-</blockquote>
-<blockquote>
-<p>连接view模块和module模块的控制，相当于把view中用户事件产生的数据通过control模块来传递给module模块中进行数据的操作。</p>
-</blockquote>
-<br>
-<blockquote>
-<p>Module模块的以service后缀</p>
-<p>View模块的以UI后缀</p>
-<p>Control模块的以manager后缀</p>
-</blockquote>
-<h2 id="举个栗子">举个栗子</h2>
-<h3 id="在一个c的名叫test的项目集合中包含了三个项目目前来说">在一个C#的名叫test的项目集合中包含了三个项目（目前来说）</h3>
-<p>我们这么命名文件：</p>
-<blockquote>
-<p>LoginFrm —— view模块中的一个类 —— test.USL(User Show Layer)项目中的一个文件</p>
-<p>LoginService  —— module模块中的一个类 —— test.DAL(Data Access Layer)项目中的一个文件</p>
-<p>LoginManager  —— control模块中的一个类 —— test.BLL(Business Logic Layer)项目中的一个文件</p>
-</blockquote>
-<p><strong>然后三个项目之间，view和control之间相互添加引用，control和module之间相互添加引用。</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LoginFrm.cs</span></span><br><span class="line">Using Systetm;</span><br><span class="line">Using test.BLL;</span><br><span class="line"></span><br><span class="line">Namespace test.USL&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginFrm</span> :</span> From&#123;</span><br><span class="line"></span><br><span class="line"><span class="function">Public <span class="title">LoginFrm</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//此处初始化操作在C#中程序会自动生成一个initiator函数，内容包括当前窗口上所有控件的实例化和初始化。</span></span><br><span class="line">Initiator();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Public <span class="title">bottom_click</span><span class="params">()</span></span>&#123;</span><br><span class="line">LoginManager loginManager = null;</span><br><span class="line">If(loginManager.Login(textbox_user.tostring(),textbox_password.tostring()))&#123;</span><br><span class="line">Message.show(“Login success !”);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> Message.show(“Login failure!”);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LoginControl.cs</span></span><br><span class="line">Using System;</span><br><span class="line">Using test.DAL;</span><br><span class="line">Using test.USL;</span><br><span class="line"></span><br><span class="line">Namespace test.BLL&#123;</span><br><span class="line"><span class="function">Public class <span class="title">LoginManager</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="function">Public <span class="keyword">bool</span> <span class="title">Login</span><span class="params">(<span class="built_in">string</span> usrname, <span class="built_in">string</span> password)</span></span>&#123;</span><br><span class="line">LoginService loginservce = null;</span><br><span class="line">If(loginservice.login(username, password))</span><br><span class="line">Return <span class="literal">true</span>;</span><br><span class="line">Else retrun <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//LoginService.cs</span></span><br><span class="line">Using system;</span><br><span class="line">Using test.BLL;</span><br><span class="line"></span><br><span class="line">Namespace test.DAl&#123;</span><br><span class="line"><span class="function">Public class <span class="title">LoginManager</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="function">Public <span class="keyword">bool</span> <span class="title">login</span><span class="params">(<span class="built_in">string</span> usrname, <span class="built_in">string</span> password)</span></span>&#123;</span><br><span class="line"><span class="comment">//进行sql语句查询之类的</span></span><br><span class="line"><span class="comment">//.........</span></span><br><span class="line"></span><br><span class="line">If(password == sql.password)</span><br><span class="line">Return <span class="literal">true</span>;</span><br><span class="line">Else <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>看起来好像是做了两遍一样的功能，但是这样有效的分开了代码，把作用相同的代码放在了一起，便于管理。</p>
-<p>然后，后期我们可以通过委托或者static方法来进行优化。</p>
-
-                
-
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/2018/06/01/[lecture]text-topic-model-application/" data-toggle="tooltip" data-placement="top" title="[Lecture Notes] 文本主题模型运用">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/2018/03/18/[Android]splashactivity/" data-toggle="tooltip" data-placement="top" title="[Android] App应用之启动界面SplashActivity的使用">Next Post &rarr;</a>
-                        </li>
-                    
-                </ul>
-
-                <!-- duoshuo Share start -->
-                
-                <!-- 多说 Share end-->
-
-                <!-- 多说评论框 start -->
-                
-                <!-- 多说评论框 end -->
-
-                <!-- disqus comment start -->
-                
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                
-                <!-- disqus comment end -->
-            </div>
-            
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
-
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#举个栗子"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">举个栗子</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在一个c的名叫test的项目集合中包含了三个项目目前来说"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">在一个C#的名叫test的项目集合中包含了三个项目（目前来说）</span></a></li></ol></li></ol>
-        
-        </div>
-      </aside>
-    
-
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
-                        
-                          <a class="tag" href="/tags/#Framework" title="Framework">Framework</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
-                    
-                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
-                    
-                </ul>
-                
-            </div>
-        </div>
-    </div>
-</article>
 
 
 
@@ -389,7 +264,9 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
+<article>
+    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
+</article>
     <script>
         new Valine({
             el: '#vcomments',

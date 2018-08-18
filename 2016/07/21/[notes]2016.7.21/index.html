@@ -206,109 +206,7 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
 
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <p>关于  java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity  问题</p>
-<p>今天晚上在实现界面跳转时发现此报错.</p>
-<p>原因:由于我的这个跳转后的页面的功能是其他地方另建的,是由于移植过来出现了问题</p>
-<p>解决方法:最后发现是将要跳转的页面继承的activity是APPCompatActivity,并非直接是activity.</p>
-<p>讲将要跳转的页面改为继承activity.</p>
-
-                
-
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/" data-toggle="tooltip" data-placement="top" title="[Linux] 命令行建启动器">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/2016/07/21/[linux]PrintChineseInAs/" data-toggle="tooltip" data-placement="top" title="[Linux] AS不能输入中文的解决方法">Next Post &rarr;</a>
-                        </li>
-                    
-                </ul>
-
-                <!-- duoshuo Share start -->
-                
-                <!-- 多说 Share end-->
-
-                <!-- 多说评论框 start -->
-                
-                <!-- 多说评论框 end -->
-
-                <!-- disqus comment start -->
-                
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                
-                <!-- disqus comment end -->
-            </div>
-            
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
-
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-          <ol class="nav">none</ol>
-        
-        </div>
-      </aside>
-    
-
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
-                        
-                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
-                    
-                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
-                    
-                </ul>
-                
-            </div>
-        </div>
-    </div>
-</article>
 
 
 
@@ -366,7 +264,9 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
+<article>
+    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
+</article>
     <script>
         new Valine({
             el: '#vcomments',
