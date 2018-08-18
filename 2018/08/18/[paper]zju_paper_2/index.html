@@ -234,14 +234,14 @@
 <li>Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</li>
 </ol>
 <h1 id="hierarchical-attention-networks-for-document-classification">Hierarchical Attention Networks for Document Classification）</h1>
-<h2 id="aims">Aims</h2>
+<h2 id="aims_1">Aims_1</h2>
 <p>利用Attention Mechanism去做文档分类。</p>
-<h2 id="innovation">Innovation</h2>
+<h2 id="innovation_1">Innovation_1</h2>
 <ol>
 <li>提供层次结构, 反映文件中word，sentence两个粒度的层次结构。</li>
 <li>对两个粒度做Attention Mechanism, 分别是word粒度和sentence粒度, 使其能够在构建文档表示时，对不重要和重要的内容进行差异化表示。</li>
 </ol>
-<h2 id="model">Model</h2>
+<h2 id="model_1">Model_1</h2>
 <p><img src="HAN.png" alt="HAN"></p>
 <ol>
 <li>
@@ -269,18 +269,18 @@
 <p>softmax： 对context embedding进行softmax得到最终分类得分。</p>
 </li>
 </ol>
-<h2 id="implemention">Implemention</h2>
+<h2 id="implemention_1">Implemention_1</h2>
 <p><strong>具体实现：<a href="https://github.com/NullAerber/ZJU_Internship/tree/master/Attention_Text_Classification" target="_blank" rel="noopener">Attention mechanism for text classification tasks</a></strong></p>
 <p>fork别人得到。修改了部分代码以使用Python3.6。</p>
 <h1 id="dkn-deep-knowledge-aware-network-for-news-recommendation">DKN: Deep Knowledge-Aware Network for News Recommendation</h1>
-<h2 id="aims">Aims</h2>
+<h2 id="aims_2">Aims_2</h2>
 <p>本文提出了 DKN 模型，将知识图谱表示融入新闻推荐中。DKN 是一个基于内容的点击率的深度推荐模型。</p>
-<h2 id="innovation">Innovation</h2>
+<h2 id="innovation_2">Innovation_2</h2>
 <ol>
 <li>引入融合语义水平和知识水平的知识感知卷积神经网络（KCNN）。</li>
 <li>KCNN将word、entity、context这三个粒度当成三通道，采用卷积的方式，卷积过程中保持这三者的对齐。</li>
 </ol>
-<h2 id="model">Model</h2>
+<h2 id="model_2">Model_2</h2>
 <p><img src="DKN.png" alt="DKN"></p>
 <ol>
 <li>
@@ -298,17 +298,17 @@
 <img src="DKN_3.png" alt="DKN_3"></p>
 <h2 id="reference">Reference</h2>
 <p><a href="https://qiufengyu.github.io/2018/04/17/reading14/" target="_blank" rel="noopener">结合知识图谱中的表示学习，加上神经网络，进行新闻推荐。</a></p>
-<h2 id="extend">Extend</h2>
+<h2 id="extend_2">Extend_2</h2>
 <ol>
 <li>Bahdanau D, Cho K, Bengio Y. Neural Machine Translation by Jointly Learning to Align and Translate[J]. Computer Science, 2014.</li>
 <li>Seo M, Kembhavi A, Farhadi A, et al. Bidirectional Attention Flow for Machine Comprehension[J]. 2016.</li>
 </ol>
 <h1 id="show-attend-and-tell-neural-image-caption-generation-with-visual-attention">Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</h1>
-<h2 id="aims">Aims</h2>
+<h2 id="aims_3">Aims_3</h2>
 <p>生成图片描述。</p>
-<h2 id="innovation">Innovation</h2>
+<h2 id="innovation_3">Innovation_3</h2>
 <p>在image caption中使用了attention mechanism，使得caption生成更加完美和贴切。同时文章采用了可视化的方式表示了在生成每一个词的时候，模型在图像上的注意区域。</p>
-<h2 id="model">Model</h2>
+<h2 id="model_3">Model_3</h2>
 <p><img src="Image_Caption_Generation.png" alt="Image_Caption_Generation"></p>
 <ol>
 <li>Deep Visual CNN：用VGG19预先训练好的模型得到每张图片的特征。</li>
@@ -319,13 +319,13 @@
 <ol start="3">
 <li>LSTM output layer： 按照设置的最长sequence length，LSTM依次接收attention输出的结果，通过LSTM得到相应的word，并将此输出传递给下一个LSTM。</li>
 </ol>
-<h2 id="result">Result</h2>
+<h2 id="result_3">Result_3</h2>
 <p>此文的另一个特点就是用可视化的方式表示了在生成每一个词的时候，模型在图像上的注意区域。<br>
 <img src="visual1.png" alt="visual1"><br>
 <img src="visual2.png" alt="visual2"><br>
 <img src="visual3.png" alt="visual3"><br>
 <img src="visual4.png" alt="visual4"></p>
-<h2 id="reference">Reference</h2>
+<h2 id="reference_3">Reference_3</h2>
 <ol>
 <li><a href="https://github.com/yunjey/show-attend-and-tell" target="_blank" rel="noopener">tensorflow复现github 地址</a></li>
 <li><a href="https://segmentfault.com/a/1190000011744246" target="_blank" rel="noopener">深度解析注意力模型(attention model) — image_caption的应用</a></li>
@@ -371,7 +371,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#outline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#hierarchical-attention-networks-for-document-classification"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Hierarchical Attention Networks for Document Classification）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#implemention"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dkn-deep-knowledge-aware-network-for-news-recommendation"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">DKN: Deep Knowledge-Aware Network for News Recommendation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Reference</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#extend"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">Extend</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#show-attend-and-tell-neural-image-caption-generation-with-visual-attention"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#result"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">Result</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">Reference</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#outline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#hierarchical-attention-networks-for-document-classification"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Hierarchical Attention Networks for Document Classification）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims_1"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims_1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation_1"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation_1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model_1"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model_1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#implemention_1"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention_1</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dkn-deep-knowledge-aware-network-for-news-recommendation"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">DKN: Deep Knowledge-Aware Network for News Recommendation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims_2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims_2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation_2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation_2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model_2"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model_2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Reference</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#extend_2"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">Extend_2</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#show-attend-and-tell-neural-image-caption-generation-with-visual-attention"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims_3"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims_3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation_3"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation_3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model_3"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model_3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#result_3"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">Result_3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference_3"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">Reference_3</span></a></li></ol></li></ol>
         
         </div>
       </aside>
