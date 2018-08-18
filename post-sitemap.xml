@@ -103,14 +103,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
-        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -127,7 +119,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
+        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -136,6 +128,14 @@
 
     <url>
         <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
+        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -175,7 +175,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
+        <loc>http://yoursite.com/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -183,7 +183,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
+        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
