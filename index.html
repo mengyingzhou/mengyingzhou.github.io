@@ -292,19 +292,18 @@ Attention需要最先说明的就是，Attention Based Model并不算是一种�
 
 <div class="post-preview">
 
-    <a href="/2018/07/21/[latex]latex_in_linux/">
+    <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">
         <h2 class="post-title">
-            [LaTeX] 在manjaro中搭建中文LaTeX排版工具
+            [LaTeX] Latex中 BiBTeX found no citation commands 解决办法
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            搭建LaTeX的工具是今年五月的时候要写专业英语的时候，那个时候只支持英文就行，所以对于包管理器很好的manjaro来说，pacman一下就ok了。
-后来信安课程里面也需要写论文，然后重新又捣鼓了一下中文系统的支持。
-【虽然我手上还有一堆论文还没有看orz…但是这个拖的实在是难受…】
-环境介绍
-我在Linux下用的是texlive+visual-studio-code+LaTeX works......
+            包含bib文件的Tex编译顺序：首先执行LaTex, 然后 BibTex, 然后再执行LaTex, 最后执行dvi2pdf, 这样就可以生成新的PDF文件了。
+但是在编译过程中经常遇到如下问题，在执行 BibTex 编译时出现如下错误：
+This is BibTeX, Version 0.99d (MiKTeX 2.9) 
+The top-level auxiliary file: ASMS......
         </div>
     </a>
     
@@ -367,18 +366,19 @@ ls -l|grep &quot;^d&......
 
 <div class="post-preview">
 
-    <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">
+    <a href="/2018/07/21/[latex]latex_in_linux/">
         <h2 class="post-title">
-            [LaTeX] Latex中 BiBTeX found no citation commands 解决办法
+            [LaTeX] 在manjaro中搭建中文LaTeX排版工具
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            包含bib文件的Tex编译顺序：首先执行LaTex, 然后 BibTex, 然后再执行LaTex, 最后执行dvi2pdf, 这样就可以生成新的PDF文件了。
-但是在编译过程中经常遇到如下问题，在执行 BibTex 编译时出现如下错误：
-This is BibTeX, Version 0.99d (MiKTeX 2.9) 
-The top-level auxiliary file: ASMS......
+            搭建LaTeX的工具是今年五月的时候要写专业英语的时候，那个时候只支持英文就行，所以对于包管理器很好的manjaro来说，pacman一下就ok了。
+后来信安课程里面也需要写论文，然后重新又捣鼓了一下中文系统的支持。
+【虽然我手上还有一堆论文还没有看orz…但是这个拖的实在是难受…】
+环境介绍
+我在Linux下用的是texlive+visual-studio-code+LaTeX works......
         </div>
     </a>
     
@@ -585,18 +585,6 @@ thread(new runnable(){
 <hr>
 
 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<div id="vcomments" style="padding-left:  15%;padding-right:  15%;"></div>
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
-		appKey: 's9n02dNw41r6yqXsoJzvaEEz',
-		placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
-		visitor: true // 阅读量统计
-	})
-</script>	
 
 <!-- Pager -->
 
@@ -609,7 +597,18 @@ thread(new runnable(){
     
 </ul>
 
-
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div id="vcomments" style="padding-left:  15%;padding-right:  15%;"></div>
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+		appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+		placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+		visitor: true // 阅读量统计
+	})
+</script>	
 
                 <!-- 如果开启评论功能 -->
                 
@@ -650,15 +649,15 @@ thread(new runnable(){
             
         
             
-        
-            
             <a href="/tags/#Lecture" title="Lecture" rel="2">Lecture</a>
             
         
             
-            <a href="/tags/#Manjaro" title="Manjaro" rel="3">Manjaro</a>
+        
             
         
+            
+            <a href="/tags/#Manjaro" title="Manjaro" rel="3">Manjaro</a>
             
         
             
@@ -775,7 +774,7 @@ thread(new runnable(){
         </li>
       
         <li>
-          <a href="/2018/07/21/[latex]latex_in_linux/">[LaTeX] 在manjaro中搭建中文LaTeX排版工具</a>
+          <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">[LaTeX] Latex中 BiBTeX found no citation commands 解决办法</a>
         </li>
       
         <li>
@@ -783,7 +782,7 @@ thread(new runnable(){
         </li>
       
         <li>
-          <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">[LaTeX] Latex中 BiBTeX found no citation commands 解决办法</a>
+          <a href="/2018/07/21/[latex]latex_in_linux/">[LaTeX] 在manjaro中搭建中文LaTeX排版工具</a>
         </li>
       
     </ul>

@@ -423,6 +423,42 @@ git --version
 
 <div class="post-preview">
 
+    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
+        <h2 class="post-title">
+            [Linux] 命令行建启动器
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
+引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
+但是对于ubuntu+gnome来说，只有命令行最实用。
+个人也比较偏向于命令行方式。
+http://......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2016/07/21/[notes]2016.7.21/">
         <h2 class="post-title">
             [Scattered Notes] java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity
@@ -456,19 +492,21 @@ git --version
 
 <div class="post-preview">
 
-    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
+    <a href="/2016/07/21/[linux]PrintChineseInAs/">
         <h2 class="post-title">
-            [Linux] 命令行建启动器
+            [Linux] AS不能输入中文的解决方法
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
-引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
-但是对于ubuntu+gnome来说，只有命令行最实用。
-个人也比较偏向于命令行方式。
-http://......
+            http://blog.sina.com.cn/s/blog_c92554b40102vynb.html
+
+
+前提条件是用的是fcitx
+1.用gedit或者vi打开studio.sh
+2.在很多#的后面加上三行代码
+12345export XMODIFIERS=&quot;@im=fcitx&quot;export GTK_IM_MODULE=&quot;fcitx&quot;export......
         </div>
     </a>
     
@@ -482,7 +520,7 @@ http://......
             
               <a href="/tags/#Linux" title="Linux">Linux</a>
             
-              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
+              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
             
         </div>
     
@@ -532,57 +570,7 @@ http://......
 </div>
 <hr>
 
-<div class="post-preview">
 
-    <a href="/2016/07/21/[linux]PrintChineseInAs/">
-        <h2 class="post-title">
-            [Linux] AS不能输入中文的解决方法
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            http://blog.sina.com.cn/s/blog_c92554b40102vynb.html
-
-
-前提条件是用的是fcitx
-1.用gedit或者vi打开studio.sh
-2.在很多#的后面加上三行代码
-12345export XMODIFIERS=&quot;@im=fcitx&quot;export GTK_IM_MODULE=&quot;fcitx&quot;export......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-21
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-              <a href="/tags/#Linux" title="Linux">Linux</a>
-            
-              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<div id="vcomments" style="padding-left:  15%;padding-right:  15%;"></div>
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
-		appKey: 's9n02dNw41r6yqXsoJzvaEEz',
-		placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
-		visitor: true // 阅读量统计
-	})
-</script>	
 
 <!-- Pager -->
 
@@ -599,7 +587,18 @@ http://......
     
 </ul>
 
-
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div id="vcomments" style="padding-left:  15%;padding-right:  15%;"></div>
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+		appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+		placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+		visitor: true // 阅读量统计
+	})
+</script>	
 
                 <!-- 如果开启评论功能 -->
                 
@@ -640,15 +639,15 @@ http://......
             
         
             
-        
-            
             <a href="/tags/#Lecture" title="Lecture" rel="2">Lecture</a>
             
         
             
-            <a href="/tags/#Manjaro" title="Manjaro" rel="3">Manjaro</a>
+        
             
         
+            
+            <a href="/tags/#Manjaro" title="Manjaro" rel="3">Manjaro</a>
             
         
             
@@ -765,7 +764,7 @@ http://......
         </li>
       
         <li>
-          <a href="/2018/07/21/[latex]latex_in_linux/">[LaTeX] 在manjaro中搭建中文LaTeX排版工具</a>
+          <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">[LaTeX] Latex中 BiBTeX found no citation commands 解决办法</a>
         </li>
       
         <li>
@@ -773,7 +772,7 @@ http://......
         </li>
       
         <li>
-          <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">[LaTeX] Latex中 BiBTeX found no citation commands 解决办法</a>
+          <a href="/2018/07/21/[latex]latex_in_linux/">[LaTeX] 在manjaro中搭建中文LaTeX排版工具</a>
         </li>
       
     </ul>
