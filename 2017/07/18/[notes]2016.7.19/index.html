@@ -206,7 +206,174 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="一自定义控件的使用">一.自定义控件的使用</h1>
+<p>需要把在bluetoothchat中传输过来的数据显示在memorytable上,可以new个thread在bluetoothchat中,然后在通过类似于textview一样的内置控件,根据findviewbyid来实例化memorytable,再设置这个memorytable其中的数据</p>
+<h1 id="二thread">二.thread</h1>
+<p>thread(new runnable(){<br>
+	public void run()<br>
+	})</p>
+<h1 id="三super">三.super</h1>
+<p>“super”。它和&quot;this&quot;类似，但是也有不同的地方。</p>
+<p>1。表示调用父类的构造函数。也是一个特殊语法，不是变量，没有什么类型。</p>
+<p>2。可以在一个类的非static成员内部使用。比如super.method()。<br>
+但是，注意，这个super.method()只是长得跟some_var.method()一样，一个语法糖而已。实质上，&quot;super&quot;根本不是一个变量。</p>
+<p>为什么不是？因为如果是就坏了。java里面有一个金科玉律：任何public非static函数的调用都是多态的。</p>
+<p>所以，如果super是个变量，也指向当前对象，那么，不管super的静态类型是什么super.method()必然调用的是子类的那个版本，而不会是我们期望的，静态地选择父类的那个版本。</p>
+<p>所以，你只要把super.xxx看成一个特殊的语法，比如理解为“super::xxx”就好了。</p>
+<p>既然super不是一个变量，那么不能把它象一个普通变量那样&quot;==&quot;，或者传递给某个函数就看起来很正常了，是么？何况，你其实也用不着它，有this你这些要求就都可以办到了。</p>
+<p>3。super的另外一个作用是调用父类的protected函数。只有通过&quot;super&quot;这个魔咒，我们才能操作父类的protected成员，别无它法。</p>
+<h1 id="四-draw用法中的-porterduffmode画笔模式">四. draw用法中的 PorterDuff.Mode画笔模式</h1>
+<pre><code>1.PorterDuff.Mode.CLEAR
+所绘制不会提交到画布上。
+
+      清屏
+       c.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+
+
+2.PorterDuff.Mode.SRC
+显示上层绘制图片
+
+3.PorterDuff.Mode.DST
+显示下层绘制图片
+
+4.PorterDuff.Mode.SRC_OVER
+正常绘制显示，上下层绘制叠盖。
+
+5.PorterDuff.Mode.DST_OVER
+上下层都显示。下层居上显示。
+
+6.PorterDuff.Mode.SRC_IN
+取两层绘制交集。显示上层。
+
+7.PorterDuff.Mode.DST_IN
+取两层绘制交集。显示下层。
+
+8.PorterDuff.Mode.SRC_OUT
+取上层绘制非交集部分。
+
+9.PorterDuff.Mode.DST_OUT
+取下层绘制非交集部分。
+
+10.PorterDuff.Mode.SRC_ATOP
+取下层非交集部分与上层交集部分
+
+11.PorterDuff.Mode.DST_ATOP
+取上层非交集部分与下层交集部分
+
+12.PorterDuff.Mode.XOR
+取两层绘制非交集。两层绘制非交集。
+
+13.PorterDuff.Mode.DARKEN
+上下层都显示。变暗
+
+14.PorterDuff.Mode.LIGHTEN
+上下层都显示。变量
+
+15.PorterDuff.Mode.MULTIPLY
+取两层绘制交集
+
+16.PorterDuff.Mode.SCREEN
+上下层都显示。
+</code></pre>
+<p><img src="a2cff9d4-4b16-41a2-8337-8e5d62033489.jpg" alt=""></p>
+<h1 id="五onmeasure重载">五.onMeasure()重载</h1>
+<p>如果不重载onMeasure(),则默认测量最大范围</p>
+<h1 id="六在自定义控件外套一个fragment">六.在自定义控件外套一个fragment</h1>
+<p>令fragment的width和height为0后,再通过weight的设置来给每个控件分配屏幕的空间大小</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/09/01/[lecture]ACMTURCShangHai/" data-toggle="tooltip" data-placement="top" title="[Lecture Notes] 2017年ACM图灵大会">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/06/18/[Android]surfaceview_canvas/" data-toggle="tooltip" data-placement="top" title="[Android] surfaceview中的canvas的变换和操作">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一自定义控件的使用"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一.自定义控件的使用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二thread"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二.thread</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三super"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三.super</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#四-draw用法中的-porterduffmode画笔模式"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">四. draw用法中的 PorterDuff.Mode画笔模式</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#五onmeasure重载"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">五.onMeasure()重载</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#六在自定义控件外套一个fragment"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">六.在自定义控件外套一个fragment</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -264,9 +431,7 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<article>
-    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
-</article>
+
     <script>
         new Valine({
             el: '#vcomments',

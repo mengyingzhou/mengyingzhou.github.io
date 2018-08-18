@@ -208,7 +208,120 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>查看当前目录下的文件数量（不包含子目录中的文件）</p>
+<pre><code>ls -l|grep &quot;^-&quot;| wc -l
+</code></pre>
+<p>查看当前目录下的文件数量（包含子目录中的文件） 注意：R，代表子目录</p>
+<pre><code>ls -lR|grep &quot;^-&quot;| wc -l
+</code></pre>
+<p>查看当前目录下的文件夹目录个数（不包含子目录中的目录），同上述理，如果需要查看子目录的，加上R</p>
+<pre><code>ls -l|grep &quot;^d&quot;| wc -l
+</code></pre>
+<p>查询当前路径下的指定前缀名的目录下的所有文件数量</p>
+<p>例如：统计所有以“20161124”开头的目录下的全部文件数量</p>
+<pre><code>ls -lR 20161124*/|grep &quot;^-&quot;| wc -l
+</code></pre>
+<p><strong>对每个命令参数做一下说明备注：</strong></p>
+<p><strong>ls -l</strong><br>
+该命令表示以长列表输出指定目录下的信息（未指定则表示当前目录），R代表子目录中的“文件”，这个“文件”指的是目录、链接、设备文件等的总称</p>
+<p>grep “^d&quot;表示目录，”^-&quot;表示文件</p>
+<p><strong>wc -l</strong>表示统计输出信息的行数，因为经过前面的过滤已经只剩下普通文件，一个目录或文件对应一行，所以统计的信息的行数也就是目录或文件的个数</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/" data-toggle="tooltip" data-placement="top" title="[LaTeX] Latex中 BiBTeX found no citation commands 解决办法">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/07/21/[latex]latex_in_linux/" data-toggle="tooltip" data-placement="top" title="[LaTeX] 在manjaro中搭建中文LaTeX排版工具">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -266,9 +379,7 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<article>
-    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
-</article>
+
     <script>
         new Valine({
             el: '#vcomments',

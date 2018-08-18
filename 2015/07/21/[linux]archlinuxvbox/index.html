@@ -208,7 +208,118 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>基于kde桌面系统，可以从manjaro setting manager里面查看到你当前使用的Linux版本情况</p>
+<p>我manjaro打包中是安装了 【4.9.6-1】 、【4.4.45-1】、【3.10.104-1】</p>
+<p>打开终端输入指令<br>
+$yaourt virtualbox</p>
+<p>linux-rt-lts-manjaro-virtualbox-host-modules 5.1.14-1 (linux-rt-lts-manjaro-extramodules)<br>
+linux-rt-manjaro-virtualbox-host-modules 5.1.14-2 (linux-rt-manjaro-extramodules)<br>
+virtualbox 5.1.14-1<br>
+virtualbox-host-dkms 5.1.14-1<br>
+linux44-virtualbox-host-modules 5.1.14-1 (linux44-extramodules)<br>
+linux49-virtualbox-host-modules 5.1.14-2 (linux49-extramodules)</p>
+<p>这几项进行安装</p>
+<p>然后输入驱动启动指令</p>
+<pre><code>$ sudo modprobe vboxdrv
+</code></pre>
+<p>打开vbox就可以使用了</p>
+<p>具体其他问题可以参考archLinux wiki</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2015/07/21/[sql]Stored Procedure_SQL/" data-toggle="tooltip" data-placement="top" title="[SQL] SQL存储过程">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/07/20/[sql]SQL_injection/" data-toggle="tooltip" data-placement="top" title="[SQL] SQL注入问题">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -266,9 +377,7 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<article>
-    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
-</article>
+
     <script>
         new Valine({
             el: '#vcomments',

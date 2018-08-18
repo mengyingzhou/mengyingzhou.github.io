@@ -208,7 +208,123 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>包含bib文件的Tex编译顺序：首先执行LaTex, 然后 BibTex, 然后再执行LaTex, 最后执行dvi2pdf, 这样就可以生成新的PDF文件了。</p>
+<p>但是在编译过程中经常遇到如下问题，在执行 BibTex 编译时出现如下错误：</p>
+<pre><code>This is BibTeX, Version 0.99d (MiKTeX 2.9) 
+The top-level auxiliary file: ASMS.aux 
+I found no \citation commands—while reading file ASMS.aux 
+(There were 1 error messages)
+</code></pre>
+<p>如果 BibTex 编译成功时显示的信息如下：</p>
+<pre><code>Command Line: bibtex.exe “ASMS” 
+Startup Folder: D:\CTEX_works\raa-ASMS 
+This is BibTeX, Version 0.99d (MiKTeX 2.9) 
+The top-level auxiliary file: ASMS.aux 
+The style file: raa.bst 
+Database file #1: bibtex.bib
+</code></pre>
+<p>发生以上错误的原因是:</p>
+<ol>
+<li>bib中的引用文献和tex中的引用不符，例如：tex中没有引用bib中的某一篇文献，或者索引标签不正确等。</li>
+<li>tex编译产生的临时文件较旧，需要删除所有的临时文件，重新从头到位编译</li>
+</ol>
+<p>一般来说是第一种情况</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/08/17/[paper]zju_paper_1/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/07/21/[linux]linux_count_filenumber/" data-toggle="tooltip" data-placement="top" title="[Linux] Linux统计文件夹、文件数量的命令">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#LaTeX" title="LaTeX">LaTeX</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -266,9 +382,7 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<article>
-    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
-</article>
+
     <script>
         new Valine({
             el: '#vcomments',

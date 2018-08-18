@@ -208,7 +208,118 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。</p>
+<p>引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。</p>
+<p>但是对于ubuntu+gnome来说，只有命令行最实用。</p>
+<p>个人也比较偏向于命令行方式。</p>
+<p><a href="http://os.51cto.com/art/201311/418841.htm" target="_blank" rel="noopener">http://os.51cto.com/art/201311/418841.htm</a></p>
+<p>本文以android studio 为例</p>
+<p>其实很简单，只要在/usr/share/applications 中建立一个 AndroidStudio.desktop 文件</p>
+<p>用vim或者gedit使用root权限打开，编辑以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Name=AndroidStudio</span><br><span class="line">Comment=Java开发工具</span><br><span class="line">Exec=/home/aerber/android-studio/bin/studio.sh</span><br><span class="line">Icon=/home/aerber/android-studio/bin/studio.png</span><br><span class="line">Categories=Development</span><br><span class="line">Terminal=true</span><br></pre></td></tr></table></figure>
+<br>
+解释以上每项的内容：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">name：启动器的名字</span><br><span class="line"></span><br><span class="line">comment：启动器的简单介绍</span><br><span class="line"></span><br><span class="line">exec : 启动器的解压绝对路径</span><br><span class="line"></span><br><span class="line">icon：启动器图标的绝对路径</span><br><span class="line"></span><br><span class="line">categories ： 这个启动器属于哪个分类，比如androidstudio就是属于development（开发）这一个分类</span><br><span class="line"></span><br><span class="line">terminal：是否需要在终端中打开，由于androidstudio是脚本程序，所以需要在终端中打开，有些程序本身就是可执行文件，这里面就可以填false</span><br></pre></td></tr></table></figure>
+<p>博文中有些其他的东西个人觉得并不重要，所以没有编写进去。</p>
+<p>保存。然后就可以在程序中找到androidstudio了。</p>
+<p>使用和其他程序一样。</p>
+<p><img src="QQ%E6%88%AA%E5%9B%BE20160806111601.jpg" alt=""></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/07/30/[linux]GitNote/" data-toggle="tooltip" data-placement="top" title="[Linux] Git 痛定思痛笔记">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/07/21/[notes]2016.7.21/" data-toggle="tooltip" data-placement="top" title="[Scattered Notes] java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -266,9 +377,7 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<article>
-    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
-</article>
+
     <script>
         new Valine({
             el: '#vcomments',

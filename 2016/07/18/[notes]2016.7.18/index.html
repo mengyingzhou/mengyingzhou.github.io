@@ -206,7 +206,116 @@
     <!-- Modify by Yu-Hsuan Yen -->
 
 <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="一关于androidsupportdesignwidgetfloatingactionbutton预览中报错显示不出来">一.关于android.support.design.widget.FloatingActionButton预览中报错显示不出来</h1>
+<p>解决方案:</p>
+<p>在build.gradle添加</p>
+<p>compile ‘com.android.support:design:23.3.0’   后重启项目</p>
+<p>原因: 在android版本23中添加了floatingActionbutton,需要引入</p>
+<p>![](2016-07-18 13-58-12屏幕截图.png)</p>
+<h1 id="二layout属性中fitssystemwindows">二.layout属性中fitsSystemWindows</h1>
+<p>具体的作用就是你的contentview是否忽略actionbar,title和屏幕的底部虚拟按键，将整个屏幕当作可用的空间。</p>
+<p>正常情况，contentview可用的空间是去除了actionbar,title,底部按键的空间后剩余的可用区域</p>
+<p>这个属性设置为true,则忽略，false则不忽略</p>
+<p>设置为true</p>
+<p><img src="ee8605af-6533-4983-ac1e-b396a005d4b9.jpg" alt=""></p>
+<p>设置为false</p>
+<p><img src="e33ce078-fcb5-4530-845a-3883213d7a0f.jpg" alt=""></p>
+<h1 id="三-looper_hander_messages-机制简析">三. Looper_Hander_Messages 机制简析</h1>
+<p><a href="http://www.cnblogs.com/codingmyworld/archive/2011/09/12/2174255.html" target="_blank" rel="noopener">http://www.cnblogs.com/codingmyworld/archive/2011/09/12/2174255.html</a></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/07/18/[paper]DMDS_designandalgorithm/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/07/17/[paper]DMDS_Introduction/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  Introduction——云计算下基于二进制文件特点的恶意软件分布式侦测">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一关于androidsupportdesignwidgetfloatingactionbutton预览中报错显示不出来"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一.关于android.support.design.widget.FloatingActionButton预览中报错显示不出来</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二layout属性中fitssystemwindows"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二.layout属性中fitsSystemWindows</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三-looper_hander_messages-机制简析"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三. Looper_Hander_Messages 机制简析</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -264,9 +373,7 @@
 </style>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<article>
-    <div id="vcomments" style="padding-left:  20%;padding-right:  20%;"></div>
-</article>
+
     <script>
         new Valine({
             el: '#vcomments',
