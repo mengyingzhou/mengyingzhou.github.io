@@ -219,7 +219,7 @@
                 post-container">
 
                 <p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
-<h1><span id="git-安装">git 安装</span></h1>
+<h1 id="git-安装">git 安装</h1>
 <p>由于直接使用apt-get下载安装的hgit版本太低,所以我们使用PPA源的方法</p>
 <p>sudo add-apt-repository ppa:git-core/ppa</p>
 <p>sudo apt-get update</p>
@@ -229,7 +229,7 @@
 <p>git --version</p>
 <p>显示 git version x.x.x，表明安装成功。</p>
 <br>
-<h1><span id="git配置">git配置</span></h1>
+<h1 id="git配置">git配置</h1>
 <p>（1）设置用户名和email。</p>
 <blockquote>
 <p>git config --global <a href="http://user.name" target="_blank" rel="noopener">user.name</a> “Your Name”</p>
@@ -254,52 +254,52 @@
 <p>$ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
 </blockquote>
 <br>
-<h1><span id="git基本操作和理解">git基本操作和理解</span></h1>
+<h1 id="git基本操作和理解">git基本操作和理解</h1>
 <p>如果有耐心的话可以通过</p>
 <p>git help -a 查看所有的命令</p>
 <p>git help -i 查看命令的信息</p>
 <p>git help 命令 查看这条命令的文档</p>
 <p>例如 git help push</p>
 <p>会显示出push的文档,按q键退出文档</p>
-<h1><span id="一初始化操作">一.初始化操作</span></h1>
-<h2><span id="1git-init">1.git init</span></h2>
+<h1 id="一初始化操作">一.初始化操作</h1>
+<h2 id="1git-init">1.git init</h2>
 <p>这条命令对于我来说用的不多,这条命令可能对于我来说可有可无.</p>
 <p>我的理解是,当你在github网页上新建一个空Repository,想把本地的文件上传到服务器时,init操作是在本地的一个文件夹中建立一个.git文件来记录这个文件夹对应的是github上面的那个Repository</p>
-<h2><span id="2git-remote-add-lt你想要给你项目取的别名gt-lt-github上面项目的urlgt">2.git remote add  &lt;你想要给你项目取的别名&gt; &lt; github上面项目的url&gt;</span></h2>
+<h2 id="2git-remote-add-lt你想要给你项目取的别名gt-lt-github上面项目的urlgt">2.git remote add  &lt;你想要给你项目取的别名&gt; &lt; github上面项目的url&gt;</h2>
 <p>在init命令后输入这条语句.这样就实现了本地仓库和远程仓库的链接</p>
 <p>以下命令查看当前本地仓库对应的(就是链接本地和远程的.git)远程仓库的情况</p>
 <pre><code>$ git remote       //不带参数  仅仅列出已经存在的远程分支的名字
 $ git remote -v      //-v  列出详细信息，在每一个名字后面列出其远程url
 </code></pre>
-<h2><span id="3git-clone-lt-github项目的urlgt">3.git clone &lt; github项目的url&gt;</span></h2>
+<h2 id="3git-clone-lt-github项目的urlgt">3.git clone &lt; github项目的url&gt;</h2>
 <p>除了通过init+remote add来创建本地仓库并链接github服务器的项目以外,我们可以通过clone到本地来达到同样的效果</p>
 <p>此时会在本地自动创建一个和服务器项目名字一样的文件夹,把服务器上面所有的文件下载下来,并自动创建.git文件,同时对于上面remote add操作,git会默认取别名为origin</p>
-<h1><span id="二同步下载到本地和上传到github服务器">二.同步(下载到本地和上传到github服务器)</span></h1>
-<h2><span id="1git-pull-lt别名gt-lt当前所处分支gt">1.git pull &lt;别名&gt; &lt;当前所处分支&gt;</span></h2>
+<h1 id="二同步下载到本地和上传到github服务器">二.同步(下载到本地和上传到github服务器)</h1>
+<h2 id="1git-pull-lt别名gt-lt当前所处分支gt">1.git pull &lt;别名&gt; &lt;当前所处分支&gt;</h2>
 <p>这一步是init+remote add后把服务器上的文件下载下来的步骤,&lt;当前所处分支&gt;一般情况是master</p>
 <p>可以通过git branch查看分支情况,前面带*的就是当前分支</p>
 <p>如果是通过clone进行则不需要这一步,因为clone里面已经包含了下载服务器上面的文件的任务</p>
-<h2><span id="2">2.</span></h2>
-<h2><span id="git-add-a-a表示的是提交所有文件的修改">$ git add -A      //-A表示的是提交所有文件的修改</span></h2>
-<h2><span id="git-commit-m-这是是这次提交时附加的消息-参数-m-代表加上附加信息">$ git commit -m “这是是这次提交时附加的消息”    //参数-m 代表加上附加信息</span></h2>
-<h2><span id="git-push-lt别名gt-lt当前所处分支gt">$ git push &lt;别名&gt; &lt;当前所处分支&gt;</span></h2>
+<h2 id="2">2.</h2>
+<h2 id="git-add-a-a表示的是提交所有文件的修改">$ git add -A      //-A表示的是提交所有文件的修改</h2>
+<h2 id="git-commit-m-这是是这次提交时附加的消息-参数-m-代表加上附加信息">$ git commit -m “这是是这次提交时附加的消息”    //参数-m 代表加上附加信息</h2>
+<h2 id="git-push-lt别名gt-lt当前所处分支gt">$ git push &lt;别名&gt; &lt;当前所处分支&gt;</h2>
 <p>在把服务器上面的内容拷贝到本地后,你开始了自己的修改,文件发生了改变.<br>
 上面三个步骤是把本地的文件改动提交到github服务器上</p>
 <p>注意:只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。<br>
 这就是文件冲突(我的理解).</p>
-<h1><span id="三提交到上游主干">三.提交到上游主干</span></h1>
+<h1 id="三提交到上游主干">三.提交到上游主干</h1>
 <p>如果你的这个项目是从别人的仓库中fork来的分支,如果你想把自己的改动提交到别人的仓库中,可以在网页自己账户的仓库中,点击new pull request,然后create pull request</p>
-<h1><span id="四查看状态">四.查看状态</span></h1>
+<h1 id="四查看状态">四.查看状态</h1>
 <p><strong>下图是文件状态的生命周期:</strong></p>
 <p><img src="lifecycle.png" alt=""></p>
-<h2><span id="git-status">git status</span></h2>
+<h2 id="git-status">git status</h2>
 <p>要查看哪些文件处于什么状态</p>
-<h2><span id="1">1.</span></h2>
+<h2 id="1">1.</h2>
 <pre><code>On branch master
  nothing to commit, working directory clean
 </code></pre>
 <p>这说明你现在的工作目录相当干净。换句话说，所有已跟踪文件在上次提交后都未被更改过。</p>
-<h2><span id="2在项目下创建一个新的-readme-文件">2.在项目下创建一个新的 README 文件</span></h2>
+<h2 id="2在项目下创建一个新的-readme-文件">2.在项目下创建一个新的 README 文件</h2>
 <pre><code>On branch master
 Untracked files:
   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
@@ -309,7 +309,7 @@ Untracked files:
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)
 </code></pre>
 <p>未跟踪的文件意味着 Git 在之前的快照（提交）中没有这些文件；</p>
-<h2><span id="3使用命令-git-add-开始跟踪一个文件-要跟踪-readme-文件运行">3.使用命令 git add 开始跟踪一个文件。要跟踪 README 文件，运行：</span></h2>
+<h2 id="3使用命令-git-add-开始跟踪一个文件-要跟踪-readme-文件运行">3.使用命令 git add 开始跟踪一个文件。要跟踪 README 文件，运行：</h2>
 <pre><code>$ git add README
 </code></pre>
 <p>此时再运行 git status 命令，会看到 README 文件已被跟踪，并处于暂存状态：</p>
@@ -321,7 +321,7 @@ Changes to be committed:
     new file:   README
 </code></pre>
 <p>只要在 Changes to be committed 这行下面的，就说明是已暂存状态。</p>
-<h2><span id="4暂存已修改文件">4.暂存已修改文件</span></h2>
+<h2 id="4暂存已修改文件">4.暂存已修改文件</h2>
 <p>现在我们来修改一个已被跟踪的文件。 如果你修改了一个名为 <a href="http://CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a> 的已被跟踪的文件，然后运行 git status 命令，会看到下面内容：</p>
 <pre><code>$ git status
 On branch master
@@ -346,8 +346,8 @@ Changes to be committed:
     new file:   README
     modified:   CONTRIBUTING.md
 </code></pre>
-<h1><span id="五提交更新">五.提交更新</span></h1>
-<h2><span id="1-git-commit">1.$ git commit</span></h2>
+<h1 id="五提交更新">五.提交更新</h1>
+<h2 id="1-git-commit">1.$ git commit</h2>
 <p>这种方式会启动文本编辑器以便输入本次提交的说明。 (默认会启用 shell 的环境变量 $EDITOR 所指定的软件，一般都是 vim 或 emacs。当然也可以使用 git config --global core.editor &lt;你的软件&gt; 命令设定你喜欢的编辑软件。）</p>
 <p>编辑器会显示类似下面的文本信息（本例选用 Vim 的屏显方式展示）：</p>
 <pre><code># Please enter the commit message for your changes. Lines starting
@@ -363,15 +363,15 @@ Changes to be committed:
 &quot;.git/COMMIT_EDITMSG&quot; 9L, 283C
 </code></pre>
 <p>可以看到，默认的提交消息包含最后一次运行 git status 的输出，放在注释行里，另外开头还有一空行，供你输入提交说明。 你完全可以去掉这些注释行，不过留着也没关系，多少能帮你回想起这次更新的内容有哪些。 (如果想要更详细的对修改了哪些内容的提示，可以用 -v 选项，这会将你所做的改变的 diff 输出放到编辑器中从而使你知道本次提交具体做了哪些修改。） 退出编辑器时，Git 会丢掉注释行，用你输入提交附带信息生成一次提交。</p>
-<h2><span id="2-git-commit-m-附加信息">2.$ git commit -m “附加信息”</span></h2>
+<h2 id="2-git-commit-m-附加信息">2.$ git commit -m “附加信息”</h2>
 <p>另外，你也可以在 commit 命令后添加 -m 选项，将提交信息与命令放在同一行，如下所示：</p>
 <pre><code>$ git commit -m &quot;Story 182: Fix benchmarks for speed&quot;
 [master 463dc4f] Story 182: Fix benchmarks for speed
  2 files changed, 2 insertions(+)
  create mode 100644 README
 </code></pre>
-<h1><span id="六跳过使用暂存区域">六.跳过使用暂存区域</span></h1>
-<h2><span id="git-commit-a">git commit -a</span></h2>
+<h1 id="六跳过使用暂存区域">六.跳过使用暂存区域</h1>
+<h2 id="git-commit-a">git commit -a</h2>
 <p>只要在提交的时候，给 git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤,例如:</p>
 <pre><code>$ git status
 On branch master
@@ -386,12 +386,12 @@ $ git commit -a -m 'added new benchmarks'
 [master 83e38c7] added new benchmarks
  1 file changed, 5 insertions(+), 0 deletions(-)
 </code></pre>
-<h1><span id="七移除文件">七.移除文件</span></h1>
-<h2><span id="1-git-rm-lt文件名gt">1. git rm &lt;文件名&gt;</span></h2>
+<h1 id="七移除文件">七.移除文件</h1>
+<h2 id="1-git-rm-lt文件名gt">1. git rm &lt;文件名&gt;</h2>
 <p>从暂存区域移除,并连带从工作目录中删除指定的文件</p>
 <p>如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f（译注：即 force 的首字母）。</p>
 <p>这是一种安全特性，用于防止误删还没有添加到快照的数据，这样的数据不能被 Git 恢复。</p>
-<h2><span id="2-git-rm-cached-lt文件名gt">2. git rm --cached &lt;文件名&gt;</span></h2>
+<h2 id="2-git-rm-cached-lt文件名gt">2. git rm --cached &lt;文件名&gt;</h2>
 <p>把文件从 Git 仓库中删除（亦即从暂存区域移除），但仍然希望保留在当前工作目录中。 换句话说，你想让文件保留在磁盘，但是并不想让 Git 继续跟踪。</p>
 <p>当你忘记添加 .gitignore 文件，不小心把一个很大的日志文件或一堆 .a 这样的编译生成文件添加到暂存区时，这一做法尤其有用。</p>
 <p>为达到这一目的，使用 --cached 选项.</p>
@@ -404,8 +404,8 @@ $ git commit -a -m 'added new benchmarks'
 <pre><code>$ git rm \*~
 </code></pre>
 <p>该命令为删除以 ~ 结尾的所有文件。</p>
-<h1><span id="八-查看提交历史">八. 查看提交历史</span></h1>
-<h2><span id="git-log">git log</span></h2>
+<h1 id="八-查看提交历史">八. 查看提交历史</h1>
+<h2 id="git-log">git log</h2>
 <pre><code>以下是常用的log后的参数:
 -p  		按补丁格式显示每个更新之间的差异。
 
@@ -423,8 +423,8 @@ $ git commit -a -m 'added new benchmarks'
 
 --pretty	使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。
 </code></pre>
-<h1><span id="九撤消操作">九.撤消操作</span></h1>
-<h2><span id="1-git-commit-amend">1.$ git commit --amend</span></h2>
+<h1 id="九撤消操作">九.撤消操作</h1>
+<h2 id="1-git-commit-amend">1.$ git commit --amend</h2>
 <p>有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选项的提交命令尝试重新提交：</p>
 <pre><code>$ git commit --amend
 </code></pre>
@@ -436,7 +436,7 @@ $ git add forgotten_file
 $ git commit --amend
 </code></pre>
 <p>最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。</p>
-<h2><span id="2取消暂存的文件">2.取消暂存的文件</span></h2>
+<h2 id="2取消暂存的文件">2.取消暂存的文件</h2>
 <p>演示如何操作暂存区域与工作目录中已修改的文件。 这些命令在修改文件状态的同时，也会提示如何撤消操作。</p>
 <p>例如，你已经修改了两个文件并且想要将它们作为两次独立的修改提交，但是却意外地输入了 git add * 暂存了它们两个。 如何只取消暂存两个中的一个呢？</p>
 <p>git status 命令提示了你：</p>
@@ -473,7 +473,7 @@ Changes not staged for commit:
 <blockquote>
 <p>虽然在调用时加上 --hard 选项可以令 git reset 成为一个危险的命令（译注：可能导致工作目录中所有当前进度丢失！），但本例中工作目录内的文件并不会被修改。 不加选项地调用 git reset 并不危险 — 它只会修改暂存区域。</p>
 </blockquote>
-<h2><span id="3撤消对文件的修改">3.撤消对文件的修改</span></h2>
+<h2 id="3撤消对文件的修改">3.撤消对文件的修改</h2>
 <p>如果你并不想保留对 <a href="http://CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a> 文件的修改怎么办？ 你该如何方便地撤消修改 - 将它还原成上次提交时的样子（或者刚克隆完的样子，或者刚把它放入工作目录时的样子）？ 幸运的是，git status 也告诉了你应该如何做。 在最后一个例子中，未暂存区域是这样：</p>
 <pre><code>$ git status
 On branch master
@@ -506,7 +506,7 @@ Changes to be committed:
 <p>如果你仍然想保留对那个文件做出的修改，但是现在仍然需要撤消，我们将会在 Git 分支 介绍保存进度与分支；这些通常是更好的做法。</p>
 <p>记住，在 Git 中任何 已提交的 东西几乎总是可以恢复的。 甚至那些被删除的分支中的提交或使用 --amend 选项覆盖的提交也可以恢复。 然而，任何你未提交的东西丢失后很可能再也找不到了。</p>
 </blockquote>
-<h1><span id="十remote-远程仓库使用">十.remote-远程仓库使用</span></h1>
+<h1 id="十remote-远程仓库使用">十.remote-远程仓库使用</h1>
 <pre><code>$ git remote       //不带参数  仅仅列出已经存在的远程分支的名字
 $ git remote -v      //-v  列出详细信息，在每一个名字后面列出其远程url
 $ git remote add &lt;你想要给你项目取的别名&gt; &lt;github上面项目的url&gt;   //添加远程仓库,现在你可以在命令行中使用那个&lt;别名&gt; 来代替整个 URL
@@ -517,7 +517,7 @@ $ git remote show &lt;别名&gt;        //查看某一个远程仓库的更多�
 $ git remote rename &lt;原来的名字&gt; &lt;后来修改的名字&gt;   //重命名远程仓库
 $ git remote rm &lt;别名&gt;   //移除远程仓库
 </code></pre>
-<h1><span id="十一git使用结构图">十一.git使用结构图</span></h1>
+<h1 id="十一git使用结构图">十一.git使用结构图</h1>
 <p><img src="git%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
 
                 
@@ -532,7 +532,7 @@ $ git remote rm &lt;别名&gt;   //移除远程仓库
                     
                     
                         <li class="next">
-                            <a href="/2016/07/21/[linux]PrintChineseInAs/" data-toggle="tooltip" data-placement="top" title="[Linux] AS不能输入中文的解决方法">Next Post &rarr;</a>
+                            <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/" data-toggle="tooltip" data-placement="top" title="[Linux] 命令行建启动器">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -562,7 +562,7 @@ $ git remote rm &lt;别名&gt;   //移除远程仓库
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">git 安装</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">git配置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">git基本操作和理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">一.初始化操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">1.git init</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">2.git remote add  &lt;你想要给你项目取的别名&gt; &lt; github上面项目的url&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">3.git clone &lt; github项目的url&gt;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">二.同步(下载到本地和上传到github服务器)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">1.git pull &lt;别名&gt; &lt;当前所处分支&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">2.</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">$ git add -A      //-A表示的是提交所有文件的修改</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">$ git commit -m “这是是这次提交时附加的消息”    //参数-m 代表加上附加信息</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">$ git push &lt;别名&gt; &lt;当前所处分支&gt;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">三.提交到上游主干</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">四.查看状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">git status</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">1.</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">2.在项目下创建一个新的 README 文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.4.</span> <span class="toc-nav-text">3.使用命令 git add 开始跟踪一个文件。要跟踪 README 文件，运行：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.5.</span> <span class="toc-nav-text">4.暂存已修改文件</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">五.提交更新</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">1.$ git commit</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">2.$ git commit -m “附加信息”</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">六.跳过使用暂存区域</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">9.1.</span> <span class="toc-nav-text">git commit -a</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">七.移除文件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">10.1.</span> <span class="toc-nav-text">1. git rm &lt;文件名&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">10.2.</span> <span class="toc-nav-text">2. git rm --cached &lt;文件名&gt;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">八. 查看提交历史</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">11.1.</span> <span class="toc-nav-text">git log</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">九.撤消操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">12.1.</span> <span class="toc-nav-text">1.$ git commit --amend</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">12.2.</span> <span class="toc-nav-text">2.取消暂存的文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">12.3.</span> <span class="toc-nav-text">3.撤消对文件的修改</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">十.remote-远程仓库使用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">十一.git使用结构图</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#git-安装"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">git 安装</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#git配置"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">git配置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#git基本操作和理解"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">git基本操作和理解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一初始化操作"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">一.初始化操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1git-init"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">1.git init</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2git-remote-add-lt你想要给你项目取的别名gt-lt-github上面项目的urlgt"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">2.git remote add  &lt;你想要给你项目取的别名&gt; &lt; github上面项目的url&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3git-clone-lt-github项目的urlgt"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">3.git clone &lt; github项目的url&gt;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二同步下载到本地和上传到github服务器"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">二.同步(下载到本地和上传到github服务器)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1git-pull-lt别名gt-lt当前所处分支gt"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">1.git pull &lt;别名&gt; &lt;当前所处分支&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">2.</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-add-a-a表示的是提交所有文件的修改"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">$ git add -A      //-A表示的是提交所有文件的修改</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-commit-m-这是是这次提交时附加的消息-参数-m-代表加上附加信息"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">$ git commit -m “这是是这次提交时附加的消息”    //参数-m 代表加上附加信息</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-push-lt别名gt-lt当前所处分支gt"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">$ git push &lt;别名&gt; &lt;当前所处分支&gt;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三提交到上游主干"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">三.提交到上游主干</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#四查看状态"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">四.查看状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-status"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">git status</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">1.</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2在项目下创建一个新的-readme-文件"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">2.在项目下创建一个新的 README 文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3使用命令-git-add-开始跟踪一个文件-要跟踪-readme-文件运行"><span class="toc-nav-number">7.4.</span> <span class="toc-nav-text">3.使用命令 git add 开始跟踪一个文件。要跟踪 README 文件，运行：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4暂存已修改文件"><span class="toc-nav-number">7.5.</span> <span class="toc-nav-text">4.暂存已修改文件</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#五提交更新"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">五.提交更新</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-git-commit"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">1.$ git commit</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-git-commit-m-附加信息"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">2.$ git commit -m “附加信息”</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#六跳过使用暂存区域"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">六.跳过使用暂存区域</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-commit-a"><span class="toc-nav-number">9.1.</span> <span class="toc-nav-text">git commit -a</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#七移除文件"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">七.移除文件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-git-rm-lt文件名gt"><span class="toc-nav-number">10.1.</span> <span class="toc-nav-text">1. git rm &lt;文件名&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-git-rm-cached-lt文件名gt"><span class="toc-nav-number">10.2.</span> <span class="toc-nav-text">2. git rm --cached &lt;文件名&gt;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#八-查看提交历史"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">八. 查看提交历史</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-log"><span class="toc-nav-number">11.1.</span> <span class="toc-nav-text">git log</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#九撤消操作"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">九.撤消操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-git-commit-amend"><span class="toc-nav-number">12.1.</span> <span class="toc-nav-text">1.$ git commit --amend</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2取消暂存的文件"><span class="toc-nav-number">12.2.</span> <span class="toc-nav-text">2.取消暂存的文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3撤消对文件的修改"><span class="toc-nav-number">12.3.</span> <span class="toc-nav-text">3.撤消对文件的修改</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#十remote-远程仓库使用"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">十.remote-远程仓库使用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#十一git使用结构图"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">十一.git使用结构图</span></a></li></ol>
         
         </div>
       </aside>

@@ -222,7 +222,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="outline">Outline</span></h1>
+                <h1 id="outline">Outline</h1>
 <p>主要会讲几篇论文的aims，background，innovation，model details，毕竟概述性质将，有兴趣的可以自己找paper看一下，数学公式或者证明的相对来说比较少。</p>
 <p>一方面毕竟machine learning这一块本来解释性也不是很多，照着实现就行；另一方面我一两周中看的论文比较多，比较粗略，这个只是用来做一个总结记录。</p>
 <p>里面有几篇我是有相关的实现，或者是参考其中一部分实现在我其他的模型上的。Github地址：<a href="https://github.com/NullAerber/ZJU_Internship" target="_blank" rel="noopener">https://github.com/NullAerber/ZJU_Internship</a></p>
@@ -232,13 +232,13 @@
 <li>Convolutional 2D Knowledge Graph Embeddings</li>
 <li>Bilateral Multi-Perspective Matching for Natural Language Sentences</li>
 </ol>
-<h1><span id="textcnnconvolutional-neural-networks-for-sentence-classification">(TextCNN）Convolutional Neural Networks for Sentence Classification</span></h1>
-<h2><span id="aims">Aims</span></h2>
+<h1 id="textcnnconvolutional-neural-networks-for-sentence-classification">(TextCNN）Convolutional Neural Networks for Sentence Classification</h1>
+<h2 id="aims">Aims</h2>
 <p>众所周知，CNN神经网络在计算机视觉方面(Krizhevsky et al., 2012)和语音识别(Graves et al., 2013)表现很出色，这是因为CNN可以提取local feature的能力很强。</p>
 <p>所以作者就想说，NLP中也有这样的任务是需要提取相关的局部特征的，CNN正好提供了这样优秀的能力，反倒是LSTM、GRU这种的可能就不是很适合。因此尝试着用一层卷积层来做分类任务。</p>
-<h2><span id="innovation">Innovation</span></h2>
+<h2 id="innovation">Innovation</h2>
 <p>提出将CV中的CNN的模型运用在NLP中。</p>
-<h2><span id="model">Model</span></h2>
+<h2 id="model">Model</h2>
 <p>整个模型十分的简单。<br>
 一层embedding，一层CNN，一层full connection，做分类的话最后还有一层softmax。<br>
 <img src="text_cnn_model.png" alt="text cnn model"></p>
@@ -247,7 +247,7 @@
 <li>就图上而言，普通做CV的CNN是图像长度x图像宽带xRGB三色通道的，然而对于序列来说，一方面图像宽度是固定的，是每个词的word embedding，另一方面是word embedding中的每一个数值都是最小单位，所有句子所构成的这个图是只有一个通道的，不像图片是有RGB三通道，或者是带透明四通道的。</li>
 <li>一般做TextCNN的时候卷积核的大小会选择和embedding size 一样大，原因是embedding代表的是一个词在文字向量空间位置综合体现，embedding中的每一个数值单独进行操作都是没有实际意义的。</li>
 </ol>
-<h2><span id="implemention">Implemention</span></h2>
+<h2 id="implemention">Implemention</h2>
 <p><strong>具体实现：<a href="https://github.com/NullAerber/ZJU_Internship/tree/master/TextCNN" target="_blank" rel="noopener">TextCNN</a></strong></p>
 <p><strong>输入:</strong></p>
 <p>影评文字</p>
@@ -256,11 +256,11 @@
 <p><strong>PS.:</strong></p>
 <p>这边我提供了两种的TextCNN的实现方式，一种比较简单易明白，另一种比较难看懂，但是更加灵活。</p>
 <p>同时word embedding那一块训练的预料是Google的text8，<a href="http://mattmahoney.net/dc/text8.zip" target="_blank" rel="noopener">下载地址在这</a> word embedding训练的代码已经在代码中写好了。</p>
-<h1><span id="convolutional-2d-knowledge-graph-embeddings">Convolutional 2D Knowledge Graph Embeddings</span></h1>
+<h1 id="convolutional-2d-knowledge-graph-embeddings">Convolutional 2D Knowledge Graph Embeddings</h1>
 <p>上一篇CNN在NLP中表现的还算不错，因此后面有人想到用CNN延伸到Knowledge Graph（KG）中。甚至最近机器之心发了一篇推文说CNN基本上已经可以取代RNN的一系列模型。</p>
-<h2><span id="aims">Aims</span></h2>
+<h2 id="aims">Aims</h2>
 <p>在许多的大型知识图谱中，实体一般比较齐全，但是实体和实体之间的关系则相对来说比较少，缺少度比较大，一些关系人类是可以通过一定的推理和解析得到的。但是由于现实实体之间的关系千千万万种，目前机器不可能通过硬规则实现。因此考虑通过CNN的方式学习相关的实体关系链路。</p>
-<h2><span id="innovation">Innovation</span></h2>
+<h2 id="innovation">Innovation</h2>
 <ol>
 <li>
 <p>该模型的主要特点是通过2D embedding CNN来得出分数。</p>
@@ -283,7 +283,7 @@
 <p>下图的模型可以解释的更清晰。</p>
 </li>
 </ol>
-<h2><span id="model">Model</span></h2>
+<h2 id="model">Model</h2>
 <p><img src="2D_CNN_linker_prediction.png" alt="2D_CNN_linker_prediction"></p>
 <ol>
 <li>Embedding layer：将（实体，关系）对的两者分别进行embedding得到其向量。</li>
@@ -293,10 +293,10 @@
 <li>Logits：将full connection后得到的值和需要预测的tail实体candidates矩阵进行矩阵相乘。就是full connection的结果乘上候选实体的embedding矩阵得到值。</li>
 <li>Predict score： 得到最终的预测结果，根据分数高低，在candidates中得出最终和此(e1,rel)相匹配的e2。</li>
 </ol>
-<h1><span id="bilateral-multi-perspective-matching-for-natural-language-sentences">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></h1>
-<h2><span id="aims">Aims</span></h2>
+<h1 id="bilateral-multi-perspective-matching-for-natural-language-sentences">Bilateral Multi-Perspective Matching for Natural Language Sentences</h1>
+<h2 id="aims">Aims</h2>
 <p>为了针对NLP文本匹配任务在传统的RNN，CNN是单向匹配、交互方式单粒度的弊端，提出了双向多粒度匹配模型（BIMPM Model）</p>
-<h2><span id="innovation">Innovation</span></h2>
+<h2 id="innovation">Innovation</h2>
 <ol>
 <li>
 <p>双向匹配<br>
@@ -307,7 +307,7 @@
 在一般的文本匹配问题中，都是word和word之间或者sentence和sentence之间进行交互，很少有小粒度和大粒度之间的交互。在此文中则体现了word和sentence之间的交互。</p>
 </li>
 </ol>
-<h2><span id="model">Model</span></h2>
+<h2 id="model">Model</h2>
 <p><img src="BIMPM1.png" alt="BIMPM"></p>
 <ol>
 <li>
@@ -340,7 +340,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2018/08/18/[paper]zju_paper_2/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  浙江大学实习期间看的一些论文和写的一些代码-02">&larr; Previous Post</a>
+                            <a href="/2018/08/18/[paper]zju_paper_2/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  02-浙江大学实习期间看的一些论文和写的一些代码">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -375,7 +375,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">(TextCNN）Convolutional Neural Networks for Sentence Classification</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Convolutional 2D Knowledge Graph Embeddings</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#outline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#textcnnconvolutional-neural-networks-for-sentence-classification"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">(TextCNN）Convolutional Neural Networks for Sentence Classification</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#implemention"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#convolutional-2d-knowledge-graph-embeddings"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Convolutional 2D Knowledge Graph Embeddings</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#bilateral-multi-perspective-matching-for-natural-language-sentences"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model</span></a></li></ol></li></ol>
         
         </div>
       </aside>

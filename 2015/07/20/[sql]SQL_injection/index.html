@@ -220,7 +220,7 @@
 <p><a href="http://www.cnblogs.com/hkncd/archive/2012/03/31/2426274.html" target="_blank" rel="noopener">http://www.cnblogs.com/hkncd/archive/2012/03/31/2426274.html</a></p>
 <p>为了防止SQL注入问题，切记的一点是不要使用<strong>字符串拼接</strong>，这样出现SQL注入的可能性很大，就算使用字符过滤、字符串检测、字符串替换、存储过程或者其他方法，危险系数还是很大的。</p>
 <p>SQL注入的本质是输入特殊符号（例如’  ”   .  之类的）<strong>破坏了SQL语句</strong>，导致数据泄露</p>
-<h1><span id="目前我看到的解决方案是使用参数化sql">目前我看到的解决方案是使用参数化SQL</span></h1>
+<h1 id="目前我看到的解决方案是使用参数化sql">目前我看到的解决方案是使用参数化SQL</h1>
 <p>比如以前这样一条查询语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string key;</span><br><span class="line">string sql = "<span class="keyword">select</span> * <span class="keyword">from</span> DB <span class="keyword">where</span> <span class="keyword">key</span> <span class="keyword">like</span> <span class="string">'"%"+myKey+"%"'</span><span class="string">";</span></span><br></pre></td></tr></table></figure>
 <p>这是条模糊查询</p>
@@ -229,7 +229,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string key;</span><br><span class="line">string sql = "<span class="keyword">select</span> * <span class="keyword">from</span> DB <span class="keyword">where</span> <span class="keyword">key</span> <span class="keyword">like</span> @<span class="keyword">key</span><span class="string">"</span></span><br></pre></td></tr></table></figure>
 <p>但是我们的代码不一定会智能到知道包含在这个string类型的sql中，@key就是指代我们的string的key</p>
 <p>目前我是在C#下开发,所以我们使用一个C#下的SqlParameter把实际的值和SQL语句中的链接起来</p>
-<h1><span id="在不同的语言环境中sql的参数化查询使用不同">在不同的语言环境中，sql的参数化查询使用不同</span></h1>
+<h1 id="在不同的语言环境中sql的参数化查询使用不同">在不同的语言环境中，sql的参数化查询使用不同</h1>
 <p><strong>SqlParameter来自System.Date.SqlClient</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SqlParameter spmKey = new SqlParametr();</span><br><span class="line">spmKey.ParameterName = "@key";</span><br><span class="line">spmKey.Value = key;</span><br></pre></td></tr></table></figure>
 <p>仅仅这样是不行的，虽然我们已经建立了SqlParameter实体，也把@key和key变量给了spmkey，但是spmKey和我们的sqlconnection和sqlAdapter毫无联系(sqlconnection和sqlAdapter是我们在C#中链接microsoft sql server的方式)</p>
@@ -245,7 +245,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2015/07/21/[sql]Stored Procedure_SQL/" data-toggle="tooltip" data-placement="top" title="[SQL] SQL存储过程">&larr; Previous Post</a>
+                            <a href="/2015/07/21/[linux]archlinuxvbox/" data-toggle="tooltip" data-placement="top" title="[Linux] manjaro下安装oracle virtual box">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -276,7 +276,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">目前我看到的解决方案是使用参数化SQL</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">在不同的语言环境中，sql的参数化查询使用不同</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#目前我看到的解决方案是使用参数化sql"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">目前我看到的解决方案是使用参数化SQL</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#在不同的语言环境中sql的参数化查询使用不同"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">在不同的语言环境中，sql的参数化查询使用不同</span></a></li></ol>
         
         </div>
       </aside>

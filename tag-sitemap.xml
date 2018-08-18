@@ -23,14 +23,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Lecture/</loc>
+        <loc>http://yoursite.com/tags/Framework/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Framework/</loc>
+        <loc>http://yoursite.com/tags/Lecture/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -101,35 +101,35 @@
 
     <url>
         <loc>http://yoursite.com/tags/Paper/</loc>
-        <lastmod>2018-08-18T09:13:09.790Z</lastmod>
+        <lastmod>2018-08-18T11:27:08.062Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Internship/</loc>
-        <lastmod>2018-08-18T09:13:09.790Z</lastmod>
+        <lastmod>2018-08-18T11:27:08.062Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Deep-Learning/</loc>
-        <lastmod>2018-08-18T09:13:09.790Z</lastmod>
+        <lastmod>2018-08-18T11:27:08.062Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Knowledge-Graph/</loc>
-        <lastmod>2018-08-18T09:13:09.790Z</lastmod>
+        <lastmod>2018-08-18T11:27:08.062Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Attention-Based-Model/</loc>
-        <lastmod>2018-08-18T09:13:09.790Z</lastmod>
+        <lastmod>2018-08-18T11:27:08.062Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

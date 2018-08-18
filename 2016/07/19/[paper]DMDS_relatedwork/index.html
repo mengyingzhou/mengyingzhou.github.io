@@ -223,8 +223,8 @@
                 post-container">
 
                 <p><strong>相关介绍内容主要是entropy locality-sensitive hashing （ELSH） 、cloud computing frameworks、GIST原理.</strong></p>
-<h2><span id="熵局部敏感分析entropy-locality-sensitive-hashing">熵局部敏感分析【Entropy locality-sensitive hashing】</span></h2>
-<h3><span id="basic-lshblsh">Basic LSH（BLSH）</span></h3>
+<h2 id="熵局部敏感分析entropy-locality-sensitive-hashing">熵局部敏感分析【Entropy locality-sensitive hashing】</h2>
+<h3 id="basic-lshblsh">Basic LSH（BLSH）</h3>
 <p>网上的这几篇博文这篇LSH的讲的很通俗易懂。</p>
 <p><a href="http://blog.csdn.net/icvpr/article/details/12342159" target="_blank" rel="noopener">http://blog.csdn.net/icvpr/article/details/12342159</a><br>
 <a href="http://www.cnblogs.com/maybe2030/p/4953039.html" target="_blank" rel="noopener">http://www.cnblogs.com/maybe2030/p/4953039.html</a></p>
@@ -284,7 +284,7 @@ Hash(1023) = 1023%8 = 7;</p>
 <p>paper中提到，为了提高原生LSH算法的查找能力和效率：</p>
 <p>一种方法是<strong>多重LSH功能并综合他们的结果</strong>，但是这样的话需要<strong>大量的哈希函数、和数据库几本大小的哈希表</strong>。对应大数据的请求下，采用这种算法将要大量的空间需求。</p>
 <p>第二是在**<em>分布式</em>**条件下，这也将会是一个巨大的网络压力。</p>
-<h3><span id="entropy-lshelsh">Entropy LSH（ELSH）</span></h3>
+<h3 id="entropy-lshelsh">Entropy LSH（ELSH）</h3>
 <p>ELSH需要的哈希函数和哈希表大小和BLSH一样，不同点在于查询搜索规划（query searched scheme）</p>
 <p><em><a href="">ELSH的核心思想</a>：对于任意的H∈H’，<strong>靠近查询点Q的数据点</strong>很有可能被<strong>作为查询点Q</strong>放入查询点Q的那个桶中，或者被作为<strong>查询点Q允许偏移量内的点</strong>放入查询点Q的那个桶中</em></p>
 <p>为了达到这个目标，如何<a href=""><em>选择偏移量</em></a>：</p>
@@ -295,19 +295,19 @@ Hash(1023) = 1023%8 = 7;</p>
 <p>在Panigrahy的论文中，他以<strong>1-2范数</strong>为例证的结果体现了当有<strong>N个数据点</strong>时，选取<strong>适当的K和L</strong>,只需要一张哈希表就可以解决**<em><a href="">（c，r）-NN问题</a></em>**</p>
 <p><strong>ELSH的缺陷：</strong><br>
 在ELSH中的查询点偏移量（query Offset）比BLSH多，当在处理单节点计算时，ELSH查询时间效率可能远不如BLSH。</p>
-<h2><span id="云计算框架cloud-computing-frameworks">云计算框架【Cloud computing Frameworks】</span></h2>
+<h2 id="云计算框架cloud-computing-frameworks">云计算框架【Cloud computing Frameworks】</h2>
 <p>批处理系统和实时处理系统为两种主要云计算框架</p>
 <p>分布式也可以说是并行计算</p>
 <p><strong>共同点</strong></p>
 <p><em><a href="">键值对形式</a></em>，分布在各个运行节点</p>
-<h3><span id="主流框架">主流框架</span></h3>
+<h3 id="主流框架">主流框架</h3>
 <p>批处理系统：</p>
 <p>Map(映射)-Reduce(规约)</p>
 <p>实时处理系统：</p>
 <p><a href="http://spark.apache.org/" target="_blank" rel="noopener">Apache-Spark</a>【中文简导<a href="http://www.csdn.net/article/2014-05-29/2820013/2" target="_blank" rel="noopener">第一篇</a> <a href="http://www.infoq.com/cn/articles/apache-spark-introduction" target="_blank" rel="noopener">第二篇</a>】</p>
 <p><a href="https://github.com/nathanmarz/storm/" target="_blank" rel="noopener">Twitter-Storm</a>【<a href="http://www.ibm.com/developerworks/cn/opensource/os-twitterstorm/" target="_blank" rel="noopener">IBM中文简介</a>】</p>
 <p>Yahoo-S4</p>
-<h4><span id="批处理">批处理</span></h4>
+<h4 id="批处理">批处理</h4>
 <p>长期以来批处理的数据处理被大数据公司采用。</p>
 <p>Map-Reduce处理模式下的弊端：</p>
 <ol>
@@ -315,14 +315,14 @@ Hash(1023) = 1023%8 = 7;</p>
 <li>从多源收集而来数据可能没有全部到达聚集点。</li>
 <li>在标准的Map-Reduce模式中，Reduce周期在Map周期还没有结束之前不能开始。同时所有的中间数据在被下载到reducer之前都将保存在磁盘中。增加了处理 延迟。</li>
 </ol>
-<h4><span id="实时处理">实时处理</span></h4>
+<h4 id="实时处理">实时处理</h4>
 <p>分布式流处理框架是一个允许“基于key进行查找、插入、删除”的分布式键值对存储方式。</p>
 <p><em><strong><a href="">实时处理的核心想法</a>是对于任意用户定义的行为都能基于键值对执行。</strong></em></p>
 <p>由于所有键值对节点都被存储在主内存中，因此需要充足的节点才能达到快速的处理效果。</p>
 <p>在实用应用上，实时查询处理和输入流处理是最需要快速响应的操作。</p>
 <p>这种处理方式催生了Twitter’s Storm, Yahoo’s S4, Cloudera’s Impala, Apache Spark, Apache Tez等一些平台参与到大数据和无SQL系统的对抗中。</p>
-<h2><span id="gist">GIST</span></h2>
-<h3><span id="gist基础介绍">GIST基础介绍</span></h3>
+<h2 id="gist">GIST</h2>
+<h3 id="gist基础介绍">GIST基础介绍</h3>
 <p><a href="http://blog.csdn.net/lskyne/article/details/8538072" target="_blank" rel="noopener"><em><strong>GIST算法博文推荐</strong></em></a></p>
 <p>GIST是一种场景特征描述。那么什么是场景特征描述？</p>
 <p>通常的特征描述符都是对图片的局部特征进行描述的，以这种思路进行场景描述是不可行的。</p>
@@ -358,7 +358,7 @@ Hash(1023) = 1023%8 = 7;</p>
                     
                     
                         <li class="next">
-                            <a href="/2016/07/18/[paper]DMDS_designandalgorithm/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测">Next Post &rarr;</a>
+                            <a href="/2016/07/18/[notes]2016.7.18/" data-toggle="tooltip" data-placement="top" title="[Scattered Notes] 关于android.support.design.widget.FloatingActionButton预览中报错显示不出来 && layout属性中fitsSystemWindows && looper handler">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -388,7 +388,7 @@ Hash(1023) = 1023%8 = 7;</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">熵局部敏感分析【Entropy locality-sensitive hashing】</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Basic LSH（BLSH）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Entropy LSH（ELSH）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">云计算框架【Cloud computing Frameworks】</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">主流框架</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">批处理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">实时处理</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">GIST</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">GIST基础介绍</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#熵局部敏感分析entropy-locality-sensitive-hashing"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">熵局部敏感分析【Entropy locality-sensitive hashing】</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#basic-lshblsh"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Basic LSH（BLSH）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#entropy-lshelsh"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Entropy LSH（ELSH）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#云计算框架cloud-computing-frameworks"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">云计算框架【Cloud computing Frameworks】</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#主流框架"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">主流框架</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#批处理"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">批处理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#实时处理"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">实时处理</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#gist"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">GIST</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#gist基础介绍"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">GIST基础介绍</span></a></li></ol></li></ol>
         
         </div>
       </aside>

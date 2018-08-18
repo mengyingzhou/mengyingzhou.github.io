@@ -221,19 +221,19 @@
                 <p>搭建LaTeX的工具是今年五月的时候要写专业英语的时候，那个时候只支持英文就行，所以对于包管理器很好的manjaro来说，pacman一下就ok了。</p>
 <p>后来信安课程里面也需要写论文，然后重新又捣鼓了一下中文系统的支持。</p>
 <p>【虽然我手上还有一堆论文还没有看orz…但是这个拖的实在是难受…】</p>
-<h1><span id="环境介绍">环境介绍</span></h1>
+<h1 id="环境介绍">环境介绍</h1>
 <p>我在Linux下用的是texlive+visual-studio-code+LaTeX workshop。因为vscode我用的比较多，装一个插件就可以用，比较轻量化。虽然我的LaTeX大佬建议我装texstudio，但是我觉得太冗余了。</p>
 <p>另外说明，因为manjaro是在archlinux的基础上进行打包的，所以对于manjaro现在社区还不是很完善的情况下，如果有相关问题可以参考相关archlinux的解决方案。</p>
-<h1><span id="安装texlive及其相关组件">安装texlive及其相关组件</span></h1>
+<h1 id="安装texlive及其相关组件">安装texlive及其相关组件</h1>
 <p>单纯安装Latex是比较简单的，直接pacman就行了。</p>
 <pre><code>sudo pacman -S texlive-core texlive-bin texlive-langcjk texlive-latex3 texlive-latexextra
 </code></pre>
-<h1><span id="安装vscode和其插件">安装vscode和其插件</span></h1>
+<h1 id="安装vscode和其插件">安装vscode和其插件</h1>
 <p>安装vscode也很简单</p>
 <pre><code>sudo pacman -S visual-studio-code-bin
 </code></pre>
 <p>在插件商店中安装<strong>Latex compile,Latex Preview,Latex Workshop,latex-formatter</strong>四个插件即可。</p>
-<h1><span id="测试英文文档">测试英文文档</span></h1>
+<h1 id="测试英文文档">测试英文文档</h1>
 <p>如果没有什么中文或者其他的特殊需求，上面那几个包就足够了，安装完成之后记得重启一次机器。重启之后，Latex就可以用了，你可以编辑一个简单的tex文件来测试一下：</p>
 <pre><code>% hello.tex
 \documentclass{article}
@@ -243,7 +243,7 @@ Hello Latex!
 </code></pre>
 <p>然后直接ctrl+S保存就可以看预览了。</p>
 <p><img src="en.png" alt="英文显示"></p>
-<h1><span id="配置中文支持">配置中文支持</span></h1>
+<h1 id="配置中文支持">配置中文支持</h1>
 <p>目前Tex处理中文的解决方案我所了解主要有以下两种：</p>
 <ol>
 <li>
@@ -269,7 +269,7 @@ Hello Latex!
 <p>在图上可以看到有几个警告，这是因为默认的Xelatex编译会自动使用文献编译bibtex，但是此处并没有文献。这个并不影响预览。关于这个的详细解释可以参考我的<a href="https://nullaerber.github.io/2018/07/21/%5Blatex%5DBiBTeX_found_no%20_itation_commands/" target="_blank" rel="noopener">另外一篇关于这个的文章</a></p>
 </li>
 </ol>
-<h1><span id="相关资料">相关资料</span></h1>
+<h1 id="相关资料">相关资料</h1>
 <p>LaTeX 模板网站: <a href="http://www.latexstudio.net/" target="_blank" rel="noopener">http://www.latexstudio.net/</a></p>
 <p>TeX Live (简体中文) - ArchWiki: <a href="https://wiki.archlinux.org/index.php/TeX_Live_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/TeX_Live_(简体中文)#.E5.AE.89.E8.A3.85</a></p>
 <p>LaTeX 实战经验：新手须知: <a href="https://blog.csdn.net/simple_the_best/article/details/51244631" target="_blank" rel="noopener">https://blog.csdn.net/simple_the_best/article/details/51244631</a></p>
@@ -316,7 +316,7 @@ Hello Latex!
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">环境介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装texlive及其相关组件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">安装vscode和其插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">测试英文文档</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">配置中文支持</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">相关资料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#环境介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">环境介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装texlive及其相关组件"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装texlive及其相关组件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装vscode和其插件"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">安装vscode和其插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#测试英文文档"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">测试英文文档</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#配置中文支持"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">配置中文支持</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#相关资料"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">相关资料</span></a></li></ol>
         
         </div>
       </aside>
