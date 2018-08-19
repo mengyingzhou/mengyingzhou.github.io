@@ -2,133 +2,133 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/Security/</loc>
+        <loc>https://nullaerber.github.io/tags/Security/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Distribution/</loc>
+        <loc>https://nullaerber.github.io/tags/Distribution/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Malware-Detection/</loc>
+        <loc>https://nullaerber.github.io/tags/Malware-Detection/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Lecture/</loc>
+        <loc>https://nullaerber.github.io/tags/Framework/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Framework/</loc>
+        <loc>https://nullaerber.github.io/tags/Lecture/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Android/</loc>
+        <loc>https://nullaerber.github.io/tags/Android/</loc>
         <lastmod>2018-07-13T05:32:15.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/SQL/</loc>
+        <loc>https://nullaerber.github.io/tags/SQL/</loc>
         <lastmod>2018-07-13T05:46:52.286Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Git/</loc>
+        <loc>https://nullaerber.github.io/tags/Git/</loc>
         <lastmod>2018-07-13T05:55:26.741Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Ubuntu/</loc>
+        <loc>https://nullaerber.github.io/tags/Ubuntu/</loc>
         <lastmod>2018-07-13T06:00:54.460Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Manjaro/</loc>
+        <loc>https://nullaerber.github.io/tags/Manjaro/</loc>
         <lastmod>2018-07-21T02:32:43.188Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Notes/</loc>
+        <loc>https://nullaerber.github.io/tags/Notes/</loc>
         <lastmod>2018-07-21T09:28:31.313Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Linux/</loc>
+        <loc>https://nullaerber.github.io/tags/Linux/</loc>
         <lastmod>2018-07-21T09:28:31.313Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/LaTeX/</loc>
+        <loc>https://nullaerber.github.io/tags/LaTeX/</loc>
         <lastmod>2018-07-21T09:28:31.313Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Attention-Based-Model/</loc>
+        <loc>https://nullaerber.github.io/tags/Attention-Based-Model/</loc>
         <lastmod>2018-08-18T15:14:45.682Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Paper/</loc>
+        <loc>https://nullaerber.github.io/tags/Paper/</loc>
         <lastmod>2018-08-18T15:15:37.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Internship/</loc>
+        <loc>https://nullaerber.github.io/tags/Internship/</loc>
         <lastmod>2018-08-18T15:15:37.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Deep-Learning/</loc>
+        <loc>https://nullaerber.github.io/tags/Deep-Learning/</loc>
         <lastmod>2018-08-18T15:15:37.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Knowledge-Graph/</loc>
+        <loc>https://nullaerber.github.io/tags/Knowledge-Graph/</loc>
         <lastmod>2018-08-18T15:15:37.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/CNN/</loc>
+        <loc>https://nullaerber.github.io/tags/CNN/</loc>
         <lastmod>2018-08-18T15:15:37.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

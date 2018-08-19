@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://yoursite.com</loc>
+        <loc>https://nullaerber.github.io</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/17/%5Bpaper%5Dzju_paper_1/</loc>
+        <loc>https://nullaerber.github.io/2018/08/17/%5Bpaper%5Dzju_paper_1/</loc>
         <lastmod>2018-08-18T15:15:37.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -15,7 +15,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/18/%5Bpaper%5Dzju_paper_2/</loc>
+        <loc>https://nullaerber.github.io/2018/08/18/%5Bpaper%5Dzju_paper_2/</loc>
         <lastmod>2018-08-18T15:14:45.682Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -23,7 +23,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/07/21/%5Blatex%5Dlatex_in_linux/</loc>
+        <loc>https://nullaerber.github.io/2018/07/21/%5Blatex%5Dlatex_in_linux/</loc>
         <lastmod>2018-07-21T09:28:31.313Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -31,7 +31,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/07/21/%5Blatex%5DBiBTeX_found_no%20_itation_commands/</loc>
+        <loc>https://nullaerber.github.io/2018/07/21/%5Blatex%5DBiBTeX_found_no%20_itation_commands/</loc>
         <lastmod>2018-07-21T02:39:27.726Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -39,7 +39,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/07/21/%5Blinux%5Dlinux_count_filenumber/</loc>
+        <loc>https://nullaerber.github.io/2018/07/21/%5Blinux%5Dlinux_count_filenumber/</loc>
         <lastmod>2018-07-21T02:32:43.188Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -47,7 +47,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/21/%5Blinux%5DCreateStarterFileInUbuntu/</loc>
+        <loc>https://nullaerber.github.io/2016/07/21/%5Blinux%5DCreateStarterFileInUbuntu/</loc>
         <lastmod>2018-07-13T06:00:54.460Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -55,7 +55,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/30/%5Blinux%5DGitNote/</loc>
+        <loc>https://nullaerber.github.io/2016/07/30/%5Blinux%5DGitNote/</loc>
         <lastmod>2018-07-13T05:55:26.741Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,7 +63,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/21/%5Blinux%5DPrintChineseInAs/</loc>
+        <loc>https://nullaerber.github.io/2016/07/21/%5Blinux%5DPrintChineseInAs/</loc>
         <lastmod>2018-07-13T05:50:25.603Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -71,7 +71,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2015/07/21/%5Blinux%5Darchlinuxvbox/</loc>
+        <loc>https://nullaerber.github.io/2015/07/21/%5Blinux%5Darchlinuxvbox/</loc>
         <lastmod>2018-07-13T05:49:58.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -79,7 +79,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2015/07/21/%5Bsql%5DStored%20Procedure_SQL/</loc>
+        <loc>https://nullaerber.github.io/2015/07/21/%5Bsql%5DStored%20Procedure_SQL/</loc>
         <lastmod>2018-07-13T05:46:52.286Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -87,7 +87,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2015/07/20/%5Bsql%5DSQL_injection/</loc>
+        <loc>https://nullaerber.github.io/2015/07/20/%5Bsql%5DSQL_injection/</loc>
         <lastmod>2018-07-13T05:46:46.432Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -95,7 +95,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/18/%5BAndroid%5Dsplashactivity/</loc>
+        <loc>https://nullaerber.github.io/2018/03/18/%5BAndroid%5Dsplashactivity/</loc>
         <lastmod>2018-07-13T05:32:15.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -103,7 +103,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
+        <loc>https://nullaerber.github.io/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -111,7 +111,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
+        <loc>https://nullaerber.github.io/2018/03/18/%5BFramework%5DMVCframework/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -119,7 +119,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
+        <loc>https://nullaerber.github.io/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -127,7 +127,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <loc>https://nullaerber.github.io/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -135,7 +135,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/07/18/%5Bnotes%5D2016.7.19/</loc>
+        <loc>https://nullaerber.github.io/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -143,7 +143,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/21/%5Bnotes%5D2016.7.21/</loc>
+        <loc>https://nullaerber.github.io/2017/07/18/%5Bnotes%5D2016.7.19/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -151,7 +151,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
+        <loc>https://nullaerber.github.io/2016/07/21/%5Bnotes%5D2016.7.21/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -159,7 +159,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
+        <loc>https://nullaerber.github.io/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -167,7 +167,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
+        <loc>https://nullaerber.github.io/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -175,7 +175,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
+        <loc>https://nullaerber.github.io/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -183,7 +183,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
+        <loc>https://nullaerber.github.io/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -191,7 +191,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
+        <loc>https://nullaerber.github.io/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -199,7 +199,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2016/07/18/%5Bnotes%5D2016.7.18/</loc>
+        <loc>https://nullaerber.github.io/2016/07/18/%5Bnotes%5D2016.7.18/</loc>
         <lastmod>2018-07-12T16:13:25.275Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -207,7 +207,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/04/25/%5BAndroid%5Dsurfaceview_VelocityTable/</loc>
+        <loc>https://nullaerber.github.io/2017/04/25/%5BAndroid%5Dsurfaceview_VelocityTable/</loc>
         <lastmod>2018-07-12T16:02:24.340Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -215,7 +215,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/05/18/%5BAndroid%5DMemoryTable_surfaceview/</loc>
+        <loc>https://nullaerber.github.io/2017/05/18/%5BAndroid%5DMemoryTable_surfaceview/</loc>
         <lastmod>2018-07-12T16:02:07.124Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -223,7 +223,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2017/04/18/%5BAndroid%5Dsurfaceview_virtualjoystick/</loc>
+        <loc>https://nullaerber.github.io/2017/04/18/%5BAndroid%5Dsurfaceview_virtualjoystick/</loc>
         <lastmod>2018-07-12T15:46:21.883Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
