@@ -136,6 +136,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -144,13 +151,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -211,6 +211,40 @@
                 <!-- Main Content -->
 
 	
+
+<div class="post-preview">
+
+    <a href="/2017/07/18/[notes]2016.7.19/">
+        <h2 class="post-title">
+            [Android] surfaceview相关知识补充
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列05
+        </h3>
+        <div class="post-content-preview">
+            一.自定义控件的使用
+需要把在bluetoothchat中传输过来的数据显示在memorytable上,可以new个thread在bluetoothchat中,然后在通过类似于textview一样的内置控件,根据findviewbyid来实例化memorytable,再设置这个memorytable其中的数据
+二.thread
+thread(new runnable(){
+	public v......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-07-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -423,6 +457,39 @@ git --version
 
 <div class="post-preview">
 
+    <a href="/2016/07/21/[notes]2016.7.21/">
+        <h2 class="post-title">
+            [Scattered Notes] java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity
+        </h2>
+        <h3 class="post-subtitle">
+            随记
+        </h3>
+        <div class="post-content-preview">
+            关于  java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity  问题
+今天晚上在实现界面跳转时发现此报错.
+原因:由于我的这个跳转后的页面的功能是其他地方另建的,是由于移植过来出现了问题
+解决方法:最后发现是将要跳转的页面继承的ac......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
         <h2 class="post-title">
             [Linux] 命令行建启动器
@@ -488,81 +555,6 @@ http://......
               <a href="/tags/#Linux" title="Linux">Linux</a>
             
               <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/07/21/[notes]2016.7.21/">
-        <h2 class="post-title">
-            [Scattered Notes] java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity
-        </h2>
-        <h3 class="post-subtitle">
-            随记
-        </h3>
-        <div class="post-content-preview">
-            关于  java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity  问题
-今天晚上在实现界面跳转时发现此报错.
-原因:由于我的这个跳转后的页面的功能是其他地方另建的,是由于移植过来出现了问题
-解决方法:最后发现是将要跳转的页面继承的ac......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-21
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Android" title="Android">Android</a>
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/07/21/[paper]DMDS_conclusionandfuturework/">
-        <h2 class="post-title">
-            [Paper Notes]  Conclusion And Future Work——云计算下基于二进制文件特点的恶意软件分布式侦测
-        </h2>
-        <h3 class="post-subtitle">
-            05-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
-        </h3>
-        <div class="post-content-preview">
-            总结和改良
-总结
-尽管基于DELSH进行恶意软件描述向量检索是一种探测变种恶意软件的新方法。
-但是了解此技术原理的攻击者会采取一些对策去攻击系统，因为这个技术是基于**全局图像特征**。比如说可以讲重要的可执行代码重部署在二进制文件中每一部分的位置，或者增加大量的冗余数据。
-改良
-为了对应这些攻击，需要更局部化的特征提取方案，这个方案更注重恶意软件可执行和最原始的二进制模块的明显特征。
-一种......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-21
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-              <a href="/tags/#Paper" title="Paper">Paper</a>
-            
-              <a href="/tags/#Security" title="Security">Security</a>
-            
-              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
-            
-              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
             
         </div>
     
@@ -637,9 +629,9 @@ http://......
             
         
             
-        
-            
             <a href="/tags/#Lecture" title="Lecture" rel="2">Lecture</a>
+            
+        
             
         
             
@@ -651,7 +643,7 @@ http://......
             
         
             
-            <a href="/tags/#Paper" title="Paper" rel="7">Paper</a>
+            <a href="/tags/#Paper" title="Paper" rel="8">Paper</a>
             
         
             
@@ -667,17 +659,19 @@ http://......
             
         
             
-            <a href="/tags/#Internship" title="Internship" rel="2">Internship</a>
+            <a href="/tags/#Internship" title="Internship" rel="3">Internship</a>
             
         
             
-            <a href="/tags/#Deep Learning" title="Deep Learning" rel="2">Deep Learning</a>
+            <a href="/tags/#Deep Learning" title="Deep Learning" rel="3">Deep Learning</a>
             
         
             
-            <a href="/tags/#Knowledge Graph" title="Knowledge Graph" rel="2">Knowledge Graph</a>
+            <a href="/tags/#Knowledge Graph" title="Knowledge Graph" rel="3">Knowledge Graph</a>
             
         
+            
+            <a href="/tags/#Attention Based Model" title="Attention Based Model" rel="2">Attention Based Model</a>
             
         
             
@@ -756,6 +750,10 @@ http://......
     <ul>
       
         <li>
+          <a href="/2018/08/22/[paper]zju_paper_3/">[Notes]  跨语言实体对齐模型</a>
+        </li>
+      
+        <li>
           <a href="/2018/08/18/[paper]zju_paper_2/">[Paper Notes]  02-浙江大学实习期间看的一些论文和写的一些代码</a>
         </li>
       
@@ -764,15 +762,11 @@ http://......
         </li>
       
         <li>
-          <a href="/2018/07/21/[linux]linux_count_filenumber/">[Linux] Linux统计文件夹、文件数量的命令</a>
-        </li>
-      
-        <li>
           <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/">[LaTeX] Latex中 BiBTeX found no citation commands 解决办法</a>
         </li>
       
         <li>
-          <a href="/2018/07/21/[latex]latex_in_linux/">[LaTeX] 在manjaro中搭建中文LaTeX排版工具</a>
+          <a href="/2018/07/21/[linux]linux_count_filenumber/">[Linux] Linux统计文件夹、文件数量的命令</a>
         </li>
       
     </ul>
