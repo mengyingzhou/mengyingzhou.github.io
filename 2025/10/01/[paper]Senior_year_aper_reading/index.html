@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [paper] Senior year paper reading - Aerber Joy
+        
+    </title>
+
+    <link rel="canonical" href="https://nullaerber.github.io/2025/10/01/[paper]Senior_year_aper_reading/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#paper" title="paper">paper</a>
+                            
+                        </div>
+                        <h1>[paper] Senior year paper reading</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2025-10-01
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Aerber Joy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h4 id="zhao-x-xia-l-zhang-l-et-al-deep-reinforcement-learning-for-page-wise-recommendationsj-2018">Zhao X, Xia L, Zhang L, et al. Deep Reinforcement Learning for Page-wise Recommendations[J]. 2018.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> engage the Dueling-Double-DQN (a type of DeepLearning) to news recommendations.</p>
+</blockquote>
+<blockquote>
+<p><strong>Normal Question in before Paper:</strong></p>
+<ol>
+<li>难以处理新闻推荐的动态变化。这种动态变化体现在两个方面，首先新闻具有很强的时效性，其次是用户对于新闻阅读的兴趣是不断变化的。</li>
+<li>当前的推荐算法通常只考虑用户的点击／未点击 或者 用户的评分作为反馈，然而，用户隔多久会再次使用服务也能在一定程度上反映用户对推荐结果的满意度。</li>
+<li>目前的推荐系统倾向于推荐用户重复或相似内容的东西，这也许会降低用户在同一个主题上的兴趣度。因此需要进行exploration/surprise。传统方法 e -greedy strategy 或者 Upper Con dence Bound (UCB) 都会在短期对推荐系统的效果造成一定的影响，需要更有效的exploration策略。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong></p>
+<ol>
+<li>使用DQN网络来有效建模新闻推荐的动态变化属性，DQN可以将短期回报和长期回报进行有效的模拟。</li>
+<li>将用户活跃度（activeness score）作为一种新的反馈信息，用户活跃度在后面会详细介绍。</li>
+<li>使用Dueling Bandit Gradient Descent方法来进行有效的exploration/surprise。</li>
+</ol>
+</blockquote>
+<h4 id="niu-x-abbas-f-maher-m-l-et-al-surprise-me-if-you-can-serendipity-in-health-informationcproceedings-of-the-2018-chi-conference-on-human-factors-in-computing-systems-acm-2018-23">Niu X, Abbas F, Maher M L, et al. Surprise Me If You Can: Serendipity in Health Information[C]//Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems. ACM, 2018: 23.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> talk about the concept of a computational model of surprise and the experiment about this theory.</p>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong> a new area: computational surprise model.</p>
+</blockquote>
+<h4 id="zhou-q-chen-y-ma-c-li-f-xiao-y-wang-x-amp-fu-x-measurement-and-analysis-of-the-reviews-in-airbnb">Zhou, Q., Chen, Y., Ma, C., Li, F., Xiao, Y., Wang, X., &amp; Fu, X. Measurement and Analysis of the Reviews in Airbnb.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> Shed light on understanding the emerging sharing economy from a user-centric perspective.</p>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong></p>
+<ol>
+<li>analyze from three aspects: demographic analysis, visible interactions between hosts and guests, mobility patterns of Airbnb users.</li>
+<li>analyze the static data and dynamic data</li>
+<li>use some other data, such as GDP, population</li>
+<li>definition home/destination country entropy</li>
+<li>review graph (based on the interaction graph), which links along with the time information.</li>
+<li>the review graph is a WCC</li>
+<li>verified users or multiple accounts take most part of PageRank.</li>
+<li>top 10 graph communities have only or very few dominant countries.</li>
+<li>done sentiment analysis to each country.</li>
+</ol>
+</blockquote>
+<h4 id="ma-x-hancock-j-t-mingjie-k-l-amp-naaman-m-2017-february-self-disclosure-and-perceived-trustworthiness-of-airbnb-host-profiles-in-cscw-pp-2397-2409">Ma, X., Hancock, J. T., Mingjie, K. L., &amp; Naaman, M. (2017, February). Self-Disclosure and Perceived Trustworthiness of Airbnb Host Profiles. In CSCW (pp. 2397-2409).</h4>
+<blockquote>
+<p><strong>The main idea:</strong> The profile of hosts will influence the choice of renters.</p>
+</blockquote>
+<h4 id="grbovic-m-amp-cheng-h-2018-july-real-time-personalization-using-embeddings-for-search-ranking-at-airbnb-in-proceedings-of-the-24th-acm-sigkdd-international-conference-on-knowledge-discovery-amp-data-mining-pp-311-320-acm">Grbovic, M., &amp; Cheng, H. (2018, July). Real-time Personalization using Embeddings for Search Ranking at Airbnb. In Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining (pp. 311-320). ACM.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> The profile of host will decide the ranking of listings and talk about the quantity influence.</p>
+</blockquote>
+<h4 id="zhou-q-chen-y-ma-c-li-f-xiao-y-wang-x-amp-fu-x-measurement-and-analysis-of-the-reviews-in-airbnb">Zhou, Q., Chen, Y., Ma, C., Li, F., Xiao, Y., Wang, X., &amp; Fu, X. Measurement and Analysis of the Reviews in Airbnb.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> 利用review去分析hosts和renters之间的弱关系网络。</p>
+</blockquote>
+<h4 id="ye-p-qian-j-chen-j-wu-c-h-zhou-y-de-mars-s-amp-zhang-l-2018-july-customized-regression-model-for-airbnb-dynamic-pricing-in-proceedings-of-the-24th-acm-sigkdd-international-conference-on-knowledge-discovery-amp-data-mining-pp-932-940-acm">Ye, P., Qian, J., Chen, J., Wu, C. H., Zhou, Y., De Mars, S., … &amp; Zhang, L. (2018, July). Customized Regression Model for Airbnb Dynamic Pricing. In Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining (pp. 932-940). ACM.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> Come from Airbnb Co. Airbnb上的官方定价模型。</p>
+</blockquote>
+<h4 id="wilson09wilson-c-boe-b-sala-a-puttaswamy-k-p-amp-zhao-b-y-2009-april-user-interactions-in-social-networks-and-their-implications-in-proceedings-of-the-4th-acm-european-conference-on-computer-systems-pp-205-218-acm">{Wilson09}Wilson, C., Boe, B., Sala, A., Puttaswamy, K. P., &amp; Zhao, B. Y. (2009, April). User interactions in social networks and their implications. In Proceedings of the 4th ACM European conference on Computer systems (pp. 205-218). Acm.</h4>
+<blockquote>
+<p><strong>The main idea:</strong></p>
+<ol>
+<li>part 1：分析社交网络的常用方法和结构。</li>
+<li>part 2：Introducte the interaction graph.`</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong></p>
+<ol>
+<li>interaction graph</li>
+<li>define the wall posts and photo comments as interactions.</li>
+<li>users interact only a small subset of friends.</li>
+</ol>
+</blockquote>
+<h4 id="xyang18-liwcyang-c-chen-y-gong-q-he-x-xiao-y-huang-y-amp-fu-x-understanding-the-behavioral-differences-between-american-and-german-users-a-data-driven-study">{X.Yang18-LIWC}Yang, C., Chen, Y., Gong, Q., He, X., Xiao, Y., Huang, Y., &amp; Fu, X. Understanding the Behavioral Differences Between American and German Users: A Data-Driven Study.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> Using the LIWC methods to distinguish the Greman and American based on the review data in Yelp.</p>
+</blockquote>
+<h4 id="kwak10-twitterkwak-h-lee-c-park-h-amp-moon-s-2010-april-what-is-twitter-a-social-network-or-a-news-media-in-proceedings-of-the-19th-international-conference-on-world-wide-web-pp-591-600-acm">{Kwak10-twitter}Kwak, H., Lee, C., Park, H., &amp; Moon, S. (2010, April). What is Twitter, a social network or a news media?. In Proceedings of the 19th international conference on World wide web (pp. 591-600). ACM.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> Before this paper, most people think Twitter is a social network. But in this paper, they introduce a new idea: Twitter is a news media instead of a social network.</p>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong></p>
+<ol>
+<li>在Twitter上的平均跳数是4，远小于六度分离原则。</li>
+<li>依据pagerank、retweet、follower进行排名，retweet和follower类似，但是pagerank不一样。</li>
+<li>Twitter和Google Trend不同，和CNN HeadLine相似。</li>
+<li>由于followers和tweets之间的数量在100[Fig.2]之后差距很大，说明并不是单纯的follower去关注消息，不关注的人也会看这些消息。retweet的人远大于follower的人。</li>
+<li>Fig14 indicate that many tweets have a very large number of additional recipients due to shorter separation.</li>
+</ol>
+</blockquote>
+<h4 id="neil-d-pfeiffer-m-amp-liu-s-c-2016-phased-lstm-accelerating-recurrent-network-training-for-long-or-event-based-sequences-in-advances-in-neural-information-processing-systems-pp-3882-3890">Neil, D., Pfeiffer, M., &amp; Liu, S. C. (2016). Phased lstm: Accelerating recurrent network training for long or event-based sequences. In Advances in Neural Information Processing Systems (pp. 3882-3890).</h4>
+<blockquote>
+<p><strong>The main idea:</strong> Introduce an improved cell PLSTM which can deal with more longer or event-based sequences.</p>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong> phased lstm cell</p>
+</blockquote>
+<h4 id="gong-q-chen-y-he-x-zhuang-z-wang-t-huang-h-amp-fu-x-2018-deepscan-exploiting-deep-learning-for-malicious-account-detection-in-location-based-social-networks-ieee-communications-magazine-feature-topic-on-mobile-big-data-for-urban-analytics-561">Gong, Q., Chen, Y., He, X., Zhuang, Z., Wang, T., Huang, H., … &amp; Fu, X. (2018). DeepScan: Exploiting Deep Learning for Malicious Account Detection in Location-Based Social Networks. IEEE Communications Magazine, Feature Topic on Mobile Big Data for Urban Analytics, 56(1).</h4>
+<blockquote>
+<p><strong>The main idea:</strong> structure a model to detect malicious accounts in DianPing.</p>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong></p>
+<ol>
+<li>Cooperate the DeepLeaning(LSTM) with conventional features together.</li>
+<li>discuss the percent of two methods in this system.</li>
+<li>discuss which feature has the biggest contribution to this system.</li>
+<li>add this feature to another excellent model to confirm that this feature is indeed good.</li>
+</ol>
+</blockquote>
+<h4 id="jin-l-chen-y-wang-t-hui-p-amp-vasilakos-a-v-2013-understanding-user-behavior-in-online-social-networks-a-survey-ieee-communications-magazine-519-144-150">Jin, L., Chen, Y., Wang, T., Hui, P., &amp; Vasilakos, A. V. (2013). Understanding user behavior in online social networks: A survey. IEEE Communications Magazine, 51(9), 144-150.</h4>
+<blockquote>
+<p><strong>The main idea:</strong> This a review.</p>
+</blockquote>
+<blockquote>
+<p><strong>Innovation:</strong> A comprehensive view about OSNs(online social networks) from</p>
+<ol>
+<li>three aspects people: IPSs, OSN service provider, users</li>
+<li>four aspects layers: connectivity and interactions(four types of social graph)[user aspect], traffic activity[IPSs], mobile social behavior[service provider], malicious accounts detection[user].</li>
+</ol>
+</blockquote>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/10/20/[233]gym/" data-toggle="tooltip" data-placement="top" title="[233] 我要减肥～">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#zhao-x-xia-l-zhang-l-et-al-deep-reinforcement-learning-for-page-wise-recommendationsj-2018"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Zhao X, Xia L, Zhang L, et al. Deep Reinforcement Learning for Page-wise Recommendations[J]. 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#niu-x-abbas-f-maher-m-l-et-al-surprise-me-if-you-can-serendipity-in-health-informationcproceedings-of-the-2018-chi-conference-on-human-factors-in-computing-systems-acm-2018-23"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Niu X, Abbas F, Maher M L, et al. Surprise Me If You Can: Serendipity in Health Information[C]//Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems. ACM, 2018: 23.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#zhou-q-chen-y-ma-c-li-f-xiao-y-wang-x-amp-fu-x-measurement-and-analysis-of-the-reviews-in-airbnb"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Zhou, Q., Chen, Y., Ma, C., Li, F., Xiao, Y., Wang, X., &amp; Fu, X. Measurement and Analysis of the Reviews in Airbnb.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ma-x-hancock-j-t-mingjie-k-l-amp-naaman-m-2017-february-self-disclosure-and-perceived-trustworthiness-of-airbnb-host-profiles-in-cscw-pp-2397-2409"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Ma, X., Hancock, J. T., Mingjie, K. L., &amp; Naaman, M. (2017, February). Self-Disclosure and Perceived Trustworthiness of Airbnb Host Profiles. In CSCW (pp. 2397-2409).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#grbovic-m-amp-cheng-h-2018-july-real-time-personalization-using-embeddings-for-search-ranking-at-airbnb-in-proceedings-of-the-24th-acm-sigkdd-international-conference-on-knowledge-discovery-amp-data-mining-pp-311-320-acm"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Grbovic, M., &amp; Cheng, H. (2018, July). Real-time Personalization using Embeddings for Search Ranking at Airbnb. In Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining (pp. 311-320). ACM.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#zhou-q-chen-y-ma-c-li-f-xiao-y-wang-x-amp-fu-x-measurement-and-analysis-of-the-reviews-in-airbnb"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Zhou, Q., Chen, Y., Ma, C., Li, F., Xiao, Y., Wang, X., &amp; Fu, X. Measurement and Analysis of the Reviews in Airbnb.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ye-p-qian-j-chen-j-wu-c-h-zhou-y-de-mars-s-amp-zhang-l-2018-july-customized-regression-model-for-airbnb-dynamic-pricing-in-proceedings-of-the-24th-acm-sigkdd-international-conference-on-knowledge-discovery-amp-data-mining-pp-932-940-acm"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Ye, P., Qian, J., Chen, J., Wu, C. H., Zhou, Y., De Mars, S., … &amp; Zhang, L. (2018, July). Customized Regression Model for Airbnb Dynamic Pricing. In Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining (pp. 932-940). ACM.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wilson09wilson-c-boe-b-sala-a-puttaswamy-k-p-amp-zhao-b-y-2009-april-user-interactions-in-social-networks-and-their-implications-in-proceedings-of-the-4th-acm-european-conference-on-computer-systems-pp-205-218-acm"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">{Wilson09}Wilson, C., Boe, B., Sala, A., Puttaswamy, K. P., &amp; Zhao, B. Y. (2009, April). User interactions in social networks and their implications. In Proceedings of the 4th ACM European conference on Computer systems (pp. 205-218). Acm.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#xyang18-liwcyang-c-chen-y-gong-q-he-x-xiao-y-huang-y-amp-fu-x-understanding-the-behavioral-differences-between-american-and-german-users-a-data-driven-study"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">{X.Yang18-LIWC}Yang, C., Chen, Y., Gong, Q., He, X., Xiao, Y., Huang, Y., &amp; Fu, X. Understanding the Behavioral Differences Between American and German Users: A Data-Driven Study.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#kwak10-twitterkwak-h-lee-c-park-h-amp-moon-s-2010-april-what-is-twitter-a-social-network-or-a-news-media-in-proceedings-of-the-19th-international-conference-on-world-wide-web-pp-591-600-acm"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">{Kwak10-twitter}Kwak, H., Lee, C., Park, H., &amp; Moon, S. (2010, April). What is Twitter, a social network or a news media?. In Proceedings of the 19th international conference on World wide web (pp. 591-600). ACM.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#neil-d-pfeiffer-m-amp-liu-s-c-2016-phased-lstm-accelerating-recurrent-network-training-for-long-or-event-based-sequences-in-advances-in-neural-information-processing-systems-pp-3882-3890"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">Neil, D., Pfeiffer, M., &amp; Liu, S. C. (2016). Phased lstm: Accelerating recurrent network training for long or event-based sequences. In Advances in Neural Information Processing Systems (pp. 3882-3890).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#gong-q-chen-y-he-x-zhuang-z-wang-t-huang-h-amp-fu-x-2018-deepscan-exploiting-deep-learning-for-malicious-account-detection-in-location-based-social-networks-ieee-communications-magazine-feature-topic-on-mobile-big-data-for-urban-analytics-561"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">Gong, Q., Chen, Y., He, X., Zhuang, Z., Wang, T., Huang, H., … &amp; Fu, X. (2018). DeepScan: Exploiting Deep Learning for Malicious Account Detection in Location-Based Social Networks. IEEE Communications Magazine, Feature Topic on Mobile Big Data for Urban Analytics, 56(1).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#jin-l-chen-y-wang-t-hui-p-amp-vasilakos-a-v-2013-understanding-user-behavior-in-online-social-networks-a-survey-ieee-communications-magazine-519-144-150"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">Jin, L., Chen, Y., Wang, T., Hui, P., &amp; Vasilakos, A. V. (2013). Understanding user behavior in online social networks: A survey. IEEE Communications Magazine, 51(9), 144-150.</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#paper" title="paper">paper</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://nullaerber.github.io/2025/10/01/[paper]Senior_year_aper_reading/";
+    var disqus_url = "https://nullaerber.github.io/2025/10/01/[paper]Senior_year_aper_reading/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+            appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true
+        })
+    </script>	
+<script type="text/javascript" src="/js/zooming.js"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/3479268957">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/NullAerber">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/NullAerber">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Aerber Zhou 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/NullAerber">NullAerber</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=NullAerber&repo=NullAerber.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://nullaerber.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://nullaerber.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
