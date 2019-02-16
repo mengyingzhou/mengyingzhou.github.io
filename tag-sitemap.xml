@@ -65,27 +65,6 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/tags/Manjaro/</loc>
-        <lastmod>2018-07-21T02:32:43.188Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://nullaerber.github.io/tags/Notes/</loc>
-        <lastmod>2018-07-21T09:28:31.313Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://nullaerber.github.io/tags/Linux/</loc>
-        <lastmod>2018-07-21T09:28:31.313Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://nullaerber.github.io/tags/LaTeX/</loc>
         <lastmod>2018-07-21T09:28:31.313Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -144,6 +123,27 @@
     <url>
         <loc>https://nullaerber.github.io/tags/paper/</loc>
         <lastmod>2018-11-18T05:39:40.446Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/tags/Notes/</loc>
+        <lastmod>2019-02-16T05:13:44.060Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/tags/Linux/</loc>
+        <lastmod>2019-02-16T05:13:44.060Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/tags/Manjaro/</loc>
+        <lastmod>2019-02-16T05:13:44.060Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
