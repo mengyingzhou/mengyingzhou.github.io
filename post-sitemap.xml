@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2018/07/21/%5Blinux%5Dproxy/</loc>
-        <lastmod>2019-02-16T05:13:44.060Z</lastmod>
+        <loc>https://nullaerber.github.io/2019/02/16/%5Blinux%5Dproxy/</loc>
+        <lastmod>2019-02-16T05:15:50.138Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -135,6 +135,14 @@
     </url>
 
     <url>
+        <loc>https://nullaerber.github.io/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
+        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://nullaerber.github.io/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -151,7 +159,7 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2017/06/18/%5BAndroid%5Dsurfaceview_canvas/</loc>
+        <loc>https://nullaerber.github.io/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -160,14 +168,6 @@
 
     <url>
         <loc>https://nullaerber.github.io/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
-        <lastmod>2018-07-13T05:32:15.310Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://nullaerber.github.io/2018/06/01/%5Blecture%5Dtext-topic-model-application/</loc>
         <lastmod>2018-07-13T05:32:15.310Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -199,14 +199,6 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
-        <lastmod>2018-07-13T05:32:15.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://nullaerber.github.io/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -215,7 +207,7 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
+        <loc>https://nullaerber.github.io/2016/07/18/%5Bpaper%5DDMDS_designandalgorithm/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -224,6 +216,14 @@
 
     <url>
         <loc>https://nullaerber.github.io/2016/07/20/%5Bpaper%5DDMDS_experimentalresultandanalysis/</loc>
+        <lastmod>2018-07-13T05:32:15.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
         <lastmod>2018-07-13T05:32:15.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
