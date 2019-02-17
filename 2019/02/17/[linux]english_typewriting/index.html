@@ -148,14 +148,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -238,7 +238,7 @@
 <p>在解压目录下<br>
 ···<br>
 sudo ./yong-tool.sh --install</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 编译安装</span><br><span class="line">源码：[Github](https://github.com/dgod/yong)  [build.js](https://github.com/dgod/build.js)</span><br><span class="line"></span><br><span class="line">### 依赖： </span><br><span class="line">小小输入法在linux下开发和编译。没有测试过在其他操作系统下进行编译。 </span><br><span class="line"></span><br><span class="line">需要是64位系统，32位系统某些模块就没法编译，需要自己手工调整。 </span><br><span class="line"></span><br><span class="line">gcc 编译器，需要支持c99以上版本。clang应该也行。编译windows相关需要mingw-w64工具链。 </span><br><span class="line"></span><br><span class="line">nodejs需要0.12版本及以上。 </span><br><span class="line"></span><br><span class="line">系统中需要安装好相关的开发环境，比如gtk3-devel，gtk2-devel，ibus-devel，libxkbcommon-devel(debian下是libgtk-3-dev libgtk2.0-dev libxkbcommon-dev libibus-1.0-dev)。 </span><br><span class="line"></span><br><span class="line">准备好build.js，在https://github.com/dgod/build.js </span><br><span class="line"></span><br><span class="line">### 编译： </span><br><span class="line"></span><br><span class="line">由于git不能存储空目录，所以下载到的源代码缺少一些目录结构，编译前需要先创建好一些目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 编译安装</span><br><span class="line">源码：</span><br><span class="line">[Github](https://github.com/dgod/yong) </span><br><span class="line"></span><br><span class="line">[build.js](https://github.com/dgod/build.js)</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">[Yong输入法的编译方法](http://yong.dgod.net/read.php?tid=2247)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 依赖： </span><br><span class="line">小小输入法在linux下开发和编译。没有测试过在其他操作系统下进行编译。 </span><br><span class="line"></span><br><span class="line">需要是64位系统，32位系统某些模块就没法编译，需要自己手工调整。 </span><br><span class="line"></span><br><span class="line">gcc 编译器，需要支持c99以上版本。clang应该也行。编译windows相关需要mingw-w64工具链。 </span><br><span class="line"></span><br><span class="line">nodejs需要0.12版本及以上。 </span><br><span class="line"></span><br><span class="line">系统中需要安装好相关的开发环境，比如gtk3-devel，gtk2-devel，ibus-devel，libxkbcommon-devel(debian下是libgtk-3-dev libgtk2.0-dev libxkbcommon-dev libibus-1.0-dev)。 </span><br><span class="line"></span><br><span class="line">准备好build.js，在https://github.com/dgod/build.js </span><br><span class="line"></span><br><span class="line">### 编译： </span><br><span class="line"></span><br><span class="line">由于git不能存储空目录，所以下载到的源代码缺少一些目录结构，编译前需要先创建好一些目录</span><br></pre></td></tr></table></figure>
 <p>mkdir - p {llib,cloud,gbk,mb,vim}/{l32,l64}<br>
 mkdir -p {im,config}/{l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2}<br>
 mkdir -p im/gtk-im/{l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2}<br>
