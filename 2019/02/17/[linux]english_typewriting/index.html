@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Scattered Notes] 关于android.support.design.widget.FloatingActionButton预览中报错显示不出来 &amp;&amp; layout属性中fitsSystemWindows &amp;&amp; looper handler - Aerber Joy
+          [Linux] 为Linux设置英文补全输入法 - Aerber Joy
         
     </title>
 
-    <link rel="canonical" href="https://nullaerber.github.io/2016/07/18/[notes]2016.7.18/">
+    <link rel="canonical" href="https://nullaerber.github.io/2019/02/17/[linux]english_typewriting/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('Demo.png')
+            background-image: url('bg.png')
             /*post*/
         
     }
@@ -90,16 +90,18 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Android" title="Android">Android</a>
-                            
                               <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
                             
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+                            
                         </div>
-                        <h1>[Scattered Notes] 关于android.support.design.widget.FloatingActionButton预览中报错显示不出来 &amp;&amp; layout属性中fitsSystemWindows &amp;&amp; looper handler</h1>
-                        <h2 class="subheading">随记</h2>
+                        <h1>[Linux] 为Linux设置英文补全输入法</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Aerber Zhou on
-                            2016-07-18
+                            2019-02-17
                         </span>
                     </div>
                 
@@ -216,22 +218,126 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="一关于androidsupportdesignwidgetfloatingactionbutton预览中报错显示不出来">一.关于android.support.design.widget.FloatingActionButton预览中报错显示不出来</h1>
-<p>解决方案:</p>
-<p>在build.gradle添加</p>
-<p>compile ‘com.android.support:design:23.3.0’   后重启项目</p>
-<p>原因: 在android版本23中添加了floatingActionbutton,需要引入</p>
-<p>![](2016-07-18 13-58-12屏幕截图.png)</p>
-<h1 id="二layout属性中fitssystemwindows">二.layout属性中fitsSystemWindows</h1>
-<p>具体的作用就是你的contentview是否忽略actionbar,title和屏幕的底部虚拟按键，将整个屏幕当作可用的空间。</p>
-<p>正常情况，contentview可用的空间是去除了actionbar,title,底部按键的空间后剩余的可用区域</p>
-<p>这个属性设置为true,则忽略，false则不忽略</p>
-<p>设置为true</p>
-<p><img src="ee8605af-6533-4983-ac1e-b396a005d4b9.jpg" alt=""></p>
-<p>设置为false</p>
-<p><img src="e33ce078-fcb5-4530-845a-3883213d7a0f.jpg" alt=""></p>
-<h1 id="三-looper_hander_messages-机制简析">三. Looper_Hander_Messages 机制简析</h1>
-<p><a href="http://www.cnblogs.com/codingmyworld/archive/2011/09/12/2174255.html" target="_blank" rel="noopener">http://www.cnblogs.com/codingmyworld/archive/2011/09/12/2174255.html</a></p>
+                <h1 id="fcitx-输入法">fcitx 输入法</h1>
+<ol>
+<li>激活到并且进入Fcixt的英文输入状态,点击任意输入框.</li>
+<li>按 ctrl+alt+H ,以激活 spell hint状态.</li>
+<li>输入几个英文字母,即可弹出候选单词(即自动补全功能),可以按alt加数字,以选取候选单词.</li>
+</ol>
+<p>注:</p>
+<ul>
+<li>为了令补全功能更贴心,可以在Fcitx设置里的找到&quot;Enlish&quot;(输入法)一栏,双击,进入可有更多设置. 比如把 &quot;choose key modifier&quot;由 alt 改成 none ,作用是选词时免按alt.</li>
+<li>ctrl+alt+N 可以创建新词</li>
+<li>使用Fcitx的“快速输入”功能，自己找一套英语单词表，把其放入 ~/.config/fcitx/QuickPhrase.mb 中，这样就能实现自定义单词。<a href="http://svn.freebsd.org/viewvc/base/head/share/dict/web2?view=log" target="_blank" rel="noopener">英文单词词库有现成的</a></li>
+</ul>
+<h1 id="网页版yong网页版">（网页版）Yong网页版</h1>
+<p><a href="http://yong.dgod.net/webim/index.html?4" target="_blank" rel="noopener">链接</a></p>
+<h1 id="小小输入法yong">小小输入法/Yong</h1>
+<h2 id="绿色安装">绿色安装</h2>
+<p><a href="http://yongim.ys168.com/" target="_blank" rel="noopener">下载地址</a></p>
+<p>在解压目录下<br>
+···<br>
+sudo ./yong-tool.sh --install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 编译安装</span><br><span class="line">源码：[Github](https://github.com/dgod/yong)  [build.js](https://github.com/dgod/build.js)</span><br><span class="line"></span><br><span class="line">### 依赖： </span><br><span class="line">小小输入法在linux下开发和编译。没有测试过在其他操作系统下进行编译。 </span><br><span class="line"></span><br><span class="line">需要是64位系统，32位系统某些模块就没法编译，需要自己手工调整。 </span><br><span class="line"></span><br><span class="line">gcc 编译器，需要支持c99以上版本。clang应该也行。编译windows相关需要mingw-w64工具链。 </span><br><span class="line"></span><br><span class="line">nodejs需要0.12版本及以上。 </span><br><span class="line"></span><br><span class="line">系统中需要安装好相关的开发环境，比如gtk3-devel，gtk2-devel，ibus-devel，libxkbcommon-devel(debian下是libgtk-3-dev libgtk2.0-dev libxkbcommon-dev libibus-1.0-dev)。 </span><br><span class="line"></span><br><span class="line">准备好build.js，在https://github.com/dgod/build.js </span><br><span class="line"></span><br><span class="line">### 编译： </span><br><span class="line"></span><br><span class="line">由于git不能存储空目录，所以下载到的源代码缺少一些目录结构，编译前需要先创建好一些目录</span><br></pre></td></tr></table></figure>
+<p>mkdir - p {llib,cloud,gbk,mb,vim}/{l32,l64}<br>
+mkdir -p {im,config}/{l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2}<br>
+mkdir -p im/gtk-im/{l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2}<br>
+mkdir -p im/IMdkit/{l32,l64}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">编译所有相关内容</span><br></pre></td></tr></table></figure>
+<p>node build.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">只编译linux相关内容</span><br></pre></td></tr></table></figure>
+<p>node build.js l32 l64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要qt5模块的，这个编译某些地方是写死了路径的，在某些系统上可能无法编译通过，需要自己调整build.txt。(需要安装包qt5-qtbase-devel，debian下是qtbase5-dev,qtbase5-private-dev)</span><br></pre></td></tr></table></figure>
+<p>node build.js -C im/qt5-im</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux下打包成7z,需要系统中安装有p7zip压缩工具。</span><br></pre></td></tr></table></figure>
+<p>node build.js -C install copy dist</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### PKGBUILD for Archlinux</span><br></pre></td></tr></table></figure>
+<h1 id="maintainer-firef-ltuse_my_id-at-gmail-dot-comgt">Maintainer: firef &lt;use_my_id at gmail dot com&gt;</h1>
+<p>pkgname=yong<br>
+pkgver=2.4.0<br>
+pkgrel=1<br>
+pkgdesc=&quot;Tiny Small Chinese Input Method&quot;<br>
+arch=(‘i686’)<br>
+url=&quot;<a href="https://github.com/dgod/yong" target="_blank" rel="noopener">https://github.com/dgod/yong</a>&quot;<br>
+license=(‘GPL’)</p>
+<p>makedepends=(‘git’ ‘nodejs’ ‘gcc’ ‘ibus’ ‘wayland’ ‘gtk2’ ‘gtk3’ ‘libxkbcommon’)<br>
+#provides=(“yong=$pkgver”)</p>
+<p>depends=(‘pango’)</p>
+<p>#install=yong.install</p>
+<p>source=(“git+https://github.com/dgod/yong.git” “git+https://github.com/dgod/build.js.git”)<br>
+md5sums=(‘SKIP’ ‘SKIP’)</p>
+<p>pkgver() {<br>
+cd &quot;$srcdir/$pkgname/install&quot;<br>
+awk ‘/%define +version/{print $3}’ yong.spec | sed ‘s|-|.|g’<br>
+}<br>
+prepare(){<br>
+cd  $srcdir/$pkgname<br>
+mkdir -p {llib,cloud,gbk,mb,vim}/l32<br>
+mkdir -p {im,config}/{l32-gtk3,l32-gtk2}<br>
+mkdir -p im/gtk-im/{l32-gtk3,l32-gtk2}<br>
+mkdir -p im/IMdkit/l32</p>
+<p>sed -i ‘s/copy_build(“l64”);//’ install/build.txt</p>
+<h1 id="modify-shuangping-rules">modify shuangping rules</h1>
+<p>sed -i -r  -e “s/‘p’(,[1|2],”\wh{0,1}un&quot;)/‘y’\1/g&quot; <br>
+-e “s/‘d’(,[1|2],”\wh{0,1}uang&quot;)/‘l’\1/g&quot; <br>
+-e “s/‘d’(,[1|2],”\wh{0,1}iang&quot;)/‘l’\1/g&quot; <br>
+-e “s/‘y’(,[1|2],”\wh{0,1}uai&quot;)/‘k’\1/g&quot;  <br>
+-e “s/‘y’(,[1|2],”\wh{0,1}ing&quot;)/‘k’\1/g&quot; <br>
+-e “s/‘w’(,[1|2],”\wh{0,1}ua&quot;)/‘x’\1/g&quot;  <br>
+-e “s/‘w’(,[1|2],”\wh{0,1}ia&quot;)/‘x’\1/g&quot;  <br>
+-e “s/‘b’(,[1|2],”\wh{0,1}ou&quot;)/‘z’\1/g&quot;  <br>
+-e “s/‘z’(,[1|2],”\wh{0,1}ei&quot;)/‘w’\1/g&quot;  <br>
+-e “s/‘k’(,[1|2],”\wh{0,1}ao&quot;)/‘c’\1/g&quot;  <br>
+-e “s/‘l’(,[1|2],”\wh{0,1}ai&quot;)/‘d’\1/g&quot;  <br>
+-e “s/‘n’(,[1|2],”\wh{0,1}in&quot;)/‘b’\1/g&quot;  <br>
+-e “s/‘x’(,[1|2],”\wh{0,1}ie&quot;)/‘p’\1/g&quot;  <br>
+-e “s/‘c’(,[1|2],”\wh{0,1}iao&quot;)/‘n’\1/g&quot;  common/pinyin.c<br>
+cp -f common/pinyin.c cloud/pinyin.c<br>
+sed -i -e ‘s/default=0/default=6/’ <br>
+-e “s|overlay=mb/pinyin.ini|overlay=mb/sp.ini\nsp=zrm|” <br>
+-e “s/select=LSHIFT RSHIFT/select=; '/” <br>
+-e “s/CNen=LCTRL/CNen=LSHIFT/”   <br>
+-e “s/page=- =/page=, ./”   <br>
+im/yong.ini<br>
+sed -i ‘s/“自然码”/“小鹤双拼”/’ config/config_ui.c<br>
+}<br>
+build() {</p>
+<p>buildjs=&quot;$srcdir/build.js/build.js&quot;<br>
+cd $srcdir/$pkgname<br>
+node $buildjs  l32<br>
+node $buildjs -C install  copy<br>
+}</p>
+<p>package() {<br>
+buildjs=&quot;$srcdir/build.js/build.js&quot;<br>
+mkdir -p $pkgdir/usr/bin<br>
+cp -a $srcdir/$pkgname/install/yong $pkgdir/usr<br>
+cd $pkgdir/usr/yong<br>
+ln -sf …/yong/l32/yong-gtk3 $pkgdir/usr/bin/yong<br>
+ln -sf …/yong/l32/yong-config-gtk3 $pkgdir/usr/bin/yong-config<br>
+install -D locale/zh_CN.mo $pkgdir/usr/share/locale/zh_CN/LC_MESSAGES/yong.mo<br>
+install -D l32/gtk-im/im-yong-gtk2.so $pkgdir/usr/lib/gtk-2.0/2.10.0/immodules/im-yong.so<br>
+install -D l32/gtk-im/im-yong-gtk3.so $pkgdir/usr/lib/gtk-3.0/3.0.0/immodules/im-yong.so</p>
+<p>}<br>
+post_install() {<br>
+gtk-query-immodules-2.0 --update-cache<br>
+gtk-query-immodules-3.0 --update-cache<br>
+}</p>
+<p>post_remove() {<br>
+gtk-query-immodules-2.0 --update-cache<br>
+gtk-query-immodules-3.0 --update-cache<br>
+}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把以上脚本存为PKGBUILD..后执行makepkg就会自动编译出Arch专用的安装包了.再用root权限执行以下命令就装上了.</span><br></pre></td></tr></table></figure>
+<p>pacman -U yong-*.tar.xz</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">需要手动添加以下输入法启动脚本到~/.xprofile文件下.</span><br></pre></td></tr></table></figure>
+<p>export GTK_IM_MODULE=yong<br>
+export QT_IM_MODULE=yong<br>
+export XMODIFIERS=@im=yong<br>
+yong -d</p>
+<pre><code>注：编译出来自己用。。把内置的自然码双拼改成小鹤双拼(默认输入法).
+
+
+# （题外话）Mac下的英文输入法
+https://github.com/dongyuwei/hallelujahIM</code></pre>
 
                 
 
@@ -240,12 +346,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2016/07/18/[paper]DMDS_designandalgorithm/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测">&larr; Previous Post</a>
+                            <a href="/2025/10/01/[paper]Senior_year_aper_reading/" data-toggle="tooltip" data-placement="top" title="[paper] Senior year paper reading">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2016/07/17/[paper]DMDS_Introduction/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  Introduction——云计算下基于二进制文件特点的恶意软件分布式侦测">Next Post &rarr;</a>
+                            <a href="/2019/02/16/[linux]proxy/" data-toggle="tooltip" data-placement="top" title="[Linux] 为ArchLinux设置代理">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -271,7 +377,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一关于androidsupportdesignwidgetfloatingactionbutton预览中报错显示不出来"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一.关于android.support.design.widget.FloatingActionButton预览中报错显示不出来</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二layout属性中fitssystemwindows"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二.layout属性中fitsSystemWindows</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三-looper_hander_messages-机制简析"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三. Looper_Hander_Messages 机制简析</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#fcitx-输入法"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">fcitx 输入法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#网页版yong网页版"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">（网页版）Yong网页版</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#小小输入法yong"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">小小输入法/Yong</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#绿色安装"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">绿色安装</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#maintainer-firef-ltuse_my_id-at-gmail-dot-comgt"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Maintainer: firef &lt;use_my_id at gmail dot com&gt;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#modify-shuangping-rules"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">modify shuangping rules</span></a></li></ol>
         
         </div>
       </aside>
@@ -291,9 +397,11 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Android" title="Android">Android</a>
-                        
                           <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
                         
                     </div>
                 </section>
@@ -324,8 +432,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "https://nullaerber.github.io/2016/07/18/[notes]2016.7.18/";
-    var disqus_url = "https://nullaerber.github.io/2016/07/18/[notes]2016.7.18/";
+    var disqus_identifier = "https://nullaerber.github.io/2019/02/17/[linux]english_typewriting/";
+    var disqus_url = "https://nullaerber.github.io/2019/02/17/[linux]english_typewriting/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
