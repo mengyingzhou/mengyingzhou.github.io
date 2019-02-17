@@ -235,109 +235,41 @@
 <h1 id="小小输入法yong">小小输入法/Yong</h1>
 <h2 id="绿色安装">绿色安装</h2>
 <p><a href="http://yongim.ys168.com/" target="_blank" rel="noopener">下载地址</a></p>
-<p>在解压目录下<br>
-···<br>
-sudo ./yong-tool.sh --install</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 编译安装</span><br><span class="line">源码：</span><br><span class="line">[Github](https://github.com/dgod/yong) </span><br><span class="line"></span><br><span class="line">[build.js](https://github.com/dgod/build.js)</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">[Yong输入法的编译方法](http://yong.dgod.net/read.php?tid=2247)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 依赖： </span><br><span class="line">小小输入法在linux下开发和编译。没有测试过在其他操作系统下进行编译。 </span><br><span class="line"></span><br><span class="line">需要是64位系统，32位系统某些模块就没法编译，需要自己手工调整。 </span><br><span class="line"></span><br><span class="line">gcc 编译器，需要支持c99以上版本。clang应该也行。编译windows相关需要mingw-w64工具链。 </span><br><span class="line"></span><br><span class="line">nodejs需要0.12版本及以上。 </span><br><span class="line"></span><br><span class="line">系统中需要安装好相关的开发环境，比如gtk3-devel，gtk2-devel，ibus-devel，libxkbcommon-devel(debian下是libgtk-3-dev libgtk2.0-dev libxkbcommon-dev libibus-1.0-dev)。 </span><br><span class="line"></span><br><span class="line">准备好build.js，在https://github.com/dgod/build.js </span><br><span class="line"></span><br><span class="line">### 编译： </span><br><span class="line"></span><br><span class="line">由于git不能存储空目录，所以下载到的源代码缺少一些目录结构，编译前需要先创建好一些目录</span><br></pre></td></tr></table></figure>
-<p>mkdir - p {llib,cloud,gbk,mb,vim}/{l32,l64}<br>
-mkdir -p {im,config}/{l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2}<br>
-mkdir -p im/gtk-im/{l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2}<br>
-mkdir -p im/IMdkit/{l32,l64}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">编译所有相关内容</span><br></pre></td></tr></table></figure>
-<p>node build.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">只编译linux相关内容</span><br></pre></td></tr></table></figure>
-<p>node build.js l32 l64</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要qt5模块的，这个编译某些地方是写死了路径的，在某些系统上可能无法编译通过，需要自己调整build.txt。(需要安装包qt5-qtbase-devel，debian下是qtbase5-dev,qtbase5-private-dev)</span><br></pre></td></tr></table></figure>
-<p>node build.js -C im/qt5-im</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux下打包成7z,需要系统中安装有p7zip压缩工具。</span><br></pre></td></tr></table></figure>
-<p>node build.js -C install copy dist</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### PKGBUILD for Archlinux</span><br></pre></td></tr></table></figure>
-<h1 id="maintainer-firef-ltuse_my_id-at-gmail-dot-comgt">Maintainer: firef &lt;use_my_id at gmail dot com&gt;</h1>
-<p>pkgname=yong<br>
-pkgver=2.4.0<br>
-pkgrel=1<br>
-pkgdesc=&quot;Tiny Small Chinese Input Method&quot;<br>
-arch=(‘i686’)<br>
-url=&quot;<a href="https://github.com/dgod/yong" target="_blank" rel="noopener">https://github.com/dgod/yong</a>&quot;<br>
-license=(‘GPL’)</p>
-<p>makedepends=(‘git’ ‘nodejs’ ‘gcc’ ‘ibus’ ‘wayland’ ‘gtk2’ ‘gtk3’ ‘libxkbcommon’)<br>
-#provides=(“yong=$pkgver”)</p>
-<p>depends=(‘pango’)</p>
-<p>#install=yong.install</p>
-<p>source=(“git+https://github.com/dgod/yong.git” “git+https://github.com/dgod/build.js.git”)<br>
-md5sums=(‘SKIP’ ‘SKIP’)</p>
-<p>pkgver() {<br>
-cd &quot;$srcdir/$pkgname/install&quot;<br>
-awk ‘/%define +version/{print $3}’ yong.spec | sed ‘s|-|.|g’<br>
-}<br>
-prepare(){<br>
-cd  $srcdir/$pkgname<br>
-mkdir -p {llib,cloud,gbk,mb,vim}/l32<br>
-mkdir -p {im,config}/{l32-gtk3,l32-gtk2}<br>
-mkdir -p im/gtk-im/{l32-gtk3,l32-gtk2}<br>
-mkdir -p im/IMdkit/l32</p>
-<p>sed -i ‘s/copy_build(“l64”);//’ install/build.txt</p>
-<h1 id="modify-shuangping-rules">modify shuangping rules</h1>
-<p>sed -i -r  -e “s/‘p’(,[1|2],”\wh{0,1}un&quot;)/‘y’\1/g&quot; <br>
--e “s/‘d’(,[1|2],”\wh{0,1}uang&quot;)/‘l’\1/g&quot; <br>
--e “s/‘d’(,[1|2],”\wh{0,1}iang&quot;)/‘l’\1/g&quot; <br>
--e “s/‘y’(,[1|2],”\wh{0,1}uai&quot;)/‘k’\1/g&quot;  <br>
--e “s/‘y’(,[1|2],”\wh{0,1}ing&quot;)/‘k’\1/g&quot; <br>
--e “s/‘w’(,[1|2],”\wh{0,1}ua&quot;)/‘x’\1/g&quot;  <br>
--e “s/‘w’(,[1|2],”\wh{0,1}ia&quot;)/‘x’\1/g&quot;  <br>
--e “s/‘b’(,[1|2],”\wh{0,1}ou&quot;)/‘z’\1/g&quot;  <br>
--e “s/‘z’(,[1|2],”\wh{0,1}ei&quot;)/‘w’\1/g&quot;  <br>
--e “s/‘k’(,[1|2],”\wh{0,1}ao&quot;)/‘c’\1/g&quot;  <br>
--e “s/‘l’(,[1|2],”\wh{0,1}ai&quot;)/‘d’\1/g&quot;  <br>
--e “s/‘n’(,[1|2],”\wh{0,1}in&quot;)/‘b’\1/g&quot;  <br>
--e “s/‘x’(,[1|2],”\wh{0,1}ie&quot;)/‘p’\1/g&quot;  <br>
--e “s/‘c’(,[1|2],”\wh{0,1}iao&quot;)/‘n’\1/g&quot;  common/pinyin.c<br>
-cp -f common/pinyin.c cloud/pinyin.c<br>
-sed -i -e ‘s/default=0/default=6/’ <br>
--e “s|overlay=mb/pinyin.ini|overlay=mb/sp.ini\nsp=zrm|” <br>
--e “s/select=LSHIFT RSHIFT/select=; '/” <br>
--e “s/CNen=LCTRL/CNen=LSHIFT/”   <br>
--e “s/page=- =/page=, ./”   <br>
-im/yong.ini<br>
-sed -i ‘s/“自然码”/“小鹤双拼”/’ config/config_ui.c<br>
-}<br>
-build() {</p>
-<p>buildjs=&quot;$srcdir/build.js/build.js&quot;<br>
-cd $srcdir/$pkgname<br>
-node $buildjs  l32<br>
-node $buildjs -C install  copy<br>
-}</p>
-<p>package() {<br>
-buildjs=&quot;$srcdir/build.js/build.js&quot;<br>
-mkdir -p $pkgdir/usr/bin<br>
-cp -a $srcdir/$pkgname/install/yong $pkgdir/usr<br>
-cd $pkgdir/usr/yong<br>
-ln -sf …/yong/l32/yong-gtk3 $pkgdir/usr/bin/yong<br>
-ln -sf …/yong/l32/yong-config-gtk3 $pkgdir/usr/bin/yong-config<br>
-install -D locale/zh_CN.mo $pkgdir/usr/share/locale/zh_CN/LC_MESSAGES/yong.mo<br>
-install -D l32/gtk-im/im-yong-gtk2.so $pkgdir/usr/lib/gtk-2.0/2.10.0/immodules/im-yong.so<br>
-install -D l32/gtk-im/im-yong-gtk3.so $pkgdir/usr/lib/gtk-3.0/3.0.0/immodules/im-yong.so</p>
-<p>}<br>
-post_install() {<br>
-gtk-query-immodules-2.0 --update-cache<br>
-gtk-query-immodules-3.0 --update-cache<br>
-}</p>
-<p>post_remove() {<br>
-gtk-query-immodules-2.0 --update-cache<br>
-gtk-query-immodules-3.0 --update-cache<br>
-}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把以上脚本存为PKGBUILD..后执行makepkg就会自动编译出Arch专用的安装包了.再用root权限执行以下命令就装上了.</span><br></pre></td></tr></table></figure>
-<p>pacman -U yong-*.tar.xz</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">需要手动添加以下输入法启动脚本到~/.xprofile文件下.</span><br></pre></td></tr></table></figure>
-<p>export GTK_IM_MODULE=yong<br>
-export QT_IM_MODULE=yong<br>
-export XMODIFIERS=@im=yong<br>
-yong -d</p>
-<pre><code>注：编译出来自己用。。把内置的自然码双拼改成小鹤双拼(默认输入法).
-
-
-# （题外话）Mac下的英文输入法
-https://github.com/dongyuwei/hallelujahIM</code></pre>
+<p>在解压目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./yong-tool.sh --install</span><br></pre></td></tr></table></figure>
+<h2 id="编译安装">编译安装</h2>
+<p>源码：<br>
+<a href="https://github.com/dgod/yong" target="_blank" rel="noopener">Github</a></p>
+<p><a href="https://github.com/dgod/build.js" target="_blank" rel="noopener">build.js</a></p>
+<p>说明：<br>
+<a href="http://yong.dgod.net/read.php?tid=2247" target="_blank" rel="noopener">Yong输入法的编译方法</a></p>
+<h3 id="依赖">依赖：</h3>
+<p>小小输入法在linux下开发和编译。没有测试过在其他操作系统下进行编译。</p>
+<p>需要是64位系统，32位系统某些模块就没法编译，需要自己手工调整。</p>
+<p>gcc 编译器，需要支持c99以上版本。clang应该也行。编译windows相关需要mingw-w64工具链。</p>
+<p>nodejs需要0.12版本及以上。</p>
+<p>系统中需要安装好相关的开发环境，比如gtk3-devel，gtk2-devel，ibus-devel，libxkbcommon-devel(debian下是libgtk-3-dev libgtk2.0-dev libxkbcommon-dev libibus-1.0-dev)。</p>
+<p>准备好build.js，在https://github.com/dgod/build.js</p>
+<h3 id="编译">编译：</h3>
+<p>由于git不能存储空目录，所以下载到的源代码缺少一些目录结构，编译前需要先创建好一些目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir - p &#123;llib,cloud,gbk,mb,vim&#125;/&#123;l32,l64&#125; </span><br><span class="line">mkdir -p &#123;im,config&#125;/&#123;l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2&#125; </span><br><span class="line">mkdir -p im/gtk-im/&#123;l32-gtk3,l32-gtk2,l64-gtk3,l64-gtk2&#125; </span><br><span class="line">mkdir -p im/IMdkit/&#123;l32,l64&#125;</span><br></pre></td></tr></table></figure>
+<p>编译所有相关内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node build.js</span><br></pre></td></tr></table></figure>
+<p>只编译linux相关内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node build.js l32 l64</span><br></pre></td></tr></table></figure>
+<p>需要qt5模块的，这个编译某些地方是写死了路径的，在某些系统上可能无法编译通过，需要自己调整build.txt。(需要安装包qt5-qtbase-devel，debian下是qtbase5-dev,qtbase5-private-dev)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node build.js -C im/qt5-im</span><br></pre></td></tr></table></figure>
+<p>linux下打包成7z,需要系统中安装有p7zip压缩工具。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node build.js -C install copy dist</span><br></pre></td></tr></table></figure>
+<h3 id="pkgbuild-for-archlinux">PKGBUILD for Archlinux</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"># Maintainer: firef &lt;use_my_id at gmail dot com&gt;</span><br><span class="line"> </span><br><span class="line">pkgname=yong</span><br><span class="line">pkgver=2.4.0</span><br><span class="line">pkgrel=1</span><br><span class="line">pkgdesc=&quot;Tiny Small Chinese Input Method&quot;</span><br><span class="line">arch=(&apos;i686&apos;)</span><br><span class="line">url=&quot;https://github.com/dgod/yong&quot;</span><br><span class="line">license=(&apos;GPL&apos;)</span><br><span class="line"> </span><br><span class="line">makedepends=(&apos;git&apos; &apos;nodejs&apos; &apos;gcc&apos; &apos;ibus&apos; &apos;wayland&apos; &apos;gtk2&apos; &apos;gtk3&apos; &apos;libxkbcommon&apos;)</span><br><span class="line">#provides=(&quot;yong=$pkgver&quot;)</span><br><span class="line"> </span><br><span class="line">depends=(&apos;pango&apos;)</span><br><span class="line"> </span><br><span class="line">#install=yong.install</span><br><span class="line"> </span><br><span class="line">source=(&quot;git+https://github.com/dgod/yong.git&quot; &quot;git+https://github.com/dgod/build.js.git&quot;)</span><br><span class="line">md5sums=(&apos;SKIP&apos; &apos;SKIP&apos;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">pkgver() &#123;</span><br><span class="line">    cd &quot;$srcdir/$pkgname/install&quot;</span><br><span class="line">    awk &apos;/%define +version/&#123;print $3&#125;&apos; yong.spec | sed &apos;s|-|.|g&apos;</span><br><span class="line">&#125;</span><br><span class="line">prepare()&#123;</span><br><span class="line">    cd  $srcdir/$pkgname</span><br><span class="line">    mkdir -p &#123;llib,cloud,gbk,mb,vim&#125;/l32</span><br><span class="line">    mkdir -p &#123;im,config&#125;/&#123;l32-gtk3,l32-gtk2&#125;</span><br><span class="line">    mkdir -p im/gtk-im/&#123;l32-gtk3,l32-gtk2&#125;</span><br><span class="line">    mkdir -p im/IMdkit/l32</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">sed -i &apos;s/copy_build(&quot;l64&quot;);//&apos; install/build.txt</span><br><span class="line"># modify shuangping rules</span><br><span class="line">sed -i -r  -e &quot;s/&apos;p&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;un\&quot;)/&apos;y&apos;\1/g&quot; \</span><br><span class="line">-e &quot;s/&apos;d&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;uang\&quot;)/&apos;l&apos;\1/g&quot; \</span><br><span class="line">-e &quot;s/&apos;d&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;iang\&quot;)/&apos;l&apos;\1/g&quot; \</span><br><span class="line">-e &quot;s/&apos;y&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;uai\&quot;)/&apos;k&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;y&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ing\&quot;)/&apos;k&apos;\1/g&quot; \</span><br><span class="line">-e &quot;s/&apos;w&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ua\&quot;)/&apos;x&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;w&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ia\&quot;)/&apos;x&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;b&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ou\&quot;)/&apos;z&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;z&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ei\&quot;)/&apos;w&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;k&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ao\&quot;)/&apos;c&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;l&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ai\&quot;)/&apos;d&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;n&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;in\&quot;)/&apos;b&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;x&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;ie\&quot;)/&apos;p&apos;\1/g&quot;  \</span><br><span class="line">-e &quot;s/&apos;c&apos;(,[1|2],\&quot;\wh&#123;0,1&#125;iao\&quot;)/&apos;n&apos;\1/g&quot;  common/pinyin.c</span><br><span class="line">cp -f common/pinyin.c cloud/pinyin.c</span><br><span class="line">sed -i -e &apos;s/default=0/default=6/&apos; \</span><br><span class="line">       -e &quot;s|overlay=mb/pinyin.ini|overlay=mb/sp.ini\nsp=zrm|&quot; \</span><br><span class="line">       -e &quot;s/select=LSHIFT RSHIFT/select=; &apos;/&quot; \</span><br><span class="line">       -e &quot;s/CNen=LCTRL/CNen=LSHIFT/&quot;   \</span><br><span class="line">       -e &quot;s/page=- =/page=, ./&quot;   \</span><br><span class="line">im/yong.ini</span><br><span class="line">sed -i &apos;s/&quot;自然码&quot;/&quot;小鹤双拼&quot;/&apos; config/config_ui.c</span><br><span class="line">&#125;</span><br><span class="line">build() &#123;</span><br><span class="line"> </span><br><span class="line">buildjs=&quot;$srcdir/build.js/build.js&quot;</span><br><span class="line"> cd $srcdir/$pkgname</span><br><span class="line">    node $buildjs  l32 </span><br><span class="line">   node $buildjs -C install  copy</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">package() &#123;</span><br><span class="line">buildjs=&quot;$srcdir/build.js/build.js&quot;</span><br><span class="line">   mkdir -p $pkgdir/usr/bin</span><br><span class="line">  cp -a $srcdir/$pkgname/install/yong $pkgdir/usr</span><br><span class="line">   cd $pkgdir/usr/yong</span><br><span class="line">   ln -sf ../yong/l32/yong-gtk3 $pkgdir/usr/bin/yong</span><br><span class="line">   ln -sf ../yong/l32/yong-config-gtk3 $pkgdir/usr/bin/yong-config</span><br><span class="line">   install -D locale/zh_CN.mo $pkgdir/usr/share/locale/zh_CN/LC_MESSAGES/yong.mo</span><br><span class="line">   install -D l32/gtk-im/im-yong-gtk2.so $pkgdir/usr/lib/gtk-2.0/2.10.0/immodules/im-yong.so</span><br><span class="line">   install -D l32/gtk-im/im-yong-gtk3.so $pkgdir/usr/lib/gtk-3.0/3.0.0/immodules/im-yong.so</span><br><span class="line">     </span><br><span class="line">&#125;</span><br><span class="line">post_install() &#123;</span><br><span class="line">  gtk-query-immodules-2.0 --update-cache </span><br><span class="line">  gtk-query-immodules-3.0 --update-cache </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">post_remove() &#123;</span><br><span class="line">  gtk-query-immodules-2.0 --update-cache </span><br><span class="line">  gtk-query-immodules-3.0 --update-cache </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把以上脚本存为PKGBUILD…后执行makepkg就会自动编译出Arch专用的安装包了.再用root权限执行以下命令就装上了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -U yong-*.tar.xz</span><br></pre></td></tr></table></figure>
+<p>需要手动添加以下输入法启动脚本到~/.xprofile文件下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=yong</span><br><span class="line">export QT_IM_MODULE=yong</span><br><span class="line">export XMODIFIERS=@im=yong</span><br><span class="line">yong -d</span><br></pre></td></tr></table></figure>
+<p>注：编译出来自己用。。把内置的自然码双拼改成小鹤双拼(默认输入法).</p>
+<h1 id="题外话mac下的英文输入法">（题外话）Mac下的英文输入法</h1>
+<p><a href="https://github.com/dongyuwei/hallelujahIM" target="_blank" rel="noopener">https://github.com/dongyuwei/hallelujahIM</a></p>
 
                 
 
@@ -377,7 +309,7 @@ https://github.com/dongyuwei/hallelujahIM</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#fcitx-输入法"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">fcitx 输入法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#网页版yong网页版"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">（网页版）Yong网页版</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#小小输入法yong"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">小小输入法/Yong</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#绿色安装"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">绿色安装</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#maintainer-firef-ltuse_my_id-at-gmail-dot-comgt"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Maintainer: firef &lt;use_my_id at gmail dot com&gt;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#modify-shuangping-rules"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">modify shuangping rules</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#fcitx-输入法"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">fcitx 输入法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#网页版yong网页版"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">（网页版）Yong网页版</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#小小输入法yong"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">小小输入法/Yong</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#绿色安装"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">绿色安装</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#编译安装"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">编译安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#依赖"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">依赖：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#编译"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">编译：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pkgbuild-for-archlinux"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">PKGBUILD for Archlinux</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#题外话mac下的英文输入法"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">（题外话）Mac下的英文输入法</span></a></li></ol>
         
         </div>
       </aside>
