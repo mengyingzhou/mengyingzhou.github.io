@@ -143,14 +143,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -214,6 +214,38 @@
 
 <div class="post-preview">
 
+    <a href="/2017/03/18/[Android]surfaceview_self_component/">
+        <h2 class="post-title">
+            [Android] 利用surfaceview制作自定义组件
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列00
+        </h3>
+        <div class="post-content-preview">
+            一.SurfaceView和View最本质的区别
+surfaceview继承自view,但是同view由本质上的区别,即是surfaceview开一个新线程进行绘制,view是在UI主线程中进行绘制
+SurfaceView和View最本质的区别在于，surfaceView是在一个新起的单独线程中可以重新绘制画面而View必须在UI的主线程中更新画面。可以在主线程之外的线程中向屏幕绘图。这样可......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-03-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2016/07/30/[linux]GitNote/">
         <h2 class="post-title">
             [Linux] Git 痛定思痛笔记
@@ -246,6 +278,42 @@ git --version
               <a href="/tags/#Linux" title="Linux">Linux</a>
             
               <a href="/tags/#Git" title="Git">Git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
+        <h2 class="post-title">
+            [Linux] 命令行建启动器
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
+引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
+但是对于ubuntu+gnome来说，只有命令行最实用。
+个人也比较偏向于命令行方式。
+http://......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
             
         </div>
     
@@ -368,42 +436,6 @@ git --version
 
 <div class="post-preview">
 
-    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
-        <h2 class="post-title">
-            [Linux] 命令行建启动器
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
-引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
-但是对于ubuntu+gnome来说，只有命令行最实用。
-个人也比较偏向于命令行方式。
-http://......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-21
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-              <a href="/tags/#Linux" title="Linux">Linux</a>
-            
-              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/2016/07/20/[paper]DMDS_experimentalresultandanalysis/">
         <h2 class="post-title">
             [Paper Notes]  Experimental Result And Analysis——云计算下基于二进制文件特点的恶意软件分布式侦测
@@ -486,59 +518,6 @@ http://blog.csdn.net/icvpr/......
 
 <div class="post-preview">
 
-    <a href="/2016/07/18/[paper]DMDS_designandalgorithm/">
-        <h2 class="post-title">
-            [Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测
-        </h2>
-        <h3 class="post-subtitle">
-            02-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
-        </h3>
-        <div class="post-content-preview">
-            总体规划介绍和几个在scheme中使用的算法简述
-总体规划
-工作流程如下：
-1.恶意软件提取过程（DMGM算法  【这个将在第二部分进行介绍】）
-
-
-恶意软件代码像素化
-用8bit的无符号整数读恶意软件二进制文件，通过灰度图像达到可视化
-
-
-纹理描述提取
-通过使用GIST算法，得到320维的特征描述
-
-
-2.DELSH（Distributed ELSH）过程
-
-偏移量的选取
-预处理：剔除重复......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2016-07-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-              <a href="/tags/#Paper" title="Paper">Paper</a>
-            
-              <a href="/tags/#Security" title="Security">Security</a>
-            
-              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
-            
-              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/2016/07/18/[notes]2016.7.18/">
         <h2 class="post-title">
             [Scattered Notes] 关于android.support.design.widget.FloatingActionButton预览中报错显示不出来 && layout属性中fitsSystemWindows && looper handler
@@ -574,36 +553,38 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
 
 <div class="post-preview">
 
-    <a href="/2016/07/17/[paper]DMDS_Introduction/">
+    <a href="/2016/07/18/[paper]DMDS_designandalgorithm/">
         <h2 class="post-title">
-            [Paper Notes]  Introduction——云计算下基于二进制文件特点的恶意软件分布式侦测
+            [Paper Notes]  Design and Algorithm——云计算下基于二进制文件特点的恶意软件分布式侦测
         </h2>
         <h3 class="post-subtitle">
-            01-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
+            02-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
         </h3>
         <div class="post-content-preview">
-            关键字
-
-数据挖掘
-恶意软件侦测
-图示化恶意软件
-分布式熵化LSH
-
-传统方法
+            总体规划介绍和几个在scheme中使用的算法简述
+总体规划
+工作流程如下：
+1.恶意软件提取过程（DMGM算法  【这个将在第二部分进行介绍】）
 
 
-从恶意软件中提1.Introduction-云计算下基于二进制文件特点的恶意软件分布式侦测取二进制签名，和非置信的可执行文件进行对比【不适用场合：零日攻击/可变异攻击】
+恶意软件代码像素化
+用8bit的无符号整数读恶意软件二进制文件，通过灰度图像达到可视化
 
 
+纹理描述提取
+通过使用GIST算法，得到320维的特征描述
 
-静态分析：反汇编寻找控制流（control flow）【易受二元模糊（binary obfuscation）扰乱】
-动态分析：在沙盘中......
+
+2.DELSH（Distributed ELSH）过程
+
+偏移量的选取
+预处理：剔除重复......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Aerber Zhou on
-            2016-07-17
+            2016-07-18
         </p>
         <div class="tags">
             
@@ -704,8 +685,6 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
             
         
             
-        
-            
             <a href="/tags/#Paper" title="Paper" rel="8">Paper</a>
             
         
@@ -722,6 +701,8 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
             
         
             
+            <a href="/tags/#SQL" title="SQL" rel="2">SQL</a>
+            
         
             
             <a href="/tags/#Internship" title="Internship" rel="3">Internship</a>
@@ -736,11 +717,13 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
             
         
             
+        
+            
             <a href="/tags/#Attention Based Model" title="Attention Based Model" rel="2">Attention Based Model</a>
             
         
             
-            <a href="/tags/#SQL" title="SQL" rel="2">SQL</a>
+            <a href="/tags/#paper" title="paper" rel="2">paper</a>
             
         
             
@@ -815,7 +798,11 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
     <ul>
       
         <li>
-          <a href="/2025/10/01/[paper]Senior_year_aper_reading/">[paper] Senior year paper reading</a>
+          <a href="/2025/10/01/[paper]Senior_year_aper_reading.1/">[paper] Senior year paper reading</a>
+        </li>
+      
+        <li>
+          <a href="/2025/10/01/[paper]group_paper_reading/">[paper] Group paper reading</a>
         </li>
       
         <li>
@@ -828,10 +815,6 @@ compile ‘com.android.support:design:23.3.0’   后重启项目
       
         <li>
           <a href="/2018/10/20/[233]gym/">[233] 我要减肥～</a>
-        </li>
-      
-        <li>
-          <a href="/2018/08/22/[paper]zju_paper_3/">[Notes]  跨语言实体对齐模型</a>
         </li>
       
     </ul>
