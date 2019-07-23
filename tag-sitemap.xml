@@ -121,13 +121,6 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/tags/Notes/</loc>
-        <lastmod>2019-02-17T07:25:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://nullaerber.github.io/tags/Linux/</loc>
         <lastmod>2019-02-17T07:25:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -142,8 +135,22 @@
     </url>
 
     <url>
+        <loc>https://nullaerber.github.io/tags/Notes/</loc>
+        <lastmod>2019-07-20T07:55:22.717Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/tags/Machine-learning/</loc>
+        <lastmod>2019-07-20T07:55:22.717Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://nullaerber.github.io/tags/paper/</loc>
-        <lastmod>2019-07-16T09:07:40.167Z</lastmod>
+        <lastmod>2019-07-23T08:04:49.447Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -7,16 +7,24 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2025/10/01/%5Bpaper%5DSenior_year_aper_reading.1/</loc>
-        <lastmod>2019-07-16T09:07:40.167Z</lastmod>
+        <loc>https://nullaerber.github.io/2025/10/01/%5Bpaper%5Dgroup_paper_reading/</loc>
+        <lastmod>2019-07-23T08:04:49.447Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2025/10/01/%5Bpaper%5Dgroup_paper_reading/</loc>
-        <lastmod>2019-07-16T09:04:25.564Z</lastmod>
+        <loc>https://nullaerber.github.io/2019/07/20/%5Bnotes%5D2019.7.20/</loc>
+        <lastmod>2019-07-20T07:55:22.717Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/2025/10/01/%5Bpaper%5DSenior_year_aper_reading.1/</loc>
+        <lastmod>2019-07-16T09:07:40.167Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -151,7 +159,7 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
+        <loc>https://nullaerber.github.io/2018/03/18/%5BFramework%5DMVCframework/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -159,7 +167,7 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <loc>https://nullaerber.github.io/2017/03/18/%5BAndroid%5Dsurfaceview_self_component/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -183,7 +191,7 @@
     </url>
 
     <url>
-        <loc>https://nullaerber.github.io/2016/07/21/%5Bnotes%5D2016.7.21/</loc>
+        <loc>https://nullaerber.github.io/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -192,14 +200,6 @@
 
     <url>
         <loc>https://nullaerber.github.io/2016/07/17/%5Bpaper%5DDMDS_Introduction/</loc>
-        <lastmod>2018-07-13T05:32:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://nullaerber.github.io/2016/07/21/%5Bpaper%5DDMDS_conclusionandfuturework/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -224,6 +224,14 @@
 
     <url>
         <loc>https://nullaerber.github.io/2018/03/18/%5BAndroid%5Dsplashactivity/</loc>
+        <lastmod>2018-07-13T05:32:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://nullaerber.github.io/2016/07/21/%5Bnotes%5D2016.7.21/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

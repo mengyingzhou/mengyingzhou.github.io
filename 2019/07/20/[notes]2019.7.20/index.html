@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Notes] XGBoost之类别特征的处理 - Aerber Joy
+        
+    </title>
+
+    <link rel="canonical" href="https://nullaerber.github.io/2019/07/20/[notes]2019.7.20/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                            
+                              <a class="tag" href="/tags/#Machine learning" title="Machine learning">Machine learning</a>
+                            
+                        </div>
+                        <h1>[Notes] XGBoost之类别特征的处理</h1>
+                        <h2 class="subheading">随记</h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2019-07-20
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Aerber Joy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>原文：<a href="https://www.biaodianfu.com/categorical-features.html" target="_blank" rel="noopener">https://www.biaodianfu.com/categorical-features.html</a></p>
+<p>无论是XGBoost还是其他的Boosting Tree，使用的Tree都是cart回归树，这也就意味着该类提升树算法只接受数值特征输入，不直接支持类别特征，默认情况下，xgboost会把类别型的特征当成数值型。事实上，对于类别特征的处理，参考XGBoost PPT如下：</p>
+<p>xgboost 树模型其实是不建议使用one-hot编码，在xgboost上面的 issue 也提到过，相关的说明如下</p>
+<p>I do not know what you mean by vector. xgboost treat every input feature as numerical, with support for missing values and sparsity. The decision is at the user</p>
+<p>So if you want ordered variables, you can transform the variables into numerical levels(say age). Or if you prefer treat it as categorical variable, do one hot encoding.</p>
+<p>在另一个issues上也提到过（tqchen commented on 8 May 2015）：</p>
+<p>One-hot encoding could be helpful when the number of categories are small( in level of 10 to 100). In such case one-hot encoding can discover interesting interactions like (gender=male) AND (job = teacher).</p>
+<p>While ordering them makes it harder to be discovered(need two split on job). However, indeed there is not a unified way handling categorical features in trees, and usually what tree was really good at was ordered continuous features anyway…</p>
+<p>总结起来的结论，大至两条：</p>
+<p>对于类别有序的类别型变量，比如 age 等，当成数值型变量处理可以的。对于非类别有序的类别型变量，推荐 one-hot。但是 one-hot 会增加内存开销以及训练时间开销。<br>
+类别型变量在范围较小时（tqchen 给出的是[10,100]范围内）推荐使用<br>
+Label encoding与 One-Hot encoding<br>
+xgboost是不支持category特征的，在训练模型之前，需要我们进行预处理，可以根据特征的具体形式来选择：</p>
+<p>无序特征：one-hot encoding，比如城市<br>
+有序特征：label encoding，比如版本号<br>
+Label encoding<br>
+Label encoding是使用字典的方式，将每个类别标签与不断增加的整数相关联，即生成一个名为class_的实例数组的索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line"> </span><br><span class="line">le = LabelEncoder()</span><br><span class="line"> </span><br><span class="line">city_list = [&quot;paris&quot;, &quot;paris&quot;, &quot;tokyo&quot;, &quot;amsterdam&quot;]</span><br><span class="line"> </span><br><span class="line">le.fit(city_list)</span><br><span class="line">print(le.classes_)  # 输出为：[&apos;amsterdam&apos; &apos;paris&apos; &apos;tokyo&apos;]</span><br><span class="line"> </span><br><span class="line">city_list_le = le.transform(city_list)  # 进行Encode</span><br><span class="line">print(city_list_le)  # 输出为：[1 1 2 0]</span><br><span class="line"> </span><br><span class="line">city_list_new = le.inverse_transform(city_list_le)  # 进行decode</span><br><span class="line">print(city_list_new) # 输出为：[&apos;paris&apos; &apos;paris&apos; &apos;tokyo&apos; &apos;amsterdam&apos;]</span><br></pre></td></tr></table></figure>
+<p>如果是多列数据如何进行方便的编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">方案一：</span><br><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">from collections import defaultdict</span><br><span class="line">import pandas as pd</span><br><span class="line"> </span><br><span class="line">d = defaultdict(LabelEncoder)</span><br><span class="line"> </span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    &apos;pets&apos;: [&apos;cat&apos;, &apos;dog&apos;, &apos;cat&apos;, &apos;monkey&apos;, &apos;dog&apos;, &apos;dog&apos;],</span><br><span class="line">    &apos;owner&apos;: [&apos;Champ&apos;, &apos;Ron&apos;, &apos;Brick&apos;, &apos;Champ&apos;, &apos;Veronica&apos;, &apos;Ron&apos;],</span><br><span class="line">    &apos;location&apos;: [&apos;San_Diego&apos;, &apos;New_York&apos;, &apos;New_York&apos;, &apos;San_Diego&apos;, &apos;San_Diego&apos;,</span><br><span class="line">                 &apos;New_York&apos;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="encoding-the-variable">Encoding the variable</h1>
+<p>fit = df.apply(lambda x: d[<a href="http://x.name" target="_blank" rel="noopener">x.name</a>].fit_transform(x))</p>
+<h1 id="inverse-the-encoded">Inverse the encoded</h1>
+<p>fit.apply(lambda x: d[<a href="http://x.name" target="_blank" rel="noopener">x.name</a>].inverse_transform(x))</p>
+<h1 id="using-the-dictionary-to-label-future-data">Using the dictionary to label future data</h1>
+<p>df.apply(lambda x: d[<a href="http://x.name" target="_blank" rel="noopener">x.name</a>].transform(x))<br>
+方案2：<br>
+import pandas as pd<br>
+from sklearn.preprocessing import LabelEncoder<br>
+from sklearn.pipeline import Pipeline</p>
+<h1 id="create-some-toy-data-in-a-pandas-dataframe">Create some toy data in a Pandas dataframe</h1>
+<p>fruit_data = pd.DataFrame({<br>
+‘fruit’:  [‘apple’,‘orange’,‘pear’,‘orange’],<br>
+‘color’:  [‘red’,‘orange’,‘green’,‘green’],<br>
+‘weight’: [5,6,3,4]<br>
+})</p>
+<p>class MultiColumnLabelEncoder:<br>
+def <strong>init</strong>(self,columns = None):<br>
+self.columns = columns # array of column names to encode</p>
+<pre><code>def fit(self,X,y=None):
+    return self # not relevant here
+
+def transform(self,X):
+    '''
+    Transforms columns of X specified in self.columns using
+    LabelEncoder(). If no columns specified, transforms all
+    columns in X.
+    '''
+    output = X.copy()
+    if self.columns is not None:
+        for col in self.columns:
+            output[col] = LabelEncoder().fit_transform(output[col])
+    else:
+        for colname,col in output.iteritems():
+            output[colname] = LabelEncoder().fit_transform(col)
+    return output
+
+def fit_transform(self,X,y=None):
+    return self.fit(X,y).transform(X)
+</code></pre>
+<p>参考链接：<a href="https://stackoverflow.com/questions/24458645/label-encoding-across-multiple-columns-in-scikit-learn" target="_blank" rel="noopener">https://stackoverflow.com/questions/24458645/label-encoding-across-multiple-columns-in-scikit-learn</a></p>
+<p>LabelBinarizer</p>
+<p>这种方法很简单，在许多情况下效果很好，但他有一个缺点：所有的标签都变成了数字，然后算法模型直接将根据其距离来考虑相似的数字，而不考虑标签的具体含义。因此，通常优选独热编码(one-hot encoding)将数据二进制化。</p>
+<p>from sklearn.preprocessing import LabelBinarizer</p>
+<p>lb = LabelBinarizer()</p>
+<p>city_list = [“paris”, “paris”, “tokyo”, “amsterdam”]</p>
+<p>lb.fit(city_list)<br>
+print(lb.classes_)  # 输出为：[‘amsterdam’ ‘paris’ ‘tokyo’]</p>
+<p>city_list_le = lb.transform(city_list)  # 进行Encode<br>
+print(city_list_le)  # 输出为：</p>
+<h1 id="0-1-0">[[0 1 0]</h1>
+<h1 id="0-1-0">[0 1 0]</h1>
+<h1 id="0-0-1">[0 0 1]</h1>
+<h1 id="1-0-0">[1 0 0]]</h1>
+<p>city_list_new = lb.inverse_transform(city_list_le)  # 进行decode<br>
+print(city_list_new)  # 输出为：[‘paris’ ‘paris’ ‘tokyo’ ‘amsterdam’]<br>
+DictVectorizer</p>
+<p>当类别的特征被构造成类似于字典的列表时，列表中的值仅仅需要时几个特征的值而不需要很密集，此时可采用另一种分类方法。DictVectorizer可以用于将各列使用标准的Python dict对象表示的特征数组，转换成sklearn中的estimators可用的NumPy/SciPy表示的对象。Python的dict的优点是，很方便使用，稀疏，可以存储feature名和值。DictVectorizer实现了一个称为one-of-K或者”one-hot”编码的类别特征。类别特征是“属性-值”对，它的值严格对应于一列无序的离散概率（比如：topic id, 对象类型，tags, names…）</p>
+<p>下例中，”city”是类别的属性，而”temperature”是一个传统的数值型feature：</p>
+<p>from sklearn.feature_extraction import DictVectorizer</p>
+<p>measurements = [<br>
+{‘city’: ‘Dubai’, ‘temperature’: 33.},<br>
+{‘city’: ‘London’, ‘temperature’: 12.},<br>
+{‘city’: ‘San Fransisco’, ‘temperature’: 18.},<br>
+]</p>
+<p>vec = DictVectorizer()<br>
+measurements_vec = vec.fit_transform(measurements)<br>
+print(measurements_vec)</p>
+<h1 id="输出内容">输出内容：</h1>
+<h1 id="0-010">(0, 0)	1.0</h1>
+<h1 id="0-3330">(0, 3)	33.0</h1>
+<h1 id="1-110">(1, 1)	1.0</h1>
+<h1 id="1-3120">(1, 3)	12.0</h1>
+<h1 id="2-210">(2, 2)	1.0</h1>
+<h1 id="2-3180">(2, 3)	18.0</h1>
+<p>print(measurements_vec.toarray())</p>
+<h1 id="输出内容">输出内容</h1>
+<h1 id="1-0-0-33">[[ 1.  0.  0. 33.]</h1>
+<h1 id="0-1-0-12">[ 0.  1.  0. 12.]</h1>
+<h1 id="0-0-1-18">[ 0.  0.  1. 18.]]</h1>
+<p>feature_names = vec.get_feature_names()<br>
+print(feature_names)  # 输出：[‘city=Dubai’, ‘city=London’, ‘city=San Fransisco’, ‘temperature’]<br>
+FeatureHasher</p>
+<p>一般的vectorizer是为训练过程中遇到的特征构建一个hash table，而FeatureHasher类则直接对特征应用一个hash函数来决定特征在样本矩阵中的列索引。这样的做法使得计算速度提升并且节省了内存，the hasher无法记住输入特征的样子，而且不逊在你想变换操作：inverse_transform。</p>
+<p>因为哈希函数可能会导致本来不相关的特征之间发生冲突，所以使用了有符号的hash函数。对一个特征，其hash值的符号决定了被存储到输出矩阵中的值的符号。通过这种方式就能够消除特征hash映射时发生的冲突而不是累计冲突。而且任意输出的值的期望均值是0。sklearn中的FeatureHasher使用了MurmurHash 3作为其Hash算法。</p>
+<p>FeatureHasher的输出通常是CSR格式的scipy.sparse matrix。Feature hashing 可被用于文档分类中去，但是与text.CountVectorizer不同，FeatureHasher不做单词切分或其他的预处理操作，除了Unicode-to-UTF-8编码以外。</p>
+<p>one-hot encoding<br>
+什么是one-hot encoding</p>
+<p>在实际的机器学习的应用任务中，特征有时候并不总是连续值，有可能是一些分类值，如性别可分为“male”和“female”。在机器学习任务中，对于这样的特征，通常我们需要对其进行特征数字化，比如有如下三个特征属性：</p>
+<p>性别：[“male”，”female”]<br>
+地区：[“Europe”，”US”，”Asia”]<br>
+浏览器：[“Firefox”，”Chrome”，”Safari”，”Internet Explorer”]<br>
+对于某一个样本，如[“male”，”US”，”Internet Explorer”]，我们需要将这个分类值的特征数字化，最直接的方法，我们可以采用序列化的方式：[0,1,3]。但是，即使转化为数字表示后，上述数据也不能直接用在我们的分类器中。因为，分类器往往默认数据是连续的，并且是有序的。按照上述的表示，数字并不是有序的，而是随机分配的。这样的特征处理并不能直接放入机器学习算法中。</p>
+<p>为了解决上述问题，其中一种可能的解决方法是采用独热编码（One-Hot Encoding）。独热编码，又称为一位有效编码。其方法是使用N位状态寄存器来对N个状态进行编码，每个状态都由他独立的寄存器位，并且在任意时候，其中只有一位有效。可以这样理解，对于每一个特征，如果它有m个可能值，那么经过独热编码后，就变成了m个二元特征。并且，这些特征互斥，每次只有一个激活。因此，数据会变成稀疏的。</p>
+<p>对于上述的问题，性别的属性是二维的，同理，地区是三维的，浏览器则是四维的，这样，我们可以采用One-Hot编码的方式对上述的样本“[“male”，”US”，”Internet Explorer”]”编码，“male”则对应着[1，0]，同理“US”对应着[0，1，0]，“Internet Explorer”对应着[0,0,0,1]。则完整的特征数字化的结果为：[1,0,0,1,0,0,0,0,1]。</p>
+<p>为什么能使用One-Hot Encoding？</p>
+<p>使用one-hot编码，将离散特征的取值扩展到了欧式空间，离散特征的某个取值就对应欧式空间的某个点。在回归，分类，聚类等机器学习算法中，特征之间距离的计算或相似度的计算是非常重要的，而我们常用的距离或相似度的计算都是在欧式空间的相似度计算，计算余弦相似性，也是基于的欧式空间。<br>
+将离散型特征使用one-hot编码，可以会让特征之间的距离计算更加合理。比如，有一个离散型特征，代表工作类型，该离散型特征，共有三个取值，不使用one-hot编码，计算出来的特征的距离是不合理。那如果使用one-hot编码，显得更合理。<br>
+独热编码优缺点</p>
+<p>优点：独热编码解决了分类器不好处理属性数据的问题，在一定程度上也起到了扩充特征的作用。它的值只有0和1，不同的类型存储在垂直的空间。<br>
+缺点：当类别的数量很多时，特征空间会变得非常大。在这种情况下，一般可以用PCA（主成分分析）来减少维度。而且One-Hot Encoding+PCA这种组合在实际中也非常有用。<br>
+One-Hot Encoding的使用场景</p>
+<p>独热编码用来解决类别型数据的离散值问题。将离散型特征进行one-hot编码的作用，是为了让距离计算更合理，但如果特征是离散的，并且不用one-hot编码就可以很合理的计算出距离，那么就没必要进行one-hot编码，比如，该离散特征共有1000个取值，我们分成两组，分别是400和600,两个小组之间的距离有合适的定义，组内的距离也有合适的定义，那就没必要用one-hot 编码。<br>
+基于树的方法是不需要进行特征的归一化，例如随机森林，bagging 和 boosting等。对于决策树来说，one-hot的本质是增加树的深度，决策树是没有特征大小的概念的，只有特征处于他分布的哪一部分的概念。<br>
+One-Hot使用示例</p>
+<p>1、基于sklearn 的one hot encoding：</p>
+<p>import pandas as pd<br>
+from sklearn.preprocessing import LabelEncoder<br>
+from sklearn.preprocessing import OneHotEncoder</p>
+<p>df = pd.DataFrame([<br>
+[‘green’, ‘Chevrolet’, 2017],<br>
+[‘blue’, ‘BMW’, 2015],<br>
+[‘yellow’, ‘Lexus’, 2018],<br>
+])<br>
+df.columns = [‘color’, ‘make’, ‘year’]</p>
+<p>le_color = LabelEncoder()<br>
+le_make = LabelEncoder()<br>
+df[‘color_encoded’] = le_color.fit_transform(df.color)<br>
+df[‘make_encoded’] = le_make.fit_transform(df.make)</p>
+<p>color_ohe = OneHotEncoder()<br>
+make_ohe = OneHotEncoder()<br>
+X = color_ohe.fit_transform(df.color_encoded.values.reshape(-1, 1)).toarray()<br>
+Xm = make_ohe.fit_transform(df.make_encoded.values.reshape(-1, 1)).toarray()</p>
+<p>dfOneHot = pd.DataFrame(X, columns=[“Color_” + str(int(i)) for i in range(X.shape[1])])<br>
+df = pd.concat([df, dfOneHot], axis=1)</p>
+<p>dfOneHot = pd.DataFrame(Xm, columns=[“Make” + str(int(i)) for i in range(X.shape[1])])<br>
+df = pd.concat([df, dfOneHot], axis=1)</p>
+<p>参考链接：<a href="http://www.insightsbot.com/blog/McTKK/python-one-hot-encoding-with-scikit-learn" target="_blank" rel="noopener">http://www.insightsbot.com/blog/McTKK/python-one-hot-encoding-with-scikit-learn</a></p>
+<p>2、基于pandas的one hot encoding：</p>
+<p>其实如果我们跳出 scikit-learn， 在 pandas 中可以很好地解决这个问题，用 pandas 自带的get_dummies函数即可</p>
+<p>import pandas as pd</p>
+<p>df = pd.DataFrame([<br>
+[‘green’, ‘Chevrolet’, 2017],<br>
+[‘blue’, ‘BMW’, 2015],<br>
+[‘yellow’, ‘Lexus’, 2018],<br>
+])<br>
+df.columns = [‘color’, ‘make’, ‘year’]</p>
+<p>df_processed = pd.get_dummies(df, prefix_sep=&quot;_&quot;, columns=df.columns[:-1])<br>
+print(df_processed)<br>
+get_dummies的优势在于:</p>
+<p>本身就是 pandas 的模块，所以对 DataFrame 类型兼容很好<br>
+不管你列是数值型还是字符串型，都可以进行二值化编码<br>
+能够根据指令，自动生成二值化编码后的变量名<br>
+get_dummies虽然有这么多优点，但毕竟不是 sklearn 里的transformer类型，所以得到的结果得手动输入到 sklearn 里的相应模块，也无法像 sklearn 的transformer一样可以输入到pipeline中进行流程化地机器学习过程。</p>
+<p>参考链接：<a href="https://blog.cambridgespark.com/robust-one-hot-encoding-in-python-3e29bfcec77e" target="_blank" rel="noopener">https://blog.cambridgespark.com/robust-one-hot-encoding-in-python-3e29bfcec77e</a></p>
+<p>利用神经网络的Embedding层处理类别特征<br>
+Embedding简介<br>
+Embedding的起源和火爆都是在NLP中的，经典的word2vec都是在做word embedding这件事情，而真正首先在结构数据探索embedding的是在kaggle上的《Rossmann Store Sales》中的rank 3的解决方案，作者在比赛完后为此方法整理一篇论文放在了arXiv，文章名：《Entity Embeddings of Categorical Variables》。</p>
+<p>Embedding也被称为嵌套，是将大型稀疏矢量映射到一个保留语义关系的低维空间。在此模块的随后几个部分中，我们将从直观角度、概念角度和编程角度来详细探讨嵌套。</p>
+<p>要解决稀疏输入数据的核心问题，您可以将高维度数据映射到低维度空间。即便是小型多维空间，也能自由地将语义上相似的项归到一起，并将相异项分开。矢量空间中的位置（距离和方向）可对良好的嵌套中的语义进行编码。例如，下面的真实嵌套可视化图所展示的几何关系图捕获了国家与其首都之间的语义关系。</p>
+<p>嵌套充当查询表</p>
+<p>嵌套是一个矩阵，每列表示您词汇中的一项所对应的矢量。要获得某个词汇项的密集矢量，您可以检索该项所对应的列。但是，如何转换字词矢量的稀疏包呢？要获得表示多个词汇项（例如，一句或一段中的所有字词）的稀疏矢量的密集矢量，您可以检索各项的嵌套，然后将它们相加。如果稀疏矢量包含词汇项的计数，则您可以将每项嵌套与其对应项的计数相乘，然后再求和。这些运算可能看起来很眼熟吧。</p>
+<p>嵌套查询充当矩阵乘法</p>
+<p>我们刚刚阐述的查询、乘法和加法程序等效于矩阵乘法。假设有一个 1 \times N的稀疏表示 S 和一个 N \times M 的嵌套表 E，矩阵乘法 S \times E 可以得出密集矢量 1 \times M。这个概念用神经网络图来表示如下：</p>
+<p>但首要问题是，如何获取 E 呢？我们将在下一部分介绍如何获取嵌套。</p>
+<p>Network Embedding，即将网络节点、community投影到低维向量空间，用于node classification、link prediction、community detection、visualization等任务。</p>
+<p>核心假设：节点间距离越近，embedding向量越接近，定义LOSS为：</p>
+<p>Network Embedding算法分类<br>
+基于矩阵特征向量计算（谱聚类）</p>
+<p>目标是将相似性高的两个节点，映射到低维空间后依然保持距离相近，其损失函数定义为：</p>
+<p>基于random walk框架计算（Deep Walk &amp; Node2Vec）</p>
+<p>基于Deep Learning框架计算 SDNE(Structural Deep Network Embeddings)</p>
+<p>主要思想：将节点的相似性向量 S_i直接作为模型的输入，通过 Auto-encoder 对这个向量进行降维压缩，得到其向量化后的结果 $Z_i#。其损失函数定义为：</p>
+<pre><code>\[L = \sum_{v_j\in V}\left \| DEC(Z_i) -S_i\right \|_2^2\]
+</code></pre>
+<p>模型框架为：</p>
+<p>GCN（Graph Convolutional Networks）</p>
+<p>主要思想：将节点本身及其邻居节点的属性（比如文本信息）或特征（比如统计信息）编码进向量中，引入了更多特征信息，并且在邻居节点间共享了一些特征或参数，基于最终的目标（如节点分类）做整体优化。</p>
+<p>模型框架示意和计算流程：</p>
+<p>更多参考：</p>
+<p><a href="https://yq.aliyun.com/articles/294450" target="_blank" rel="noopener">https://yq.aliyun.com/articles/294450</a><br>
+<a href="https://blog.csdn.net/dark_scope/article/details/74279582" target="_blank" rel="noopener">https://blog.csdn.net/dark_scope/article/details/74279582</a><br>
+Embedding实战<br>
+使用Keras进行Embedding</p>
+<p>Keras对Tensorflow又进行了一层封装，操作简单，功能强大。</p>
+<h1 id="构造输入数据">构造输入数据</h1>
+<h1 id="输入数据是3206320个样本6个类别特征且类别特征的可能值是0到36之间37个">输入数据是320*6，320个样本，6个类别特征，且类别特征的可能值是0到36之间（37个）。</h1>
+<h1 id="对这6个特征做one-hot的话应该为376">对这6个特征做one-hot的话，应该为37*6，</h1>
+<h1 id="embedding就是使1个特征原本应该one-hot的37维变为3维手动设定也可以是其它因为有36个类别特征">embedding就是使1个特征原本应该one-hot的37维变为3维（手动设定，也可以是其它），因为有36个类别特征</h1>
+<h1 id="这样输出的结果就应该是36">这样输出的结果就应该是3*6</h1>
+<h1 id="参考链接httpskerasiozhlayersembeddings">参考链接：<a href="https://keras.io/zh/layers/embeddings/" target="_blank" rel="noopener">https://keras.io/zh/layers/embeddings/</a></h1>
+<h1 id="建议降维的维度为-mathceilcategory_count-025">建议降维的维度为 math.ceil(category_count ** 0.25)</h1>
+<p>import numpy as np<br>
+np.random.seed(42)<br>
+input_array = np.random.randint(37, size=(320, 6))<br>
+print(input_array)</p>
+<p>import tensorflow as tf<br>
+from keras import backend as K<br>
+from keras.models import Sequential<br>
+from keras.layers.embeddings import Embedding</p>
+<p>with tf.Session() as sess:<br>
+K.set_session(sess)<br>
+model = Sequential()<br>
+model.add(Embedding(37, 3, input_length=6))<br>
+model.compile(‘rmsprop’, ‘mse’)<br>
+output_array = model.predict(input_array)<br>
+print(output_array)<br>
+# weight = model.get_weights()<br>
+# print(weight)<br>
+在上述的代码中，我们可以看到6个类别特征的值都在0到37，并且我们没有对模型进行训练，而是直接就搭建了一个网络，就输出结果了。在真实的应用中，不是这样。有2点需要改进：</p>
+<p>对每一个类别特征构建一个embedding层。对embedding层进行拼接。<br>
+训练网络，得到训练后的embedding层的输出作为类别特征one-hot的替换，这样的embedding的输出更精确<br>
+为了解决上述的2个问题，我们这里还是人工构建训练集，我们搭建的模型如图：</p>
+<p>从模型中，我们可以看到，这是符合现实世界的数据集的：即既有分类特征，又有连续特征。我们先训练一个网络，embedding_3和embedding_4层的输出结果就是用embedding处理类别特征后的结果。</p>
+<p>import numpy as np<br>
+import tensorflow as tf<br>
+from keras.models import Model<br>
+from keras.layers import Input, Dense, Concatenate, Reshape, Dropout<br>
+from keras.layers.embeddings import Embedding<br>
+from keras import backend as K<br>
+from keras.utils import plot_model</p>
+<p>session_conf = tf.ConfigProto(intra_op_parallelism_threads=1, inter_op_parallelism_threads=1)<br>
+sess = tf.Session(graph=tf.get_default_graph(), config=session_conf)<br>
+K.set_session(sess)</p>
+<p>def build_embedding_network():<br>
+&quot;&quot;“<br>
+以网络结构embeddding层在前，dense层在后。即训练集的X必须以分类特征在前，连续特征在后。<br>
+”&quot;&quot;<br>
+inputs = []<br>
+embeddings = []</p>
+<pre><code>input_cate_feature_1 = Input(shape=(1,))
+embedding = Embedding(10, 3, input_length=1)(input_cate_feature_1)
+embedding = Reshape(target_shape=(3,))(embedding)  # embedding后是10*1*3，为了后续计算方便，因此使用Reshape转为10*3
+inputs.append(input_cate_feature_1)
+embeddings.append(embedding)
+
+input_cate_feature_2 = Input(shape=(1,))
+embedding = Embedding(4, 2, input_length=1)(input_cate_feature_2)
+embedding = Reshape(target_shape=(2,))(embedding)
+inputs.append(input_cate_feature_2)
+embeddings.append(embedding)
+
+input_numeric = Input(shape=(1,))
+embedding_numeric = Dense(16)(input_numeric)
+inputs.append(input_numeric)
+embeddings.append(embedding_numeric)
+
+x = Concatenate()(embeddings)
+x = Dense(10, activation='relu')(x)
+x = Dropout(.15)(x)
+output = Dense(1, activation='sigmoid')(x)
+
+model = Model(inputs, output)
+model.compile(loss='binary_crossentropy', optimizer='adam')
+return model
+</code></pre>
+<p>“”“<br>
+构造训练数据<br>
+输入数据是320*3，320个样本，2个类别特征，1个连续特征。<br>
+对类别特征做entity embedding，第一个类别特征10个，第二个类别特征4个。对这2个特征做one-hot的话，应该为10+4，<br>
+对第一个类别特征做embedding使其为3维，对第二个类别特征做embedding使其为2维。3对连续特征不做处理。这样理想输出的结果就应该是3+2+1。<br>
+维和2维的设定是根据实验效果和交叉验证设定。<br>
+”&quot;&quot;<br>
+sample_num = 320  # 样本数为32<br>
+cate_feature_num = 2  # 类别特征为2<br>
+contious_feature_num = 1  # 连续特征为1</p>
+<p>rng = np.random.RandomState(0)  # 保证了训练集的复现<br>
+cate_feature_1 = rng.randint(10, size=(sample_num, 1))<br>
+cate_feature_2 = rng.randint(4, size=(sample_num, 1))<br>
+contious_feature = rng.rand(sample_num, 1)</p>
+<p>X = [cate_feature_1, cate_feature_2, contious_feature]<br>
+Y = np.random.randint(2, size=(sample_num, 1))  # 二分类</p>
+<p>cate_embedding_dimension = {‘0’: 3, ‘1’: 2}  # 记录类别特征embedding后的维度。key为类别特征索引，value为embedding后的维度</p>
+<p>“”“<br>
+训练和预测<br>
+”&quot;&quot;<br>
+NN = build_embedding_network()<br>
+plot_model(NN, to_file=‘NN.png’)  # 画出模型，需要GraphViz包。另外需要安装 pip install pydot</p>
+<p>NN.fit(X, Y, epochs=3, batch_size=4, verbose=0)<br>
+y_preds = NN.predict(X)[:, 0]</p>
+<p>“”“<br>
+读embedding层的输出结果<br>
+”&quot;&quot;<br>
+model = NN  # 创建原始模型<br>
+for i in range(cate_feature_num):<br>
+layer_name = NN.get_config()[‘layers’][cate_feature_num + i][‘name’]  # cate_feature_num+i就是所有embedding层<br>
+intermediate_layer_model = Model(inputs=NN.input, outputs=model.get_layer(layer_name).output)<br>
+intermediate_output = intermediate_layer_model.predict(X)<br>
+intermediate_output.resize([sample_num, cate_embedding_dimension[str(i)]])<br>
+if i == 0:<br>
+X_embedding_trans = intermediate_output<br>
+else:<br>
+X_embedding_trans = np.hstack((X_embedding_trans, intermediate_output))  # 水平拼接</p>
+<p>for i in range(contious_feature_num):<br>
+if i == 0:<br>
+X_contious = X[cate_feature_num + i]<br>
+else:<br>
+X_contious = np.hstack((X_contious, X[cate_feature_num + i]))</p>
+<p>X_trans = np.hstack((X_embedding_trans, X_contious))  # 在类别特征做embedding后的基础上，拼接连续特征，形成最终矩阵，也就是其它学习器的输入。</p>
+<p>print(X_trans[:5])  # 其中，类别特征维度为5（前5个），连续特征维度为1（最后1个）</p>
+<p>weight = NN.trainable_weights[0].eval(session=sess) # embedding_1层的参数。<br>
+print(weight[:5])<br>
+参考链接：<a href="https://blog.csdn.net/h4565445654/article/details/78998444" target="_blank" rel="noopener">https://blog.csdn.net/h4565445654/article/details/78998444</a></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2025/10/01/[paper]Senior_year_aper_reading.1/" data-toggle="tooltip" data-placement="top" title="[paper] Senior year paper reading">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/02/17/[linux]english_typewriting/" data-toggle="tooltip" data-placement="top" title="[Linux] 为Linux设置英文补全输入法">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#encoding-the-variable"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Encoding the variable</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#inverse-the-encoded"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Inverse the encoded</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#using-the-dictionary-to-label-future-data"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Using the dictionary to label future data</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#create-some-toy-data-in-a-pandas-dataframe"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Create some toy data in a Pandas dataframe</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-1-0"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">[[0 1 0]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-1-0"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">[0 1 0]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-0-1"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">[0 0 1]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-0-0"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">[1 0 0]]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#输出内容"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">输出内容：</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-010"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">(0, 0)	1.0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-3330"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">(0, 3)	33.0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-110"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">(1, 1)	1.0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-3120"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">(1, 3)	12.0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-210"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">(2, 2)	1.0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-3180"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">(2, 3)	18.0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#输出内容"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">输出内容</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-0-0-33"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">[[ 1.  0.  0. 33.]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-1-0-12"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">[ 0.  1.  0. 12.]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-0-1-18"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">[ 0.  0.  1. 18.]]</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#构造输入数据"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">构造输入数据</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#输入数据是3206320个样本6个类别特征且类别特征的可能值是0到36之间37个"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">输入数据是320*6，320个样本，6个类别特征，且类别特征的可能值是0到36之间（37个）。</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对这6个特征做one-hot的话应该为376"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">对这6个特征做one-hot的话，应该为37*6，</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#embedding就是使1个特征原本应该one-hot的37维变为3维手动设定也可以是其它因为有36个类别特征"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">embedding就是使1个特征原本应该one-hot的37维变为3维（手动设定，也可以是其它），因为有36个类别特征</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#这样输出的结果就应该是36"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">这样输出的结果就应该是3*6</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考链接httpskerasiozhlayersembeddings"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">参考链接：https://keras.io/zh/layers/embeddings/</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#建议降维的维度为-mathceilcategory_count-025"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">建议降维的维度为 math.ceil(category_count ** 0.25)</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Machine learning" title="Machine learning">Machine learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://nullaerber.github.io/2019/07/20/[notes]2019.7.20/";
+    var disqus_url = "https://nullaerber.github.io/2019/07/20/[notes]2019.7.20/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+            appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true
+        })
+    </script>	
+<script type="text/javascript" src="/js/zooming.js"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/3479268957">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/NullAerber">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/NullAerber">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Aerber Zhou 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/NullAerber">NullAerber</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=NullAerber&repo=NullAerber.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://nullaerber.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://nullaerber.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
