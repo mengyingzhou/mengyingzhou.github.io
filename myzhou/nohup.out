@@ -1,4 +1,0 @@
-2019-09-04 23:59:47 INFO     util.py:85 loading libcrypto from libcrypto.so.1.1
-2019-09-04 23:59:47 INFO     local.py:50 local start with protocol[auth_aes128_sha1] password [b'BigHeadSsr'] method [aes-256-cfb] obfs [http_simple] obfs_param [download.windowsupdate.com]
-2019-09-04 23:59:47 INFO     local.py:54 starting local at 127.0.0.1:1080
-2019-09-04 23:59:47 INFO     asyncdns.py:324 dns server: [('192.168.43.1', 53)]
