@@ -19,13 +19,9 @@ Here is my [full CV](https://nullaerber.github.io/myzhou/myzhou_cv.pdf).
 
 I can be reached at <a href="mailto:myzhou@fudan.edu.cn">myzhou@fudan.edu.cn</a>.
 
-## Research Interests
-- User behavior analysis and modeling on multi-network
-- Information Cascade
-
 ## Education                                                                      
 2019.9 – now
-  - __Ph.D. Student__
+__Ph.D. Student__
   - School of Computer Science, Fudan University
   - Advisor: [Prof. Yang Chen](https://chenyang03.wordpress.com/)
 
@@ -52,15 +48,15 @@ I can be reached at <a href="mailto:myzhou@fudan.edu.cn">myzhou@fudan.edu.cn</a>
 - X. Li, Y. Chen, M. Zhou, X. Wang. _Internet Data Transfer Protocol QUIC: A Survey._ Proc. of the 8th CCF Internet Conference of China (ICoC’19), Nanjing, China, Aug. 2019.
 
 ## Projects
-Headlines Prediction Bases on Machine Learning
+__Headlines Prediction Bases on Machine Learning__
 - Training a model to determine whether it is possible to become a headline.
 - Creating three metrics: the speed of communication, the breadth of communication and the influence of the topic with micro-media and We Media data.
 
-Understanding the Behavior Difference Varying Loyalty on Short-term Rent Platform
+__Understanding the Behavior Difference Varying Loyalty on Short-term Rent Platform__
 - Analyzing the behavior difference varying users with different loyalty to history hosts.
 - Building a model to predict returning users based on the features from analysis.
 
-Big Data-Driven Social Organizations Understanding
+__Big Data-Driven Social Organizations Understanding__
 - Developing a mini-program to manager non-profile social organizations and collect data.
 - Developing a system for social organizations to analyze activity from different aspects.
 
