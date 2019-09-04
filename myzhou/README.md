@@ -1,43 +1,42 @@
-
 ```bio-meta
 {
-    "name": "Ji Luo",
-    "title": "Ji Luo | Curriculum Vitae",
-    "description": "Ji Luo&#8217;s curriculum vitae.",
-    "domain": "luoji.bio",
-    "date-created": "2019-08-25",
-    "repo": "https://github.com/GeeLaw/bio-site"
+    "name": "Mengying Zhou",
+    "title": "Mengying Zhou | Curriculum Vitae",
+    "description": "Mengying Zhou&#8217;s curriculum vitae.",
+    "domain": "Mengying Zhou.bio",
+    "date-created": "2019-09-4",
+    "repo": "https://github.com/nullaerber.io"
 }
 ```
 
 # Ji Luo<span aria-hidden="true"> (</span><span lang="zh-CN">罗辑</span><span aria-hidden="true">)</span>
 
-<figure class="gl-page-background gl-float-right" style="text-align: center;"><img src="/assets/images/hero-image.jpg" alt="A photo of Ji Luo" width="160" height="160" style="max-width: 160px;" /></figure>
+<figure class="gl-page-background gl-float-right" style="text-align: center;"><img src="/myzhou/avatar.jpg" alt="A photo of me" width="160" height="160" style="max-width: 160px;" /></figure>
 
-I am a second-year Ph.D. student in computer science, advised by [Rachel (Huijia) Lin](https://homes.cs.washington.edu/~rachel/) and [Stefano Tessaro](https://homes.cs.washington.edu/~tessaro/). My primary research interest is cryptography and I’m also interested in security and computational complexity.
+I am a frist-year Ph.D. student at the School of Computer Science at Fudan University, advised by [Prof. Yang Chen](https://chenyang03.wordpress.com). My primary research interest is user behavior analysis and modeling on multi-network and information cascade.
 
-Prior to joining [Paul G. Allen School of Computer Science and Engineering](https://www.cs.washington.edu/) at the University of Washington, I was a Ph.D. student at [University of California, Santa Barbara](https://cs.ucsb.edu/) for a quarter. I obtained my bachelor’s degree from [Tsinghua University](https://www.tsinghua.edu.cn/publish/thu2018en/index.html), where I attended [Yao class](http://iiis.tsinghua.edu.cn/en/).
+Here is my [full CV](https://nullaerber.github.io/myzhou/myzhou_cv.pdf).
 
-I can be reached at <span id="_eml" class="gl-eml">3-letter-name 2-letter-name at cs dot washington dot edu</span>.
+I can be reached at <span id="_eml" class="gl-eml">3-letter-name myzhou at fudan dot edu dot cn</span>.
 
 <!--[bio][protect]
 <script type="application/javascript">
 window.setTimeout(function ()
 {
-var u = [228, 92, 74, 215, 63, 210, 81, 104, 137, 163, 84, 110, 57, 62, 121, 92, 41, 249, 37, 228, 235, 150, 183];
-var v = [136, 41, 37, 189, 86, 146, 50, 27, 167, 212, 53, 29, 81, 87, 23, 59, 93, 150, 75, 202, 142, 242, 194];
-var addr = [];
-for (var i = 0; i !== 23; ++i)
-{
-addr.push(String.fromCharCode(u[i] ^ v[i]));
-}
-addr = addr.join('');
 var tgt = document.getElementById('_eml');
-tgt.innerHTML = '<a href="mailto:' + addr + '">' + addr + '</a>';
+tgt.innerHTML = '<a href="mailto:myzhou@fudan.edu.cn">myzhou@fudan.edu.cn</a>';
 tgt.removeAttribute('class');
 }, 600);
 </script>
 [bio]-->
+
+## Research Interests
+
+```
+- User behavior analysis and modeling on multi-network
+- Information Cascade
+
+```
 
 ## Publications
 
