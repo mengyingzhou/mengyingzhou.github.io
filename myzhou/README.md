@@ -31,12 +31,8 @@ tgt.removeAttribute('class');
 [bio]-->
 
 ## Research Interests
-
-```
 - User behavior analysis and modeling on multi-network
 - Information Cascade
-
-```
 
 ## Publications
 
