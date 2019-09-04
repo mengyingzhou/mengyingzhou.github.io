@@ -1,0 +1,290 @@
+/* use onresize event of an iframe of this class to detect high-contrast changes. */
+.gl-accessibility-helper-iframe
+{
+    position: fixed;
+    vertical-align: bottom;
+    bottom: -100px;
+    right: -100px;
+    border-style: none;
+    border-width: 0px;
+    border-color: transparent;
+    width: 10px;
+    height: 10px;
+    visibility: hidden;
+}
+
+.katex * { -ms-high-contrast-adjust: none !important; }
+.katex annotation { display: none !important; }
+
+@media screen and (-ms-high-contrast: active),
+       screen and (-ms-high-contrast: black-on-white),
+       screen and (-ms-high-contrast: white-on-black)
+{
+    .gl-rainbow-flag
+    {
+        display: none !important;
+    }
+    nav.gl-nav
+    {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+    }
+    nav.gl-nav > a
+    {
+        margin: 10px;
+    }
+    nav.gl-nav > a
+    {
+        border-style: solid;
+        border-width: 4px;
+    }
+    nav.gl-nav > a[href]
+    {
+        border-width: 1px;
+    }
+    nav.gl-nav > a[href]:hover
+    {
+        text-decoration: underline;
+    }
+    .gl-body-wrapper
+    {
+        height: 92vh;
+        height: /* @@ ExceptNavBarHeightHighContrast */ calc(100vh - 76px) /* ExceptNavBarHeightHighContrast @@ */;
+    }
+    /* Higher specificity. */
+    html[gl-theme] .gl-entry mark,
+    html:not([gl-theme]) .gl-entry mark
+    {
+        border-width: 2px;
+        border-style: dotted;
+        border-color: Highlight;
+        background: HighlightText;
+        color: Highlight;
+        font-weight: bolder;
+        padding: 0 0.2em 0.1em 0.2em;
+    }
+    .gl-entry pre,
+    .gl-entry :not(pre) > code,
+    .gl-entry :not(pre) > samp
+    {
+        border-width: 1px;
+        border-style: solid;
+    }
+    .gl-entry kbd
+    {
+        border-bottom-width: 4px;
+    }
+    .gl-entry blockquote:not(.gl-fancy-quote)
+    {
+        border-style: solid;
+        border-width: 1px 1px 1px 4px;
+    }
+    .gl-entry blockquote.gl-fancy-quote
+    {
+        border-style: solid;
+        border-width: 1px 4px;
+        padding: 0 1em;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    html[gl-theme] .gl-entry blockquote.gl-fancy-quote,
+    html:not([gl-theme]) .gl-entry blockquote.gl-fancy-quote
+    {
+        background-image: none;
+    }
+    .gl-entry a[href] { text-decoration: underline; }
+
+    .gl-tags-area::before
+    {
+        content: 'Tags: ';
+        font-family: inherit;
+    }
+    .gl-tags-area:lang(zh)::before
+    {
+        content: '标签：';
+    }
+    .gl-tags-area:lang(fr)::before
+    {
+        content: 'Mots-clés: ';
+    }
+    .gl-tags-area a
+    {
+        margin-left: 0 !important;
+        margin-right: 0.8em !important;
+    }
+    /* Tweak the position for links.
+     * They have underline enabled
+     * when using High Contrast themes.
+     */
+    a.gl-feed-sprite::before
+    {
+        margin-bottom: -0.2em;
+    }
+    /* The part below is no longer needed because RSS/Atom are invariant. */
+    a.gl-feed-sprite:lang(zh)::before
+    {
+        margin-bottom: -0.22em;
+    }
+    /* The part below is no longer needed because RSS/Atom are invariant. */
+}
+
+@media screen and (-ms-high-contrast: active) and (min-width: 750px)
+{
+    .gl-entry blockquote.gl-fancy-quote
+    {
+        padding: 0 3em;
+    }
+}
+
+@media screen and (-ms-high-contrast: active) and (min-width: 790px)
+{
+    .gl-entry blockquote.gl-fancy-quote
+    {
+        padding: 0 5em;
+    }
+}
+
+@media screen and (-ms-high-contrast: active) and (min-width: 900px)
+{
+    .gl-entry blockquote.gl-fancy-quote
+    {
+        padding: 0 7em;
+    }
+}
+
+@media screen and (-ms-high-contrast: active) and (min-width: 1000px)
+{
+    .gl-entry blockquote.gl-fancy-quote
+    {
+        padding: 0 20%;
+    }
+}
+
+/* if active, forbidden must be hidden.
+ * if not active, fallback, active, wob, bow must be hidden.
+ * if not wob, wob must be hidden.
+ * if not bow, bow must be hidden.
+ * if wob or bow, fallback must be hidden.
+ */
+@media screen and (-ms-high-contrast: active)
+{
+    .gl-accessibility-helper-iframe
+    {
+        width: 20px;
+        height: 20px;
+    }
+    .gl-accessible-high-contrast-forbidden { display: none !important; }
+}
+@media not all and (-ms-high-contrast: active)
+{
+    .gl-accessible-high-contrast-fallback,
+    .gl-accessible-high-contrast-active
+    { display: none !important; }
+
+    .gl-entry blockquote:not(.gl-fancy-quote) > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :not(p):first-child > :not(p):first-child > :first-child
+    { margin-top: 0; }
+
+    .gl-entry blockquote:not(.gl-fancy-quote) > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :not(p):last-child > :not(p):last-child > :last-child
+    { margin-bottom: 0; }
+}
+@media not all and (-ms-high-contrast: white-on-black)
+{
+    .gl-accessible-high-contrast-white-on-black { display: none !important; }
+}
+@media not all and (-ms-high-contrast: black-on-white)
+{
+    .gl-accessible-high-contrast-black-on-white { display: none !important; }
+}
+@media screen and (-ms-high-contrast: white-on-black)
+{
+    .gl-accessibility-helper-iframe
+    {
+        width: 10px;
+        height: 20px;
+    }
+    .gl-accessible-high-contrast-forbidden,
+    .gl-accessible-high-contrast-fallback
+    { display: none !important; }
+    .gl-feed-sprite::before
+    {
+        background-image: url(/assets/images/deco/feed-black.svg);
+        background-color: white;
+    }
+}
+@media screen and (-ms-high-contrast: black-on-white)
+{
+    .gl-accessibility-helper-iframe
+    {
+        width: 20px;
+        height: 10px;
+    }
+    .gl-accessible-high-contrast-forbidden,
+    .gl-accessible-high-contrast-fallback
+    { display: none !important; }
+    .gl-feed-sprite::before
+    {
+        background-image: url(/assets/images/deco/feed-white.svg);
+        background-color: black;
+    }
+}
+
+/* high contrast is for screen only. */
+@media not screen
+{
+    .gl-accessible-high-contrast-active,
+    .gl-accessible-high-contrast-black-on-white,
+    .gl-accessible-high-contrast-white-on-black,
+    .gl-accessible-high-contrast-fallback
+    {
+        display: none !important;
+    }
+
+    .gl-entry blockquote:not(.gl-fancy-quote) > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :not(p):first-child > :not(p):first-child > :first-child
+    { margin-top: 0; }
+
+    .gl-entry blockquote:not(.gl-fancy-quote) > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :not(p):last-child > :not(p):last-child > :last-child
+    { margin-bottom: 0; }
+}
+
+/* if the browser does not support -ms-high-contrast-adjust,
+ * there is no high contrast functionality available.
+ */
+@supports not (-ms-high-contrast-adjust: none)
+{
+    .gl-accessible-high-contrast-black-on-white,
+    .gl-accessible-high-contrast-white-on-black,
+    .gl-accessible-high-contrast-fallback,
+    .gl-accessible-high-contrast-active
+    { display: none !important; }
+
+    .gl-entry blockquote:not(.gl-fancy-quote) > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :not(p):first-child > :first-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):first-child > :not(p):first-child > :not(p):first-child > :not(p):first-child > :first-child
+    { margin-top: 0; }
+
+    .gl-entry blockquote:not(.gl-fancy-quote) > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :not(p):last-child > :last-child,
+    .gl-entry blockquote:not(.gl-fancy-quote) > :not(p):last-child > :not(p):last-child > :not(p):last-child > :not(p):last-child > :last-child
+    { margin-bottom: 0; }
+}

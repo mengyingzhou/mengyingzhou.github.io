@@ -1,0 +1,1124 @@
+/* Display CNY symbol and quotation marks with Micorosft YaHei. */
+@font-face
+{
+    font-family: 'ChSimpPunctSans-YaHei';
+    src: local('MicrosoftYaHeiBold'), local('Microsoft YaHei Bold'), local('Microsoft YaHei');
+    font-weight: 700;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-YaHei';
+    src: local('MicrosoftYaHeiRegular'), local('Microsoft YaHei Regular'), local('Microsoft YaHei');
+    font-weight: 400;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-YaHei';
+    src: local('MicrosoftYaHeiLight'), local('Microsoft YaHei Light'), local('Microsoft YaHei');
+    font-weight: 300;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019;
+}
+
+/* Display CNY symbol, quotation marks and dashes with PingFang SC. */
+@font-face
+{
+    font-family: 'ChSimpPunctSans-PingFangSC';
+    src: local('PingFangSC-Semibold'), local('PingFang-SC-Semibold'), local('PingFang SC Semibold');
+    font-weight: 600;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019, U+2013, U+2014;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-PingFangSC';
+    src: local('PingFangSC-Medium'), local('PingFang-SC-Medium'), local('PingFang SC Medium'), local('PingFang SC');
+    font-weight: 500;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019, U+2013, U+2014;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-PingFangSC';
+    src: local('PingFangSC-Regular'), local('PingFang-SC-Regular'), local('PingFang SC Regular'), local('PingFang SC');
+    font-weight: 400;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019, U+2013, U+2014;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-PingFangSC';
+    src: local('PingFangSC-Light'), local('PingFang-SC-Light'), local('PingFang SC Light'), local('PingFang SC');
+    font-weight: 300;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019, U+2013, U+2014;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-PingFangSC';
+    src: local('PingFangSC-Ultralight'), local('PingFang-SC-Ultralight'), local('PingFang SC Ultralight'), local('PingFang SC');
+    font-weight: 200;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019, U+2013, U+2014;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-PingFangSC';
+    src: local('PingFangSC-Thin'), local('PingFang-SC-Thin'), local('PingFang SC Thin'), local('PingFang SC');
+    font-weight: 100;
+    unicode-range: U+A5, U+201C, U+201D, U+2018, U+2019, U+2013, U+2014;
+}
+
+/* Display ellipsis with SimSun. */
+@font-face
+{
+    font-family: 'ChSimpPunctSans-SimSun';
+    src: local('NSimSun'), local('SimSun');
+    font-weight: 400;
+    unicode-range: U+2026;
+}
+
+/* Display ellipsis with Songti SC. */
+@font-face
+{
+    font-family: 'ChSimpPunctSans-SongtiSC';
+    src: local('STSongti-SC-Black'), local('STSongti SC Black'), local('Songti SC');
+    font-weight: 900;
+    unicode-range: U+2026;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-SongtiSC';
+    src: local('STSongti-SC-Bold'), local('STSongti SC Bold'), local('Songti SC');
+    font-weight: 700;
+    unicode-range: U+2026;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-SongtiSC';
+    src: local('STSongti-SC-Regular'), local('STSongti SC Regular'), local('Songti SC');
+    font-weight: 400;
+    unicode-range: U+2026;
+}
+@font-face
+{
+    font-family: 'ChSimpPunctSans-SongtiSC';
+    src: local('STSongti-SC-Light'), local('STSongti SC Light'), local('Songti SC');
+    font-weight: 300;
+    unicode-range: U+2026;
+}
+
+*
+{
+    font-family: inherit;
+    -moz-box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    -ms-high-contrast-adjust: inherit;
+}
+
+html
+{
+    -ms-high-contrast-adjust: auto;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body
+{
+    font-size: /* @@ BaseFontSizeNarrow */ 16px /* BaseFontSizeNarrow @@ */;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* [lang]:lang(zh) / [lang]:not(:lang(zh))
+** allows us to alter the font fallback stack
+** only when the language switches.
+*/
+html,
+[lang]:not(:lang(zh)):not(pre):not(code):not(samp):not(kbd):not(var)
+{
+    font-family:
+        /* @@ LatinSansFont */
+            'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial'
+        /* LatinSansFont @@ */,
+        /* @@ ChSimpSansFontLow */
+            'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+        /* ChSimpSansFontLow @@ */,
+        /* @@ EmojiFont */
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+        /* EmojiFont @@ */,
+        sans-serif;
+}
+
+html:lang(zh),
+[lang]:lang(zh):not(pre):not(code):not(samp):not(kbd):not(var)
+{
+    font-family:
+        /* @@ ChSimpPunctSansFont */
+            'ChSimpPunctSans-YaHei', 'ChSimpPunctSans-PingFangSC', 'ChSimpPunctSans-SongtiSC', 'ChSimpPunctSans-SimSun'
+        /* ChSimpPunctSansFont @@ */,
+        /* @@ LatinSansFont */
+            'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial'
+        /* LatinSansFont @@ */,
+        /* @@ ChSimpSansFontLow */
+            'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+        /* ChSimpSansFontLow @@ */,
+        /* @@ EmojiFont */
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+        /* EmojiFont @@ */,
+        sans-serif;
+}
+
+.gl-phantom { visibility: hidden; }
+
+html:not([gl-theme="dark"]):not([gl-theme="light"]) .gl-theme-switcher,
+.gl-theme-switcher:not([gl-theme="dark"]):not([gl-theme="light"]),
+html[gl-theme="dark"] .gl-theme-switcher[gl-theme="dark"],
+html[gl-theme="light"] .gl-theme-switcher[gl-theme="light"]
+{
+    display: none;
+}
+
+.gl-theme-switcher[gl-theme="light"]::before
+{
+    content: "🔆";
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+.gl-theme-switcher[gl-theme="dark"]::before
+{
+    content: "🔅";
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+
+nav.gl-nav
+{
+    margin: 0;
+    padding: 0 /* @@ PageLeftRightMarginNarrow */ 16px /* PageLeftRightMarginNarrow @@ */;
+    font-size: 0; /* prevent spaces from appearing. */
+    position: relative;
+}
+
+nav.gl-nav > .gl-nav-rightstack
+{
+    position: absolute;
+    right: /* @@ PageLeftRightMarginNarrow */ 16px /* PageLeftRightMarginNarrow @@ */;
+    bottom: 0;
+}
+
+nav.gl-nav > * { display: inline-block; }
+nav.gl-nav > a
+{
+    margin: 0;
+    padding: 0.5em 1em;
+    font-size: /* @@ NavFontSizeNarrow */ 16px /* NavFontSizeNarrow @@ */;
+    text-decoration: none;
+}
+
+#nav-homepage::after
+{
+    content: "🏠";
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+#nav-archive::after
+{
+    content: "📚";
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+#nav-tags::after
+{
+    content: "🔖";
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+#nav-friends::after
+{
+    content: "👥";
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+.gl-feed-sprite::before
+{
+    content: "";
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin: -1em 0.2em -0.14em -0.8em;
+    -ms-high-contrast-adjust: none !important;
+    background-image: url(/assets/images/deco/feed.svg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 75%;
+    background-clip: content-box;
+    -webkit-transform-origin: right bottom 0px;
+    -moz-transform-origin: right bottom 0px;
+    -ms-transform-origin: right bottom 0px;
+    -o-transform-origin: right bottom 0px;
+    transform-origin: right bottom 0px;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+    background-color: #ed7d31;
+    border-radius: 0.2em;
+}
+/* The part below is no longer needed because RSS/Atom are invariant. */
+.gl-feed-sprite:lang(zh)::before
+{
+    margin-bottom: -0.2em;
+}
+/* The above part is no longer needed because RSS/Atom are invariant. */
+
+div.gl-rainbow-flag
+{
+    position: absolute;
+    font-size: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #750787;
+}
+div.gl-rainbow-flag > div { width: 16.67%; height: 100%; display: inline-block; }
+div.gl-rainbow-flag > div.gl-rainbow-red { background: #e40303; }
+div.gl-rainbow-flag > div.gl-rainbow-orange { background: #ff8c00; }
+div.gl-rainbow-flag > div.gl-rainbow-yellow { background: #ffed00; }
+div.gl-rainbow-flag > div.gl-rainbow-green { background: #008026; }
+div.gl-rainbow-flag > div.gl-rainbow-blue { background: #004dff; }
+div.gl-rainbow-flag > div.gl-rainbow-purple { background: #750787; display: none; }
+
+html:not(.gl-show-rainbow) .gl-rainbow-flag
+{
+    display: none !important;
+}
+
+.gl-body-wrapper
+{
+    margin: auto;
+    padding: 15px /* @@ PageLeftRightMarginNarrow */ 16px /* PageLeftRightMarginNarrow @@ */;
+    max-width: 1024px;
+}
+
+.gl-share-facebook, .gl-share-twitter, .gl-share-linkedin, .gl-share-sinaweibo
+{
+    display: inline-block;
+    height: 2em;
+    width: 2em;
+    margin-left: 0.6em;
+    background-position: bottom center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.gl-share-facebook
+{
+    background-color: #3b579d;
+    background-image: url(/assets/images/social/facebook.png);
+}
+.gl-share-twitter
+{
+    background-color: #1da1f2;
+    background-image: url(/assets/images/social/twitter.png);
+}
+.gl-share-linkedin
+{
+    background-color: #0077b5;
+    background-image: url(/assets/images/social/linkedin.png);
+}
+.gl-share-sinaweibo
+{
+    background-color: #fa4a3a;
+    background-image: url(/assets/images/social/sinaweibo.png);
+}
+
+#post-metadata > h1 { margin-bottom: 0.4em; }
+
+.gl-shortdate:not(pre):not(code):not(samp):not(kbd):not(var)
+{
+    font-family:
+        /* @@ LatinSansFont */
+            'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial'
+        /* LatinSansFont @@ */,
+        /* @@ ChSimpSansFontLow */
+            'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+        /* ChSimpSansFontLow @@ */,
+        /* @@ SymbolFont */
+            'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji'
+        /* SymbolFont @@ */,
+        sans-serif;
+}
+
+.dateline, .byline-name { display: inline-block; }
+
+.gl-share-on
+{
+    text-align: right;
+    -ms-high-contrast-adjust: none !important;
+    line-height: 0;
+}
+
+.gl-entry blockquote:not(.gl-fancy-quote)
+{
+    border-left-style: solid;
+    border-left-width: 0.2em;
+    padding: 0 1em;
+    margin: 1em 0;
+}
+
+.gl-entry blockquote.gl-fancy-quote
+{
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 1.4em auto;
+    padding: 0 0 0 2em;
+    margin: 1em auto;
+    clear: left;
+    min-width: 14em;
+    max-width: 100%;
+    width: 32em;
+}
+.gl-entry blockquote.gl-fancy-quote:not(.gl-long-quote)
+{ font-size: 1.2em; }
+.gl-entry blockquote.gl-fancy-quote:not(.gl-rhymic-quote)
+{ text-align: center; }
+
+.gl-entry blockquote.gl-fancy-quote > :not(:lang(zh)):not(.gl-quote-author-line)
+{ font-style: italic; }
+
+.gl-entry blockquote.gl-fancy-quote > :lang(zh):not(.gl-quote-author-line)
+{ font-weight: 600; }
+
+.gl-entry blockquote.gl-fancy-quote > .gl-quote-author-line
+{
+    text-align: right;
+    margin-left: -2em;
+    /* @@ AvoidBreakBefore */
+-webkit-page-break-before: avoid;
+-webkit-column-break-before: avoid;
+-webkit-region-break-before: avoid;
+page-break-before: avoid;
+break-before: avoid;
+    /* AvoidBreakBefore @@ */
+    /* @@ AvoidBreakInside */
+-webkit-column-break-inside: avoid;
+-webkit-break-inside: avoid;
+page-break-inside: avoid;
+break-inside: avoid;
+    /* AvoidBreakInside @@ */
+}
+
+.gl-entry table,
+.gl-entry p
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.gl-entry mark
+{
+    -ms-high-contrast-adjust: none !important;
+}
+
+.gl-entry cite:lang(zh) { font-style: normal; }
+
+.gl-entry pre
+{
+    border-radius: 2px;
+    padding: 1em;
+    line-height: 1.2;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
+}
+.gl-entry pre,
+.gl-entry code,
+.gl-entry samp,
+.gl-entry kbd
+{
+    -ms-word-break: break-all;
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
+    font-family:
+        /* @@ LatinMonoFont */
+            'Consolas', 'Menlo', 'Courier New', 'Courier'
+        /* LatinMonoFont @@ */,
+        /* @@ ChSimpMonoFontLow */
+            'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+        /* ChSimpMonoFontLow @@ */,
+        /* @@ EmojiFont */
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+        /* EmojiFont @@ */,
+        monospace;
+}
+.gl-entry var
+{
+    -ms-word-break: break-all;
+    word-break: break-all;
+    font-family:
+        /* @@ LatinSerifFont */
+            'Georgia', 'Times New Roman'
+        /* LatinSerifFont @@ */,
+        /* @@ ChSimpSerifFont */
+            'STZhongsong', 'STSongTi', 'STFangSong', 'SimSun'
+        /* ChSimpSerifFont @@ */,
+        /* @@ EmojiFont */
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+        /* EmojiFont @@ */,
+        serif;
+    font-style: italic;
+}
+.gl-entry pre,
+.gl-entry code,
+.gl-entry samp,
+.gl-entry kbd,
+.gl-entry var
+{
+    -ms-word-break: break-all;
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
+}
+.gl-entry :not(pre) > code,
+.gl-entry :not(pre) > samp,
+.gl-entry kbd
+{
+    border-radius: 2px;
+    padding: 0.1em 0.2em;
+}
+.gl-entry kbd
+{
+    border: 1px solid transparent;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+.gl-entry h1
+{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font-size: 2em;
+}
+.gl-entry h2
+{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font-size: 1.6em;
+}
+.gl-entry h1, .gl-entry h2 { padding-bottom: 0.1em; }
+.gl-entry h3 { font-size: 1.4em; }
+.gl-entry h4 { font-size: 1.3em; }
+.gl-entry h5 { font-size: 1.2em; }
+.gl-entry h6 { font-size: 1.1em; }
+.gl-entry h1, .gl-entry h2, .gl-entry h3,
+.gl-entry h4, .gl-entry h5, .gl-entry h6
+{
+    font-weight: 600;
+    margin: 0.5em 0;
+    padding-bottom: 0.2em;
+    line-height: 1.4;
+}
+.gl-entry h1 { margin-top: 0; }
+
+.gl-entry h1, .gl-entry h2, .gl-entry h3,
+.gl-entry h4, .gl-entry h5, .gl-entry h6,
+.gl-entry table > thead
+{
+    /* @@ AvoidBreakAfter */
+-webkit-column-break-after: avoid;
+-webkit-break-after: avoid;
+page-break-after: avoid;    
+break-after: avoid;
+    /* AvoidBreakAfter @@ */
+}
+
+.gl-entry ol > li:first-child + li,
+.gl-entry ul > li:first-child + li,
+.gl-entry table > tbody > tr:first-child + tr
+{
+    /* @@ AvoidBreakBefore */
+-webkit-page-break-before: avoid;
+-webkit-column-break-before: avoid;
+-webkit-region-break-before: avoid;
+page-break-before: avoid;
+break-before: avoid;
+    /* AvoidBreakBefore @@ */
+}
+
+.gl-entry table
+{
+    border-collapse: collapse;
+}
+
+.gl-entry table > thead > tr > th, .gl-entry table > tbody > tr > td
+{
+    border-width: 1px;
+    border-style: solid;
+    padding: 0.2em 1em;
+}
+
+.gl-entry abbr[title]
+{
+    cursor: help;
+    text-decoration: none;
+}
+
+.gl-entry abbr.obscure-abbr[title]
+{
+    border-bottom: 1px dotted;
+}
+
+.gl-entry em:lang(zh)
+{
+    font-style: normal;
+    border-bottom: 3px double;
+}
+
+.gl-entry .gl-small-caps
+{
+    font-variant: small-caps;
+}
+
+.gl-entry u
+{
+    text-decoration: none;
+}
+
+.gl-entry u[gl-unusual="ungrammatical"],
+.gl-entry u[gl-unusual="misspelled"]
+{
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+}
+
+.gl-entry u[gl-unusual="ungrammatical"]::before
+{
+    content: '* ';
+}
+
+.gl-entry u[gl-unusual="proper-noun"]:lang(zh)
+{
+    border-bottom: 1px solid;
+}
+
+/* A dead person's name is in a box in Chinese. */
+.gl-entry u[gl-unusual="dead"]:lang(zh)
+{
+    border: 1px solid;
+    padding: 0 0.2em 0.1em 0.2em;
+}
+
+.gl-entry a { text-decoration: none; }
+.gl-entry a[href]:hover { text-decoration: underline; }
+
+.gl-entry a[target="_blank"]::after
+{
+    content: ' ↗';
+    font-family: /* @@ ArrowFont */ 'Calibri', 'Segoe UI Symbol', 'Segoe UI Emoji', 'Menlo', 'Apple Color Emoji', 'AppleColorEmoji' /* ArrowFont @@ */;
+}
+
+.gl-entry a.gl-refback-link
+{
+    margin-right: 0.4em;
+}
+.gl-entry a.gl-refback-link:not(:target)
+{
+    display: none;
+}
+
+.gl-entry a.gl-ref2-label-spl
+{
+    margin-left: 0.4em;
+}
+.gl-entry a.gl-ref2-label-spr
+{
+    margin-right: 0.4em;
+}
+.gl-entry a.gl-ref2-label:not(:target)
+{
+    display: none;
+}
+
+.gl-tags-area a::before,
+.gl-tags-area a::after,
+.gl-entry figcaption > a::before,
+.gl-entry figcaption > a::after,
+.gl-entry a.gl-suppress-deco::before,
+.gl-entry a.gl-suppress-deco::after,
+.gl-entry .gl-suppress-deco a::before,
+.gl-entry .gl-suppress-deco a::after,
+footer a::before,
+footer a::after
+{
+    content: '' !important;
+}
+
+.gl-tags-area
+{
+    clear: both;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.gl-tags-area::before
+{
+    content: '🔖';
+    font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+}
+
+.gl-tags-area a
+{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+#comments-area
+{
+    clear: both;
+    margin-top: 1em;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+footer
+{
+    clear: both;
+    text-align: center;
+}
+footer.gl-footer-far
+{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+footer.gl-footer-near
+{
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+footer > *:not(.gl-preserved-dummy-class)
+{
+    margin: 0.5em 0.5em 0 0.5em;
+}
+
+html:not(.gl-new-prompt-notice) .gl-prompt-notice-bg,
+html:not(.gl-new-prompt-notice) .gl-prompt-notice
+{
+    display: none !important;
+}
+
+.gl-prompt-notice-bg
+{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    -ms-high-contrast-adjust: none !important;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 65535;
+}
+
+.gl-prompt-notice
+{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding-top: 25vh;
+    z-index: 65536;
+}
+
+.gl-prompt-notice > .gl-prompt-notice-dialog
+{
+    width: 480px;
+    max-width: 80%;
+    margin: auto;
+    padding: 4px 20px 20px 20px;
+}
+
+.gl-prompt-notice > .gl-prompt-notice-dialog > .gl-prompt-notice-rightstack
+{
+    text-align: right;
+}
+
+.gl-prompt-notice > .gl-prompt-notice-dialog > .gl-prompt-notice-rightstack > a
+{
+    padding: 8px 16px;
+}
+
+.gl-image-box
+{
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+    /* @@ AvoidBreakInside */
+-webkit-column-break-inside: avoid;
+-webkit-break-inside: avoid;
+page-break-inside: avoid;
+break-inside: avoid;
+    /* AvoidBreakInside @@ */
+}
+
+.gl-image-box *
+{
+    /* @@ AvoidBreakBefore */
+-webkit-page-break-before: avoid;
+-webkit-column-break-before: avoid;
+-webkit-region-break-before: avoid;
+page-break-before: avoid;
+break-before: avoid;
+    /* AvoidBreakBefore @@ */
+    /* @@ AvoidBreakInside */
+-webkit-column-break-inside: avoid;
+-webkit-break-inside: avoid;
+page-break-inside: avoid;
+break-inside: avoid;
+    /* AvoidBreakInside @@ */
+    /* @@ AvoidBreakAfter */
+-webkit-column-break-after: avoid;
+-webkit-break-after: avoid;
+page-break-after: avoid;    
+break-after: avoid;
+    /* AvoidBreakAfter @@ */
+}
+
+.katex-display
+{
+    /* @@ AvoidBreakInside */
+-webkit-column-break-inside: avoid;
+-webkit-break-inside: avoid;
+page-break-inside: avoid;
+break-inside: avoid;
+    /* AvoidBreakInside @@ */
+}
+
+.katex-display *
+{
+    /* @@ AvoidBreakBefore */
+-webkit-page-break-before: avoid;
+-webkit-column-break-before: avoid;
+-webkit-region-break-before: avoid;
+page-break-before: avoid;
+break-before: avoid;
+    /* AvoidBreakBefore @@ */
+    /* @@ AvoidBreakInside */
+-webkit-column-break-inside: avoid;
+-webkit-break-inside: avoid;
+page-break-inside: avoid;
+break-inside: avoid;
+    /* AvoidBreakInside @@ */
+    /* @@ AvoidBreakAfter */
+-webkit-column-break-after: avoid;
+-webkit-break-after: avoid;
+page-break-after: avoid;    
+break-after: avoid;
+    /* AvoidBreakAfter @@ */
+}
+
+.gl-float-always-left { float: left; }
+.gl-float-always-right { float: right; }
+
+/* :not[data-collapsion] is a fallback for no-script case. */
+.gl-collapsible:not([data-collapsion]) [data-collapsion=collapse],
+.gl-collapsible:not([data-collapsion]) [data-collapsion=expand],
+.gl-collapsible[data-collapsion=collapsed] [data-collapsion=collapse],
+.gl-collapsible[data-collapsion=visible] [data-collapsion=expand]
+{ display: none; }
+
+@-webkit-keyframes targeted
+{
+    17% { opacity: 0; }
+    33% { opacity: 1; }
+    50% { opacity: 0; }
+    67% { opacity: 1; }
+    83% { opacity: 0; }
+}
+@-moz-keyframes targeted
+{
+    17% { opacity: 0; }
+    33% { opacity: 1; }
+    50% { opacity: 0; }
+    67% { opacity: 1; }
+    83% { opacity: 0; }
+}
+@-o-keyframes targeted
+{
+    17% { opacity: 0; }
+    33% { opacity: 1; }
+    50% { opacity: 0; }
+    67% { opacity: 1; }
+    83% { opacity: 0; }
+}
+@keyframes targeted
+{
+    17% { opacity: 0; }
+    33% { opacity: 1; }
+    50% { opacity: 0; }
+    67% { opacity: 1; }
+    83% { opacity: 0; }
+}
+
+body.gl-targeted-animation *:target
+{
+    -webkit-animation: targeted 1200ms 120ms;
+    -moz-animation: targeted 1200ms 120ms;
+    -o-animation: targeted 1200ms 120ms;
+    animation: targeted 1200ms 120ms;
+}
+
+.gl-reset-animations
+{
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    animation: none !important;
+}
+
+@media screen
+{
+    .gl-collapsible[data-collapsion=collapsed] [data-collapsion=content]
+    { display: none; }
+}
+
+@media (min-resolution: 140dpi)
+{
+    html,
+    [lang]:not(:lang(zh)):not(pre):not(code):not(samp):not(kbd):not(var)
+    {
+        font-family:
+            /* @@ LatinSansFont */
+                'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial'
+            /* LatinSansFont @@ */,
+            /* @@ ChSimpSansFontHigh */
+                'DengXian', 'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+            /* ChSimpSansFontHigh @@ */,
+            /* @@ EmojiFont */
+                'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+            /* EmojiFont @@ */,
+            sans-serif;
+    }
+    html:lang(zh),
+    [lang]:lang(zh):not(pre):not(code):not(samp):not(kbd):not(var)
+    {
+        font-family:
+            /* @@ ChSimpPunctSansFont */
+                'ChSimpPunctSans-YaHei', 'ChSimpPunctSans-PingFangSC', 'ChSimpPunctSans-SongtiSC', 'ChSimpPunctSans-SimSun'
+            /* ChSimpPunctSansFont @@ */,
+            /* @@ LatinSansFont */
+                'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial'
+            /* LatinSansFont @@ */,
+            /* @@ ChSimpSansFontHigh */
+                'DengXian', 'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+            /* ChSimpSansFontHigh @@ */,
+            /* @@ EmojiFont */
+                'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+            /* EmojiFont @@ */,
+            sans-serif;
+    }
+    .gl-shortdate:not(pre):not(code):not(samp):not(kbd):not(var)
+    {
+        font-family:
+            /* @@ LatinSansFont */
+                'Segoe UI', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Arial'
+            /* LatinSansFont @@ */,
+            /* @@ ChSimpSansFontHigh */
+                'DengXian', 'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+            /* ChSimpSansFontHigh @@ */,
+            /* @@ SymbolFont */
+                'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji'
+            /* SymbolFont @@ */,
+            sans-serif;
+    }
+    .gl-entry code,
+    .gl-entry samp,
+    .gl-entry kbd
+    {
+        font-family:
+            /* @@ LatinMonoFont */
+                'Consolas', 'Menlo', 'Courier New', 'Courier'
+            /* LatinMonoFont @@ */,
+            /* @@ ChSimpMonoFontHigh */
+                'DengXian', 'Microsoft YaHei', 'PingFang SC', 'PingFangSC'
+            /* ChSimpMonoFontHigh @@ */,
+            /* @@ EmojiFont */
+                'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'AppleColorEmoji'
+            /* EmojiFont @@ */,
+            monospace;
+    }
+}
+
+@media not all and (min-width: 500px)
+{
+    .gl-wide-only
+    {
+        display: none !important;
+    }
+}
+
+@media all and (min-width: 500px)
+{
+    html, body
+    {
+        font-size: /* @@ BaseFontSizeWide */ 16px /* BaseFontSizeWide @@ */;
+    }
+    nav.gl-nav
+    {
+        padding-left: /* @@ PageLeftRightMarginWide */ 2.5vw /* PageLeftRightMarginWide @@ */;
+        padding-right: /* @@ PageLeftRightMarginWide */ 2.5vw /* PageLeftRightMarginWide @@ */;
+    }
+    nav.gl-nav .gl-nav-rightstack
+    {
+        right: /* @@ PageLeftRightMarginWide */ 2.5vw /* PageLeftRightMarginWide @@ */;
+    }
+    nav.gl-nav > a
+    {
+        font-size: /* @@ NavFontSizeWide */ 20px /* NavFontSizeWide @@ */;
+    }
+    div.gl-rainbow-flag { height: 4px; }
+    .gl-body-wrapper
+    {
+        padding: 20px /* @@ PageLeftRightMarginWide */ 2.5vw /* PageLeftRightMarginWide @@ */;
+    }
+    .gl-share-on { margin-top: 0.6em; float: right; }
+    .gl-narrow-only
+    {
+        display: none !important;
+    }
+    .gl-float-left
+    {
+        float: left;
+    }
+    .gl-float-right
+    {
+        float: right;
+    }
+}
+
+.gl-horizontal-only
+{
+    display: none !important;
+}
+
+@media not print
+{
+    .gl-print-only
+    {
+        display: none !important;
+    }
+}
+
+@media print
+{
+    html
+    {
+        -ms-high-contrast-adjust: none !important;
+    }
+    body
+    {
+        -ms-zoom: 90%;
+        zoom: 90%;
+    }
+    .gl-print-forbidden,
+    .gl-rainbow-flag,
+    nav.gl-nav
+    {
+        display: none !important;
+    }
+    .gl-body-wrapper
+    {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .gl-entry abbr.obscure-abbr[title]
+    {
+        border-bottom: none;
+    }
+    .gl-entry abbr.obscure-abbr[title]::after
+    {
+        content: " (" attr(title) ")";
+    }
+    .gl-entry abbr.obscure-abbr[title]:lang(zh)::after
+    {
+        content: "（" attr(title) "）";
+    }
+    footer
+    {
+        margin-bottom: 0 !important;
+    }
+    .gl-entry a.gl-refback-link
+    {
+        display: none;
+    }
+    .gl-entry a[href]::after
+    {
+        content: ' 🔗';
+        font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+    }
+    .gl-entry a[target="_blank"]::after
+    {
+        content: ' ↗';
+        font-family: /* @@ ArrowFont */ 'Calibri', 'Segoe UI Symbol', 'Segoe UI Emoji', 'Menlo', 'Apple Color Emoji', 'AppleColorEmoji' /* ArrowFont @@ */;
+    }
+    .gl-entry a[href^="javascript:"]::after
+    {
+        content: ' 📜';
+        font-family: /* @@ SymbolFont */ 'Segoe UI Symbol', 'Segoe UI Emoji', 'Helvetica Neue', 'HelveticaNeue', 'Helvetica', 'Apple Color Emoji', 'AppleColorEmoji' /* SymbolFont @@ */;
+    }
+    .gl-tags-area::before
+    {
+        content: 'Tags: ';
+        font-family: inherit;
+    }
+    .gl-tags-area:lang(zh)::before
+    {
+        content: '标签：';
+    }
+    .gl-tags-area:lang(fr)::before
+    {
+        content: 'Mots-clés: ';
+    }
+    .gl-tags-area a
+    {
+        margin-left: 0 !important;
+        margin-right: 0.8em !important;
+    }
+    .gl-collapsible [data-collapsion=collapse],
+    .gl-collapsible [data-collapsion=expand]
+    {
+        display: none !important;
+    }
+}
+
+.gl-horizontal-forbidden
+{
+    display: none !important;
+}
+
+/* Manifest errors. */
+.gl-blog-warning
+{
+    background: white !important;
+    padding-left: 0.2em !important;
+    padding-right: 0.2em !important;
+    border: solid 1px red !important;
+    color: red !important;
+    font-weight: bold !important;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    -ms-high-contrast-adjust: none !important;
+}
+.gl-blog-warning > code
+{
+    -ms-high-contrast-adjust: auto !important;
+    font-family: 'Consolas', 'Menlo', 'Courier New', 'Courier', monospace !important;
+}
