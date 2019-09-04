@@ -21,8 +21,7 @@ I can be reached at <a href="mailto:myzhou@fudan.edu.cn">myzhou@fudan.edu.cn</a>
 
 ## Education                                                                      
 2019.9 – now
-
-__Ph.D. Student__
+  - __Ph.D. Student__
   - School of Computer Science, Fudan University
   - Advisor: [Prof. Yang Chen](https://chenyang03.wordpress.com/)
 
