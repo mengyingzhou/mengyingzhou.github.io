@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://nullaerber.github.io/2025/10/01/[paper]group_paper_reading/">
+    <link rel="canonical" href="https://mengyingzhou.github.io/2025/10/01/[paper]group_paper_reading/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -214,7 +214,116 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h4 id="ibosiola_complaint_www19-ibosiola-damilola-et-al-who-watches-the-watchmen-exploring-complaints-on-the-web-the-world-wide-web-conference-acm-2019">{Ibosiola_complaint_www19} Ibosiola, Damilola, et al. “Who watches the watchmen: Exploring complaints on the web.” The World Wide Web Conference. ACM, 2019.</h4>
+                <h4 id="understanding-group-event-scheduling-via-the-outwithfriendz-mobile-applicationubicomp2018">Understanding Group Event Scheduling via the OutWithFriendz Mobile Application，Ubicomp2018</h4>
+<p>本文探讨了群体决策制定过程中相关的影响因素的特征和相应的影响，包括 个体移动轨迹、个体偏好、主办方偏好等相关特征，以自主开发的app收集到的聚会数据作为数据集进行相关特征的分析，得到了一系列的结论。<br>
+· 开发自己的app收集聚会数据，主要收集小型团体的投票过程数据，以及用户的轨迹数据<br>
+· 对数据集中的数据进行统计方法的分布分析，得到初步的观察结果<br>
+· 主要对影响群体决策的相关因素进行了分析，分为个体移动轨迹、个体偏好、主办方偏好三个方面，主要内容是对应的9个观察结论，采用方法为画图加统计学分析的方法</p>
+<h4 id="a-weakly-supervised-learning-framework-for-detecting-social-anxiety-and-depression-ubicomp2018">A Weakly Supervised Learning Framework for Detecting Social Anxiety and Depression” UbiComp2018</h4>
+<h4 id="liu_imputation_www19-zongtao-liu-zhongyi-tang-yang-yang-ning-li-wei-huang-and-fei-wu-how-do-your-neighbors-disclose-your-information-social-aware-time-series-imputation-proc-world-wide-web-conf-www-2019">{Liu_imputation_www19} Zongtao Liu, Zhongyi Tang, Yang Yang, Ning Li, Wei Huang, and Fei Wu. “How do your neighbors disclose your information: Social-aware time series imputation.” Proc. World Wide Web Conf. WWW 2019.</h4>
+<ul>
+<li>a model to data imputation based on the phenomenon that individual’s observations are dependent to each other in real-world.</li>
+<li>model (Social-Aware Time Series Imputation, STI):
+<ul>
+<li>social context</li>
+<li>temporal content</li>
+<li>attention mechanism</li>
+<li>novel LSTM model: T-LSTM [ref.7 time-aware LSTM networks, kdd17]</li>
+</ul>
+</li>
+<li>Comparison of Performance using Simulated Real-World Missing Data</li>
+<li>数据缺失值填充模型：基于现实世界中个体的相互影响的现象</li>
+<li>模型 (Social-Aware Time Series Imputation, STI):
+<ul>
+<li>社会上下文</li>
+<li>时间内容</li>
+<li>注意机制</li>
+</ul>
+</li>
+<li>lstm变体模型：T-lstm [ref.7 time-aware LSTM networks, kdd17]</li>
+<li>Analysis 亮点： 模拟真实世界的数据缺失情况</li>
+</ul>
+<h4 id="sadri-amin-et-al-what-will-you-do-for-the-rest-of-the-day-an-approach-to-continuous-trajectory-prediction-ubicomp2019">{} Sadri, Amin, et al. “What will you do for the rest of the day?: An approach to continuous trajectory prediction.” UbiComp2019</h4>
+<ul>
+<li>本文探讨了根据用户轨迹历史记录和一天之中的开始轨迹，预测一天之中剩下轨迹的可行性。</li>
+<li>首先分析数据得出一系列重要结论：一天中早晨的轨迹和下午的轨迹有正相关性；越邻近的历史轨迹越相似；异常的轨迹往往具有一次性的特点</li>
+<li>提出了自己的方法：通过轨迹相似度、时间分块的方法探究相似轨迹的影响并预测轨迹</li>
+<li>与现有的方法和马尔科夫模型、lstm进行对比，在数据量不多的情况下本文方法最优</li>
+</ul>
+<h4 id="privcheck-privacy-preserving-check-in-data-publishing-for-personalized-location-based-services-ubicomp16">{PrivCheck: Privacy-Preserving Check-in Data Publishing for Personalized Location Based Services. Ubicomp’16}</h4>
+<p>本论文主要针对个性化的LBSs提出的了一个用户可定制化的、连续的隐私保护的框架PrivCheck，来减少check-in数据发布时会造成的用户个人信息的隐私泄露。<br>
+主要思路：在给定的一个数据失真的预算下，混淆用户的check-in数据，来降低用户特定的隐私数据的泄露程度，同时保证个性化LBSs的实用性。<br>
+系统流程：<br>
+（1）用户自愿将check-in数据共享到LBSN中，并指定自己的隐私数据；<br>
+（2）用户公开的check-in数据和选定的隐私数据输入到PrivCheck框架中，historical check-in publishing module混淆用户历史check-in数据，online check-in data publishing module混淆check-in数据流中的每条check-in；<br>
+（3）将混淆的check-in数据发布给第三方LBS提供商；<br>
+（4）第三方提供高质量的个性化的LBSs。</p>
+<h4 id="chen_learning-usage-patterns-of-emojis-from-large-scale-android-users_www18">{Chen_Learning Usage Patterns of Emojis from Large-Scale Android Users_WWW’18}</h4>
+<p>本篇论文主要分析了不同性别的安卓用户在表情符号使用上的差异，并通过提取使用频率和偏好等作为特征，训练了预测用户性别的模型。该模型的精确度与基于英语文本构建的模型相当，并且可以推广到非英语用户。<br>
+使用差异：<br>
+1)女性比男性更倾向使用表情符号<br>
+2)男女性在使用表情符号上各有偏好,其中有些与性别差异的共识一致，有些不同。<br>
+模型推广：<br>
+1）基于表情符号预测性别的模型在不同语言的数据集上表现良好<br>
+2）当该模型应用到message&lt;100的用户的数据集上，相较原模型选择了message&gt;=100的用户，虽然准确性下降，但仍优于基准模型<br>
+模型比较：<br>
+在同一数据集上，比较复现了基于英语文本预测性别的模型(Retrained text model)、基于表情符号的模型(Emoji model)、以文本内容计算情感得分并作为表情符号特征的模型(Semantic emoji model)<br>
+1)Emoji model 逊于Retrained text model<br>
+2)Semantic emoji model性能略优于Emoji model</p>
+<h4 id="cheng_good_team_www19-cheng-ziqiang-et-al-what-makes-a-good-team-a-large-scale-study-on-the-effect-of-team-composition-in-honor-of-kings-the-world-wide-web-conference-acm-2019">{Cheng_good_team_www19} Cheng, Ziqiang, et al. “What Makes a Good Team? A Large-scale Study on the Effect of Team Composition in Honor of Kings.” The World Wide Web Conference. ACM, 2019.</h4>
+<ul>
+<li>本文主要通过王者荣耀游戏的对战记录研究了团队组成对于三个团队表现指标的影响。这三个团队表现分别为团队表现（输赢）、团队抗性（是否主动投降）、团队和谐（是否有侮辱性语句）</li>
+<li>动机
+<ul>
+<li>游戏数据的完整性（游戏玩家多、可以获得玩家的历史数据、个人信息等）</li>
+<li>MOBA游戏为团队游戏具有竞争性，同时人数、角色是固定易于量化分析</li>
+</ul>
+</li>
+<li>分析
+<ul>
+<li>团队组成多样性促进团队表现、团队抗性，但是却减少了团队和谐</li>
+<li>“环境vs个性”分析，研究是个体属性决定行为还是环境决定行为。通过“有侮辱倾向的玩家不管选择什么游戏角色都会侮辱他人”这样的发现表明，个体属性决定行为。</li>
+</ul>
+</li>
+<li>预测
+<ul>
+<li>预测输赢、是否投降和是否有侮辱性语言。总的来说，发现基于团队组成的特征始终优于基于单个玩家的重要性。</li>
+<li>特征重要性：total &gt; role property &gt; player information &gt; baseline</li>
+</ul>
+</li>
+</ul>
+<h4 id="costa_engaging_cscw18-costa-figueiredo-mayara-et-al-engaging-with-health-data-the-interplay-between-self-tracking-activities-and-emotions-in-fertility-struggles-proceedings-of-the-acm-on-human-computer-interaction-2cscw-2018-40">{Costa_Engaging_CSCW18} Costa Figueiredo, Mayara, et al. “Engaging with Health Data: The Interplay Between Self-Tracking Activities and Emotions in Fertility Struggles.” Proceedings of the ACM on Human-Computer Interaction 2.CSCW (2018): 40.</h4>
+<ul>
+<li>本论文探讨了在自我记录以达到目标的过程当中，产生的情绪和记录行为相互影响的过程。本文选用了以生育为目的的自我记录，数据是从相关论坛上获取的发帖内容，研究方法为人工选词进行数据筛选，然后人工进行语句情绪分类。<br>
+发现：</li>
+<li>本文发现以生育为目的的自我记录中，数据和用户情绪的关系可以分为五种:积极、负担、困扰、受困、放弃。这五种不同的关系分别有一些对应的情绪，也会使用户做出一些特定的行为。</li>
+<li>本文也揭示了一些自我记录会对用户的情绪产生的严重负面影响，比如不透明的标准会让人觉得自己不正常，同时也根据这些情绪产生的原因对现代自我记录产品的设计提出了一些建议</li>
+<li>本文更深层次地讨论和挖掘了自我记录和情绪的这种关系在社会层面、文化层面的原因和影响</li>
+</ul>
+<h4 id="cunha_successful_community_www19-cunha-tiago-et-al-are-all-successful-communities-alike-characterizing-and-predicting-the-success-of-online-communities-the-world-wide-web-conference-acm-2019">{Cunha_successful_community_www19} Cunha, Tiago, et al. “Are All Successful Communities Alike? Characterizing and Predicting the Success of Online Communities.” The World Wide Web Conference. ACM, 2019.</h4>
+<ul>
+<li>本论文研究网络社区创立初期社区属性和用户行为对社区未来成功的影响。首先定义了四种成功的度量方法，并进行量化，分析了其中相关性。接着选择六类社区创立初期的特征。然后针对不同规模、不同度量方法下的社区特征预测模型进行实验，分析实验结果。最后说明了实验中的不足和基于实验结果给予社区成员的启示。</li>
+<li>发现：
+<ul>
+<li>1）度量社区成功的准则是多维的，本文中定义如下方法： 成员数量增长、成员保留情况、社区长期存活、社区活动量。 这些方法间相关度不高，表明每一个度量方法都把握了社区成功的一个维度。</li>
+<li>2）实验研究用户组成、用户行为、社区活动的规模频率、语言风格、活动分布等特征对社区成功的影响，特征汇总后的模型的性能优于任何单个特征的模型性能，表明这些特征对社区成功都有预测性。其中，活动分布出现在所有不同的成功度量方法下最具预测性的因素中。</li>
+<li>3）模型对于K的不同取值变化不大，表明一个社区创立初期，它的特征即可预测未来的成功。</li>
+</ul>
+</li>
+</ul>
+<h4 id="mackenzie_email_refind_www19-mackenzie-j-gupta-k-qiao-f-et-al-exploring-user-behavior-in-email-re-finding-taskscthe-world-wide-web-conference-acm-2019-1245-1255">{Mackenzie_email_refind_www19} Mackenzie J, Gupta K, Qiao F, et al. Exploring User Behavior in Email Re-Finding Tasks[C]//The World Wide Web Conference. ACM, 2019: 1245-1255.</h4>
+<ul>
+<li>本论文研究的是电子邮件中用户重新查找邮件时的行为，首先提出了一个框架在众包的环境下通过模拟用户查找邮件任务获得了真实的邮件数据和用户行为，然后分析不同的邮件排名方法、邮件属性和搜索质量中的用户行为。</li>
+<li>发现：
+<ul>
+<li>基于相关性的排名方法的MRR明显高于按时间的排名方法，但两种方法对用户行为的影响并不大。按时间的排名方法在查找旧邮件时比较困难，用户在决定什么时候放弃SERP会做得更好。混合的排名方法中，有些用户会忽略或浏览目标邮件之外的内容。</li>
+<li>用户重新修改查询内容的规律与web搜索类似，但是修改策略会有差别。</li>
+<li>重要的电子邮件更容易被找到，成功的时间更少，搜索次数更低。人工还是机器生成的邮件不会影响被找到的成功率。</li>
+<li>用户行为与搜索结果的质量密切相关，质量降低，用户成功的时间就越长，搜索更频繁，并且更频繁地放弃每个SERP。</li>
+</ul>
+</li>
+</ul>
+<h4 id="ibosiola_complaint_www19-ibosiola-damilola-et-al-who-watches-the-watchmen-exploring-complaints-on-the-web-the-world-wide-web-conference-acm-2019">{Ibosiola_complaint_www19} Ibosiola, Damilola, et al. “Who watches the watchmen: Exploring complaints on the web.” The World Wide Web Conference. ACM, 2019.</h4>
 <ul>
 <li>此文分析了对投诉者、投诉的对象、投诉的种类、以及投诉发出后哪些域名的变化，例如排名、是否撤下进行了分析。</li>
 <li>发现:
@@ -631,7 +740,7 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ibosiola_complaint_www19-ibosiola-damilola-et-al-who-watches-the-watchmen-exploring-complaints-on-the-web-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">{Ibosiola_complaint_www19} Ibosiola, Damilola, et al. “Who watches the watchmen: Exploring complaints on the web.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mental_well_being_www17-mobile-sensing-at-the-service-of-mental-well-being-a-large-scale-longitudinal-studywww17"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">{mental_well_being_www17} Mobile Sensing at the Service of Mental Well-being: a Large-scale Longitudinal Study.WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#private_www17-how-public-is-my-private-life-privacy-in-online-dating-www17"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">{private_www17} How Public Is My Private Life? Privacy in Online Dating. WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#return_explore_www19-to-return-or-to-explore-modelling-human-mobility-and-dynamics-in-cyberspace-www19"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">{return_explore_www19} To Return or to Explore: Modelling Human Mobility and Dynamics in Cyberspace. WWW19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ma_trust_facebook_chi19-xiao-ma-et-al-when-do-people-trust-their-social-groups-chi-2019"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">{Ma_trust_facebook_CHI19} Xiao Ma, et al. “When Do People Trust Their Social Groups?” CHI 2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lbsn_hypergraph_www19-dingqi-yang-et-al-revisiting-user-mobility-and-social-relationships-in-lbsns-a-hypergraph-embedding-approach-www19"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">{LBSN_hypergraph_www19} Dingqi, Yang, et al. Revisiting user mobility and social relationships in lbsns: a hypergraph embedding approach. WWW’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nba_cscw18-zhang-jason-shuo-chenhao-tan-and-qin-lv-this-is-why-we-play-characterizing-online-fan-communities-of-the-nba-teams-cscw-2018"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">{NBA_CSCW18} Zhang, Jason Shuo, Chenhao Tan, and Qin Lv. “This is why we play: Characterizing Online Fan Communities of the NBA Teams.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stucheckin_kdd18-hang-mengyue-ian-pytlarz-and-jennifer-neville-exploring-student-check-in-behavior-for-improved-point-of-interest-prediction-kdd-2018"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">{stuCheckin_KDD18} Hang, Mengyue, Ian Pytlarz, and Jennifer Neville. “Exploring student check-in behavior for improved point-of-interest prediction.” KDD 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hashtag_www17-y-zhang-language-in-our-time-an-empirical-analysis-of-hashtags-www17"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">{Hashtag_www17} Y Zhang, Language in Our Time: An Empirical Analysis of Hashtags. WWW’17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#name_reuse_www17-mariconti-enrico-et-al-whats-in-a-name-understanding-profile-name-reuse-on-twitter-www-2017"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">{name_reuse_www17} Mariconti, Enrico, et al. “What’s in a Name?: Understanding Profile Name Reuse on Twitter.” www 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding_ubicomp17-mehrotra-abhinav-et-al-understanding-the-role-of-places-and-activities-on-mobile-phone-interaction-and-usage-patterns-ubicomp-2017"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">{understanding_ubicomp17} Mehrotra, Abhinav, et al. “Understanding the role of places and activities on mobile phone interaction and usage patterns.” UbiComp 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#what_is_public_cscw17-fiesler-casey-et-al-what-or-who-is-public-privacy-settings-and-social-media-content-sharing-cscw-2017"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">{what_is_public_cscw17} Fiesler, Casey, et al. “What (or who) is public?: Privacy settings and social media content sharing.” CSCW 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#urban_migrants_www18-yang-yang-et-al-to-stay-or-to-leave-churn-prediction-for-urban-migrants-in-the-initial-period-www-2018"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">{Urban_Migrants_www18} Yang, Yang, et al. “To Stay or to Leave: Churn Prediction for Urban Migrants in the Initial Period.” WWW 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#spatio_temporal_early_destination_prediction_ubicomp18-imai-ryo-et-al-early-destination-prediction-with-spatio-temporal-user-behavior-patterns-ubicomp-2018"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">{spatio_temporal_early_destination_prediction_UbiComp18} Imai, Ryo, et al. “Early Destination Prediction with Spatio-temporal User Behavior Patterns.” UbiComp 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#anyone_troll_cscw17-cheng-justin-et-al-anyone-can-become-a-troll-causes-of-trolling-behavior-in-online-discussions-cscw-2017"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">{anyone_troll_cscw17} Cheng, Justin, et al. “Anyone can become a troll: Causes of trolling behavior in online discussions.” CSCW 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ne-natcom18-wang-bo-et-al-network-enhancement-a-general-method-to-denoise-weighted-biological-networks-arxiv-preprint-arxiv180503327-2018"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">{ne-natcom18} Wang, Bo, et al. “Network Enhancement: a general method to denoise weighted biological networks.” arXiv preprint arXiv:1805.03327 (2018).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#couchsurfing_aribnb_cscw18-klein-m-zhao-j-ni-j-johnson-i-hill-bm-zhu-h-quality-standards-service-orientation-and-power-in-airbnb-and-couchsurfing-cscw-2017"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">{Couchsurfing_Aribnb_CSCW18} KLEIN M, ZHAO J, NI J, JOHNSON I, HILL BM, ZHU H. Quality Standards, Service Orientation, and Power in Airbnb and Couchsurfing. CSCW, 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#patterns_online_discussion_cscw18-zhang-justine-et-al-characterizing-online-public-discussions-through-patterns-of-participant-interactions-cscw-2018"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">{patterns_online_discussion_cscw18} Zhang, Justine, et al. “Characterizing Online Public Discussions through Patterns of Participant Interactions.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#app_give_away_ubicomp18-tu-zhen-et-al-your-apps-give-you-away-distinguishing-mobile-users-by-their-app-usage-fingerprints-ubicomp-2018"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">{App_Give_Away_UbiComp18} Tu, Zhen, et al. “Your apps give you away: distinguishing mobile users by their app usage fingerprints.” Ubicomp 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#trajectory_recovery_www17xu-fengli-et-al-trajectory-recovery-from-ash-user-privacy-is-not-preserved-in-aggregated-mobility-data-www-2017"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">{Trajectory_Recovery_www17}Xu, Fengli, et al. “Trajectory recovery from ash: User privacy is not preserved in aggregated mobility data.” www, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#motivations_check-ins_cscw18-xu-f-zhang-g-chen-zet-al-understanding-motivations-behind-inaccurate-check-ins-cscw18"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">{Motivations_Check-ins_CSCW18} Xu, F., Zhang, G., Chen, Z.et al. Understanding Motivations behind Inaccurate Check-ins. CSCW’18</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#packloc_ubicomp18-cherian-jim-jun-luo-and-shen-shyang-ho-parkloc-light-weight-graph-based-vehicular-localization-in-parking-garages-ubicomp18"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">{PackLoc_UbiComp18} Cherian, Jim, Jun Luo, and Shen-Shyang Ho. “ParkLoc: Light-weight Graph-based Vehicular Localization in Parking Garages.” UbiComp’18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sybil_user_review_ndss18-zheng-haizhong-et-al-smoke-screener-or-straight-shooter-detecting-elite-sybil-attacks-in-user-review-social-networks-ndss18"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">{Sybil_user_review_ndss18} Zheng, Haizhong, et al. “Smoke screener or straight shooter: Detecting elite sybil attacks in user-review social networks.” NDSS18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#drn_www18-zhao-xiangyu-et-al-deep-reinforcement-learning-for-page-wise-recommendations-www-2018"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">{DRN_www18} Zhao, Xiangyu, et al. “Deep reinforcement learning for page-wise recommendations.” www, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#surprise_model_chi18-niu-xi-et-al-surprise-me-if-you-can-serendipity-in-health-information-chi-2018"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">{surprise_model_CHI18} Niu, Xi, et al. “Surprise me if you can: Serendipity in health information.” CHI, 2018.</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding-group-event-scheduling-via-the-outwithfriendz-mobile-applicationubicomp2018"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Understanding Group Event Scheduling via the OutWithFriendz Mobile Application，Ubicomp2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-weakly-supervised-learning-framework-for-detecting-social-anxiety-and-depression-ubicomp2018"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">A Weakly Supervised Learning Framework for Detecting Social Anxiety and Depression” UbiComp2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#liu_imputation_www19-zongtao-liu-zhongyi-tang-yang-yang-ning-li-wei-huang-and-fei-wu-how-do-your-neighbors-disclose-your-information-social-aware-time-series-imputation-proc-world-wide-web-conf-www-2019"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">{Liu_imputation_www19} Zongtao Liu, Zhongyi Tang, Yang Yang, Ning Li, Wei Huang, and Fei Wu. “How do your neighbors disclose your information: Social-aware time series imputation.” Proc. World Wide Web Conf. WWW 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sadri-amin-et-al-what-will-you-do-for-the-rest-of-the-day-an-approach-to-continuous-trajectory-prediction-ubicomp2019"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">{} Sadri, Amin, et al. “What will you do for the rest of the day?: An approach to continuous trajectory prediction.” UbiComp2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#privcheck-privacy-preserving-check-in-data-publishing-for-personalized-location-based-services-ubicomp16"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">{PrivCheck: Privacy-Preserving Check-in Data Publishing for Personalized Location Based Services. Ubicomp’16}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chen_learning-usage-patterns-of-emojis-from-large-scale-android-users_www18"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">{Chen_Learning Usage Patterns of Emojis from Large-Scale Android Users_WWW’18}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cheng_good_team_www19-cheng-ziqiang-et-al-what-makes-a-good-team-a-large-scale-study-on-the-effect-of-team-composition-in-honor-of-kings-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">{Cheng_good_team_www19} Cheng, Ziqiang, et al. “What Makes a Good Team? A Large-scale Study on the Effect of Team Composition in Honor of Kings.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#costa_engaging_cscw18-costa-figueiredo-mayara-et-al-engaging-with-health-data-the-interplay-between-self-tracking-activities-and-emotions-in-fertility-struggles-proceedings-of-the-acm-on-human-computer-interaction-2cscw-2018-40"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">{Costa_Engaging_CSCW18} Costa Figueiredo, Mayara, et al. “Engaging with Health Data: The Interplay Between Self-Tracking Activities and Emotions in Fertility Struggles.” Proceedings of the ACM on Human-Computer Interaction 2.CSCW (2018): 40.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cunha_successful_community_www19-cunha-tiago-et-al-are-all-successful-communities-alike-characterizing-and-predicting-the-success-of-online-communities-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">{Cunha_successful_community_www19} Cunha, Tiago, et al. “Are All Successful Communities Alike? Characterizing and Predicting the Success of Online Communities.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mackenzie_email_refind_www19-mackenzie-j-gupta-k-qiao-f-et-al-exploring-user-behavior-in-email-re-finding-taskscthe-world-wide-web-conference-acm-2019-1245-1255"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">{Mackenzie_email_refind_www19} Mackenzie J, Gupta K, Qiao F, et al. Exploring User Behavior in Email Re-Finding Tasks[C]//The World Wide Web Conference. ACM, 2019: 1245-1255.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ibosiola_complaint_www19-ibosiola-damilola-et-al-who-watches-the-watchmen-exploring-complaints-on-the-web-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">{Ibosiola_complaint_www19} Ibosiola, Damilola, et al. “Who watches the watchmen: Exploring complaints on the web.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mental_well_being_www17-mobile-sensing-at-the-service-of-mental-well-being-a-large-scale-longitudinal-studywww17"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">{mental_well_being_www17} Mobile Sensing at the Service of Mental Well-being: a Large-scale Longitudinal Study.WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#private_www17-how-public-is-my-private-life-privacy-in-online-dating-www17"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">{private_www17} How Public Is My Private Life? Privacy in Online Dating. WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#return_explore_www19-to-return-or-to-explore-modelling-human-mobility-and-dynamics-in-cyberspace-www19"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">{return_explore_www19} To Return or to Explore: Modelling Human Mobility and Dynamics in Cyberspace. WWW19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ma_trust_facebook_chi19-xiao-ma-et-al-when-do-people-trust-their-social-groups-chi-2019"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">{Ma_trust_facebook_CHI19} Xiao Ma, et al. “When Do People Trust Their Social Groups?” CHI 2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lbsn_hypergraph_www19-dingqi-yang-et-al-revisiting-user-mobility-and-social-relationships-in-lbsns-a-hypergraph-embedding-approach-www19"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">{LBSN_hypergraph_www19} Dingqi, Yang, et al. Revisiting user mobility and social relationships in lbsns: a hypergraph embedding approach. WWW’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nba_cscw18-zhang-jason-shuo-chenhao-tan-and-qin-lv-this-is-why-we-play-characterizing-online-fan-communities-of-the-nba-teams-cscw-2018"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">{NBA_CSCW18} Zhang, Jason Shuo, Chenhao Tan, and Qin Lv. “This is why we play: Characterizing Online Fan Communities of the NBA Teams.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stucheckin_kdd18-hang-mengyue-ian-pytlarz-and-jennifer-neville-exploring-student-check-in-behavior-for-improved-point-of-interest-prediction-kdd-2018"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">{stuCheckin_KDD18} Hang, Mengyue, Ian Pytlarz, and Jennifer Neville. “Exploring student check-in behavior for improved point-of-interest prediction.” KDD 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hashtag_www17-y-zhang-language-in-our-time-an-empirical-analysis-of-hashtags-www17"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">{Hashtag_www17} Y Zhang, Language in Our Time: An Empirical Analysis of Hashtags. WWW’17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#name_reuse_www17-mariconti-enrico-et-al-whats-in-a-name-understanding-profile-name-reuse-on-twitter-www-2017"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">{name_reuse_www17} Mariconti, Enrico, et al. “What’s in a Name?: Understanding Profile Name Reuse on Twitter.” www 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding_ubicomp17-mehrotra-abhinav-et-al-understanding-the-role-of-places-and-activities-on-mobile-phone-interaction-and-usage-patterns-ubicomp-2017"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">{understanding_ubicomp17} Mehrotra, Abhinav, et al. “Understanding the role of places and activities on mobile phone interaction and usage patterns.” UbiComp 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#what_is_public_cscw17-fiesler-casey-et-al-what-or-who-is-public-privacy-settings-and-social-media-content-sharing-cscw-2017"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">{what_is_public_cscw17} Fiesler, Casey, et al. “What (or who) is public?: Privacy settings and social media content sharing.” CSCW 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#urban_migrants_www18-yang-yang-et-al-to-stay-or-to-leave-churn-prediction-for-urban-migrants-in-the-initial-period-www-2018"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">{Urban_Migrants_www18} Yang, Yang, et al. “To Stay or to Leave: Churn Prediction for Urban Migrants in the Initial Period.” WWW 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#spatio_temporal_early_destination_prediction_ubicomp18-imai-ryo-et-al-early-destination-prediction-with-spatio-temporal-user-behavior-patterns-ubicomp-2018"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">{spatio_temporal_early_destination_prediction_UbiComp18} Imai, Ryo, et al. “Early Destination Prediction with Spatio-temporal User Behavior Patterns.” UbiComp 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#anyone_troll_cscw17-cheng-justin-et-al-anyone-can-become-a-troll-causes-of-trolling-behavior-in-online-discussions-cscw-2017"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">{anyone_troll_cscw17} Cheng, Justin, et al. “Anyone can become a troll: Causes of trolling behavior in online discussions.” CSCW 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ne-natcom18-wang-bo-et-al-network-enhancement-a-general-method-to-denoise-weighted-biological-networks-arxiv-preprint-arxiv180503327-2018"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">{ne-natcom18} Wang, Bo, et al. “Network Enhancement: a general method to denoise weighted biological networks.” arXiv preprint arXiv:1805.03327 (2018).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#couchsurfing_aribnb_cscw18-klein-m-zhao-j-ni-j-johnson-i-hill-bm-zhu-h-quality-standards-service-orientation-and-power-in-airbnb-and-couchsurfing-cscw-2017"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">{Couchsurfing_Aribnb_CSCW18} KLEIN M, ZHAO J, NI J, JOHNSON I, HILL BM, ZHU H. Quality Standards, Service Orientation, and Power in Airbnb and Couchsurfing. CSCW, 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#patterns_online_discussion_cscw18-zhang-justine-et-al-characterizing-online-public-discussions-through-patterns-of-participant-interactions-cscw-2018"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">{patterns_online_discussion_cscw18} Zhang, Justine, et al. “Characterizing Online Public Discussions through Patterns of Participant Interactions.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#app_give_away_ubicomp18-tu-zhen-et-al-your-apps-give-you-away-distinguishing-mobile-users-by-their-app-usage-fingerprints-ubicomp-2018"><span class="toc-nav-number">29.</span> <span class="toc-nav-text">{App_Give_Away_UbiComp18} Tu, Zhen, et al. “Your apps give you away: distinguishing mobile users by their app usage fingerprints.” Ubicomp 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#trajectory_recovery_www17xu-fengli-et-al-trajectory-recovery-from-ash-user-privacy-is-not-preserved-in-aggregated-mobility-data-www-2017"><span class="toc-nav-number">30.</span> <span class="toc-nav-text">{Trajectory_Recovery_www17}Xu, Fengli, et al. “Trajectory recovery from ash: User privacy is not preserved in aggregated mobility data.” www, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#motivations_check-ins_cscw18-xu-f-zhang-g-chen-zet-al-understanding-motivations-behind-inaccurate-check-ins-cscw18"><span class="toc-nav-number">31.</span> <span class="toc-nav-text">{Motivations_Check-ins_CSCW18} Xu, F., Zhang, G., Chen, Z.et al. Understanding Motivations behind Inaccurate Check-ins. CSCW’18</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#packloc_ubicomp18-cherian-jim-jun-luo-and-shen-shyang-ho-parkloc-light-weight-graph-based-vehicular-localization-in-parking-garages-ubicomp18"><span class="toc-nav-number">32.</span> <span class="toc-nav-text">{PackLoc_UbiComp18} Cherian, Jim, Jun Luo, and Shen-Shyang Ho. “ParkLoc: Light-weight Graph-based Vehicular Localization in Parking Garages.” UbiComp’18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sybil_user_review_ndss18-zheng-haizhong-et-al-smoke-screener-or-straight-shooter-detecting-elite-sybil-attacks-in-user-review-social-networks-ndss18"><span class="toc-nav-number">33.</span> <span class="toc-nav-text">{Sybil_user_review_ndss18} Zheng, Haizhong, et al. “Smoke screener or straight shooter: Detecting elite sybil attacks in user-review social networks.” NDSS18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#drn_www18-zhao-xiangyu-et-al-deep-reinforcement-learning-for-page-wise-recommendations-www-2018"><span class="toc-nav-number">34.</span> <span class="toc-nav-text">{DRN_www18} Zhao, Xiangyu, et al. “Deep reinforcement learning for page-wise recommendations.” www, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#surprise_model_chi18-niu-xi-et-al-surprise-me-if-you-can-serendipity-in-health-information-chi-2018"><span class="toc-nav-number">35.</span> <span class="toc-nav-text">{surprise_model_CHI18} Niu, Xi, et al. “Surprise me if you can: Serendipity in health information.” CHI, 2018.</span></a></li></ol>
         
         </div>
       </aside>
@@ -664,7 +773,9 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
                 <ul class="list-inline">
 
                     
-                        <li><a href="http://aerber.cn" target="_blank">Aerber WebSite</a></li>
+                        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
+                    
+                        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
                     
                         <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
                     
@@ -682,8 +793,8 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "https://nullaerber.github.io/2025/10/01/[paper]group_paper_reading/";
-    var disqus_url = "https://nullaerber.github.io/2025/10/01/[paper]group_paper_reading/";
+    var disqus_identifier = "https://mengyingzhou.github.io/2025/10/01/[paper]group_paper_reading/";
+    var disqus_url = "https://mengyingzhou.github.io/2025/10/01/[paper]group_paper_reading/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -754,6 +865,15 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
                 <ul class="list-inline text-center">
                 
                 
+                    <li>
+                        <a target="_blank" href="https://twitter.com/myzhou97">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
                 
 
                 
@@ -769,7 +889,7 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
 
                 
                     <li>
-                        <a target="_blank" href="https://www.facebook.com/NullAerber">
+                        <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -780,7 +900,7 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
 
                 
                     <li>
-                        <a target="_blank"  href="https://github.com/NullAerber">
+                        <a target="_blank"  href="https://github.com/mengyingzhou">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -856,7 +976,7 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("https://nullaerber.github.io/js/jquery.tagcloud.js",function(){
+        async("https://mengyingzhou.github.io/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -907,7 +1027,7 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
 	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
-<img src="https://nullaerber.github.io/img/icon_wechat.png" width="0" height="0" />
+<img src="https://mengyingzhou.github.io/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
