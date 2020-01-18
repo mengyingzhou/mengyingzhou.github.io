@@ -21,14 +21,14 @@
     </url>
     
     <url>
-        <loc>https://mengyingzhou.github.io/tags/</loc>
+        <loc>https://mengyingzhou.github.io/archive/</loc>
         <lastmod>2018-06-15T05:47:04.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://mengyingzhou.github.io/archive/</loc>
+        <loc>https://mengyingzhou.github.io/tags/</loc>
         <lastmod>2018-06-15T05:47:04.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
