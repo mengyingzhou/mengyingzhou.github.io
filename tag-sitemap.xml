@@ -121,13 +121,6 @@
     </url>
 
     <url>
-        <loc>https://mengyingzhou.github.io/tags/Linux/</loc>
-        <lastmod>2019-02-17T07:25:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mengyingzhou.github.io/tags/Manjaro/</loc>
         <lastmod>2019-02-17T07:25:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -151,6 +144,27 @@
     <url>
         <loc>https://mengyingzhou.github.io/tags/paper/</loc>
         <lastmod>2020-01-18T12:15:54.881Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mengyingzhou.github.io/tags/Linux/</loc>
+        <lastmod>2020-01-20T11:45:51.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mengyingzhou.github.io/tags/Jupyter/</loc>
+        <lastmod>2020-01-20T11:45:51.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mengyingzhou.github.io/tags/Proxy/</loc>
+        <lastmod>2020-01-20T11:45:51.552Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

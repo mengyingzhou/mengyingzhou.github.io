@@ -136,6 +136,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -144,13 +151,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -241,6 +241,45 @@
               <a href="/tags/#Linux" title="Linux">Linux</a>
             
               <a href="/tags/#LaTeX" title="LaTeX">LaTeX</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/21/[linux]linux_count_filenumber/">
+        <h2 class="post-title">
+            [Linux] Linux统计文件夹、文件数量的命令
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            查看当前目录下的文件数量（不包含子目录中的文件）
+ls -l|grep &quot;^-&quot;| wc -l
+
+查看当前目录下的文件数量（包含子目录中的文件） 注意：R，代表子目录
+ls -lR|grep &quot;^-&quot;| wc -l
+
+查看当前目录下的文件夹目录个数（不包含子目录中的目录），同上述理，如果需要查看子目录的，加上R
+ls -l|grep &quot;^d&......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2018-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
             
         </div>
     
@@ -532,42 +571,6 @@ http://blog.csdn.net/harvic880925/article/details/39080931/
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2017/04/18/[Android]surfaceview_virtualjoystick/">
-        <h2 class="post-title">
-            [Android] surfaceView中VirtualJoystick虚拟摇杆
-        </h2>
-        <h3 class="post-subtitle">
-            surfaceView系列01
-        </h3>
-        <div class="post-content-preview">
-            以下代码均来自hopeful，渣渣我只是解读一下
-一.大体
-首先在自定义插件VirtualJoystick（后称VJ）中我们需要实现的通过UI进行交互的功能有：
-1.跟随手指在屏幕上进行移动
-2.在松手时回到中心
-3.实现和MemoryTable以及VelocityTable之间数据的交互（主要实现方法还是在MemoryTable以及VelocityTable中）
-4.根据传达回来的重力感应......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2017-04-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Android" title="Android">Android</a>
-            
-              <a href="/tags/#Notes" title="Notes">Notes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -619,6 +622,8 @@ http://blog.csdn.net/harvic880925/article/details/39080931/
     <div class="tags">
         
             
+        
+            
             <a href="/tags/#Android" title="Android" rel="9">Android</a>
             
         
@@ -629,9 +634,7 @@ http://blog.csdn.net/harvic880925/article/details/39080931/
             
         
             
-        
-            
-            <a href="/tags/#Linux" title="Linux" rel="9">Linux</a>
+            <a href="/tags/#Linux" title="Linux" rel="10">Linux</a>
             
         
             
@@ -648,6 +651,10 @@ http://blog.csdn.net/harvic880925/article/details/39080931/
         
             
             <a href="/tags/#Manjaro" title="Manjaro" rel="5">Manjaro</a>
+            
+        
+            
+        
             
         
             
@@ -775,6 +782,10 @@ http://blog.csdn.net/harvic880925/article/details/39080931/
         </li>
       
         <li>
+          <a href="/2020/01/20/[linux]jupyter_proxy/">[Jupyter] 访问反向代理的服务器的jupyter</a>
+        </li>
+      
+        <li>
           <a href="/2019/07/20/[notes]2019.7.20/">[Notes] XGBoost之类别特征的处理</a>
         </li>
       
@@ -784,10 +795,6 @@ http://blog.csdn.net/harvic880925/article/details/39080931/
       
         <li>
           <a href="/2019/02/16/[linux]proxy/">[Linux] 为ArchLinux设置代理</a>
-        </li>
-      
-        <li>
-          <a href="/2018/10/20/[233]gym/">[233] 我要减肥～</a>
         </li>
       
     </ul>
