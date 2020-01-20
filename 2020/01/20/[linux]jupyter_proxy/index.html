@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          About - Aerber Joy
+          [Jupyter] 访问反向代理的服务器的jupyter - Aerber Joy
         
     </title>
 
-    <link rel="canonical" href="https://mengyingzhou.github.io/about/">
+    <link rel="canonical" href="https://mengyingzhou.github.io/2020/01/20/[linux]jupyter_proxy/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/Iron-Man-3.jpg')
-            /*page*/
+            background-image: url('bg.png')
+            /*post*/
         
     }
     
@@ -87,10 +87,22 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>About</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Wish for the Best, Prepare for the Worst</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#Jupyter" title="Jupyter">Jupyter</a>
+                            
+                              <a class="tag" href="/tags/#Proxy" title="Proxy">Proxy</a>
+                            
+                        </div>
+                        <h1>[Jupyter] 访问反向代理的服务器的jupyter</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2020-01-20
+                        </span>
                     </div>
                 
 
@@ -193,287 +205,197 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <blockquote>
-<p>光有好奇心而不去实践，等于自动放弃<br>
-不要画地为牢，Just Do It！！</p>
-</blockquote>
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <h1 id="background">background</h1>
+<p>如果服务器有外网IP，我们可以通过在.jupyter/jupyter_notebook_config.py中设置IP地址，然后再通过IP:port的方式访问。</p>
+<p>但是实验室的服务器是内网访问，想要外网访问，必须进行反向代理。一旦进行了反向代理，直接通过浏览器输入服务器ip：port 是无法访问jupyter notebook。</p>
+<h1 id="solution">solution</h1>
+<p>推荐第一种方法</p>
+<h2 id="第一种方式将远程12345端口映射到本机8888端口">第一种方式（将远程12345端口映射到本机8888端口）</h2>
+<ol>
+<li>登录远程服务器，开启jupyter，端口为12345</li>
+<li>需要访问的Linux中终端输入：ssh -N -f -L localhost:8888:localhost:12345 -p 29 <a href="mailto:fudan@123.45.6.7" target="_blank" rel="noopener">fudan@123.45.6.7</a>
+<ul>
+<li>第一个locahost:8888是指本地</li>
+<li>第二个localhost:12345是指远程，其中12345是jupyter notebook中设置的端口</li>
+<li>-p 29是指登录服务器的端口号</li>
+<li>后面用户名和服务器ip</li>
+</ul>
+</li>
+<li>打开浏览器，输入127.0.0.1:8888就可以看到熟悉的jupyter notebook界面，可以愉快的用服务器跑各种实验了，解放本地电脑</li>
+</ol>
+<p>总结一下就是，将服务器上的12345端口映射到本机的8888端口，当然更简单直观的方式直接将远程的12345端口映射到本机的12345端口，也就是第二种方法</p>
+<h2 id="通过xshell的添加隧道">通过xshell的添加隧道</h2>
+<p>请参考<a href="https://blog.csdn.net/u013241583/article/details/80189382" target="_blank" rel="noopener">这篇博文</a></p>
 
-                <!-- 如果开启评论功能 -->
                 
-                    <hr>
 
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
                     
-
+                        <li class="previous">
+                            <a href="/2025/10/01/[paper]group_paper_reading/" data-toggle="tooltip" data-placement="top" title="[paper] Group paper reading">&larr; Previous Post</a>
+                        </li>
                     
-                    <!-- disqus 评论框 start -->
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                    <!-- disqus 评论框 end -->
                     
-
-
+                        <li class="next">
+                            <a href="/2019/07/20/[notes]2019.7.20/" data-toggle="tooltip" data-placement="top" title="[Notes] XGBoost之类别特征的处理">Next Post &rarr;</a>
+                        </li>
                     
+                </ul>
 
-                    
-                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES * * */
-                        var disqus_shortname = "your-disqus-ID";
-                        var disqus_identifier = "https://mengyingzhou.github.io/about/index.html";
-                        var disqus_url = "https://mengyingzhou.github.io/about/index.html";
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
 
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
 
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#background"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">background</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#solution"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">solution</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第一种方式将远程12345端口映射到本机8888端口"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">第一种方式（将远程12345端口映射到本机8888端口）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#通过xshell的添加隧道"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">通过xshell的添加隧道</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
                         
-                    </script>
-                    <!-- disqus 公共JS代码 end -->
+                          <a class="tag" href="/tags/#Jupyter" title="Jupyter">Jupyter</a>
+                        
+                          <a class="tag" href="/tags/#Proxy" title="Proxy">Proxy</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
                     
+                        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
+                    
+                        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-        
-            
-            <a href="/tags/#Android" title="Android" rel="9">Android</a>
-            
-        
-            
-            <a href="/tags/#Notes" title="Notes" rel="29">Notes</a>
-            
-        
-            
-        
-            
-            <a href="/tags/#Linux" title="Linux" rel="10">Linux</a>
-            
-        
-            
-            <a href="/tags/#LaTeX" title="LaTeX" rel="2">LaTeX</a>
-            
-        
-            
-            <a href="/tags/#Lecture" title="Lecture" rel="2">Lecture</a>
-            
-        
-            
-        
-            
-            <a href="/tags/#Manjaro" title="Manjaro" rel="5">Manjaro</a>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-            <a href="/tags/#Paper" title="Paper" rel="8">Paper</a>
-            
-        
-            
-            <a href="/tags/#Security" title="Security" rel="5">Security</a>
-            
-        
-            
-            <a href="/tags/#Distribution" title="Distribution" rel="5">Distribution</a>
-            
-        
-            
-            <a href="/tags/#Malware Detection" title="Malware Detection" rel="5">Malware Detection</a>
-            
-        
-            
-        
-            
-            <a href="/tags/#Internship" title="Internship" rel="3">Internship</a>
-            
-        
-            
-            <a href="/tags/#Deep Learning" title="Deep Learning" rel="3">Deep Learning</a>
-            
-        
-            
-            <a href="/tags/#Knowledge Graph" title="Knowledge Graph" rel="3">Knowledge Graph</a>
-            
-        
-            
-        
-            
-            <a href="/tags/#Attention Based Model" title="Attention Based Model" rel="2">Attention Based Model</a>
-            
-        
-            
-        
-            
-            <a href="/tags/#SQL" title="SQL" rel="2">SQL</a>
-            
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.jpg" />
-        
 
-        
-            <p>赤子之心，严己宽人</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-                <li>
-                    <a target="_blank" href="https://twitter.com/myzhou97">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://mengyingzhou.github.io/2020/01/20/[linux]jupyter_proxy/";
+    var disqus_url = "https://mengyingzhou.github.io/2020/01/20/[linux]jupyter_proxy/";
 
-            
-                <li>
-                    <a target="_blank" href="http://weibo.com/3479268957">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
 
-            
-                <li>
-                    <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/mengyingzhou">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2025/10/01/[paper]group_paper_reading/">[paper] Group paper reading</a>
-        </li>
-      
-        <li>
-          <a href="/2020/01/20/[linux]jupyter_proxy/">[Jupyter] 访问反向代理的服务器的jupyter</a>
-        </li>
-      
-        <li>
-          <a href="/2019/07/20/[notes]2019.7.20/">[Notes] XGBoost之类别特征的处理</a>
-        </li>
-      
-        <li>
-          <a href="/2019/02/17/[linux]english_typewriting/">[Linux] 为Linux设置英文补全输入法</a>
-        </li>
-      
-        <li>
-          <a href="/2019/02/16/[linux]proxy/">[Linux] 为ArchLinux设置代理</a>
-        </li>
-      
-    </ul>
-  </div>
 
-        <hr>
-    
-        <!-- Friends Blog -->
 
-<h5>FRIENDS</h5>
-<ul class="list-inline">
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
-    
-        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
-    
-        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
-    
-        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
-    
-</ul>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+            appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true
+        })
+    </script>	
+<script type="text/javascript" src="/js/zooming.js"></script>
 
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
