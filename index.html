@@ -136,13 +136,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -151,6 +144,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -234,43 +234,6 @@
         <div class="tags">
             
               <a href="/tags/#paper" title="paper">paper</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2020/01/20/[linux]jupyter_proxy/">
-        <h2 class="post-title">
-            [Jupyter] 访问反向代理的服务器的jupyter
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            background
-如果服务器有外网IP，我们可以通过在.jupyter/jupyter_notebook_config.py中设置IP地址，然后再通过IP:port的方式访问。
-但是实验室的服务器是内网访问，想要外网访问，必须进行反向代理。一旦进行了反向代理，直接通过浏览器输入服务器ip：port 是无法访问jupyter notebook。
-solution
-推荐第一种方法
-第一种方式......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Aerber Zhou on
-            2020-01-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Linux" title="Linux">Linux</a>
-            
-              <a href="/tags/#Jupyter" title="Jupyter">Jupyter</a>
-            
-              <a href="/tags/#Proxy" title="Proxy">Proxy</a>
             
         </div>
     
@@ -576,6 +539,45 @@ The top-level auxiliary file: ASMS......
 </div>
 <hr>
 
+<div class="post-preview">
+
+    <a href="/2018/07/21/[linux]linux_count_filenumber/">
+        <h2 class="post-title">
+            [Linux] Linux统计文件夹、文件数量的命令
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            查看当前目录下的文件数量（不包含子目录中的文件）
+ls -l|grep &quot;^-&quot;| wc -l
+
+查看当前目录下的文件数量（包含子目录中的文件） 注意：R，代表子目录
+ls -lR|grep &quot;^-&quot;| wc -l
+
+查看当前目录下的文件夹目录个数（不包含子目录中的目录），同上述理，如果需要查看子目录的，加上R
+ls -l|grep &quot;^d&......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2018-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
 
 
 <!-- Pager -->
@@ -623,8 +625,6 @@ The top-level auxiliary file: ASMS......
     <div class="tags">
         
             
-        
-            
             <a href="/tags/#Android" title="Android" rel="9">Android</a>
             
         
@@ -635,7 +635,9 @@ The top-level auxiliary file: ASMS......
             
         
             
-            <a href="/tags/#Linux" title="Linux" rel="10">Linux</a>
+        
+            
+            <a href="/tags/#Linux" title="Linux" rel="9">Linux</a>
             
         
             
@@ -649,11 +651,9 @@ The top-level auxiliary file: ASMS......
             
         
             
+        
+            
             <a href="/tags/#Manjaro" title="Manjaro" rel="5">Manjaro</a>
-            
-        
-            
-        
             
         
             
@@ -692,8 +692,6 @@ The top-level auxiliary file: ASMS......
         
             
             <a href="/tags/#Attention Based Model" title="Attention Based Model" rel="2">Attention Based Model</a>
-            
-        
             
         
             
@@ -783,10 +781,6 @@ The top-level auxiliary file: ASMS......
         </li>
       
         <li>
-          <a href="/2020/01/20/[linux]jupyter_proxy/">[Jupyter] 访问反向代理的服务器的jupyter</a>
-        </li>
-      
-        <li>
           <a href="/2019/07/20/[notes]2019.7.20/">[Notes] XGBoost之类别特征的处理</a>
         </li>
       
@@ -796,6 +790,10 @@ The top-level auxiliary file: ASMS......
       
         <li>
           <a href="/2019/02/16/[linux]proxy/">[Linux] 为ArchLinux设置代理</a>
+        </li>
+      
+        <li>
+          <a href="/2018/10/20/[233]gym/">[233] 我要减肥～</a>
         </li>
       
     </ul>
