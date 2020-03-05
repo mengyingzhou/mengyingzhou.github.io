@@ -151,14 +151,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -234,11 +234,7 @@
 <ul>
 <li>disptach和working thread谁处理消息， tradeoff是inter-thread communcation overhead和blocking的overhead，针对⻓短RPC有不同的solution。</li>
 <li>session structure的信息由CPU分管的memory存储（类似正常写程序），代替原来RDMA中专⻔的硬件，因为这种硬件的cache本质上PCIE，相当于main memory，速度⽐SRAM中的慢。</li>
-<li>session meta data也是设计成了连续的数据结构，⼀次DMA read可以读完，同时也在软件上实现了zero copy的transmission，但是需要保证ownership防⽌data race，这在retransmit的情况下由性</li>
-</ul>
-</li>
-<li>能损耗
-<ul>
+<li>session meta data也是设计成了连续的数据结构，⼀次DMA read可以读完，同时也在软件上实现了zero copy的transmission，但是需要保证ownership防⽌data race，这在retransmit的情况下由性能损耗</li>
 <li>对于wire protocol，引⼊request-for-response (RFR) packet，来保证client-based，（减少server端的cpu cycles）</li>
 <li>对于拥塞控制，有 Timely or DCQCN ，但是由于硬件限制，选择Timely，但作者认为鉴于数据中⼼的本质，这个选项是configurable的， 之后实验证明bypass之后，性能显著提升</li>
 </ul>
@@ -930,10 +926,6 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/2025/10/01/myzhou/" data-toggle="tooltip" data-placement="top" title="myzhou">&larr; Previous Post</a>
-                        </li>
                     
                     
                         <li class="next">

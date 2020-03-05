@@ -9,13 +9,6 @@
     </url>
 
     <url>
-        <loc>https://mengyingzhou.github.io/tags/Framework/</loc>
-        <lastmod>2018-07-13T05:32:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mengyingzhou.github.io/tags/Lecture/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -38,6 +31,13 @@
 
     <url>
         <loc>https://mengyingzhou.github.io/tags/Malware-Detection/</loc>
+        <lastmod>2018-07-13T05:32:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mengyingzhou.github.io/tags/Framework/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -164,7 +164,7 @@
 
     <url>
         <loc>https://mengyingzhou.github.io/tags/paper/</loc>
-        <lastmod>2020-03-05T13:08:42.812Z</lastmod>
+        <lastmod>2020-03-05T13:25:23.066Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
