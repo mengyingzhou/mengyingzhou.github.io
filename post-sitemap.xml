@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>https://mengyingzhou.github.io/1970/01/01/myzhou/</loc>
-        <lastmod>2020-03-05T13:25:24.407Z</lastmod>
+        <loc>https://mengyingzhou.github.io/2025/10/01/myzhou/</loc>
+        <lastmod>2020-03-05T13:36:34.264Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -183,6 +183,14 @@
     </url>
 
     <url>
+        <loc>https://mengyingzhou.github.io/2018/03/18/%5BFramework%5DMVCframework/</loc>
+        <lastmod>2018-07-13T05:32:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://mengyingzhou.github.io/2017/09/01/%5Blecture%5DACMTURCShangHai/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -248,14 +256,6 @@
 
     <url>
         <loc>https://mengyingzhou.github.io/2016/07/19/%5Bpaper%5DDMDS_relatedwork/</loc>
-        <lastmod>2018-07-13T05:32:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://mengyingzhou.github.io/2018/03/18/%5BFramework%5DMVCframework/</loc>
         <lastmod>2018-07-13T05:32:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
