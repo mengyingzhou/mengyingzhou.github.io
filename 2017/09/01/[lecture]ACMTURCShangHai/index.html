@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Lecture Notes] 2017年ACM图灵大会 - Aerber Joy
+        
+    </title>
+
+    <link rel="canonical" href="https://mengyingzhou.github.io/2017/09/01/[lecture]ACMTURCShangHai/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                            
+                              <a class="tag" href="/tags/#Lecture" title="Lecture">Lecture</a>
+                            
+                        </div>
+                        <h1>[Lecture Notes] 2017年ACM图灵大会</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2017-09-01
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Aerber Joy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>#一</p>
+<p>TURC.segai</p>
+<p>深度学习在自然语言处理中的应用(陈恩红)</p>
+<p>深度学习在自然语言处理应用的程度</p>
+<p>语言模型，</p>
+<p>字符级别，</p>
+<p>分词.词性标注.命名实体识别-基于深度学习的序列标注算法，</p>
+<p>文档分类-多层次文档分类，</p>
+<p>encoder-decoder框架，</p>
+<p>对话系统，</p>
+<p>机器翻译-基于attention机制，</p>
+<p>阅读理解，</p>
+<p>图片标注生成</p>
+<p>诗歌自动生成</p>
+<p>基于规划的诗歌生成(主题规划(统计/知识))</p>
+<p>诗歌生成模型-基于attention的句子生成模型</p>
+<p>基于主题规划衍生出的多种产品形式</p>
+<p>语音作诗，藏名诗，藏头诗。。。</p>
+<p>基于语义的</p>
+<p>弹幕</p>
+<p>框架-视频时序标注框架(</p>
+<p>语义表征(T-DSSM.损失函数基于对比学习)，</p>
+<p>视频高潮片段标注(整体主题分布，提取特征分布，))</p>
+<p>词汇蕴含识别</p>
+<p>是文本蕴含识别的重要组成部分</p>
+<p>挑战:词义，蕴含关系的多样性</p>
+<p>CENN(Centent-Enriched Neural Network)</p>
+<p>试题难度预测</p>
+<p>标准化测试(规则，公平性保障)</p>
+<p>在线学习系统构造题库，试题标注</p>
+<p>帮助教师改卷</p>
+<p>英语阅读理解-挑战</p>
+<p>TACNN模型框架(统一文本表示，量化文本对于不同问题的重要性，消除考试带来的难度不可比性)</p>
+<p>NLP</p>
+<p>#二</p>
+<p>TURC.segai</p>
+<p>Beyond Deep Supervised Learning for Visual Recognition(Liang Lin)</p>
+<p>Deep Learning:the Engine of AI</p>
+<p>Neural networks 神经网络</p>
+<p>DNNS as A universal joint Learning framework/Engine</p>
+<p>eg. cross-domain visual matching</p>
+<p>network architecture:not a black box</p>
+<p>应用:交通实时分析系统，人群分析系统</p>
+<p>weakly-Supervised semantic Inpainting</p>
+<p>recursive neural nets for scene parsing</p>
+<p>task-oriented action prediction</p>
+<p>knowledge-guided recurrent prediction</p>
+<p>progressive and cost-efficient Learning(active self-paced Learning,communication)</p>
+<p>unsupervised Representation Learning无监督的表达学习</p>
+<p>#三</p>
+<p>TURC.segai</p>
+<p>Revolution Driving with Deep Learning(ن؛ژه‡¯ï¼ŒCEO,Horizon Robotics)</p>
+<p>Horizon Robotic:è‡ھهٹ¨é©¾é©¶(و•ˆçژ‡ï¼Œن¾؟وچ·و€§ï¼Œه®‰ه…¨)</p>
+<p>Deep Learning:</p>
+<p>Non-cinvex&amp; non-linear</p>
+<p>intensive computation</p>
+<p>Sensitive to initialization</p>
+<p>over-fitting</p>
+<p>vanishing gradient</p>
+<p>big data</p>
+<p>GPU</p>
+<p>…</p>
+<p>generalization error=A(Approximation)+E+O</p>
+<p>hand-craft feature</p>
+<p>deep neural networks</p>
+<p>deep reinforcement Learning:alphago</p>
+<p>و‍„ه»؛“ه¦ن¹ ç³»ç»ں&quot;ï¼Œè€Œن¸چوک¯&quot;è¢«è®ç»ƒç³»ç»ں”(Learning from natural user behaviors and simulations)</p>
+<p>The full-stack approach to&quot;brain of car&quot;</p>
+<p>Algorithmic designing principles(transparency,large-scale training…)</p>
+<p>Bayes networkè´‌هڈ¶و–¯ç½‘ç»œ</p>
+<p>FPGA</p>
+<p>#四</p>
+<p>TURC</p>
+<p>5.14</p>
+<p>Alibaba(Jingren Zhou)</p>
+<p>ACM(Vicki L. Hanson)</p>
+<p>menber-driven,volunteer-led</p>
+<p>ACM数字图书馆-recent and upcoming</p>
+<p>practitioners</p>
+<p>future of computing academy</p>
+<p>ACM Awards:SIG awards,career-long contributions,Early-to-Mid-career contributions,student contribution,specific type of contributions</p>
+<p>Diversity and Inclusion:women,disabled</p>
+<p><a href="http://www.notabletechnicalwomen.org/" target="_blank" rel="noopener">http://www.notabletechnicalwomen.org/</a></p>
+<p>Digital Vellum(牛皮纸):Defense Against the Dark Ages(Vinton Cerf)</p>
+<p>Archiving Static Text/Image Content</p>
+<p>Movies Digital Storage Dilemma(LTO Linear Tape Open)</p>
+<p>Wha about executable content?</p>
+<p>Interpreting Date(File)</p>
+<p>22nd Century Doris Kearns Goodwin</p>
+<p>1000 years?(old File format,encoding schemes,databases)</p>
+<p>Challenges(interpretation of bits;</p>
+<p>metadata capture;</p>
+<p>source or executable code;</p>
+<p>Digital X-ray;</p>
+<p>capacity for BIG DATA;</p>
+<p>bankruptcies,sunset of apps,OS,hardware;</p>
+<p>intellectual property rights;</p>
+<p>legal frameworks,exceptions for preservation)</p>
+<p>Access Control</p>
+<p>What happens when we die?</p>
+<p>The OLIVE Project(Client Structure,</p>
+<p>VM Image Representation,</p>
+<p>Static snapshot of the web</p>
+<p><a href="http://www.archive.org" target="_blank" rel="noopener">www.archive.org</a>)</p>
+<p>The RHIZOME Project(</p>
+<p>preservation of Digital artworks,</p>
+<p>WebRecorder System)</p>
+<p>Example Other Project(</p>
+<p>the computer history museum,</p>
+<p>google book scans and cultural institute</p>
+<p>CNRI Digital object architecture and identifiers,</p>
+<p>IPFSInterplanetary File System,</p>
+<p>international internet preservation consortium,…)</p>
+<p>Evolution of the artificial visual system(Wen Gao)</p>
+<p>the city brain for Hangzhou(to slove traffic problem)</p>
+<p>the platform of city brain</p>
+<p>video processing system in cloud</p>
+<p>video sensing in city brain</p>
+<p>signal timing optimization</p>
+<p>issue:</p>
+<p>off-line training(目前无法实现on-line training),数据面向存储,</p>
+<p>BigMM Data Chanllenges in Smart City(Storage,retrieval模式识别,identify)，</p>
+<p>Artificial visual system Challenge(&quot;city eye&quot;摄像头功能简单)</p>
+<p>1C1S-one camera one stream 摄像头单流</p>
+<p>weakness: long delay,low accuracy(QP=38下界，意味着Bitrate=2.4M),feasible.</p>
+<p>QP-Quantization parameter</p>
+<p>for face detection</p>
+<p>MCMS-多摄像头多流</p>
+<p>SCDS-具有编码和特征提取功能的摄像头(问题:rate-distortion optimization(</p>
+<p>1.图像编码优化-剔除编码冗余(时间上，空间上，本身的)-使用基于模型的编码);</p>
+<p>2.视频特征提取的优化(SIFT Feature,CDVS(推荐)，CNN(深度学习));</p>
+<p>3.联合R-D 与 R-A优化)</p>
+<p>Syntax</p>
+<p>“数字视网膜”-前端摄像头</p>
+<p>Game Theory in Economic and FinTech(金融科技)(Andrew Chi-Chih Yao)</p>
+<p>IIIS-Institute for Interdisciplinary Information Sciences</p>
+<p>diamond-based quantum computer</p>
+<p>FinTech:</p>
+<p>way(makingtradional services.moreefficient,novel new services)</p>
+<p>why(</p>
+<p>new golden age of computer Science(quantum computer,Economics,Google:alphabet holding Co. ,harbinger:possible role reversals))</p>
+<p>new scientific drivers of FinTech(</p>
+<p>AI/Big Data,</p>
+<p>Theory of building reliable distributed systems,</p>
+<p>Theory of cryptography,</p>
+<p>Game Theory(math models of conflict and cooperatation,k-items))</p>
+<p>#五</p>
+<p>‌TURC</p>
+<p>‌人工智能时代的科学家创业</p>
+<p>3.12</p>
+<p>李开复博士</p>
+<p>‌创新工厂投资案例</p>
+<p>Face++ 支付宝 马云</p>
+<p>智融集团 用钱宝 利用AI技术解决风控问题(贷款。投资)</p>
+<p>美图</p>
+<p>医疗 IBM Waston</p>
+<p>政治 川普选举 精准信息投放</p>
+<p>‌缺陷:</p>
+<p>需海量数据。</p>
+<p>单一领域。</p>
+<p>缺超级科学家。</p>
+<p>无自我意识。</p>
+<p>无审美。。。</p>
+<p></p>
+<p>‌关于科学家创业</p>
+<p>方式:自己创业，技术授权，技术开源，找商业合伙人合作</p>
+<p>学校。专注科研。</p>
+<p>对于社会:报酬。声誉。资源。时间。</p>
+<p>对于大学:参考 斯坦福大学</p>
+<p></p>
+<p>AFTER:(问答)</p>
+<p>‌No 人脸识别</p>
+<p>做识别:巨大数据量。选未做过识别的领域。</p>
+<p>‌Don not care 个人数据(隐私问题)</p>
+<p>在AI时代，数据优者胜。</p>
+<p>‌工项链(区块链)开放。</p>
+<p>AI极客联合在一起，开源。无收费。</p>
+<p>让facebook等投降与开源。</p>
+<p>‌AI会使人失枯燥的职业，但可以使人追求更高的价值。</p>
+<p>‌声音分类识别(对婴儿，老人。。)领域，商业价值一般但是值得做。结合情感识别。</p>
+<p>‌AI于信息安全的结合。</p>
+<p>AI医疗:多个医院数据结合起来进行数据训练，获得癌症相关的有效研究数据。</p>
+<p>‌人情感的识别</p>
+<p>从表象层面理解和模仿人的情感是可以做到的，但是并不意味着AI存在情感。</p>
+<p>#六</p>
+<p>‌TURC</p>
+<p>5.13</p>
+<p>‌开幕</p>
+<p>李云浩(ACM General Co-Chair)</p>
+<p>Alexander Wolf(ACM General Co-Chair)</p>
+<p>Vichi L. Hanson(ACM president)</p>
+<p>Wen Gao(Vice President of NSFC)</p>
+<p>Zhimin Li(ACM China Honorary Advisory Council Co-Chair)</p>
+<p>Vinton Cerf(ACM Award Chair)</p>
+<p>Robet B. Schnabel(ACM CFO)</p>
+<p>Kai-Fu Lee(Sinovation Ventures)</p>
+<p>Chuanping Hu(TURC General Co-Chair)</p>
+<p>John Lui(TURC PC Co-Chair)</p>
+<p>‌CS 的卓越ideas</p>
+<p>Speaker:Robert Schnabel</p>
+<p>机械学习</p>
+<p>分散点(穷举法暴力解决)</p>
+<p>未分散点(投影至多维空间求解)</p>
+<p>app:更改人的年龄，更改绘画的艺术风格</p>
+<p>gate</p>
+<p>overfitting</p>
+<p>clustering</p>
+<p>hidden structure</p>
+<p>应用:交通。决定背景。</p>
+<p>‌In “What” We Trust?</p>
+<p>In BlockChain We Trust!</p>
+<p>倪明选 澳门大学</p>
+<p>Lionel?</p>
+<p>gold?</p>
+<p>computer?</p>
+<p>network?</p>
+<p>data:修改，移动，权限</p>
+<p>BlockChain 1991</p>
+<p>BlockChain 1.0:BitCoin 比特币  /1553.50刀</p>
+<p>Cryptography 密码学</p>
+<p>Byzantine 拜占庭的</p>
+<p>BlockChain 2.0:Smart Contracts</p>
+<p>Hyperledger 用于记账</p>
+<p>BlockChain Taxonomy 分类法:公共，私有</p>
+<p>ISSUE:平均响应时间为10min,每秒传输成功数(7)低，poor Capacity,Wasted Resource,</p>
+<p>BitCoin Mining(挖&quot;矿&quot;)</p>
+<p>Private BlockChain 论文</p>
+<p>‌圆桌论坛 (Panel): Big Data or Brain Powered Artificial Intelligence: Turing or Quantum?</p>
+<p>Turing Test:机器能思考?</p>
+<p>1.李开复</p>
+<p>深度学习≠生物脑神经</p>
+<p>生物被自然选择，AI被人类选择(梯度下降)</p>
+<p>量子计算:更更更快的算力</p>
+<p>进化:生物智能的训练过程</p>
+<p>遗传:生物界的迁移学习</p>
+<p>AI可用于:深度学习，迁移学习，强化学习，统计学习，决策森林，数据降维，蒙地卡罗搜索，实遗憾最小化</p>
+<p>AI将平台化</p>
+<p>2.姚期智</p>
+<p>title:使量子计算机变快的原因</p>
+<p>Crystallography 晶体学:</p>
+<p>X-Ray Crystallography</p>
+<p>Macro-Biological Molecules</p>
+<p>应用</p>
+<p>3.Alex Wolf</p>
+<p>4.Vinton Cerf</p>
+<p>5.高文</p>
+<p>6.李向阳</p>
+<p>#七</p>
+<p>‌TURC.segbio</p>
+<p>‌基因组，大数据与精准医学(陈润生)</p>
+<p>‌精准医学的核心</p>
+<p>组学大数据和图学的结合</p>
+<p>组学数据获取与组学数据挖掘</p>
+<p>‌精准医学能使医学发生什么变化?</p>
+<p>从诊断治疗到健康保障</p>
+<p>个体化治疗，对全民全程的健康保障功能</p>
+<p>产业化前景</p>
+<p>生物样本和数据</p>
+<p>基因测序(转录组)</p>
+<p>分子诊断</p>
+<p>基于精准医学理念的个性化治疗</p>
+<p>‌实现精准医学要有哪些基础?</p>
+<p>组学，大数据:海量数据的获得与挖掘</p>
+<p>基因型与表型的关联</p>
+<p>‌精准医学才刚刚上路</p>
+<p>基因组，转录组中的挑战:基因组中的暗信息</p>
+<p>遗传密码中的编码序列(3％)，DNA-转译RNA-蛋白质。</p>
+<p>海量数据的处理与挖掘:计算量大；数据增速快，数据信噪比低，样本缺失高；样本量小；有效事件频率低(组织，时期，状态不同)</p>
+<p>疾病相关的复杂网络:动态的，有向的，双色的，非线性的</p>
+<p>高度异质化</p>
+<p>数据共享</p>
+<p>‌创新机遇</p>
+<p>基因组研究:非编码序列的运用(生物越高等，其非编码序列占比越多)</p>
+<p>转录组研究:非编码序列每时每刻在工作(有功能)</p>
+<p>非编码RNA的功能研究:PCGEMI(导致前列腺癌)，MALAT-1(导致飞小细胞肺癌)，肿瘤干细胞IncTCF7,调控淋巴机制研究，H19(转录本，肿瘤抑制基因)</p>
+<p>#八</p>
+<p>‌TURC.segboi</p>
+<p>‌Big Data Analysis and Mining in Microbiome(微生物)</p>
+<p>‌背景</p>
+<p>微生物与人类疾病:破腹产，“观音土”，粪便制药</p>
+<p>微生物与环境</p>
+<p>什么是微生物</p>
+<p>人类肠道(微生物)</p>
+<p>微生物组学</p>
+<p>数据收集与分析</p>
+<p>数据分析与挖掘</p>
+<p>炎性肠病</p>
+<p>‌挑战</p>
+<p>微生物数据分析:高维数据分析，不同数据分别，数据的复杂关联。。。</p>
+<p>‌目标</p>
+<p>数据挖掘与整合-NMF(非负矩阵的分解)</p>
+<p>微生物数据可视化(t-SNE,拉普拉斯正规化)</p>
+<p>‌项目与结果</p>
+<p>海洋生物数据:海洋环境对海洋微生物的影响大于距离</p>
+<p>人类微生物数据:肠道微生物(3种)</p>
+<p>。。。</p>
+<p>#九</p>
+<p>‌TURC.segbio</p>
+<p>‌Integrative Analysis of High-throughput TF Binding Data(黄德双)</p>
+<p>‌介绍</p>
+<p>外显子用于翻译</p>
+<p>‌转录因子的绑定的矫正</p>
+<p>基于张量的分析</p>
+<p>Non-convex 非凸方式</p>
+<p>Proposed 推荐方式0</p>
+<p>实验</p>
+<p>AUC</p>
+<p>ChIP-sequence and PWM(位置加权矩阵)</p>
+<p>DML Mothed</p>
+<p>DiscMLA</p>
+<p>‌FETS</p>
+<p>数字编码，联合降维，AUC(矩阵)</p>
+<p>‌结论</p>
+<p>#十</p>
+<p>‌TURC.segbio</p>
+<p>‌生物网络与药物靶点的识别(中南大学)</p>
+<p>‌网络(假定为线性系统)</p>
+<p>网络与动态模型(控制链)</p>
+<p>‌可控性(调节关系)</p>
+<p>网络是可以可控的</p>
+<p>判断test:</p>
+<p>方法一:rank©=rank[A,AB,…,A^n-1 B]=n,n为节点数</p>
+<p>方法二:结构可控，Max{rank[A,AB,…,A^n-1 B]=n},</p>
+<p>结构可控一般系统可控</p>
+<p>可接近性</p>
+<p>Dilation(节点集个数大于临域个数)</p>
+<p>‌steering node:无不可达的顶点(找source SCCs)，无dilation(MDS)</p>
+<p>MSS=MDS ∪ PDS</p>
+<p>找图MSS的最大流的最小花费</p>
+<p>‌药物靶点</p>
+<p>Drug Target-Steering nodes</p>
+<p>Drugs-Control Signal</p>
+<p>CAC Network</p>
+<p>#十一</p>
+<p>‌TURC.segbio</p>
+<p>‌Genome Informatics and Its Application in Precision Medicine (基因组信息学在精准医疗中的应用)(叶凯，西安交大)</p>
+<p>‌精准医疗</p>
+<p>精准诊断，精准治疗</p>
+<p>‌基于模型的检测(变异预测)</p>
+<p>CNV:gain,loss</p>
+<p>read-pair</p>
+<p>Tandem duplications</p>
+<p>#十二</p>
+<p>TURC.segbio</p>
+<p>‌Clinical Data Repository in Precision Medicine: Technical Solution and Practice，李厦茂(GeneDock，CEO)</p>
+<p>基因检测</p>
+<p>智能辅助诊断应用</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/03/18/[Framework]MVCframework/" data-toggle="tooltip" data-placement="top" title="[Framework] MVC架构">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/07/18/[notes]2016.7.19/" data-toggle="tooltip" data-placement="top" title="[Android] surfaceview相关知识补充">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Notes" title="Notes">Notes</a>
+                        
+                          <a class="tag" href="/tags/#Lecture" title="Lecture">Lecture</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
+                    
+                        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://mengyingzhou.github.io/2017/09/01/[lecture]ACMTURCShangHai/";
+    var disqus_url = "https://mengyingzhou.github.io/2017/09/01/[lecture]ACMTURCShangHai/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+            appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true
+        })
+    </script>	
+<script type="text/javascript" src="/js/zooming.js"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/myzhou97">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/mengyingzhou">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/aerber-zhou-600bb4175">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Aerber Zhou 2020 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/NullAerber">NullAerber</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=NullAerber&repo=NullAerber.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mengyingzhou.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://mengyingzhou.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
