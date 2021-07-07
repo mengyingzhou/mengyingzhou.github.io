@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Aerber Joy
+        
+    </title>
+
+    <link rel="canonical" href="https://mengyingzhou.github.io/archives/3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header_img/home-bg-2-dark.png') 
+            /*config*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>Aerber Joy</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Practise, Temawork, New Thing, Better.</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Aerber Joy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+	
+
+<div class="post-preview">
+
+    <a href="/2017/04/25/[Android]surfaceview_VelocityTable/">
+        <h2 class="post-title">
+            [Android] surfaceView中VelocityTable速率盘
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列02
+        </h3>
+        <div class="post-content-preview">
+            一.大体
+一些和VJ中差不多作用或者用法的就不再细说了
+变量：
+123456789101112131415161718192021//设置表盘的最大值public double valueMax = 100;private Thread thread;private SurfaceHolder holder;private Paint paint;//@param shader : 用于绘制......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-04-25
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/04/18/[Android]surfaceview_virtualjoystick/">
+        <h2 class="post-title">
+            [Android] surfaceView中VirtualJoystick虚拟摇杆
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列01
+        </h3>
+        <div class="post-content-preview">
+            以下代码均来自hopeful，渣渣我只是解读一下
+一.大体
+首先在自定义插件VirtualJoystick（后称VJ）中我们需要实现的通过UI进行交互的功能有：
+1.跟随手指在屏幕上进行移动
+2.在松手时回到中心
+3.实现和MemoryTable以及VelocityTable之间数据的交互（主要实现方法还是在MemoryTable以及VelocityTable中）
+4.根据传达回来的重力感应......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-04-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/18/[Android]surfaceview_self_component/">
+        <h2 class="post-title">
+            [Android] 利用surfaceview制作自定义组件
+        </h2>
+        <h3 class="post-subtitle">
+            surfaceView系列00
+        </h3>
+        <div class="post-content-preview">
+            一.SurfaceView和View最本质的区别
+surfaceview继承自view,但是同view由本质上的区别,即是surfaceview开一个新线程进行绘制,view是在UI主线程中进行绘制
+SurfaceView和View最本质的区别在于，surfaceView是在一个新起的单独线程中可以重新绘制画面而View必须在UI的主线程中更新画面。可以在主线程之外的线程中向屏幕绘图。这样可......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2017-03-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/30/[linux]GitNote/">
+        <h2 class="post-title">
+            [Linux] Git 痛定思痛笔记
+        </h2>
+        <h3 class="post-subtitle">
+            学习gir的重要性
+        </h3>
+        <div class="post-content-preview">
+            https://git-scm.com/book/zh/v2
+git 安装
+由于直接使用apt-get下载安装的hgit版本太低,所以我们使用PPA源的方法
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+
+安装完成后，检查是否安装成功
+git --version
+显示......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-30
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Git" title="Git">Git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[linux]CreateStarterFileInUbuntu/">
+        <h2 class="post-title">
+            [Linux] 命令行建启动器
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            想建立一个启动器是因为本人一直使用android studio ，但是AS是脚本程序，每次启动都需要去解压目录在终端中输入$ ./studio.sh 觉得实在麻烦，就查了一下如何在ubuntu下建立一个程序的快捷方式。
+引一篇博文这里有两种方法，一种命令行方法，一种基于操作系统和桌面系统。
+但是对于ubuntu+gnome来说，只有命令行最实用。
+个人也比较偏向于命令行方式。
+http://......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[linux]PrintChineseInAs/">
+        <h2 class="post-title">
+            [Linux] AS不能输入中文的解决方法
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            http://blog.sina.com.cn/s/blog_c92554b40102vynb.html
+
+
+前提条件是用的是fcitx
+1.用gedit或者vi打开studio.sh
+2.在很多#的后面加上三行代码
+12345export XMODIFIERS=&quot;@im=fcitx&quot;export GTK_IM_MODULE=&quot;fcitx&quot;export......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#Manjaro" title="Manjaro">Manjaro</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[notes]2016.7.21/">
+        <h2 class="post-title">
+            [Scattered Notes] java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity
+        </h2>
+        <h3 class="post-subtitle">
+            随记
+        </h3>
+        <div class="post-content-preview">
+            关于  java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity  问题
+今天晚上在实现界面跳转时发现此报错.
+原因:由于我的这个跳转后的页面的功能是其他地方另建的,是由于移植过来出现了问题
+解决方法:最后发现是将要跳转的页面继承的ac......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Android" title="Android">Android</a>
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/21/[paper]DMDS_conclusionandfuturework/">
+        <h2 class="post-title">
+            [Paper Notes]  Conclusion And Future Work——云计算下基于二进制文件特点的恶意软件分布式侦测
+        </h2>
+        <h3 class="post-subtitle">
+            05-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
+        </h3>
+        <div class="post-content-preview">
+            总结和改良
+总结
+尽管基于DELSH进行恶意软件描述向量检索是一种探测变种恶意软件的新方法。
+但是了解此技术原理的攻击者会采取一些对策去攻击系统，因为这个技术是基于**全局图像特征**。比如说可以讲重要的可执行代码重部署在二进制文件中每一部分的位置，或者增加大量的冗余数据。
+改良
+为了对应这些攻击，需要更局部化的特征提取方案，这个方案更注重恶意软件可执行和最原始的二进制模块的明显特征。
+一种......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Paper" title="Paper">Paper</a>
+            
+              <a href="/tags/#Security" title="Security">Security</a>
+            
+              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
+            
+              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/20/[paper]DMDS_experimentalresultandanalysis/">
+        <h2 class="post-title">
+            [Paper Notes]  Experimental Result And Analysis——云计算下基于二进制文件特点的恶意软件分布式侦测
+        </h2>
+        <h3 class="post-subtitle">
+            04-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
+        </h3>
+        <div class="post-content-preview">
+            测试结果和相关分析
+测试环境
+机器：IBM机群
+数据集：总数8410个恶意软件，25个恶意软件家族
+性能指标
+精确度、响应度、F值度量、查询时间
+Precision（精确度）：Precision in this paper is the fraction of retrieved malware descriptor vector that are relevant to the targe......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-20
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Paper" title="Paper">Paper</a>
+            
+              <a href="/tags/#Security" title="Security">Security</a>
+            
+              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
+            
+              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/07/19/[paper]DMDS_relatedwork/">
+        <h2 class="post-title">
+            [Paper Notes]  Related Work——云计算下基于二进制文件特点的恶意软件分布式侦测
+        </h2>
+        <h3 class="post-subtitle">
+            03-Distributed Malware Detection based on Binary File Features in Cloud computing Environment（DMDsystem）
+        </h3>
+        <div class="post-content-preview">
+            相关介绍内容主要是entropy locality-sensitive hashing （ELSH） 、cloud computing frameworks、GIST原理.
+熵局部敏感分析【Entropy locality-sensitive hashing】
+Basic LSH（BLSH）
+网上的这几篇博文这篇LSH的讲的很通俗易懂。
+http://blog.csdn.net/icvpr/......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Aerber Zhou on
+            2016-07-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Notes" title="Notes">Notes</a>
+            
+              <a href="/tags/#Paper" title="Paper">Paper</a>
+            
+              <a href="/tags/#Security" title="Security">Security</a>
+            
+              <a href="/tags/#Distribution" title="Distribution">Distribution</a>
+            
+              <a href="/tags/#Malware Detection" title="Malware Detection">Malware Detection</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/archives/2/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/archives/4/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div id="vcomments" ></div>
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '7TGrkWBjg6DPEdjFcbXOaWbN-gzGzoHsz',
+		appKey: 's9n02dNw41r6yqXsoJzvaEEz',
+		placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+		visitor: true
+	})
+</script>	
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+        
+            
+            <a href="/tags/#Android" title="Android" rel="9">Android</a>
+            
+        
+            
+            <a href="/tags/#Notes" title="Notes" rel="29">Notes</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Linux" title="Linux" rel="10">Linux</a>
+            
+        
+            
+            <a href="/tags/#LaTeX" title="LaTeX" rel="2">LaTeX</a>
+            
+        
+            
+            <a href="/tags/#Lecture" title="Lecture" rel="2">Lecture</a>
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Manjaro" title="Manjaro" rel="5">Manjaro</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Paper" title="Paper" rel="8">Paper</a>
+            
+        
+            
+            <a href="/tags/#Security" title="Security" rel="5">Security</a>
+            
+        
+            
+            <a href="/tags/#Distribution" title="Distribution" rel="5">Distribution</a>
+            
+        
+            
+            <a href="/tags/#Malware Detection" title="Malware Detection" rel="5">Malware Detection</a>
+            
+        
+            
+            <a href="/tags/#Internship" title="Internship" rel="3">Internship</a>
+            
+        
+            
+            <a href="/tags/#Deep Learning" title="Deep Learning" rel="3">Deep Learning</a>
+            
+        
+            
+            <a href="/tags/#Knowledge Graph" title="Knowledge Graph" rel="3">Knowledge Graph</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Attention Based Model" title="Attention Based Model" rel="2">Attention Based Model</a>
+            
+        
+            
+            <a href="/tags/#SQL" title="SQL" rel="2">SQL</a>
+            
+        
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/ironman-draw.jpg" />
+        
+
+        
+            <p>赤子之心，严己宽人</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+                <li>
+                    <a target="_blank" href="https://twitter.com/myzhou97">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/mengyingzhou">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+                <li>
+                    <a target="_blank"  href="https://www.linkedin.com/in/aerber-zhou-600bb4175">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</section>
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2025/10/01/myzhou/">!!! My Homepage</a>
+        </li>
+      
+        <li>
+          <a href="/2025/01/01/group_paper_reading/">[paper] Group paper reading</a>
+        </li>
+      
+        <li>
+          <a href="/2020/01/20/[linux]jupyter_proxy/">[Jupyter] 访问反向代理的服务器的jupyter</a>
+        </li>
+      
+        <li>
+          <a href="/2019/07/20/[notes]2019.7.20/">[Notes] XGBoost之类别特征的处理</a>
+        </li>
+      
+        <li>
+          <a href="/2019/02/17/[linux]english_typewriting/">[Linux] 为Linux设置英文补全输入法</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
+    
+        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
+    
+        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+    
+</ul>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/myzhou97">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/mengyingzhou">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/aerber-zhou-600bb4175">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Aerber Zhou 2020 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/NullAerber">NullAerber</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=NullAerber&repo=NullAerber.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mengyingzhou.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://mengyingzhou.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
