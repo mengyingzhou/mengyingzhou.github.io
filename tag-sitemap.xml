@@ -142,13 +142,6 @@
     </url>
 
     <url>
-        <loc>https://mengyingzhou.github.io/tags/paper/</loc>
-        <lastmod>2020-04-21T02:16:51.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mengyingzhou.github.io/tags/233/</loc>
         <lastmod>2021-07-08T06:27:51.054Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -157,21 +150,28 @@
 
     <url>
         <loc>https://mengyingzhou.github.io/tags/Paper/</loc>
-        <lastmod>2021-07-08T08:54:46.389Z</lastmod>
+        <lastmod>2021-07-08T09:05:10.877Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mengyingzhou.github.io/tags/Internship/</loc>
-        <lastmod>2021-07-08T08:54:46.389Z</lastmod>
+        <lastmod>2021-07-08T09:05:10.877Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mengyingzhou.github.io/tags/Networking/</loc>
-        <lastmod>2021-07-08T08:54:46.389Z</lastmod>
+        <lastmod>2021-07-08T09:05:10.877Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mengyingzhou.github.io/tags/paper/</loc>
+        <lastmod>2021-07-08T09:07:00.993Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
