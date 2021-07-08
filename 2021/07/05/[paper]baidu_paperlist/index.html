@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Paper] 近三年课题相关文章列表 - Aerber Joy
+        
+    </title>
+
+    <link rel="canonical" href="https://mengyingzhou.github.io/2021/07/05/[paper]baidu_paperlist/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Paper" title="Paper">Paper</a>
+                            
+                              <a class="tag" href="/tags/#Internship" title="Internship">Internship</a>
+                            
+                              <a class="tag" href="/tags/#Networking" title="Networking">Networking</a>
+                            
+                        </div>
+                        <h1>[Paper] 近三年课题相关文章列表</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2021-07-05
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Aerber Joy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="流量控制">流量控制</h1>
+<h2 id="流量分配">流量分配</h2>
+<ol>
+<li>
+<p>Firas Abuzaid, Srikanth Kandula, Behnaz Arzani, Ishai Menache, Matei Zaharia, and Peter Bailis. Contracting wide-area network topologies to solve flow problems quickly. Proc. of NSDI: 175–200. 2021.</p>
+<ul>
+<li>发表处: NSDI</li>
+<li>参与公司: Microsoft</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Many enterprises today manage trafﬁc on their wide-area networks using software-deﬁned trafﬁc engineering schemes, which scale poorly with network size; the solver runtimes and number of forwarding entries needed at switches increase to untenable levels. We describe a novel method, which, instead of solving a multi-commodity ﬂow problem on the network, solves (1) a simpler problem on a contraction of the network, and (2) a set of sub-problems in parallel on disjoint clusters within the network. Our results on the topology and demands from a large enterprise, as well as on publicly available topologies, show that, in the median case, our method nearly matches the solution quality of currently deployed solutions, but is 8× faster and requires 6× fewer FIB entries. We also show the value-add from using a faster solver to track changing demands and to react to faults.</li>
+</ul>
+</li>
+<li>
+<p>Guoming Tang, Huan Wang, Kui Wu, and Deke Guo. Tapping the Knowledge of Dynamic Traffic Demands for Optimal CDN Design. IEEE/ACM Transactions on Networking 27, 1: 98–111. 2019.</p>
+<ul>
+<li>发表处: CoNEXT</li>
+<li>参与公司: 无</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: The content delivery network (CDN) intensively uses cache to push the content close to end users. Over both traditional Internet architecture and emerging cloud-based framework, cache allocation has been the core problem that any CDN operator needs to address. As the ﬁrst step for cache deployment, CDN operators need to discover or estimate the distribution of user requests in different geographic areas. This step results in a statistical spatial model for the user requests, which is used as the key input to solve the optimal cache deployment problem. More often than not, the temporal information in user requests is omitted to simplify the CDN design. In this paper, we disclose that the spatial request model alone may not lead to truly optimal cache deployment and revisit the problem by taking the dynamic trafﬁc demands into consideration. Speciﬁcally, we model the time-varying trafﬁc demands and formulate the distributed cache deployment optimization problem with an integer linear program (ILP). To solve the problem efﬁciently, we transform the ILP problem into a scalable form and propose a greedy diagram to tackle it. Via experiments over the North American ISPs points of presence (PoPs) network, our new solution outperforms traditional CDN design method and saves the overall delivery cost by 16% to 20%. We also study the impact of various trafﬁc demand patterns to the CDN design cost, via experiments with both real-world trafﬁc demand patterns and extensive synthetic trace data.</li>
+</ul>
+</li>
+<li>
+<p>Zhihao Li, Neil Spring, Dave Levin, and Bobby Bhattacharjee. Internet anycast: Performance, problems, &amp; potential. Proc. of SIGCOMM: 59–73. 2018.</p>
+<ul>
+<li>发表处: SIGCOMM</li>
+<li>参与公司: 无</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Internet anycast depends on inter-domain routing to direct clients to their “closest” sites. Using data collected from a root DNS server for over a year (400M+ queries/day from 100+ sites), we characterize the load balancing and latency performance of global anycast. Our analysis shows that site loads are often unbalanced, and that most queries travel longer than necessary, many by over 5000 km. Investigating the root causes of these inefficiencies, we can attribute path inflation to two causes. Like unicast, anycast routes are subject to inter-domain routing topology and policies that can increase path length compared to theoretical shortest (e.g., great-circle distance). Unlike unicast, anycast routes are also affected by poor route selection when paths to multiple sites are available, subjecting anycast routes to an additional, unnecessary, penalty. Unfortunately, BGP provides no information about the number or goodness of reachable anycast sites. We propose an additional hint in BGP advertisements for anycast routes that can enable ISPs to make better choices when multiple “equally good” routes are available. Our results show that use of such routing hints can eliminate much of the anycast path inflation, enabling anycast to approach the performance of unicast routing.</li>
+</ul>
+</li>
+<li>
+<p>Shihan Xiao, Haiyan Mao, Bo Wu, Wenjie Liu, and Fenglin Li. Neural packet routing. Proc. of NetAI, SIGCOMM Workshop: 28–34. 2020.</p>
+<ul>
+<li>发表处: SIGCOMM Wrokshop</li>
+<li>参与公司: 华为（无高校作者）</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Deep learning has shown great potential in automatically generating routing protocols for diﬀerent optimization objectives. Although it may bring superior performance gains, there exists a fundamental obstacle to prevent existing network operators from deploying it into a real-world network, i.e., the uncertainty of statistical nature in deep learning can not provide the certainty of basic connectivity guarantee required in real-world routing. In this paper, we propose the ﬁrst deep-learning-based distributed routing system (named NGR) that can achieve the connectivity guarantee while still attaining the routing optimality. NGR provides a novel packet routing framework based on the link reversal theory. Specially-designed neural network structures are further proposed to seamlessly incorporate into the framework. We apply NGR in the tasks of shortest-path routing and load balancing. The evaluation results validate that NGR can achieve 100% connectivity guarantee despite the uncertainty of deep learning and gain performance close to the optimal solution.</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li>Praveen Kumar, Yang Yuan, Chris Yu, et al. Semi-Oblivious Traffic Engineering : The Road Not Taken. Proc. of NSDI. 2018.
+<ul>
+<li>发表处: NSDI</li>
+<li>参与公司: Facebook</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Networks are expected to provide reliable performance under a wide range of operating conditions, but existing traﬃc engineering (TE) solutions optimize for performance or robustness, but not both. A key factor that impacts the quality of a TE system is the set of paths used to carry traﬃc. Some systems rely on shortest paths, which leads to excessive congestion in topologies with bottleneck links, while others use paths that minimize congestion, which are brittle and prone to failure. This paper presents a system that uses a set of paths computed using Räcke’s oblivious routing algorithm, as well as a centralized controller to dynamically adapt sending rates. Although oblivious routing and centralized TE have been studied previously in isolation, their combination is novel and powerful. We built a software framework to model TE solutions and conducted extensive experiments across a large number of topologies and scenarios, including the production backbone of a large content provider and an ISP. Our results show that semi-oblivious routing provides near-optimal performance and is far more robust than state-of-the-art systems.</li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li>Yuan Zuo, Yulei Wu, Geyong Min, and Laizhong Cui. Learning-based network path planning for traffic engineering. Future Generation Computer Systems 92: 59–67. 2019.
+<ul>
+<li>发表处: Future Generation Computer Systems</li>
+<li>参与公司: 无</li>
+<li>摘要: Recent advances in traffic engineering offer a series of techniques to address the network problems due to the explosive growth of Internet traffic. In traffic engineering, dynamic path planning is essential for prevalent applications, e.g., load balancing, traffic monitoring and firewall. Application-specific methods can indeed improve the network performance but can hardly be extended to general scenarios. Meanwhile, massive data generated in the current Internet has not been fully exploited, which may convey much valuable knowledge and information to facilitate traffic engineering. In this paper, we propose a learning-based network path planning method under forwarding constraints for finer-grained and effective traffic engineering. We form the path planning problem as the problem of inferring a sequence of nodes in a network path and adapt a sequence-to-sequence model to learn implicit forwarding paths based on empirical network traffic data. To boost the model performance, attention mechanism and beam search are adapted to capture the essential sequential features of the nodes in a path and guarantee the path connectivity. To validate the effectiveness of the derived model, we implement it in Mininet emulator environment and leverage the traffic data generated by both a real-world GEANT network topology and a grid network topology to train and evaluate the model. Experiment results exhibit a high testing accuracy and imply the superiority of our proposal.</li>
+</ul>
+</li>
+</ol>
+<ol start="7">
+<li>
+<p>Ming Li, Yuewen Wang, Zhaowen Wang, and Huiying Zheng. A deep learning method based on an attention mechanism for wireless network traffic prediction. Ad Hoc Networks 107. 2020.</p>
+<ul>
+<li>发表处: Ad Hoc Networks</li>
+<li>参与公司: 无</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: With the rapid development of wireless networks, the self-management and active adjustment capabilities of base stations have become crucial. The accurate prediction of wireless network traﬃc is an important prerequisite for intelligent base stations. Traﬃc data has a high degree of nonlinearity and complexity, which is characterized by temporal and spatial correlation. Most of the existing forecasting methods do not consider both the temporal and spatial situations in the process of modeling traﬃc data. In this paper, a spatio-temporal convolutional network (LA-ResNet) is presented that uses an attention mechanism to solve spatio-temporal modeling and predict wireless network traﬃc. LA-ResNet consists of three parts: the residual network, the recurrent neural network, and an attention mechanism. Using this method, the temporal and spatial characteristics of wireless network traﬃc data are modeled and its related features are strengthened. Thus, the spatio-temporal correlation of wireless network traﬃc data can be effectively captured. The residual network can capture spatial features in the data. The combination of the recurrent neural network and the attention mechanism can capture the temporal dependence of the data. Finally, experiments on a real data set show that the prediction effect of the LA-ResNet model is better than the other existing prediction methods, such as RNN and 3DCNN, and the accurate prediction of traﬃc can be realized.</li>
+</ul>
+</li>
+<li>
+<p>Abdullah Bin Faisal, Hafiz Mohsin Bashir, Ihsan Ayyub Qazi, Zartash Uzmi, and Fahad R Dogar. Workload adaptive flow scheduling. Proc. of CoNEXT: 241–253. 2018.</p>
+<ul>
+<li>发表处: CoNEXT</li>
+<li>参与公司: 无</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Existing flow scheduling schemes for data center networks optimize for a specific workload and performance metric. In this paper, we present 2D, a new scheduling policy that offers robustness across performance metrics and changing workloads – a ground existing scheduling policies are unable to cover. 2D combines basic scheduling building blocks of multiplexing and serialization in a principled way, ensuring tail optimal performance across workloads while also improving the average (and lower percentiles) completion times. To implement 2D for flow-level scheduling in a distributed setting, we break-up the scheduling decision into two parts: coarse time-scale decisions based on workload and load changes are made by a centralized controller while per-flow serialization decisions are made in a distributed fashion, involving the end-points and sequencer(s). Our testbed experiments show that, for realistic cloud workloads, 2D provides consistent gains at the tail and average flow completion times compared to basic scheduling techniques (e.g., FIFO and processor sharing) as well as heuristic-based schedulers (e.g., Aalo and Baraat).</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据中心之间调度">数据中心之间调度</h2>
+<ol>
+<li>
+<p>Sepehr Abbasi-Zadeh, Mohmmad Amin Beiruti, Yashar Ganjali, and Zhenhua Hu. Application-Aware Load Migration Protocols for Network Controllers. Proc. of ICNP, Poster 2020-Octob, Figure 2: 2–3. 2020.</p>
+<ul>
+<li>发表处: ICNP Poster</li>
+<li>参与公司: 华为</li>
+<li>摘要: Load migration protocols have been used for load balancing in network controllers. In this poster, we argue that other network applications (e.g., power saving, network security, failure recovery, etc.) have properties that might require different load migration protocols. We introduce four new load migration protocols and show how they might match different application requirements better. We present preliminary experimental results for one of these protocols that show more than 20% − 30% speedup in the total load migration time.</li>
+</ul>
+</li>
+<li>
+<p>Sepehr Abbasi-Zadeh, Mohmmad Amin Beiruti, Yashar Ganjali, and Zhenhua Hu. Fast Scheduling for Load Migration in Distributed Network Controllers. Proc. of ICNP, Poster 2020-Octob: 2020–2021. 2020.</p>
+<ul>
+<li>发表处: ICNP Poster</li>
+<li>参与公司: 华为</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: As network trafﬁc and conditions change, the load on different instances of control plane changes. To ensure various control applications can operate continuously and efﬁciently, we need to migrate the load among controller instances. For this, we need a migration schedule that minimizes the overall migration time while ensuring the quality of service and controller resource constraints. In this poster, we show this problem is NP-hard, and show how a heuristic algorithm performs close to the best existing solution with orders of magnitude reduction in scheduling time.</li>
+</ul>
+</li>
+</ol>
+<h1 id="故障切流">故障切流</h1>
+<ol>
+<li>Usama Naseer, Luca Niccolini, Udip Pant, Alan Frindell, Ranjeeth Dasineni, and Theophilus A. Benson. Zero Downtime Release: Disruption-free Load Balancing of a Multi-Billion User Website. Proc. of SIGCOMM: 529–541. 2020.
+<ul>
+<li>发表处: SIGCOMM</li>
+<li>参与公司: Facebook</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Modernnetworkinfrastructurehasevolvedintoacomplexorganism to satisfy the performance and availability requirements for the billions of users. Frequent releases such as code upgrades, bug fixes and securityupdateshavebecomeanorm.Millionsofgloballydistributed infrastructure components including servers and load-balancers are restarted frequently from multiple times per-day to per-week. However, every release brings possibilities of disruptions as it can result in reduced cluster capacity, disturb intricate interaction of the components operating at large scales and disrupt the end-users by terminating their connections. The challenge is further complicated by the scale and heterogeneity of supported services and protocols. In this paper, we leverage different components of the end-to-end networking infrastructure to prevent or mask any disruptions in face of releases. Zero Downtime Release is a collection of mechanisms used at Facebook to shield the end-users from any disruptions, preserve the cluster capacity and robustness of the infrastructure when updates are released globally. Our evaluation shows that these mechanisms prevent any significant cluster capacity degradation when a considerable number of productions servers and proxies are restartedandminimizesthedisruptionfordifferentservices(notably TCP, HTTP and publish/subscribe).</li>
+</ul>
+</li>
+</ol>
+<h1 id="dns配置">DNS配置</h1>
+<ol>
+<li>Casey Deccio and Jacob Davis. DNS privacy in practice and preparation. Proc. of CoNEXT: 138–143. 2019.
+<ul>
+<li>发表处: CoNEXT</li>
+<li>参与公司: Sandia National Laboratories</li>
+<li>摘要: An increased demand for privacy in Internet communications has resulted in privacy-centric enhancements to the Domain Name System (DNS), including the use of Transport Layer Security (TLS) and Hypertext Transfer Protocol Secure (HTTPS) for DNS queries. In this paper, we seek to answer questions about their deployment, including their prevalence and their characteristics. Our work includes an analysis of DNS-over-TLS (DoT) and DNS-over-HTTPS (DoH) availability at open resolvers and authoritative DNS servers. We find that DoT and DoH services exist on just a fraction of open resolvers, but among them are the major vendors of public DNS services. We also analyze the state of TCP Fast Open (TFO), which is considered key to reducing the latency associated with TCP-based DNS queries, required by DoT and DoH. The uptake of TFO is extremely low, both on the server side and the client side, and it must be improved to avoid performance degradation with continued adoption of DNS Privacy enhancements.</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li>Abhishta Abhishta, Roland Van Rijswijk-Deij, and Lambert J.M. Nieuwenhuis. Measuring the impact of a successful DDoS attack on the customer behaviour of managed DNS service providers. Proc. of WTMC 48, 5: 70–76. 2018.
+<ul>
+<li>发表处: WTMC</li>
+<li>参与公司: 无</li>
+<li>摘要: Distributed Denial-of-Service (DDoS) attacks continue to pose a serious threat to the availability of Internet services. The Domain Name System (DNS) is part of the core of the Internet and a crucial factor in the successful delivery of Internet services. Because of the importance of DNS, specialist service providers have sprung up in the market, that provide managed DNS services. One of their key selling points is that they protect DNS for a domain against DDoS attacks. But what if such a service becomes the target of a DDoS attack, and that attack succeeds? In this paper we analyse two such events, an attack on NS1 in May 2016, and an attack on Dyn in October 2016. We do this by analysing the change in the behaviour of the service’s customers. For our analysis we leverage data from the OpenINTEL active DNS measurement system, which covers large parts of the global DNS over time. Our results show an almost immediate and statistically significant change in the behaviour of domains that use NS1 or Dyn as a DNS service provider. We observe a decline in the number of domains that exclusively use NS1 or Dyn as a managed DNS service provider, and see a shift toward risk spreading by using multiple providers. While a large managed DNS provider may be better equipped to protect against attacks, these two case studies show they are not impervious to them. This calls into question the wisdom of using a single provider for managed DNS. Our results show that spreading risk by using multiple providers is an effective countermeasure, albeit probably at a higher cost.</li>
+</ul>
+</li>
+</ol>
+<h1 id="拨测">拨测</h1>
+<ol>
+<li>Xinlei Yang, Xianlong Wang, Zhenhua Li, and Yunhao Liu. Fast and Light Bandwidth Testing for Internet Users. Proc. of NSDI. 2021.
+<ul>
+<li>发表处: NSDI</li>
+<li>参与公司: 阿里巴巴</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Bandwidth testing measures the access bandwidth of end hosts, which is crucial to emerging Internet applications for network-aware content delivery. However, today’s bandwidth testing services (BTSes) are slow and costly—the tests take a long time to run, consume excessive data usage at the client side, and/or require large-scale test server deployments. The inefﬁciency and high cost of BTSes root in their methodologies that use excessive temporal and spatial redundancies for combating noises in Internet measurement. This paper presents FastBTS to make BTS fast and cheap while maintaining high accuracy. The key idea of FastBTS is to accommodate and exploit the noise rather than repetitively and exhaustively suppress the impact of noise. This is achieved by a novel statistical sampling framework (termed fuzzy rejection sampling). We build FastBTS as an end-to-end BTS that implements fuzzy rejection sampling based on elastic bandwidth probing and denoised sampling from high-ﬁdelity windows, together with server selection and multihoming support. Our evaluation shows that with only 30 test servers, FastBTS achieves the same level of accuracy compared to the state-of-the-art BTS (<a href="http://SpeedTest.net" target="_blank" rel="noopener">SpeedTest.net</a>) that deploys 12,000 servers. Most importantly, FastBTS makes bandwidth tests 5.6⇥ faster and 10.7 more data-efﬁcient.</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li>Yikai Zhao, Kaicheng Yang, Zirui Liu, et al. Light guardian: A full-visibility, lightweight, in-band telemetry system using sketchlets. Proc. of NSDI: 991–1007. 2021.
+<ul>
+<li>发表处: NSDI</li>
+<li>参与公司: 华为</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Network trafﬁc measurement is central to successful network operations, especially for today’s hyper-scale networks. Although existing works have made great contributions, they fail to achieve the following three criteria simultaneously: 1) full-visibility, which refers to the ability to acquire any desired per-hop ﬂow-level information for all ﬂows; 2) low overhead in terms of computation, memory, and bandwidth; and 3) robustness, meaning the system can survive partial network failures. We design LightGuardian to meet these three criteria. Our key innovation is a (small) constant-sized data structure, called sketchlet, which can be embedded in packet headers. Speciﬁcally, we design a novel SuMax sketch to accurately capture ﬂow-level information. SuMax can be divided into sketchlets, which are carried in-band by passing packets to the end-hosts for aggregation, reconstruction, and analysis. We have fully implemented a LightGuardian prototype on a testbed with 10 programmable switches and 8 end-hosts in a FatTree topology, and conduct extensive experiments and evaluations. Experimental results show that LightGuardian can obtain per-ﬂow per-hop ﬂow-level information within 1.0 ∼ 1.5 seconds with consistently low overhead, using only 0.07% total bandwidth capacity of the network. We believe LightGuardian is the ﬁrst system to collect perﬂow per-hop information for all ﬂows in the network with negligible overhead.</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li>
+<p>Florian Wohlfart, Nikolaos Chatzis, Caglar Dabanoglu, Georg Carle, and Walter Willinger. Leveraging interconnections for performance:The serving infrastructure of a large CDN. Proc. of SIGCOMM: 206–220. 2018.</p>
+<ul>
+<li>发表处: SIGCOMM</li>
+<li>参与公司: Akamai, NIKSUN</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Today’s large content providers (CP) are busy building out their service infrastructures or łpeering edgesž to satisfy the insatiable demand for content created by an ever-expanding Internet edge. One component of these serving infrastructures that features prominently in this build-out is their connectivity fabric; i.e., the set of all Internet interconnections that content has to traverse en route from the CP’s various łdeploymentsž or łserving sitesž to end users. However, these connectivity fabrics have received little attention in the past and remain largely ill-understood. In this paper, we describe the results of an in-depth study of the connectivity fabric of Akamai. Our study reveals that Akamai’s connectivity fabric consists of some 6,100 different łexplicitž peerings (i.e., Akamai is one of the two involved peers) and about 28,500 different łimplicitž peerings (i.e., Akamai is neither of the two peers). Our work contributes to a better understanding of real-world serving infrastructures by providing an original account of implicit peerings and demonstrating the performance benefits that Akamai can reap from leveraging its rich connectivity fabric for serving its customers’ content to end users.</li>
+</ul>
+</li>
+<li>
+<p>Matt Calder, Microsoft Usc, Manuel Schröder, et al. Odin : Microsoft ’ s Scalable Fault-Tolerant CDN Measurement System. Proc. of NSDI. 2018.</p>
+<ul>
+<li>发表处: NSDI</li>
+<li>参与公司: Microsoft</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Content delivery networks (CDNs) are critical for delivering high performance Internet services. Using worldwide deployments of front-ends, CDNs can direct users to the front-end that provides them with the best latency and availability. The key challenges arise from the heterogeneous connectivity of clients and the dynamic nature of the Internet that inﬂuences latency and availability. Without continuous insight on performance between users, front-ends, and external networks, CDNs will not be able to attain their full potential performance. We describe Odin, Microsoft’s Internet measurement platform for its ﬁrst-party and third-party customers. Odin is designed to handle Microsoft’s large user base and need for large-scale measurements from users around the world. Odin integrates with Microsoft’s varied suite of web-client and thick-client applications, all while being mindful of the regulatory and privacy concerns of enterprise customers. Odin has been operational for 2 years. We present the ﬁrst detailed study of an Internet measurement platform of this scale and complexity.</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li>
+<p>Kevin Vermeulen, Sorbonne Université, Justin P Rohrer, et al. Diamond-Miner : Comprehensive Discovery of the Internet ’ s Topology Diamonds. Proc. of NSDI February. 2020.</p>
+<ul>
+<li>发表处: NSDI</li>
+<li>参与公司: 无</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Despite the well-known existence of load-balanced forwarding paths in the Internet, current active topology Internet-wide mapping efforts are multipath agnostic – largely because of the probing volume and time required for existing multipath discovery techniques. This paper introduces D-Miner, a system that marries previous work on high-speed probing with multipath discovery to make Internet-wide topology mapping, inclusive of load-balanced paths, feasible. We deploy D-Miner and collect multiple IPv4 interface-level topology snapshots, where we ﬁnd &gt;64% more edges, and signiﬁcantly more complex topologies relative to existing systems. We further scrutinize topological changes between snapshots and attribute forwarding differences not to routing or policy changes, but to load balancer “remapping” events. We precisely categorize remapping events and ﬁnd that they are a much more frequent contributor of path changes than previously recognized. By making D-Miner and our collected Internet-wide topologies publicly available, we hope to help facilitate better understanding of the Internet’s true structure and resilience.</li>
+</ul>
+</li>
+<li>
+<p>Albert Mestres, Eduard Alarcón, Yusheng Ji, and Albert Cabellos-Aparicio. Understanding the modeling of computer network delays using neural networks. Proc. of Big-DAMA, SIGCOMM Wor: 46–52. 2018.</p>
+<ul>
+<li>发表处: NSDI workshop</li>
+<li>参与公司: NII, Japan</li>
+<li><strong>推荐阅读</strong></li>
+<li>摘要: Recent trends in networking are proposing the use of Machine Learning (ML) techniques for the control and operation of the network. In this context, ML can be used as a computer network modeling technique to build models that estimate the network performance. Indeed, network modeling is a central technique to many networking functions, for instance in the field of optimization, in which the model is used to search a configuration that satisfies the target policy. In this paper, we aim to provide an answer to the following question: Can neural networks accurately model the delay of a computer network as a function of the input traffic? For this, we assume the network as a black-box that has as input a traffic matrix and as output delays. Then we train different neural networks models and evaluate its accuracy under different fundamental network characteristics: topology, size, traffic intensity and routing. With this, we aim to have a better understanding of computer network modeling with neural nets and ultimately provide practical guidelines on how such models need to be trained.</li>
+</ul>
+</li>
+</ol>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2025/01/01/group_paper_reading/" data-toggle="tooltip" data-placement="top" title="[paper] Group paper reading">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/01/20/[linux]jupyter_proxy/" data-toggle="tooltip" data-placement="top" title="[Jupyter] 访问反向代理的服务器的jupyter">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#流量控制"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">流量控制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#流量分配"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">流量分配</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据中心之间调度"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">数据中心之间调度</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#故障切流"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">故障切流</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dns配置"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">DNS配置</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#拨测"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">拨测</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Paper" title="Paper">Paper</a>
+                        
+                          <a class="tag" href="/tags/#Internship" title="Internship">Internship</a>
+                        
+                          <a class="tag" href="/tags/#Networking" title="Networking">Networking</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
+                    
+                        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://mengyingzhou.github.io/2021/07/05/[paper]baidu_paperlist/";
+    var disqus_url = "https://mengyingzhou.github.io/2021/07/05/[paper]baidu_paperlist/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'm5p6CEtnvzR6RDsAFpGiPHAl-gzGzoHsz',
+            appKey: 'x2eG8658wwQQLsj0r5wqh5xm',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true
+        })
+    </script>	
+<script type="text/javascript" src="/js/zooming.js"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/myzhou97">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/mengyingzhou">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/aerber-zhou-600bb4175">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Aerber Zhou 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/NullAerber">NullAerber</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=NullAerber&repo=NullAerber.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mengyingzhou.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://mengyingzhou.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
