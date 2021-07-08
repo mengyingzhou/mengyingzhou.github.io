@@ -214,7 +214,727 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h4 id="hu_cablemon_nsdi20-jiyao-hu-zhenyu-zhou-xiaowei-yang-jacob-malone-jonathan-w-williams-chapel-hill-implementation-nsdi-and-jacob-malone-cablemon-improving-the-reliability-of-cable-broadband-networks-via-proactive-network-maintenance-in-proc-of-nsdi2020">{Hu_CableMon_NSDI20} Jiyao Hu, Zhenyu Zhou, Xiaowei Yang, Jacob Malone, Jonathan W Williams, Chapel Hill, Implementation Nsdi, and Jacob Malone. “CableMon : Improving the Reliability of Cable Broadband Networks via Proactive Network Maintenance.” In Proc. of NSDI.2020.</h4>
+                <h4 id="sommese_manycast2_imc20-raffaele-sommese-leandro-bertholdo-gautam-akiwate-et-al-manycast2-using-anycast-to-measure-anycast-proc-of-imc-456463-2020">{Sommese_MAnycast2_IMC20} Raffaele Sommese, Leandro Bertholdo, Gautam Akiwate, et al. MAnycast2: Using Anycast to Measure Anycast. Proc. of IMC: 456–463. 2020.</h4>
+<ul>
+<li>本论文使用Anycast来分辨哪些IP是AnycastIP，哪些是Unicast IP。
+<ul>
+<li>方法的基础是De Vries[11]中一个结论：一个/24子网下的所有IP都会路由到同一个Anycast节点</li>
+<li>因此他们提出用Anycast检测Anycast IP
+<ul>
+<li>他们将主动测量的client设为Anycast IP（简称VP），对于待测的IP为target IP</li>
+<li>VP在全球各地部署了10台</li>
+<li>作者从全球各地的VP向target IP发送ICMP包</li>
+<li>由于VP是Anycast，那target IP进行response时，也会按照Anycast的规则进行返回，同时根据De Vries[11]中的结论，target IP会就近进行response</li>
+<li>如果target IP是unicast，那么由于server位置是固定的，全球各地VPs发来的ICMP都会response到同一个VP</li>
+<li>而如果target IP是Anycast，那么由于不同的server位置不一样，target IPs的response会返回到target IPs就近的那些VPs上，那么VPs的数量就一定会大于1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MAnycast^2与现有方法igreedy相比，准确率类似；与CDN provider官方提供的结果也类似；同时花费的时间和资源更少。</li>
+<li>但是也有一些问题：
+<ul>
+<li>对于一些机构，他们内部有preferred routing，因此会导致VPs数量的错误</li>
+<li>对于VPs数量为2和3的target IP，存在因为路由抖动和load balancing导致的模棱两可的问题。作者建议将MAnycast^2和iGreedy结合用</li>
+</ul>
+</li>
+</ul>
+<h4 id="dixit13-advait-dixit-pawan-prakash-y-charlie-hu-ramana-rao-kompella-on-the-impact-of-packet-spraying-in-data-center-networks-ieee-infocom-2013">{Dixit’13} Advait Dixit, Pawan Prakash, Y. Charlie Hu, Ramana Rao Kompella. <strong>On the Impact of Packet Spraying in Data Center Networks</strong>. IEEE INFOCOM, 2013.</h4>
+<p>本篇论文探索的是RPS技术在Datacenter场景下的应用是否可行，主体内容是一个测量工作。论文的详细要点如下：</p>
+<ul>
+<li>为了解决传统TCP中的网络拥塞问题，出现了各种各样的多路复用技术，例如ECMP，根据TCP五元组进行hash把网络负载分布在不同的path上；例如MP_TCP把TCP单个flow分为多个sub-flow分别在不同的path上进行传输；而RPS技术则是把每个packet随机地分配到不同的path上从而达到负载均衡的目的；</li>
+<li>然而，从本质上来看，RPS技术的设计对于TCP而言是不利的。因为每个packet走的path不同，可能会导致TCP packet不能有序地到达终点。但是作者针对于Datacenter的环境，认为RPS是不会产生严重的reordering问题的，这是因为Datacenter常常采用对称的网络拓扑结构、各个path的网络延时比较一致；而且TCP的后续发展对于reordering本身就提供了较好的鲁棒性；</li>
+<li>论文通过网络测量证明了上述观点。作者搭建了由36个server构成、采用fat-tree结构的datacenter，分别使用了ECMP、MP_TCP和RPS三项技术，测量了网络吞吐量，发现RPS负载均衡确实做的比前两者极致；</li>
+<li>此外，作者也更进一步测量了RTT，以及各个节点排队等待序列的长度，证明了各个路径的延时基本一致的事实，这也是RPS能够在Datacenter下发挥有效作用的证明；</li>
+<li>论文也探索了在Datacenter对称结构被破坏的情况下，该怎么样继续使用RPS——核心思路是保持各个路径延时基本一致，在排队时剔除一些packet保证各个路的延时不要差太多，加了这个改进后发现RPS效果依然很好。其实这个内容更实锤了RPS能够不引起reordering问题的关键是要保持各个路径网络延时基本一致。</li>
+</ul>
+<h4 id="matthew-k-mukerjee-david-naylor-junchen-jiang-dongsu-han-srinivasan-seshan-hui-zhang-practical-real-time-centralized-control-for-cdn-based-live-video-delivery-proc-of-sigcomm-2015">Matthew K. Mukerjee, David Naylor, Junchen Jiang, Dongsu Han, Srinivasan Seshan, Hui Zhang. Practical, Real-time Centralized Control for CDN-based Live Video Delivery. Proc. of SIGCOMM, 2015.</h4>
+<p>abstract：研究基于CDN的直播视频流分发，提出一个中心化和分布式的混合结构，优化直播视频分发。</p>
+<p>contribution：<br>
+	1. 提出了一个基于结合中心化和分布式特性的混合结构VDN，兼济两者优点，提供优秀的视频分发服务。该系统有很好的冷启动、错误恢复措施。<br>
+	2. 基于Trace和基于end-to-end传输，在实际场景做了两个详细的实验。实验结果表明该系统表现优秀，鲁棒性好。</p>
+<p>具体的解决步骤如下：</p>
+<ul>
+<li>中心化的结构，能够获得全图的视频、请求、网络条件信息，能在理想情况下最优化视频分发。但是响应较慢，更新频率高于网络传输速率。</li>
+<li>分布式的结构，根据边缘设备的调度情况，做到快速响应。但是由于不知道全局情况，常常容易造成拥塞，且总体分发效果差。</li>
+<li>VDN结构，有一个中央控制器，它接收边缘设备的更新请求，利用线性规划的方法基于约束推导出最优的路径规划方案，并将新的最优方案异步更新给下层设备。在边缘设备中采用分布式的结构。它们在冷启动时使用完全分布式的方法，之后使用之前时刻中样控制器的最优方案，按照该方案进行路由。如果出现大的变动，边缘设备再向中央控制器提交变动和更新请求。</li>
+</ul>
+<p>实验：</p>
+<ul>
+<li>提出了一些指标，能很好地衡量网络的利用率、资源消耗、服务表现。值得借鉴。</li>
+<li>基于Trace（模拟大事件、长尾分布等）和基于端到端，分别在实际云服务器上进行了实验。</li>
+<li>结果表明，VDN的冷启动在60秒左右能基本达到8k一下清晰度视频的有效传输。VDN的表现在各个场景均好于baseline。同时，VDN在点故障（网络节点）、边故障（网络链路）的情况下，都能很好地维持总体的服务，具有很好的鲁棒性。</li>
+</ul>
+<h4 id="agarwal20-neil-agarwal-matteo-varvello-andrius-aucinas-fabián-bustamante-ravi-netravali-mind-the-delay-the-adverse-effects-of-delay-based-tcp-on-http-acm-conext-2020">{Agarwal’20} Neil Agarwal, Matteo Varvello, Andrius Aucinas, Fabián Bustamante, Ravi Netravali. <strong>Mind the Delay: The Adverse Effects of Delay-Based TCP on HTTP</strong>. ACM CoNEXT, 2020.</h4>
+<p>本篇论文探索的是delay-based拥塞控制方法和HTTP/2多路复用特性之间interplay产生的问题，整体而言是一篇测量性的工作，具体要点如下：</p>
+<ul>
+<li>背景：拥塞控制和HTTP的进步其实是两个互相隔绝的赛道，做delay-based拥塞控制方法的人在自己单独的实验中效果很好；发明新协议（例如HTTP/2）的人在自己单独的实验中效果也很好——但是如果把它俩放在一起效果就不一定好了；</li>
+<li>作者的出发点是来自于一个猜想，在H1和H2两种策略中，使用不同的object 大小，可能会导致H2比H1表现差的情况（因为H1的multiple connection 比较robust），但是也有情况下H1的HOL问题会使得H1更差。于是作者针对这个问题开展了测量；</li>
+<li>第一种的测量是在one domain的情况下测量，基本证明了上述的猜想；</li>
+<li>第二种的测量是在multi domain的情况下测量（更符合真实情况），作者设计了Igor工具来检测domain用的哪一种拥塞控制机制；又设计了一个基于Brave浏览器（Chromium内核），可以对于特定的URL使用H1或者H2协议；通过300个真实的网页测量，证明了上述的猜想，也分析了个别异常网页的背后原理（比如360.cn因为服务器距离太远，H1的多个TCP connection要更加鲁棒）。</li>
+</ul>
+<h4 id="yu-yang-yi-ding-dengpan-yuan-guang-wang-xiaoyang-xie-yunhuai-liu-tian-he-desheng-zhang-transloc-transparent-indoor-localization-with-uncertain-human-participation-for-instant-delivery-proc-of-mobicom-2020">Yu Yang, Yi Ding, Dengpan Yuan, Guang Wang, Xiaoyang Xie, Yunhuai Liu, Tian He, Desheng Zhang. TransLoc: Transparent Indoor Localization with Uncertain Human Participation for Instant Delivery. Proc. of Mobicom, 2020.</h4>
+<p>abstract：<br>
+研究外卖取餐场景的室内定位，给用户更准确的送餐时间预测和减少快递员的超时风险。</p>
+<p>contribution：</p>
+<pre><code>1. 提出了一个基于迁移学习的神经网络模型，缓解外卖员取餐时间不准的问题，从而更精确地计算外卖员进室内到取餐的时间。
+2. 一个基于移动轨迹的估计方法，提供更有效的室内取餐路径预测，减少快递员室内无效取餐
+</code></pre>
+<p>具体的解决步骤如下：</p>
+<ul>
+<li>机会：外卖情境下的室内定位主要为了精确估计外卖员取餐时间，而不需要真正精确的定位结果。外卖平台提供了外卖员取餐时间，室外GPS的定位也足够准确，能够凭此校准室内位置。</li>
+<li>挑战：现有的外卖平台，商家和外卖员常常会延迟外卖员拿到食物的时间，该时间的不准确对预测外卖员室内取餐时间和室内定位有很大影响。另外，当前基于现有设置进行室内定位的误差方差极大，室内定位的偏差会严重影响时间的估计。</li>
+<li>首先利用了迁移学习的神经网络模型预测准确的取餐时间。之后利用该取餐时间，结合外卖场景合理的假设，预测室内定位和相应的取餐路径预测。</li>
+</ul>
+<p>实验：</p>
+<ul>
+<li>文章和“饿了吗”合作，在一个65个商家的购物中心，对565个快递员进行了实际实验。为了做baseline对比和获取初步标签，作者在商场内部署了蓝牙定位仪和基于Wi-Fi的定位系统。实验结果表明该系统在不额外开销添加定位设备的情况下，能较好地预测外卖员实际的取餐时间，并规划合理的室内取餐路线。同时实验结果表明overhead很小，可以接受。</li>
+<li>做了一些case study，更好地调度了室内外卖员的取单推荐，对外卖员在选择单时可能超时的问题进行提醒，有效减少了外卖员的超时情况，并减少了外卖员在室内无意义的重复路径。有实际的商业价值</li>
+</ul>
+<p>可能的问题：</p>
+<ul>
+<li>一些初步的标签来自于额外设备，该模型和标签迁移到其他购物中心的外卖场景可行性挑战很大。但如果无法迁移，这些额外设备的投入就使得整体文章的主要贡献不那么有价值了。</li>
+</ul>
+<h4 id="sherif-elazzouni-fei-wu-ness-shroff-eylem-ekici-predictive-caching-at-the-wireless-edge-using-near-zero-caches-acmieee-mobihoc-2020">Sherif ElAzzouni, Fei Wu, Ness Shroff, Eylem Ekici. <strong>Predictive Caching at The Wireless Edge Using Near-Zero Caches</strong>. ACM/IEEE Mobihoc, 2020.</h4>
+<p>总结：</p>
+<p>本篇论文介绍的是一种Predictive Cache的新方法，简而言之是在Edge server到end user中间的last mile的网络传输中，分出一定比例的带宽进行广播，把popular contents发送到各个用户缓存在他们的手机中，达到低延迟网络请求的效果</p>
+<p>详细要点如下：</p>
+<ul>
+<li>Predictive cache作为web browsing的一个方向，近年来工作已经有很多了：比如使用强化学习进行prediction、在3G/4G下进行predictive cache——但是这些方法都没有解决一个问题，即网络传输的one last mile，依然是瓶颈，本篇论文的策略就是让edge server预测popular content，把这些提前广播给用户进行cache，从而达到提前cache的目的；</li>
+<li>popular content即网络中大家都想去访问的内容（比如非常热门的爆炸性新闻），虽然大家的访问时间不同，但是可以提前预知popular content最终会被大多数用户请求；</li>
+<li>该论文的方法就是在Edge server（比如base station、access points）处对popular content进行预测，分出θ比例的带宽，提前广播给管辖范围内的所有用户，达到predictive cache的目的；</li>
+<li>作者通过大量的理论公式证明，证明了两件事情：（1）相比于传统的unicast request，他们的方法能够提供更高的性能；（2）即使用户端手机的memory很小（near-zero），也依然能提供显著的积极影响；</li>
+<li>最后作者模拟了一个download link，在100个手机上进行了测试，通过人为设置不同的概率分布（都不是真实数据）验证了上述的理论证明。</li>
+</ul>
+<h4 id="khaled-m-diab-mohamed-hefeeda-joint-content-distribution-and-traffic-engineering-of-adaptive-videos-in-telco-cdns-proc-of-infocom-2019">Khaled M. Diab, Mohamed Hefeeda. Joint Content Distribution and Traffic Engineering of Adaptive Videos in Telco-CDNs. Proc. of INFOCOM 2019.</h4>
+<p>abstract：<br>
+在ISP拓扑网络中，添加CDN cache机制，减少ISP域间流量，降低成本。<br>
+contribution：<br>
+	1. 设计了一种缓存策略，根据上一个周期的用户访问结果进行简单的贪心算法，减少用户访问视频流的延迟。<br>
+	2. 设计了一种调度策略，使得当用户访问视频流没找到缓存时，减少ISP域间流量，降低成本。<br>
+具体的解决步骤如下：</p>
+<ul>
+<li>在传统的CDN server和client之间，额外添加了一个基于ISP拓扑结构的缓存节点，并通过上一时间段的视频流行情况，设计一种CAD (Cooperative Active Distribution)算法，基于贪心策略同时满足减少延迟的缓存策略和减少ISP域间流量的调度策略。</li>
+<li>缓存策略，使得用户能尽可能在第一个ISP接入节点时就能从该节点的视频缓存获取所需视频块。</li>
+<li>调度策略，当第一个ISP接入节点缓存失效时，通过根据上一个周期建立的路由表，找到距离最近的有缓存的ISP或者直接向CDN服务端请求CDN。此时并不修改任何缓存。<br>
+experiment：</li>
+<li>对比了2013年的一个方法rCDN，该方法在AT&amp;T的ISP CDN网络上实际使用。</li>
+<li>使用真实机器模拟了ISP的拓扑结构，并根据一些IMC上文章的调研重放用户的实际视频访问模式，尽量和真实网络情况相对应。</li>
+<li>相比于该方法，CAD显著减少了用户获得所需视频块的等待延迟，同时ISP的内部流量显著减少，可用带宽在高峰期都显著提升，该方法能极大降低ISP的内部成本。</li>
+</ul>
+<h4 id="jia-zhang-enhuan-dong-zili-meng-et-al-wisetrans-adaptive-transport-protocol-selection-for-mobile-web-service-proc-of-www-2021">Jia Zhang, Enhuan Dong, Zili Meng, et al. WiseTrans : Adaptive Transport Protocol Selection for Mobile Web Service. Proc. of WWW. 2021.</h4>
+<ul>
+<li>并不是在所有的情况下都是QUIC的表现比TCP好</li>
+<li>因此本文提出了一种adaptive protocol selection系统根据网络环境和历史决策结果选择合适的协议</li>
+<li>framework
+<ul>
+<li>features extraction：包括Historical network conditions，Historical decisions，Historical requests’ performance</li>
+<li>protocol classifier：选用了轻量可解释的tree-based model XGBoost</li>
+<li>Rollback Checker：考虑到上下行的瞬时网络状态突变，加入了checker机制。如果发现巨大的差异则不进行选择而是沿用上一次的协议选择</li>
+</ul>
+</li>
+<li>实验
+<ul>
+<li>Performance in the Wild
+<ul>
+<li>比单协议好，最高可提升26%</li>
+<li>主要优化的是长访问时间的记录，即尾部数据</li>
+</ul>
+</li>
+<li>Component Effectiveness.</li>
+<li>Parameter Sensitivity.
+<ul>
+<li>WiseTrans是以T为周期进行预测，因此过小的T会导致整个系统过于敏感，而太大的T则会使得反应不够准确</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="feldmann2020-eldmann-anja-and-gasser-oliver-and-lichtblau-franziska-and-pujol-enric-and-poese-ingmar-and-dietzel-christoph-and-wagner-daniel-and-wichtlhuber-matthias-and-tapiador-juan-and-vallina-rodriguez-narseo-and-others-the-lockdown-effectimplications-of-the-covid-19-pandemic-on-internet-traffic">{feldmann2020} eldmann, Anja and Gasser, Oliver and Lichtblau, Franziska and Pujol, Enric and Poese, Ingmar and Dietzel, Christoph and Wagner, Daniel and Wichtlhuber, Matthias and Tapiador, Juan and Vallina-Rodriguez, Narseo and others.** The Lockdown Effect:Implications of the COVID-19 Pandemic on Internet Traffic</h4>
+<p>总结：<br>
+这篇文章主要针对COVID-19期间欧洲若干个ISP提供商的因特网流量进行了分析，详细阐述了封城的政策对流量造成的影响。分析主要从流量随时间的变化、不同种类的运营商流量变化、流量的时序模式变化、不同应用种类的流量变化等角度展开。</p>
+<p>详细要点如下：<br>
++数据来源自运营商网络接入点的网络流量记录，包含来自欧洲的4个运营商，包括一个移动网络运营商，一个教育网络</p>
+<ul>
+<li>可参考的绘图：对于分析每周的流量变化趋势，可采用不同时期的采样周进行对比；对于不同的一天之内的时序特征，可以提取特征后将天分类，进行分类天的绘制，参考Figure2(b) 2©[!!!]</li>
+<li>探究了教育网络中的VPN 流量问题，发现VPN的使用量有明显上升，甚至达到原来的三倍多</li>
+<li>本文是一篇较为基础的网络测量文章。数据集直接获取，没有数据收集手段值得参考。分析手段主要是绘图，从不同角度分析流量的变化情况，其中根据时序特征对天的分类很值得参考，囊括了细粒度和广度地分析了封城政策对流量变化模式的影响</li>
+</ul>
+<p></p>
+<h4 id="lutu2020-lutu-andra-and-perino-diego-and-bagnulo-marcelo-and-frias-martinez-enrique-and-khangosstar-javad-a-characterization-of-the-covid-19-pandemic-impact-on-a-mobile-network-operator-traffic-imc-2020">{lutu2020} Lutu, Andra and Perino, Diego and Bagnulo, Marcelo and Frias-Martinez, Enrique and Khangosstar, Javad.** A Characterization of the COVID-19 Pandemic Impact on a Mobile Network Operator Traffic**. IMC, 2020.</h4>
+<p>总结：<br>
+这篇文章主要利用COVID-19期间英国国内的移动网络数据分析英国国内用户的移动情况，分析疫情给人们的出行方式的变化。分析主要从用户的移动行为度量变化，结合不同的地区、不同的人口统计学分类展开。</p>
+<p>详细要点如下：<br>
++数据来源自英国移动数据运营商的网络流量记录，以及从英国官方统计局获取的人口统计学分类信息，主要是将位置与人口统计学特征联系起来[!!!]</p>
+<ul>
+<li>将数据采取了预处理，主要从离散的移动数据接入点中总结出如下信息：用户住址所在区域、用户活动的范围半径、用户活动的熵</li>
+<li>分析部分主要分析疫情不同阶段，用户的移动特征的变化。后续将用户进行了人口统计学特征分类，方法是将人口统计学分类特征直接关联到用户的住址上，这样每个用户都拥有一个分类</li>
+<li>本文还将不同区域的流量进行分类分析，分析不同地区的特点带来的不同移动位置或者流量变化的特点，并都做出了合理解释。</li>
+</ul>
+<h4 id="muller2019-muller-moritz-and-thomas-matthew-and-wessels-duane-and-hardaker-wes-and-chung-taejoong-and-toorop-willem-and-rijswijk-deij-roland-van-roll-roll-roll-your-root-a-comprehensive-analysis-of-the-first-ever-dnssec-root-ksk-rollover-imc-2020">{muller2019} Muller, Moritz and Thomas, Matthew and Wessels, Duane and Hardaker, Wes and Chung, Taejoong and Toorop, Willem and Rijswijk-Deij, Roland van.** Roll, Roll, Roll your Root: A Comprehensive Analysis of the First Ever DNSSEC Root KSK Rollover **. IMC, 2020.</h4>
+<p>总结：<br>
+这篇文章主要观察了第一次DNS Root KSK Rollover期间DNS解析请求发生的一些变化，通过一些遥感协议产生和返回的DNS解析器情况作为数据展示了KSK rollover期间DNS解析器接受它的过程</p>
+<p>详细要点如下：</p>
+<ul>
+<li>DNS Root KSK是所有DNS消息信任的源头，存放在DNS根解析器中，10年更换一次，本篇文章展示的是第一次DNS Root KSK更换的过程，并展示了全球范围的DNS解析器是如何反应的</li>
+<li>数据收集是通过遥感协议，即DNS解析器需要定期地发送出消息，表示自己信任的DNS Root KSK版本号，以及其他对应信息。以及三台DNS根解析器的请求情况记录</li>
+<li>针对不同阶段分析对跟解析器的请求数量变化，并且根据DNS请求发出的DNS服务器系统进行分类，发现BIND对KSK的更换反应更大</li>
+<li>本文是对DNS服务系统中的重大变化进行全期的观察，分析当中可能出现的异常情况以及监测其发生的原因，为以后的调整做准备</li>
+</ul>
+<h4 id="lu2019-lu-chaoyi-and-liu-baojun-and-li-zhou-and-hao-shuang-and-duan-haixin-and-zhang-mingming-and-leng-chunying-and-liu-ying-and-zhang-zaifeng-and-wu-jianping-an-end-to-end-large-scale-measurement-of-dns-over-encryption-how-far-have-we-come-imc-2019">{lu2019} Lu, Chaoyi and Liu, Baojun and Li, Zhou and Hao, Shuang and Duan, Haixin and Zhang, Mingming and Leng, Chunying and Liu, Ying and Zhang, Zaifeng and Wu, Jianping.** An end-to-end, large-scale measurement of dns-over-encryption: How far have we come? **. IMC, 2019.</h4>
+<p>总结：<br>
+这篇文章通过主动测量的方法大面积测量了DNS加密情况在全网的应答情况，展示了目前DNS服务对于DNS加密的支持情况，并对DNS加密技术未来的发展提供了建议</p>
+<p>详细要点如下：</p>
+<ul>
+<li>本文主要验证两种DNS加密方式，分别是DNS-over-TLS，DNS-over-HTTPS，数据来源分别来自于全网的端口扫描，以及url请求数据集</li>
+<li>端口扫描使用工具: Zmap, getdns过滤dns消息，openssl实现TLS认证</li>
+<li>使用代理网络大面积向公开的DNS解析器发送请求，收集回应。使用的代理网络包括 Proxyrack、芝麻HTTP代理。发现目前公开的DNS解析器对DNS加密方式的支持尚可，失败率较低</li>
+<li>根据从某个中国ISP获取的数据分析DNS加密的使用情况，主要方式是通过分辨目的端口号对应不同的DNS服务。发现DoE的使用占比仍然比不过传统的DNS，但在持续增长</li>
+</ul>
+<h4 id="brand2019-brandon-schlinker-italo-cunhayi-ching-chiusrikanth-sundaresanethan-katz-bassett-internet-performance-from-facebooks-edge-imc-2019">{brand2019} Brandon Schlinker ,Italo Cunha,Yi-Ching Chiu,Srikanth Sundaresan,Ethan Katz-Bassett.** Internet Performance from Facebook’s Edge **. IMC, 2019.</h4>
+<p>总结：<br>
+这篇文章针对Facebook网络边缘到客户端之间的网络连接进行分析，主要聚焦在两个度量上，一个minRTT，二是goodput，本篇文章的最大看点在于如何不通过主动测量手段，在现有的商用连接数据中获取goodput有关的测量结果</p>
+<p>详细要点如下：</p>
+<ul>
+<li>数据集来自于Facebook网络边缘记录的链接信息，来自于边缘机器的记录。主要记录包括不同的链接信息，每个链接对应于真实世界中客户端发送的一条请求</li>
+<li>minRTT的测量：选择最小的RTT，因为最小的RTT更能真实地反应网络的最好能力，而不是受到一些非长久因素的影响。最小RTT选择TCP链接的挥手部分记录的RTT时间以排除开头链接建立时慢启动的问题</li>
+<li>goodput的测量：本文将goodput的测量转化为一个链接会话中有多少transaction可以满足需求的goodput，并对原有的链接数据进行筛选，若传输的数据量过小则不纳入测量范围，最后选择每个TCP链接中最后两次传输中的goodput最大值作为链路承受的最大goodput（排除慢启动因素）</li>
+<li>根据上述方式，本文从网络边缘的链接数据集中提取了链接的有效信息，并结合网络边缘所处的位置，传输的种类进行了相关性分析，分析手段主要是绘图</li>
+</ul>
+<h4 id="chun-yu-daniel-chen-bo-yao-lin-junding-wang-kang-g-shi-keep-others-from-peeking-at-your-mobile-device-screen-proc-of-mobicom-2019">Chun-Yu (Daniel) Chen, Bo-Yao Lin, Junding Wang, Kang G. Shi. Keep Others from Peeking at Your Mobile Device Screen! Proc. of MobiCom, 2019.</h4>
+<p>problem：<br>
+防止用户在使用手机时，屏幕上的隐私信息被他人在从肩膀、背后偷窥。</p>
+<p>contribution：<br>
+	1. 使用图形学和物理波长频率等知识推断公式，保证用户正常使用距离外的实现无法看清手机上<br>
+	2. 保证正常用户能识别清保护后的字段<br>
+	3. 原型实现和用户使用体验</p>
+<p>具体的解决步骤如下：</p>
+<ul>
+<li>通过人机交互分析用户常用的看手机角度和距离，利用黑灰相间网格状的文字和图像保护方式，使得一定角度或距离外的视线只能看到单色，从而无法识别具体图像或文字。</li>
+<li>保证一定角度和距离内的视线能看清图像和文字，并对文字采用图像的锐化操作增强识别率。</li>
+<li>实现了对于部分屏幕（比如登陆密码、邮件中的新密码）保护的原型。<br>
+experiment：</li>
+<li>邀请20个用户对实现的原型进行实际使用。</li>
+<li>超过99%的文字和超过93%的图片能被用户成功识别，而被他人偷窥出的文字和图像的隐私消息百分比分别小于4%和1%。</li>
+</ul>
+<h4 id="tom-barbette-and-chen-tang-and-haoran-yao-and-dejan-kostic-and-gerald-q-maguire-jr-and-panagiotis-papadimitratos-and-marco-chiesa-a-high-speed-load-balancer-design-with-guaranteed-per-connection-consistency-proc-of-nsdi-2020">Tom Barbette and Chen Tang and Haoran Yao and Dejan Kosti{'c} and Gerald Q. Maguire Jr. and Panagiotis Papadimitratos and Marco Chiesa. A High-Speed Load-Balancer Design with Guaranteed Per-Connection-Consistency. Proc. of NSDI, 2020.</h4>
+<p>problem：<br>
+传统的负载平衡（LB）算法中，对于效率、一致性和连续性的优化常常不能并存。尤其是一致性问题，会导致很多连接出现无法访问。</p>
+<p>contribution：</p>
+<pre><code>1. 提出了Cheetah模型，在效率、一致性和连续性上优化LB器的性能。
+2. 提出一种O（1）的基于hash调度算法，防止对某台服务器的DDOS攻击。
+3. 在多种数据集上做了大量实验进行验证。
+</code></pre>
+<p>具体的模型解决步骤如下：</p>
+<ul>
+<li>使用cookie逻辑，在初次连接后，将服务器的cookie信息传给client</li>
+<li>client接下来的包，携带cookie，以保证连接一致性。</li>
+<li>为了防止DDOS，设计一种基于hash的调度算法，对每个加密过的cookie，同时最多只相应一个请求，其他丢弃。</li>
+</ul>
+<p>experiment：</p>
+<ul>
+<li>对比了含状态存储状态机，和不含存储两种LB方法。</li>
+<li>应用了现有的LB方法，结果表明该系统能很好嵌入已有方法。</li>
+</ul>
+<p>takeaways：</p>
+<ul>
+<li>对于负载平衡方面的实验该如何验证，做了哪些实验，值得参考</li>
+<li>在自己的系统模型上，设计一些简单的安全算法，使得模型更完善</li>
+<li><a href="http://github.com/cheetahlb" target="_blank" rel="noopener">http://github.com/cheetahlb</a></li>
+</ul>
+<h4 id="yeganeh2019cloud-yeganeh-bahador-and-durairajan-ramakrishnan-and-rejaie-reza-and-willinger-walter-how-cloud-traffic-goes-hiding-a-study-of-amazons-peering-fabric-imc-2019">{yeganeh2019cloud} Yeganeh, Bahador and Durairajan, Ramakrishnan and Rejaie, Reza and Willinger, Walter** How Cloud Traffic Goes Hiding: A Study of Amazon’s Peering Fabric**. IMC, 2019.</h4>
+<p>总结：</p>
+<p>这篇论文是针对亚马逊云结构中的peering流量测量，提出了发现cloud exchange的链路规则测量方法，动机是因为cloud exchange通过peering链接链接云服务器集群，这部分流量通过传统的网络测量方法无法测得，作者提出了一种通过租用特定地点的云服务器作为锚点进行测量的方法，用于发现这部分隐藏流量和peering结构。</p>
+<p>详细要点如下：</p>
+<ul>
+<li>cloud exchange是云服务提供商构建的一种用于云服务器集群之间高速直接通信的私有链路，其可为享有多种云服务的用户提供高速的虚拟链接服务，比如VPI（Virtual Private Interconnection），由于cloud exchange的流量不走公网，所以这部分网络流量在传统的网络测量中是隐形的；</li>
+<li>本文的主要方法是通过租用特定位置的云服务器，对不同AS的IP地址进行traceroute，并记录发现云服务器边缘的IP和对应目标地址边缘的IP，通过更换原地址和目标地址的云服务器提供商，即可发现中间可能的cloud exchange链路；</li>
+<li>本文作者还提出了一种方法发现特定地理位置的cloud exchange链路，即通过已知信息，如DNS等信息发现特定位置的锚点机器，通过锚点机器和目标机器之间的RTT时间判断cloud exchange线路是否属于对应的地理位置之间的链接；</li>
+<li>本篇文章的作者主要是发现了一种新型的未被测量的网络结构，即云服务器提供商之间建立的cloud exchange，随着云服务器的广泛应用，测量该种链接的拓扑和流量非常必要，本文在测量方法上的选取较为简单，但测量目标新颖且具有重大意义。</li>
+</ul>
+<h4 id="scheitle18-quirin-scheitle-oliver-hohlfeld-julien-gamba-jonas-jelten-torsten-zimmermann-stephen-d-strowes-narseo-vallina-rodriguez-a-long-way-to-the-top-significance-structure-and-stability-of-internet-top-lists-acm-imc-2018">{Scheitle18} Quirin Scheitle, Oliver Hohlfeld, Julien Gamba, Jonas Jelten, Torsten Zimmermann, Stephen D. Strowes, Narseo Vallina-Rodriguez. <strong>A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists</strong>. ACM IMC, 2018.</h4>
+<p>这篇论文探究的是在网络相关的研究中使用top sites（例如Alexa top sites）的合理性，作者通过实验讨论了这些top sites的特性以及它们对结果的影响，为network researchers提供了相应的建议。</p>
+<ul>
+<li>在网络相关研究工作中，researchers常常需要使用许多web sites作为experiment data，一个比较普遍的现象是使用那些top sites，最典型的为Alexa top sites，此外还有Cisco Umbrella、Majestic等。但是，这些top sites的特性却常常不为人知，例如ranking mechanism、stability of the lists等，这些因素可能会对研究结果产生bias。这篇论文就是详细探究这些top sites的相关问题；</li>
+<li>作者首先对于2017年的网络相关研究工作，涉及各个出版社（ACM、IEEE）的各个相关会议/期刊，以及不同领域（安全类、网络传输类）的各种publication进行检索，发现687篇论文中有69篇都使用了top sites，而且很多的论文结果都是依赖于这些top sites的；</li>
+<li>接着，作者探究了Alexa、Cisco Umbrella、Majestic三个top sites lists本身的特性。包括top level domain (TLD) 、subdomain depth和这三个top sites的交集。作者意外地发现这些top sites里包含了一部分的invalid TLD，而且三个top sites lists的交集很小，仅有30%，这说明它们之间也很有差异；</li>
+<li>然后作者开始探究三个top sites lists的stability。发现它们每天也会有较大的波动；</li>
+<li>最后作者探究这些top sites对于research的具体影响。作者主要研究了三个问题，DNS resolution、TLS connection、和HTTP/2 adoption，分别使用了不同的top sites lists、不使用任何top sites lists、以及使用top sites lists不同日期的结果。作者发现使用top sites会产生较为极端的结果，而且使用不同周次的top sites也会明显影响实验结果</li>
+</ul>
+<h4 id="chaoyue-niu-fan-wu-shaojie-tang-lifeng-hua-rongfei-jia-chengfei-lv-zhihua-wu-guihai-chen-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy-proc-of-mobicom-2020">Chaoyue Niu, Fan Wu, Shaojie Tang, Lifeng Hua, Rongfei Jia, Chengfei Lv, Zhihua Wu, Guihai Chen. Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy. Proc. of MobiCom. 2020.</h4>
+<p>problem：<br>
+	联邦学习中，使用完全模型在大规模数据上无法实现。对于client端，只需要下载和更新它们所需要修改的部分就可以。然而，这种方式会导致用户的隐私泄漏问题和更新时的参数偏移失真。</p>
+<p>contribution：<br>
+	1. 提出了submodel模型在实际使用中可能遇到的隐私问题和一致性问题。<br>
+	2. 提出了一种隐私合并模块PSU，合并并乱序不同用户的商品序列请求以保护隐私。<br>
+	3. 给出的SFSL的可大规模部署的模型，使用PSU模块，是的用户可以自由调整隐私和推荐准确率的平衡。<br>
+	4. 在淘宝上用十亿级别的数据进行实验。</p>
+<p>这片论文基于淘宝目前的用户推荐模型DIN，考虑使用子模型的方式解决联邦学习模型过大的问题。具体的模型解决步骤如下：</p>
+<ul>
+<li>对于DIN中占有98%embedding层进行划分，只选择和用户自己商品相关的部分进行嵌入。</li>
+<li>用户在请求时会泄露自己有的商品序列的隐私，将多个用户的商品并集进行请求，提出了PSU。</li>
+<li>在联邦学习，下载和更新子模型时，用户可以以损失一定准确率为代价，调高自己的隐私保护程度。</li>
+</ul>
+<p>experiment：</p>
+<ul>
+<li>这篇文章涉及了隐私和商品推荐准确率两方面的指标。由于隐私保护程度更多由概率模型直接表示，所以文章比较了在相同隐私条件下的，商品推荐准确率。</li>
+<li>实验在淘宝上部署，部署一个月得到了十亿级别的数据用户点击商品数据。用点击率来评价商品推荐准确率。</li>
+<li>由于这篇文章的方法只需要下载和更新子模型，远远小于将整个完全模型下载到本地进行更新的代价。因此在通讯代价、计算代价、存储占用上都有显著的降低。</li>
+</ul>
+<p>takeaways：</p>
+<ul>
+<li>对于大规模部署的一些模型，embedding层可能很大且包含冗余信息。使用时降低少量准确率作为代价，能大大降低通信、存储、计算代价。</li>
+<li>联邦学习中隐私保护是一种重要的考量，对于模型的修改，需要考虑用户的隐私保护。</li>
+<li>实际部署时，可以给用户一些可调节隐私的选项，让用户自己决定隐私和准确率之间的权衡。</li>
+<li></li>
+</ul>
+<h4 id="sommer_coverup_nsdi19-david-sommer-aritra-dhar-luka-malisa-esfandiar-mohammadi-daniel-ronzani-and-srdjan-čapkun-deniable-upload-and-download-via-passive-participation-proc-of-nsdi-649666-2019">{Sommer_Coverup_NSDI19} David Sommer, Aritra Dhar, Luka Malisa, Esfandiar Mohammadi, Daniel Ronzani, and Srdjan Čapkun. “Deniable upload and download via passive participation.” Proc. of NSDI: 649–666. 2019.</h4>
+<ul>
+<li>利用passive participation来提高某些active participations的匿名性</li>
+<li>他们实现了一个整个流程的pipeline（source code：<a href="https://github.com/sommerda/CoverUp-source-code%EF%BC%89" target="_blank" rel="noopener">https://github.com/sommerda/CoverUp-source-code）</a></li>
+<li>整个部分有5个组件；
+<ul>
+<li>coverup tool（用于解析收到的加密数据）</li>
+<li>coverup server：中转服务器</li>
+<li>用于访问最终content的JS code</li>
+<li>message delay和transfer的server</li>
+<li>A browser extension</li>
+<li>（虽然需要改动，但是没有在paper中提Chaoyue Niu, Fan Wu, Shaojie Tang, Lifeng Hua, Rongfei Jia, Chengfei Lv, Zhihua Wu, Guihai Chen. Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy. Proc. of MobiCom. 2020.</li>
+</ul>
+</li>
+</ul>
+<p>problem：<br>
+	联邦学习中，使用完全模型在大规模数据上无法实现。对于client端，只需要下载和更新它们所需要修改的部分就可以。然而，这种方式会导致用户的隐私泄漏问题和更新时的参数偏移失真。</p>
+<p>contribution：<br>
+	1. 提出了submodel模型在实际使用中可能遇到的隐私问题和一致性问题。<br>
+	2. 提出了一种隐私合并模块PSU，合并并乱序不同用户的商品序列请求以保护隐私。<br>
+	3. 给出的SFSL的可大规模部署的模型，使用PSU模块，是的用户可以自由调整隐私和推荐准确率的平衡。<br>
+	4. 在淘宝上用十亿级别的数据进行实验。</p>
+<p>这片论文基于淘宝目前的用户推荐模型DIN，考虑使用子模型的方式解决联邦学习模型过大的问题。具体的模型解决步骤如下：</p>
+<ul>
+<li>对于DIN中占有98%embedding层进行划分，只选择和用户自己商品相关的部分进行嵌入。</li>
+<li>用户在请求时会泄露自己有的商品序列的隐私，将多个用户的商品并集进行请求，提出了PSU。</li>
+<li>在联邦学习，下载和更新子模型时，用户可以以损失一定准确率为代价，调高自己的隐私保护程度。</li>
+</ul>
+<p>experiment：</p>
+<ul>
+<li>这篇文章涉及了隐私和商品推荐准确率两方面的指标。由于隐私保护程度更多由概率模型直接表示，所以文章比较了在相同隐私条件下的，商品推荐准确率。</li>
+<li>实验在淘宝上部署，部署一个月得到了十亿级别的数据用户点击商品数据。用点击率来评价商品推荐准确率。</li>
+<li>由于这篇文章的方法只需要下载和更新子模型，远远小于将整个完全模型下载到本地进行更新的代价。因此在通讯代价、计算代价、存储占用上都有显著的降低。</li>
+</ul>
+<p>takeaways：</p>
+<ul>
+<li>对于大规模部署的一些模型，embedding层可能很大且包含冗余信息。使用时降低少量准确率作为代价，能大大降低通信、存储、计算代价。</li>
+<li>联邦学习中隐私保护是一种重要的考量，对于模型的修改，需要考虑用户的隐私保护。</li>
+<li>实际部署时，可以给用户一些可调节隐私的选项，让用户自己决定隐私和准确率之间的权衡。到）entry  server 需要内嵌一个iframe来访问coverup server，也就是说，需要一个日流量很大的网址来配合这个工具。</li>
+<li>experiment：
+<ul>
+<li>整个系统对于passive participations在带宽、延迟、CPU等无明显影响</li>
+<li>通过添加random delay来避免timing leakage，防止attackers以时间模式的方式定位active participation</li>
+</ul>
+</li>
+</ul>
+<h4 id="pachilakis2019-michalis-pachilakis-panagiotis-papadopoulos-evangelos-p-markatos-nicolas-kourtellis-no-more-chasing-waterfalls-a-measurement-study-of-the-header-bidding-ad-ecosystem-imc-2017">{pachilakis2019} Michalis Pachilakis , Panagiotis Papadopoulos, Evangelos P. Markatos , Nicolas Kourtellis.** No More Chasing Waterfalls: A Measurement Study of the Header Bidding Ad-Ecosystem **. IMC, 2017.</h4>
+<p>总结：</p>
+<p>这篇论文是针对目前广告投放中的Header Bidding策略进行的测量工作，作者开发了一款Chrome插件HBDetector用于检测网页加载过程中的Header Bidding，并检测了3500个网页收集了相关的Header Bidding交易信息进行分析。</p>
+<p>详细要点如下：</p>
+<p>+Header Bidding作为一种取代传统Waterfall策略的广告竞拍策略，主要优点在于提升了publisher掌握信息的透明度，帮助publisher和不依靠大型ADX的需求方更公平透明地实现竞拍，本文主要Header Bidding的实际应用情况进行分析；<br>
++利用已知的Header Bidding JS库和应用层包分析，作者实现HBDetector识别网页加载中的Header Bidding竞拍信息，并使用这个工具收集了排名靠前的3500个网站的Header Bidding信息；<br>
++通过调差作者发现Header Bidding的实现方式分为三种，分别是client HB，server HB和hybrid HB。分析发现了若干Header Bidding在使用率、需求方市场占有率和对用户端引入延迟的影响；<br>
++本篇文章是一篇典型的网络测量工作，主要通过研究一个现象或机制相关的数据和可能相关的因素，从广度方面剖析各种可能的因素与它的相互关系，以真实数据为基础进行分析得出一些结论。</p>
+<h4 id="sivakumar17-ashiwan-sivakumar-chuan-jiang-yun-seong-nam-shankaranarayanan-pn-vijay-gopalakrishnan-sanjay-g-rao-subhabrata-sen-mithuna-thottethodi-tn-vijaykumar-nutshell-scalable-whittled-proxy-execution-for-low-latency-web-over-cellular-networks-acm-mobicom-2017">{Sivakumar17} Ashiwan Sivakumar, Chuan Jiang, Yun Seong Nam, Shankaranarayanan P.N., Vijay Gopalakrishnan, Sanjay G Rao, Subhabrata Sen, Mithuna Thottethodi, T.N. Vijaykumar. <strong>NutShell: Scalable Whittled Proxy Execution for Low-Latency Web over Cellular Networks</strong>. ACM MobiCom, 2017.</h4>
+<p>总结：</p>
+<p>这篇论文探究的是如何解决proxy based web browsing accelerating中proxy scalability的问题。作者设计了Nutshell来解决这个问题，并用whittling方法来学习和预测necessary code，来减少latency。</p>
+<p>详细要点如下：</p>
+<ul>
+<li>对于mobile web browsing而言，使用proxy已经是一类很常见的方法了，即使用client和origin之间的proxy来整合资源，加快client本地的浏览速度。通过实验作者发现对于企业而言，host 一个代理面向许多并行的client是很耗费金钱和算力的，主要体现在对于JS code的执行上；</li>
+<li>于是作者使用了一个很简单的思想来解决这个问题：即proxy端仅仅把每个用户需要的objects传递给用户，然后由用户本地browser仍然正常地执行相关的JS。简而言之就是相当于把computation的压力从proxy转移到每个用户本身，但是也保持着proxy push objects的作用；</li>
+<li>NutShell即是上述内容的产物。比如可以把UI计算等的JS code识别出来，然后不再由proxy执行，而是把一部分necessary code执行一下，然后把需要的objects push给用户；</li>
+<li>NutShell的一个核心技术是whittling，在JS code的层面上帮助找到necessary code与其他的objects，来预测backward slice since，以一种动态学习的方式进行工作，达到区分必须与非必须code的目的。</li>
+<li>在Alexa top78 pages上进行计算，Nutshell减少了1.33倍的JS 计算任务。</li>
+</ul>
+<h4 id="ruamviboonsuk17-vaspol-ruamviboonsuk-ravi-netravali-muhammed-uluyol-harsha-v-madhyastha-vroom-accelerating-the-mobile-web-with-server-aided-dependency-resolution-acm-sigcomm-2017">{Ruamviboonsuk17} Vaspol Ruamviboonsuk, Ravi Netravali, Muhammed Uluyol, Harsha V. Madhyastha. <strong>VROOM: Accelerating the Mobile Web with Server-Aided Dependency Resolution</strong>. ACM SIGCOMM, 2017.</h4>
+<p>总结：</p>
+<p>这篇论文介绍了VROOM，一个加速mobile web browsing的方法。简而言之它的核心思路是让server端提前为client收集好什么outer domain的资源将会被加载，以一种dependency resource的数据形式告诉client端进行提前下载，从而快速地进行browsing。</p>
+<p>详细要点如下：</p>
+<ul>
+<li>对于mobile web browsing而言，之前的研究表明网页中的dependent resource是影响browsing速度的重要因素，许许多多来自outer domains的resource在一个网页的加载中常常会成为阻碍网页browsing的原因。具体来讲，浏览器需要通过parse、以及解析网页的js脚本才能“后知后觉”地知道有一个resource需要它去request，而获取这些resource的网络传输时间又反过来影响了本地浏览器processing的过程；</li>
+<li>之前的工作中，一个经典的做法是在origin server和client之间搭建一个proxy进行resource整合，然后统一地发给client。这个做法虽然非常有效，但是在HTTPS request占比越来越多的情况下，它破坏的是HTTPS end-to-end的安全性，使得client和各个resource所在的server之间的安全传输难以保证；</li>
+<li>于是作者设计了VROOM来解决这个问题，主要包括三部分内容：
+<ol>
+<li>sever端在响应用户的请求时，附加地发送一个dependency hints的数据，其中包含了网页中需要用户进行fetch的resource url，这样client在接收到dependency hints后便可以立刻开始下载这些资源，当浏览器在process HTML并且发现需要这些resource时，这些预先下载好的资源就已经在缓存里了可以直接使用；</li>
+<li>作者结合了之前online和offline两类方法优化了查找所需resource的方法，即dependency resolution；</li>
+<li>作者为了提高CPU的利用率，优化了这些resource url的前后顺序，让client先下载需要进行process的资源，后下载静态资源（图片等），这样就可以在processing resource的同时进行其他resource的下载了。</li>
+</ol>
+</li>
+<li>通过实验，在中位数的情况下，VROOM对Alexa top sites能够减少5秒的PLT。</li>
+</ul>
+<h4 id="kelton17-conor-kelton-jihoon-ryoo-aruna-balasubramanian-and-samir-r-das-improving-user-perceived-page-load-time-using-gaze-usenix-nsdi-2017">{Kelton17} Conor Kelton, Jihoon Ryoo, Aruna Balasubramanian, and Samir R. Das. Improving User Perceived Page Load Time Using Gaze. USENIX NSDI, 2017.</h4>
+<p>总结：</p>
+<p>这篇论文首先定义了一个新的web browsing metric, user-perceived page load time(uPLT)，侧重于展现用户的视觉浏览体验。此外，作者设计了WebGaze来优化web browsing的uPLT，其根据是用户在网页浏览的eye gaze data，从而在uPLT的metric上达到一个大幅度的提升。要点如下：</p>
+<ul>
+<li>
+<p>作者首先介绍了OnLoad和Speed Index两个比较传统的metric，说明它们在展现实际用户体验上的不足之处。于是作者设计了uPLT来展现用户接受信息的浏览体验，主要的衡量依据就是各个objects paint的时间进度；</p>
+</li>
+<li>
+<p>接着作者针对于不同metric的差异做了一个user study，涉及PLT、Speed Index以及uPLT。作者发现对于js多的网页，uPLT与OnLoad（即传统PLT）之间中位数有9.3秒的差异，对于图片多的网页，这个差异会更大。有效说明PLT和uPLT之间的差异是很大的，因此很多optimization方案把PLT作为metric是一个对用户体验并不好的选择，为了证明鲁棒性，作者在不同的network conditions下也做了相同的实验；</p>
+</li>
+<li>
+<p>受上述条件的启发，作者开发了WebGaze。WebGaze的启发是，作者认为用户的eye gaze可以暴露user interest。所以他们使用了eye gaze tracker来收集了50名用户、45个网页的eye gaze信息，然后通过测量证明了它们在浏览同一个网页时的eye gaze具有一定的共性，所以可以根据这些信息来做进一步的optimization；</p>
+</li>
+<li>
+<p>作者搭建了一个proxy来进行resource optimization，其实就是根据eye gaze的特点来优化resource加载顺序与策略。最后作者通过把WebGaze与其他三种optimization方法进行对比，发现在uPLT的metric上使用WebGaze能够达到73%的提升。</p>
+</li>
+</ul>
+<h4 id="chang-lou-peng-huang-scott-smith-understanding-detecting-and-localizing-partial-failures-in-large-system-software-nsdi-2020">Chang Lou, Peng Huang, Scott Smith. Understanding, Detecting and Localizing Partial Failures in Large System Software, NSDI, 2020</h4>
+<p>部分功能异常(Partial Failure)：由于某种异常错误，一个进程中“部分”功能无法正常工作。</p>
+<ul>
+<li>Partial Failure 发生的原因多种多样，大多会导致程序阻塞，并且它们难以 debug。触发条件通常与特定的生产环境或负载有关。</li>
+</ul>
+<p>作者构建了 OmegaGen 系统，它通过分析源代码自动构造 WatchDog，并修改源代码添加 hooks，最终实现在原系统中添加 runtime checker 从而发现 Partial Failures。</p>
+<ul>
+<li>
+<p>为了发现 Partial Failure，OmegaGen 在程序运行时使用 WatchDog “模拟”执行源代码，判断执行时间是否超时并进行进一步验证（通过 validator 筛选掉临时性的错误）。</p>
+</li>
+<li>
+<p>WatchDog “模拟”执行源代码是指通过复制程序的 Context，将其作为输入参数重复执行关键代码。</p>
+</li>
+<li>
+<p>关键代码通过递归地在函数中搜索“生产环境中容易发生错误”的代码（如IO、同步、函数调用）得到。</p>
+</li>
+<li>
+<p>为了避免 WatchDog 检查影响到程序正确运行，系统会复制程序的 context，对于 I/O 使用重定向（写入文件）和包装一层 wrapper（对程序读取数的据做缓存，作为 WatchDog 的读取数据）。</p>
+</li>
+<li>
+<p>为减小检查带来的 overhead，复制 context 时只复制会被改变的部分，并且使用 lazy copy 减少内存复制。</p>
+</li>
+</ul>
+<h4 id="guo2018-peizhen-guo-bo-hu-rui-li-wenjun-hu-foggycache-cross-device-approximate-computation-reuse-proc-of-acm-international-conference-on-mobile-computing-and-networking-2018">​	{Guo2018} Peizhen Guo, Bo Hu, Rui Li, Wenjun Hu. FoggyCache: Cross-Device Approximate Computation Reuse. Proc. of ACM International Conference on Mobile Computing and Networking, 2018.</h4>
+<p>Summary：<br>
+	这篇论文，文章研究了边缘计算，利用相似性问题减少边缘设备的计算次数从而减少与计算远端的通信次数，并减少能源消耗。文章从“边缘设备常常会处理相似的的输入行为，并得出相同的输出”思考角度入手，对于附近地理位置的边缘设备提出了一个基于A-LSH和H-kNN的FoggyCache模型，对输入进行自适应哈希映射和相似性聚类，并对高度相似的输入从cache中返回相同的输出结果。</p>
+<p>Contributions：<br>
+1. 提出了一个基于A-LSH和H-kNN的FoggyCache模型，在基本保证准确率的情况下，大大降低了边缘设备的计算次数和能源消耗。<br>
+2. 使用cache的方法在客户端中和远端运行通信中建立一个可以同步的cache层，用来分析相似输入并快速给出输出，兼顾考虑了安全和隐私问题。<br>
+3. 文章的模型使用典型的server-client模型，在Akka网络上实际部署传输层。验证了两种图像识别的场景和一种音频处理的场景下，cache机制引入对于边缘设备计算次数的影响。<br>
+4. 文中在校园网实际部署后，调研了100位学生对于新方法的感知度和满意度，当正确率保证95%的情况下，92位学生对该方法的提升变现很满意。<br>
+5. 文章调研了机器数量对实验结果的影响，说明该模型大规模部署的可能性。</p>
+<p>Takeaways：</p>
+<ul>
+<li>使用一些经典的深度学习方法处理图像和音频后，利用简单的映射和聚类模型建立cache层，这种对其他领域深度学习方法进行部署和验证实际效果的工作方法很有参考价值。</li>
+<li>精确度-能源的tradeoff评估和参数逻辑，是边缘计算相关领域很需要考虑的问题。</li>
+<li>cache机制的引入，考虑安全性和隐私，如果之后的工作碰到了cache，也应该考虑一下这两个方面的研究。</li>
+</ul>
+<h4 id="shan_device_mobicom19-zhiyong-shan-raina-samuel-and-iulian-neamtiu-device-administrator-use-and-abuse-in-android-detection-and-characterization-proc-of-mobicom-116-2019">{Shan_device_MobiCom19} Zhiyong Shan, Raina Samuel, and Iulian Neamtiu. “Device Administrator Use and Abuse in Android: Detection and Characterization.” Proc. of MobiCom, 1–16. 2019.</h4>
+<ul>
+<li>首次对安卓的DA功能进行系统研究的工作，描述了DA的使用和滥用情况，并将滥用DA的应用也就是DDA应用分成了3类进行具体的讨论</li>
+<li>基于function call graph，论文开发了DAAX对应用进行静态分析，检测出不同的DDA应用</li>
+<li>开发人员可以使用DAAX查找无意中违反DA协议的情况。终端用户可以在安装应用程序之前发现潜在的有害DA行为</li>
+<li>利用实验证明了daax的有效性和高效性</li>
+<li>论文团队向Google提交了相关的报告，得到Google团队的认可</li>
+</ul>
+<h4 id="mardani20-shaghayegh-mardani-mayank-singh-ravi-netravali-fawkes-faster-mobile-page-loads-via-app-inspired-static-templating-usenix-nsdi-2020">{Mardani20} Shaghayegh Mardani, Mayank Singh, Ravi Netravali. <strong>Fawkes: Faster Mobile Page Loads via App-Inspired Static Templating</strong>. USENIX NSDI, 2020.</h4>
+<p>总结：</p>
+<p>这篇论文受mobile apps的启发，使用cached templates来加速mobile web browsing。简而言之，是在server端生成自己静态的templates，然后只需要告诉client在template基础上要做什么样的update就可以完成加速的目的。</p>
+<p>详细要点如下：</p>
+<ul>
+<li>在mobile apps上有这样的一个特点，比如BBC的mobile app，它有一个静态的资源库（常常包括了各种界面的templates）保存在手机本地，当用户进入app时只需要在templates上进行新信息的更新，便可以快速地完成内容的呈现；</li>
+<li>作者对于top500的网页进行测量，探究其strutural similarity，发现在一周的时间内，在中位数的情况下，有75%的内容没有发生改变，有95%的内容只有attributes发生了更改。这说明在现代网页中网页的结构是很少发生改变的（templates），但是这些templates重复地被用户request，因此拖慢了时间；</li>
+<li>于是作者设计了Fawkes。Fawkes基于python和C++进行开发，不需要对浏览器进行任何修改。其基本思想是，在server端生成相应的静态HTML templates，然后随着时间的更新，由server端对于新信息生成动态的patches，发送给client进行更新。而client需要用XHR request请求这些patches，在自己本地静态的templates上进行内容更新就可以了；</li>
+<li>最终作者在各种page load metrics（Speed Index和TFP）上进行了实验，可以分别优化46%与64%的程度。</li>
+</ul>
+<h4 id="netravali18-ravi-netravali-vikram-nathan-james-mickens-hari-balakrishnan-vesper-measuring-time-to-interactivity-for-modern-web-pages-usenix-nsdi-2018">{Netravali18} Ravi Netravali, Vikram Nathan, James Mickens, Hari Balakrishnan. Vesper: Measuring Time-to-Interactivity for Modern Web Pages. USENIX NSDI, 2018.</h4>
+<p>总结：</p>
+<p>这篇论文主要做了两个工作，其一是重新定义了web browsing的metric，即基于网页interactivity的<em>Ready Index</em>；第二个是开发了Vesper工具，通过对于HTML和JS的重写来获得网页的interactive state，进而可以用来测量Ready Index。</p>
+<p>详细要点如下：</p>
+<ul>
+<li>
+<p>长久以来的工作对于web browsing速度的metric都是Page Load Time，大多数的定义使用的是onLoad函数。但实际上这种metric会underdetermine or overdetermine真实的情况，例如，也许仅有一部分elements负责用户与网页的互动，但是更多多余的elements被考虑在内，使得测量的PLT更长；</p>
+</li>
+<li>
+<p>作者从用户和网页互动的角度来重新审视web browsing metric。主要考虑两点：</p>
+<ol>
+<li>当前浏览器窗口内的所有elements已经完成加载和渲染；</li>
+<li>在上述的这些element，浏览器已经获取并evaluated相关DOM和JS的state，这些内容可以让用户和网页发生交互（点按钮等）；</li>
+</ol>
+<p>简而言之，就是用户可以正常看到所有的网页内容，而且可以正常与网页互动；</p>
+</li>
+<li>
+<p>作者在Background部分介绍了目前（2018年）存在的metric，除了传统的onLoad event测PLT，还有其他工作创造了新的metric，例如Time to First Paint、Speed Index、User-perceived PLT、TTI等；</p>
+</li>
+<li>
+<p>于是作者定义了Ready Index来满足上述的metric要求，涉及elements的visibility和readiness两个方面，分别对应两点；</p>
+</li>
+<li>
+<p>为了测量Ready Index，作者设计了Vesper工具，通过rewrite HTML 和JS来达到目的，对于不同浏览器也是可用的，而且比较轻量。其工作过程主要包括两个不同的page load过程，其中第一个版本使用了heavyweight instrumentation，第二个过程则是lightweight instrumentation，在第二个过程中加入了记录Ready Index的相关信息。</p>
+</li>
+<li>
+<p>在user study中分别通过不同的metric（AFT，Ready Index，Speed Index），使用Polaris优化网页objects加载顺序。发现用户更喜欢以Ready Index为基准优化过的网页。</p>
+</li>
+</ul>
+<h4 id="1-zhang_flash_mobisys19-tao-zhang-donald-e-porter-aviad-zuck-and-dan-tsafrir-apps-can-quickly-destroy-your-mobiles-flash-why-they-dont-and-how-to-keep-it-that-way-proc-of-mobisys-535536-2019">1. {Zhang_Flash_MobiSys19} Tao Zhang, Donald E. Porter, Aviad Zuck, and Dan Tsafrir. “Apps can quickly destroy your mobile’s flash – Why they don’t, and how to keep it that way.” Proc. of MobiSys, 535–536. 2019.</h4>
+<ul>
+<li>problem：
+<ul>
+<li>在智能手机上，闪存容易被消耗完，导致手机无法使用。一个简单，无特权的恶意应用程序可能会在几周内使智能手机无法启动（“变砖”），而不会向用户发出警告信号。</li>
+</ul>
+</li>
+<li>contribution：
+<ol>
+<li>一系列手机上闪存存储寿命的经验评估</li>
+<li>各种良性智能手机应用程序的写入I / O行为的表征（below 200 KiB/s)</li>
+<li>关于为什么良性应用程序在实践中不会磨损智能手机闪存的经验性解释。</li>
+<li>提供一种抵御该攻击的算法</li>
+</ol>
+</li>
+<li>实现了一个简单的攻击应用程序，称为WAPP。
+<ul>
+<li>攻击方式： WAPP会连续重写应用程序专用存储区域中的100MiB文件，该文件默认情况下分配给该应用程序。该应用程序使用大型顺序I / O重写数据，以实现设备支持的最大吞吐量Bmax。</li>
+<li>恶意隐藏：首先，Android会监控能耗，但仅在使用电池时。因此，我们可以通过仅在手机充电时运行I / O密集型工作来避免通过电源监视进行检测。其次，我们在后台运行WAPP。大由于大多数电话在禁用屏幕的情况下大部分时间都是在充电，因此WAPP通过在屏幕打开时暂停其恶意I / O活动，可以有效地逃避监视。</li>
+<li>权限要求，WAPP基本上可以发起有效的耗损攻击，除了通常授予任何应用程序的权限外，没有其他权限。</li>
+</ul>
+</li>
+<li>二分类界限明显：<br>
+- 测量大量的应用程序，根据之前的损耗规则，目前正常程序的写入规则，即使是高密集型的写入吞吐量也是不足以损害设备的。因此能根据吞吐量，很好地分辨是否是恶意攻击或者bug，而不会影响到用户正常的APP使用。</li>
+<li>Defence：
+<ul>
+<li>现有系统无法防止应用程序发布破坏性的写操作。 介绍并评估一种策略，该策略可防止发生可能损害设备的不太可能发生的写入事件。通过计算剩余的可使用量。用户每天的根据假设使用定量，分每天和每个小时进行写入总I/O的限制。</li>
+<li>判断方式：当前应用和所有应用消耗的缓存是不是超过了限制条件。</li>
+</ul>
+</li>
+<li>放大效应（不足）
+<ul>
+<li>不幸的是，大多数移动设备不会直接报告物理写入。必须推断出写入放大率，使用他们的WAPP证明了该攻击的可能性。<br>
+takeaways：</li>
+<li>有点像安全的文章，做了一个攻击系统，证明了他们的攻击有效性。同时提出了一个defence策略，证明了该策略的可行性。</li>
+<li>有些问题的defence策略很简单，但要经过大量测量证明策略的可行性。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-liu_dns_imc19-chaoyi-lu-baojun-liu-zhou-li-et-al-an-end-to-end-large-scale-measurement-of-dns-over-encryption-how-far-have-we-come-proc-of-imc-2019">2. {Liu_DNS_IMC19} Chaoyi Lu, Baojun Liu, Zhou Li, et al. “An End-to-End , Large-Scale Measurement of DNS-over-Encryption : How Far Have We Come ?” Proc. of IMC. 2019.</h4>
+<ul>
+<li>为了避免明文 DNS 受到攻击以及隐私方面的问题，人们提出了多种加密的 DNS 协议(DNS-over-Encryption, DoE)，其中 DNS-over-TLS(DoT) 和 DNS-over-HTTPS(DoH) 是目前较广泛使用的两个协议，它们分别在 TLS 和 HTTPS 上进行 DNS 通信。论文从客户端的角度对这两种 DNS 协议进行系统分析。</li>
+<li>扫描发现 DoE 服务器：通过遍历 IP 地址进行 853 端口扫描寻找 DoT 服务器；通过遍历搜索 URL 数据集中的域名寻找 DoH 服务器。</li>
+<li>对发现的服务器进行分析：
+<ul>
+<li>DoT 服务器中 1/4 使用无效的 SSL 证书</li>
+<li>DoT 服务器 IP 大多来自大型 DNS 服务提供商</li>
+<li>只有一个 IP 的 DoT 小型服务提供商占比超过 70%</li>
+<li>DoH 找到 17 个解析服务器</li>
+</ul>
+</li>
+<li>从客户端测量 DNS 服务器可访问性和查询时间：
+<ul>
+<li>方法：使用 SOCKS 代理网络实现从不同地点访问服务器</li>
+<li>可访问性：超过 99% 的用户能正常访问 DoE 服务器，只有 1% 的客户端因为 IP 冲突、审查和 TLS 监听无法完成查询。</li>
+<li>查询时间：对代理节点的明文 DNS 和 DoE 查询时间的比较发现使用连接复用的 DoE 因为加密带来的性能 overhead 是可以接受的。但是如果没有连接复用，会因为建立连接带来较大的时间开销。</li>
+</ul>
+</li>
+<li>当今 Internet 中 DoE 流量分析：
+<ul>
+<li>方法：ISP 路由器记录中通过匹配 DoT 服务器 IP，以及 853 端口寻找 DoT 流量；通过 DoH 服务器的域名 DNS 查询数量间接测量 DoH 流量（DNS 缓存会导致低估 DoH 流量）。</li>
+<li>DoT 流量相比明文 DNS 流量仍然很小，但是在不断增长</li>
+<li>17 个 DoH 解析服务器中，只有四个域名(<a href="http://dns.google.com" target="_blank" rel="noopener">dns.google.com</a>, <a href="http://mozilla.cloudflare-dns.com" target="_blank" rel="noopener">mozilla.cloudflare-dns.com</a>, <a href="http://doh.cleanbrowsing.org" target="_blank" rel="noopener">doh.cleanbrowsing.org</a>, <a href="http://doh.crypto.sx" target="_blank" rel="noopener">doh.crypto.sx</a>)有超过 1 万的 DNS 查询，其它解析服务器的流量并不明显。其中 Google 域名查询数量最多，高出其它服务器几个数量级，其次是 CloudFlare（为火狐浏览器提供 DoH 查询支持）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-ray_vantage_sigcomm19-devdeep-ray-jack-kosaian-k-v-rashmi-and-srinivasan-seshan-vantage-optimizing-video-upload-for-time-shifted-viewing-of-social-live-streams-proc-of-sigcomm-380393-2019">3. {Ray_Vantage_SIGCOMM19} Devdeep Ray, Jack Kosaian, K. V. Rashmi, and Srinivasan Seshan. “Vantage: Optimizing video upload for time-shifted viewing of social live streams.” Proc. of SIGCOMM, 380–393. 2019.</h4>
+<ul>
+<li>背景：
+<ul>
+<li>Social live video streaming（SLVS)的应用日益广泛，主要是各类直播软件，由于移动网络环境不稳定（尤其指直播上传方），并且不同用户对网络延迟的需求不同，如何提高所有观众的用户体验QoE（让用户可以观看到流畅且清晰度尽可能高的直播）。</li>
+</ul>
+</li>
+<li>传统技术的缺点：
+<ul>
+<li>无法提供不同时延的直播服务，无法利用不同时延来提供更好的清晰度，例如对高时延的需求，可以进行重传来获得更高的清晰度。</li>
+<li>针对传统技术的不足，文章设计了Vantage系统，来有效解决上述问题，进而提高各类用户的QoE，Vantage的设计思路如下：</li>
+<li>传输实时桢后剩余的带宽进行选择性质量增强重传，并优化编码来平衡可用带宽的分配；Vantage系统的输入有带宽估计、帧的统计信息，输出实时帧的比特率、增强帧及其比特率；</li>
+<li>Vantage系统的核心时调度程序，用来决定哪些帧要调度重传，以及如何设定它的比特率。重传帧主要通过优先级队列决定，并限制队列的长度；对于重传帧的比特率，通过可用带宽与SSIM-比特率的关系，及相应的参数来计算数值。</li>
+</ul>
+</li>
+<li>Vantage的优势：
+<ul>
+<li>实验验证了Vantage利用延时可以有效缓解带宽不稳带来的卡顿，提高各用户在不同观看时延下的QoE；通过减少上传路径的变化，同时提高了实时观看的质量与延迟观看的质量。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-ren_optimise_infocom17-jie-ren-ling-gao-hai-wang-and-zheng-wang-optimise-web-browsing-on-heterogeneous-mobile-platforms-a-machine-learning-based-approach-proc-of-infocom-2017">4. {Ren_Optimise_INFOCOM17} Jie Ren, Ling Gao, Hai Wang, and Zheng Wang. “Optimise web browsing on heterogeneous mobile platforms: A machine learning based approach.” Proc. of INFOCOM. 2017.</h4>
+<ul>
+<li>这篇论文介绍了一种AI的方法，以手机网页的web contents为输入，得到处理器的调度方式作为输出，从而达到减少render load time、或energy consumption、或两者折中的目的。相比于其他降低渲染时间的相关工作，该方法的亮点在于使用了每个网站网页的properties作为输入的feature，然后借助于AI方法进行求解。</li>
+<li>详细要点如下：
+<ul>
+<li>首先作者介绍了问题背景。手机网页渲染作为一个重要的话题，存在渲染速度慢、电池能耗高的问题。如今ARM big.LITTLE 多核架构可以将渲染任务分散在高性能或低性能的处理器上进行，也可以改变处理器的频率。而Linux自带的调度器Linux Heterogeneous Multi-Processing (HMP)仅能在OS的层面上对渲染任务进行调度，不会考虑每个网站网页的elements和properties；</li>
+<li>于是，作者设计了一个AI的方法，把每个网站网页的properties作为输入，把最优的处理器调度方式（包括处理器频率）作为输出，解决速度慢、能耗高的问题；</li>
+<li>该方法使用的是SVM classifier，通过leave-one-out cross-validation进行训练。训练集来自于Alexa上top400 websites的properties，这些properties包括DOM tree的节点数、深度、tag等70多个features。训练的目标有三种，分别是load time、energy consumption、EDP（前两者的折中），因此其实是三个分类器来解决目标不同的三种任务。这个SVM classifier 进行off-line training，训练好的模型以chrome 插件的形式放入到浏览器中，在新的网页输入时，提取feature，输入模型得到调度策略；</li>
+<li>作者将该AI方法与2017年当时最好的WS方法、以及Linux自带的Linux Heterogeneous Multi-Processing (HMP)方法进行实验比较。发现AI方法在Load time、energy consumption以及EDP上都能达到最佳的效果。此外，作者也分析了实验结果的比例分布、各个网页feature对于结果的影响比重，再次详细论证了AI方法的有效性。</li>
+</ul>
+</li>
+<li>感想：整体而言，网页browsing包括两个procedure：1. networking 2. rendering。这篇论文的工作是在第二个rendering阶段使用AI的方法进行提速，而我们当下AI-protocol做的工作是用AI的方法在第一个阶段networking进行提速，可以参考这篇论文的工作增加模型输入的features。例如，除了RTT、带宽这些输入feature外，还可以模仿这篇论文，加入网页的properties（DOM nodes、tags等）作为feature，可能会带来更好的效果。</li>
+</ul>
+<h4 id="5-jiao_diversion_mobihoc19-lei-jiao-ruiting-zhou-xiaojun-lin-and-xu-chen-online-scheduling-of-trafic-diversion-and-cloud-scrubbing-with-uncertainty-in-current-inputs-2019-proc-of-mobihoc-271280">5. {Jiao_Diversion_Mobihoc19} Lei Jiao, Ruiting Zhou, Xiaojun Lin, and Xu Chen. Online scheduling of trafic diversion and cloud scrubbing with uncertainty in current inputs. 2019. Proc. of MobiHoc, 271–280.</h4>
+<ul>
+<li>[资源调度]</li>
+<li>这篇解决的问题是：什么样的scrubbing center资源调度可以获得最小的成本。</li>
+<li>challenges：
+<ul>
+<li>成本的形式化表达。重定向和调度过程中涉及到的因素和变量过多，如何全面、精准的定义这种变量，是一个挑战</li>
+<li>不确定输入。在成本的定义中有涉及到不确定因素，例如恶意流的占比等，如何在最优化求解的过程中消除这个不确定因素是一个难点</li>
+</ul>
+</li>
+<li>本文主要是一个理论优化问题。</li>
+</ul>
+<h4 id="6-yan_puffer_nsdi20-francis-y-yan-hudson-ayers-chenzhi-zhu-et-al-learning-in-situ-a-randomized-experiment-in-video-streaming-proc-of-nsdi-2019">6. {Yan_Puffer_NSDI20} Francis Y. Yan, Hudson Ayers, Chenzhi Zhu, et al. “Learning in situ: a randomized experiment in video streaming.” Proc. of NSDI. 2019.</h4>
+<ul>
+<li>Summary：<br>
+​	这篇论文，最主要的贡献是部署了一套自己的视频系统，并在该系统上收集了超过十万用户的观看数据，总的数据跨度超过两年。研究了视频流中不同方法在QoE中的表现，说明了传统方法ABR模型在实际表现中比之前的仿真预测结果要好。这篇文章的baseline选择都是很强的文章，比如今年的SIGCOMM论文，能说明他们的可拓展性差，也是一个很大的贡献。文章同时提出了自己的Fugu方法，在预测时使用了每日重训练的有监督学习，在QoE中表现好。</li>
+<li>Contributions：
+<ol>
+<li>建立了Puffer数据集，收集了超过10万用户，视频浏览总时长超过40年。</li>
+<li>测量和研究表明，之前baseline工作的鲁棒性并没有小数据集和仿真环境效果那么好。</li>
+<li>测量和研究表明，最简单的ABR工作，在该数据集的表现比baseline工作并未逊色太多，baseline工作的可拓展性有待商榷。</li>
+<li>他们使用简单的DNN代替了baseline方法中的决策树，在保证实时预测情况下，获得较好的QoE测量指标。</li>
+<li>每天重新训练新模型，在一年的时间跨度里，验证了DNN方法一定程度上的鲁棒性，以及该方法一定程度上的可靠性。</li>
+<li>公开了Puffer数据集，并提供了大量实用的接口。</li>
+</ol>
+</li>
+<li>Takeaways：
+<ul>
+<li>这篇文章属于偏系统化测量的视频流相关的工作。文章的最大贡献在于实现了Puffer，收集了大量数据并将其公开。在之后的研究中，新构建系统挑战太大，但可以考虑使用该公开数据集进行视频流数据的分析。（2020年发表的文章，对于该数据集的使用应该还不算太多）。</li>
+<li>对于SSIM和Stall以置信区间的方式分析QoE指标，考察对于不同用户跨度和时间维度的表现趋势，也是未来如果将视频流应用到我们工作上，可以参考考量的指标和分析方式。</li>
+<li>对于之前的baseline工作，如果能证明在不同数据集它们的方法没那么好，可拓展性不佳，也是一个可思考方向。</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-naseer_disruption-free_sigcomm20-usama-naseer-luca-niccolini-alan-frindell-and-theophilus-a-benson-zero-downtime-release-disruption-free-load-balancing-of-a-multi-billion-user-website-proc-of-sigcomm-529541-2020">7. {Naseer_disruption-free_SIGCOMM20} Usama Naseer, Luca Niccolini, Alan Frindell, and Theophilus A Benson. Zero Downtime Release : Disruption-free Load Balancing of a Multi-Billion User Website. Proc. of SIGCOMM, 529–541. 2020.</h4>
+<ul>
+<li>本文提出了几个独立的方案来避免服务器重启影响用户体验。改进主要涉及中间层负载均衡服务器 proxygen 的重启和处理短连接请求的应用服务器的重启。</li>
+<li>传统的升级方法是服务器先进入 draining 阶段（只处理当前已连接的请求，不处理新的连接），draining 阶段结束后关闭服务器并启动更新后的服务器。这种方式会导致未处理完的连接和超过 draining 阶段长度的长连接被中断，同时在 draining 阶段会影响服务器集群处理请求的容量。而以下方案对这些不足做出了改进：
+<ul>
+<li>Sockeat Takeover：在原 proxygen 服务器处于 draining 阶段的同时启动已更新的新服务器，通过传递文件描述符让新服务器继承原有连接并处理新建立连接的请求，同时将属于老服务器的 UDP 数据转发给老服务器</li>
+<li>Downstream Connection Reuse：中间层的 proxygen 转发长连接的 MQTT，当它需要更新时通知下游服务器并让下游服务器转移连接到其它的上游服务器上从而保持 MQTT 连接</li>
+<li>Partial Post Replay：在重启应用服务器时，将该服务器上已接收但未完成的 POST 请求发回下游负载均衡服务器，并由它重新发送完整 POST 请求到其它应用服务器上。从而避免响应 500 状态码给客户端（影响 QoE）</li>
+</ul>
+</li>
+<li>第一种方案将重启的影响限制在当前服务器上，后两种方案通过下游负载均衡来屏蔽对用户的打扰。</li>
+<li>提出一个方法使得系统在做更新时，不会终端服务，不会影响终端用户
+<ul>
+<li><strong>Zero Downtime Release is a collection of mechanisms</strong> used at Facebook to shield the end-users from any disruptions</li>
+<li><strong>preserve the cluster capacity</strong> and robustness of the infrastructure when updates are released globally.</li>
+<li>leverage different components of the end-to-end networking infrastructure to prevent or mask any disruptions in face of releases.</li>
+<li>challenges
+<ul>
+<li>a large amount of protocols</li>
+<li>seamlessly migrate</li>
+<li>energy reasons</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The process of connection-restart incurs a number of handshakes (e.g., TLS and TCP) which we show (in Section 2.5) consumes as much as 20% of the OSP’s CPU.</li>
+</ul>
+<h4 id="8-zhang_e2e_sigcomm19-xu-zhang-siddhartha-sen-daniar-kurniawan-haryadi-gunawi-and-junchen-jiang-e2e-embracing-user-heterogeneity-to-improve-quality-of-experience-on-theweb-proc-of-sigcomm-289302-2019">8. {Zhang_E2E_SIGCOMM19} Xu Zhang, Siddhartha Sen, Daniar Kurniawan, Haryadi Gunawi, and Junchen Jiang. “E2E: Embracing user heterogeneity to improve quality of experience on theweb.” Proc. of SIGCOMM: 289–302. 2019.</h4>
+<ul>
+<li>用户体验一个重要的指标就是网络延迟，从运营商的角度考虑，用最少的成本提高用户体验是十分必要的。网络延迟=服务器延迟+外部延迟，传统的思路是提高服务器资源来减少服务器延迟。本文从一个新的角度来提升QoE，考虑到不同的外部延迟对于服务器延迟的敏感程度是不同的，例如1s和2s的服务器延迟对于10s的外部延迟来说，影响不大；但对于0.5s的外部延迟来说，就会有接近1倍的总延迟。考虑到这一点，对不同的外部延迟的请求，对其重新分配服务器资源（即服务器延迟重新分配）使得总的QoE值尽可能高，就是这个E2E系统的目的。</li>
+<li>服务器延迟调度策略：
+<ul>
+<li>将决策分为两级，底层找到给定决策的最佳请求映射，将所有可能的映射列出；</li>
+<li>然后顶层用爬山搜索，找到最佳的调度策略。</li>
+</ul>
+</li>
+<li>调整服务器资源分配在具体应用上的调度过程：
+<ul>
+<li>分布式系统Cassandra：将对时间敏感的请求分配更多的服务器资源</li>
+<li>消息队列RabbitMQ：将资源请求队列从先进先出的调度方式改为时间敏感度的优先级队列</li>
+</ul>
+</li>
+<li>实验验证：
+<ul>
+<li>将E2E运用在两个web服务Cassandra与RabbitMQ，用emulab搭建仿真环境，来研究E2E调度后QoE对比未使用E2E的情况，QoE提高了15.4%。</li>
+</ul>
+</li>
+<li>优缺点与展望：
+<ul>
+<li>缺点，可能产生相对应的新的网络攻击；</li>
+<li>优点，可行性高，大规模部署后将有效提高用户QoE。</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-li_bridging_sigcomm19-yuanjie-li-kyu-han-kim-christina-vlachou-and-junqing-xie-bridging-the-data-charging-gap-in-the-cellular-edge-proc-of-sigcomm-1528-2019">9. {Li_Bridging_SIGCOMM19} Yuanjie Li, Kyu Han Kim, Christina Vlachou, and Junqing Xie. “Bridging the data charging gap in the cellular edge.” Proc. of SIGCOMM: 15–28. 2019.</h4>
+<ul>
+<li>随着移动网络技术的发展，越来越多的设备使用蜂窝网络实现低延迟无线接入。它们接入到蜂窝网的边缘，需要使用蜂窝网的流量，并向运营商缴费。这个蜂窝边缘的流量统计是否精准？答案时否定的，由于数据间隙的存在，蜂窝运营商和边缘应用供应商在数据费用上并不总是达成一致的。</li>
+<li>为什么有这个数据间隙，原因就在于数据丢失（用户发送文件时丢包）和selfish charging的存在。</li>
+<li>针对上述情况，文章提出了TLC算法：Trusted,Loss-tolerant Charging算法，原理就是让数据丢失和selfish charging相互抵消。大体的思路就是应用商实际所用通常大于它所宣称的使用量，运营商反之。例如，应用商实际发送流量10M，运营商实际发送流量5M，但真实收取流量费用应该统一为8M，但双方开始并没有达到一致，应用商想尽可能的少交，但该算法限制应用商提出的费用必须大于运营商实际发送流量，故他可以发送5-8M之间的请求，运营商同理，他可以申请8-10M的请求；如果双方没有统一请求，便进入下一轮请求，此时范围从5-10M收缩至8m附近，继续进行收敛，直至统一，最终获得实际流量使用情况。</li>
+<li>文章后面又用实验验证了该方法可以有效的统一实际流量消耗。</li>
+<li>总结：为了处理运营商和应用商流量计费不统一问题，作者添加了两个条件让一个复杂、难处理的问题变得可解；在分析算法过程中，推导过程很严谨。</li>
+</ul>
+<h4 id="10-xue_deepfussion_mobihoc19-hongfei-xue-wenjun-jiang-chenglin-miao-ye-yuan-fenglong-ma-xin-ma-yijiang-wang-shuochao-yao-wenyao-xu-aidong-zhang-and-lu-su-deepfusion-a-deep-learning-framework-for-the-fusion-of-heterogeneous-sensory-data-in-proc-of-mobihoc-1511602019">10. {Xue_deepfussion_MobiHoc19} Hongfei Xue, Wenjun Jiang, Chenglin Miao, Ye Yuan, Fenglong Ma, Xin Ma, Yijiang Wang, Shuochao Yao, Wenyao Xu, Aidong Zhang, and Lu Su. “Deepfusion: A deep learning framework for the fusion of heterogeneous sensory data.” In Proc. of MobiHoc, 151–160.2019</h4>
+<ul>
+<li>更像是一篇人机交互的文章，有两个cite都是来自UbiComp的</li>
+<li>作者EE的背景+data mining ability</li>
+<li>用mutil-view sensors data 来检测人的Activity
+<ul>
+<li>sensors representation moudle：CNN，通过不同的kernel来解决不同sensor数据异构的问题</li>
+<li>Weighted combination：一种attention机制，考虑到了不同sensor在不同的场景中的contribution不同</li>
+<li>Cross-sensors correlation：考虑到了不同sensor之间的相关性，最后的实验也证明了相关性高的行为，准确度越高。</li>
+</ul>
+</li>
+</ul>
+<h4 id="11-li_anomaly_mobihoc19-zhijing-li-zhujun-xiao-bolun-wang-ben-y-zhao-and-haitao-zheng-scaling-deep-learning-models-for-spectrum-anomaly-detection-proc-of-mobihoc-291300-2019">11. {Li_Anomaly_MobiHoc19} Zhijing Li, Zhujun Xiao, Bolun Wang, Ben Y. Zhao, and Haitao Zheng. “Scaling deep learning models for spectrum anomaly detection.” Proc. of MobiHoc: 291–300. 2019.</h4>
+<ul>
+<li>使用DNN，捕获IoT上LTE网络的物理频谱数据进行分析，通过频谱的信道噪声来预测是否有网络异常、错误使用、攻击等行为的发生</li>
+<li>挑战性和主要的contribution来自于可拓展性，对于不同的cell和band上，对某个数据集训练的模型，而直接给其他数据集使用是争取率低的。而分别训练模型，开销巨大难以承受。</li>
+<li>数据形式广，有固定的基站强信号，也有移动弱信号（比如行人、公交车），general模型用LSTM，通过[t-tp,t]时刻的测量数据，预测 [t,t+tq]时刻的频谱。</li>
+<li>评价指标为频谱上的RMSE等，最后归一化为信道噪声db。</li>
+<li>本文提出一个general的transfer learning模型，只需要本地短时间的数据，与teacher模型的dense层重新拟合，就能把信道噪声大大降低。</li>
+<li>实验做了很多对比，包括但不限于本地模型、跨信道模型、迁移学习模型的比较，不同的频段，本地数据的时间长度，固定基站数据和移动测量数据，预测正确率与错误报警率等。显示了本文运用transfer learning的general模型，在做到实时的高效性上，保证了正确性几乎不下降，兼顾了实用性和可靠性</li>
+<li>Takeaways：
+<ul>
+<li>比较少见的在信号频谱领域运用了DNN，第一个大规模网络的general模型，同时异常检测正确性较好。</li>
+<li>构建transfer learning模型，虽然简单但是高效，能做到实时检测，结合了实际的需求，同时保证了可靠性。</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-zhou_slim_nsdi19-danyang-zhuo-kaiyuan-zhang-yibo-zhu-et-al-slim-os-kernel-support-for-a-low-overhead-container-overlay-network-proc-of-nsdi-331344-2019">12. {Zhou_Slim_NSDI19} Danyang Zhuo, Kaiyuan Zhang, Yibo Zhu, et al. “SlIM: OS kernel support for a low-overhead container overlay network.” Proc. of NSDI: 331–344. 2019.</h4>
+<ul>
+<li>这篇文章是NSDI19的一篇文章，针对的是分布式容器基础架构下网络系统的加速，是贴近工业界需求的研究项目。</li>
+<li>文章的思路很正常，首先回顾了当前容器中网络的几种模式，bridge, host，macvlan，overlay, 指出其中的优劣，例如bridge针对local machine，host会遇到端口映射的麻烦，macvlan会遇到容器迁移的问题，overlay是目前最为成熟的方案。然后列出了overlay的实现，接着指出了overlay相对host mode带来的performance overheads，通过研究overlay的实现得出是两次经过host 网络内核栈带来的性能开销，于是作者提出了SlimOS来进行优化。</li>
+<li>首先文章对overlay网络的performance进行了分析，分几个部分，首先是无优化的，然后是通过fine tuning的方式做优化之后的，最后是利用网络工具更细粒度的确定了性能的瓶颈在多次经过内核栈。</li>
+<li>于是作者提出来SlimOS系统，由三个部分组成，SlimSocket，SlimRouter, SlimKernelModule.第一个是为了使用户态（container中的应用）无感知设计的和POSIX socket完全一致的API，他会拦截socket调用，并通过IPC转发到SlimRounter，第二个部分Rounter是跑在host上的，将会在host上得到拦截到的guest调用，处理网络包，并且转发给其他的host，重要的是一旦连接建立，会使用dup2讲host和guest的套接字复制粘贴，TCP之后的传输就会在host中进行，这就是性能提升的原因。</li>
+<li>至于SlimKernelModule这是一个可选项，他需要嵌入到linux内核中去，会调用linux系统cgroup和traffic control的模块在数据面进行QoS的控制，在控制面可以做到access control list的实现。</li>
+<li>最后文章在不同类型的workload上测量，获得了throughput和CPU cycle的优化。</li>
+<li>其中文章也指出了不足之处，不支持动态容器迁移，会花费更长的启动时间。</li>
+</ul>
+<h4 id="13-perino_experience_mobicom20-diego-perino-xiaoyuan-yang-joan-serra-andra-lutu-and-ilias-leontiadis-experience-advanced-network-operations-in-un-connected-remote-communities-proc-of-mobicom-204213-2020">13. {Perino_Experience_MobiCom20} Diego Perino, Xiaoyuan Yang, Joan Serra, Andra Lutu, and Ilias Leontiadis. “Experience: Advanced network operations in (Un)-connected remote communities.” Proc. of MobiCom, 204–213. 2020.</h4>
+<ol>
+<li>这篇论文主要是介绍提供基础网络通信服务的公司 Internet Para Todos 的运营经验。该公司主要为拉丁美洲的偏远地区提供网络基础设施。为了在有限的成本范围内提供移动互联网服务，该公司主要使用蜂窝网络来提供网络服务，各地的站点硬件配置都根据当地条件进行合理设置。</li>
+<li>在各地都有与该公司合作的本地网络服务提供商，这些提供商使用公司提供的网络基础设施来为用户提供网络。并且提供商与公司之间共享用户利润。</li>
+<li>论文的重点部分在于公司的网络监控平台。该平台收集各地站点发来的网络设备警报，而这些数据又为机器学习和决策制定提供了输入数据。平台内部采用模块化设计，各模块之间使用 REST API 通信。</li>
+<li>各种设备警报经过正则表达式提取有用信息，并进行数据清洗后被保存到数据库中。这些警报根据异常情况分为不同等级，其中 故障 是最严重的。而故障又根据故障持续时间分为临时故障和永久性故障，对于无法自动恢复的永久性故障需要派遣人员到实地进行设备维修。</li>
+<li>由于地处偏远，维修需要的人力物力较大。通过训练模型可以结合过去警告数据以及当地的天气状况等条件，预测某次故障是否为永久性故障，永久性故障的原因以及所需维修配件。并且对于大量的维修需求，可以合理分配不同维修小队的维修路线解决沿途上的各种故障。通过以上这些策略可以大幅减少网络维修所需的成本。</li>
+</ol>
+<h4 id="14-gu_tiresias_nsdi19-juncheng-gu-mosharaf-chowdhury-kang-g-shin-et-al-tiresias-a-gpu-cluster-manager-for-distributed-deep-learning-proc-of-nsdi-485500-2019">14. {Gu_tiresias_NSDI19} Juncheng Gu, Mosharaf Chowdhury, Kang G. Shin, et al. “Tiresias: A GPU cluster manager for distributed deep learning.” Proc. of NSDI, 485–500. 2019.</h4>
+<ul>
+<li>目前GPU集群调度管理器的两个shortcomings：
+<ul>
+<li>第一个挑战是深度学习工作无法预估训练时间。因为很多的实验会在一开始，由于一系列的原因被中断。</li>
+<li>第二个挑战是深度学习工作的过度整合。深度学习中有很多的参数需要共享。</li>
+</ul>
+</li>
+<li>作者提出了Tiresias
+<ul>
+<li>Tiresias是第一个对于信息不可知的GPU资源管理，也是第一个考虑了两个维度(时间和空间)以及优先级离散化的调度</li>
+<li>Tiresias使用一个简单的，外部可观察的，模型特殊的标准来判别什么时候放松worker的GPU合并的约束</li>
+<li>该设计有实用性和易部署性，并且性能显著提高。相比现有的产业方法最高提高了5X的JCT</li>
+</ul>
+</li>
+<li>details
+<ul>
+<li>CH1：一个深度学习任务执行的时间通常是不可预知的，该文章提出两种调度算法，基于局部信息的离散化二维Gittins索引(Discretized Two Dimensional Gittins index)以及离散化二维LAS。</li>
+<li>CH2：使用模型结构来尽可能地松弛化合并放置的约束，我们发现只有某些确定类型的DL模型是对是否合并是敏感的，敏感度是由于其张量大小分布的偏差。我们利用这种直觉将任务分成两类。</li>
+</ul>
+</li>
+</ul>
+<h4 id="hu_cablemon_nsdi20-jiyao-hu-zhenyu-zhou-xiaowei-yang-jacob-malone-jonathan-w-williams-chapel-hill-implementation-nsdi-and-jacob-malone-cablemon-improving-the-reliability-of-cable-broadband-networks-via-proactive-network-maintenance-in-proc-of-nsdi2020">{Hu_CableMon_NSDI20} Jiyao Hu, Zhenyu Zhou, Xiaowei Yang, Jacob Malone, Jonathan W Williams, Chapel Hill, Implementation Nsdi, and Jacob Malone. “CableMon : Improving the Reliability of Cable Broadband Networks via Proactive Network Maintenance.” In Proc. of NSDI.2020.</h4>
 <ul>
 <li>Details：<br>
 ​	这篇文章，帮助网络服务商ISP处理有限拨号网络(broadband)的不稳定检测问题，提高检测成功率并确保能实时检测的运行效率要求。</li>
@@ -1126,7 +1846,7 @@ This paper focus recognizing the uniqueness of app usage behavior and the impact
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hu_cablemon_nsdi20-jiyao-hu-zhenyu-zhou-xiaowei-yang-jacob-malone-jonathan-w-williams-chapel-hill-implementation-nsdi-and-jacob-malone-cablemon-improving-the-reliability-of-cable-broadband-networks-via-proactive-network-maintenance-in-proc-of-nsdi2020"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">{Hu_CableMon_NSDI20} Jiyao Hu, Zhenyu Zhou, Xiaowei Yang, Jacob Malone, Jonathan W Williams, Chapel Hill, Implementation Nsdi, and Jacob Malone. “CableMon : Improving the Reliability of Cable Broadband Networks via Proactive Network Maintenance.” In Proc. of NSDI.2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mackenzie_email_refind_www19-mackenzie-j-gupta-k-qiao-f-et-al-exploring-user-behavior-in-email-re-finding-taskscthe-world-wide-web-conference-acm-2019-1245-1255"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">{Mackenzie_email_refind_www19} Mackenzie J, Gupta K, Qiao F, et al. Exploring User Behavior in Email Re-Finding Tasks[C]//The World Wide Web Conference. ACM, 2019: 1245-1255.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#110039-dukic_flow_size_nsdi19-vojislav-ðukić-zurich-sangeetha-abdu-jyothi-bojan-karlaš-muhsen-owaida-ce-zhang-ankit-singla-eth-zurich-vojislav-ðuki-́cðuki-́c-and-sangeetha-abdu-jyothi-is-advance-knowledge-of-flow-sizes-a-plausible-assumption-in-proc-of-nsdi-5655802019"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">11.0.0.39. {Dukic_flow_size_NSDI19} Vojislav Ðukić, Zurich Sangeetha, Abdu Jyothi, Bojan Karlaš, Muhsen Owaida, Ce Zhang, Ankit Singla, Eth Zurich, Vojislav Ðuki´cðuki´c, and Sangeetha Abdu Jyothi. “Is advance knowledge of flow sizes a plausible assumption?” In Proc. of NSDI, 565–580.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#110040-liu_edge_mobicom19-luyang-liu-hongyu-li-and-marco-gruteser-edge-assisted-real-time-object-detection-for-mobile-augmented-reality-in-proc-of-mobicom2019"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">11.0.0.40. {Liu_edge_MobiCom19} Luyang Liu, Hongyu Li, and Marco Gruteser. “Edge assisted real-time object detection for mobile augmented reality.” In Proc. of MobiCom.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#110041-mao_decima_sigcomm19-hongzi-mao-malte-schwarzkopf-shaileshh-bojja-venkatakrishnan-zili-meng-mohammad-alizadeh-learning-scheduling-algorithms-for-data-processing-clusters-sigcomm19"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">11.0.0.41. {Mao_Decima_SIGCOMM19} Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng ⋆ , Mohammad Alizadeh. Learning Scheduling Algorithms for Data Processing Clusters. SIGCOMM’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#kalia_erpc_nsdi19-anuj-kalia-michael-kaminsky-intel-labs-david-andersen-implementation-nsdi-and-david-g-andersen-datacenter-rpcs-can-be-general-and-fast-this-paper-is-included-in-the-proceedings-of-the-in-proc-of-nsdi2019"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">{Kalia_eRPC_NSDI19} Anuj Kalia, Michael Kaminsky, Intel Labs, David Andersen, Implementation Nsdi, and David G Andersen. “Datacenter RPCs can be General and Fast This paper is included in the Proceedings of the.” In Proc. of NSDI.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wang_flash_conext19-peng-wanghong-xuxin-jintao-wang-flash-efficient-dynamic-routing-for-offchain-networks-conext-19"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">{Wang_flash_coNEXT19} Peng Wang,Hong Xu,Xin Jin,Tao Wang “Flash: efficient dynamic routing for offchain networks” CoNEXT &#39;19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#kim_freeflow_nsdi19-daehyeok-kim-tianlong-yu-hongqiang-harry-liu-yibo-zhu-jitu-padhye-shachar-raindel-chuanxiong-guo-vyas-sekar-and-srinivasan-seshan-freeflow-software-based-virtual-rdma-networking-for-containerized-clouds-in-proc-of-nsdi-1131252019"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">{Kim_FreeFlow_NSDI19} Daehyeok Kim, Tianlong Yu, Hongqiang Harry Liu, Yibo Zhu, Jitu Padhye, Shachar Raindel, Chuanxiong Guo, Vyas Sekar, and Srinivasan Seshan. “Freeflow: Software-based virtual RDMA networking for containerized clouds.” In Proc. of NSDI, 113–125.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#liang_neurocuts_sigcomm19-eric-lian-hang-zhu-xin-jin-ion-stoica-neural-packet-classifications-sigcomm-2019"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">{Liang_NeuroCuts_SIGCOMM19} Eric Lian, Hang Zhu, Xin Jin, Ion Stoica. Neural Packet Classifications. SIGCOMM 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#woo_elastic_nsdi18-shinae-woo-justine-sherry-sangjin-han-sue-moon-sylvia-ratnasamy-and-scott-shenker-elastic-scaling-of-stateful-network-functions-in-proc-of-nsdi2018"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">{Woo_Elastic_NSDI18} Shinae Woo, Justine Sherry, Sangjin Han, Sue Moon, Sylvia Ratnasamy, and Scott Shenker. “Elastic Scaling of Stateful Network Functions.” In Proc. of NSDI.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wang_plover_nsdi18-cheng-wang-xusheng-chen-weiwei-jia-boxuan-li-haoran-qiu-shixiong-zhao-and-heming-cui-plover-fast-multi-core-scalable-virtual-machine-fault-tolerance-in-proc-of-nsdi2018"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">{Wang_PLOVER_NSDI18} Cheng Wang, Xusheng Chen, Weiwei Jia, Boxuan Li, Haoran Qiu, Shixiong Zhao, and Heming Cui. “PLOVER: Fast, Multi-core Scalable Virtual Machine Fault-tolerance.” In Proc. of NSDI.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chen_bikegps_mobisys18-kongyang-chen-and-guang-tan-bikegps-accurate-localization-of-shared-bikes-in-street-canyons-via-low-level-gps-cooperation-in-proc-of-mobisys-1501622018"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">{Chen_BikeGPS_MobiSys18} Kongyang Chen and Guang Tan. “BikeGPS: Accurate localization of shared bikes in street canyons via low-level GPS cooperation.” In Proc. of MobiSys, 150–162.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#gediminas-adomavicius-and-alexander-tuzhilin-toward-the-next-generation-of-recommender-systems-a-survey-of-the-state-of-the-art-and-possible-extensions-ieee-trans-knowl-data-eng2005"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">Gediminas Adomavicius and Alexander Tuzhilin. “Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions.” IEEE Trans. Knowl. Data Eng.2005</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#luyang-liu-hongyu-li-and-marco-gruteser-edge-assisted-real-time-object-detection-for-mobile-augmented-reality-in-proc-of-mobicom2019"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">Luyang Liu, Hongyu Li, and Marco Gruteser. “Edge assisted real-time object detection for mobile augmented reality.” In Proc. of MobiCom.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wenyi-xiao-huan-zhao-haojie-pan-yangqiu-song-vincent-w-zheng-and-qiang-yang-beyond-personalization-social-content-recommendation-for-creator-equality-and-consumer-satisfaction-in-proc-of-kdd-2352452019"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">Wenyi Xiao, Huan Zhao, Haojie Pan, Yangqiu Song, Vincent W. Zheng, and Qiang Yang. “Beyond personalization: Social content recommendation for creator equality and consumer satisfaction.” In Proc. of KDD, 235–245.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#yang_interpretable_kdd18-carl-yang-xiaolin-shi-jie-luo-and-jiawei-han-i-know-youll-be-back-interpretable-new-user-clustering-and-churn-prediction-on-a-mobile-social-application-in-proc-of-kdd-9149222018"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">{Yang_Interpretable_KDD18} Carl Yang, Xiaolin Shi, Jie Luo, and Jiawei Han. “I know you’ll be back: Interpretable new user clustering and churn prediction on a mobile social application.” In Proc. of KDD, 914–922.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rediet-abebe-david-parkes-jon-kleinberg-and-charalampos-e-tsourakakis-opinion-dynamics-with-varying-susceptibility-to-persuasion-proc-kdd2018"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">Rediet Abebe, David Parkes, Jon Kleinberg, and Charalampos E. Tsourakakis. “Opinion dynamics with varying susceptibility to persuasion.” Proc. KDD.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hongzi-mao-malte-schwarzkopf-shaileshh-bojja-venkatakrishnan-zili-meng-mohammad-alizadeh-learning-scheduling-algorithms-for-data-processing-clusters-sigcomm19"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng ⋆ , Mohammad Alizadeh. Learning Scheduling Algorithms for Data Processing Clusters. SIGCOMM’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rosaria-conte-nigel-gilbert-giulia-bonelli-claudio-cioffi-revilla-guillaume-deffuant-janos-kertesz-vittorio-loreto-suzy-moat-jean-pierre-nadal-anxo-sanchez-andrzej-nowak-andreas-flache-maxi-san-miguel-and-dirk-helbing-manifesto-of-computational-social-science-the-european-physical-journal-special-topics-2012"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">Rosaria Conte, Nigel Gilbert, Giulia Bonelli, Claudio Cioﬃ-Revilla, Guillaume Deﬀuant, Janos Kertesz, Vittorio Loreto, Suzy Moat, Jean-Pierre Nadal, Anxo Sanchez, Andrzej Nowak, Andreas Flache, Maxi San Miguel, and Dirk Helbing. “Manifesto of computational social science.” The European Physical Journal Special Topics, 2012</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#pog-personalized-outfit-generation-for-fashion-recommendation-at-alibaba-ifashion_kdd19"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">POG: Personalized Outfit Generation for Fashion Recommendation at Alibaba iFashion_KDD19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wang_repeat_www19-chenyang-wang-min-zhang-weizhi-ma-yiqun-liu-and-shaoping-ma-modeling-item-specific-temporal-dynamics-of-repeat-consumption-for-recommender-systems-proc-world-wide-web-conf-www-2019"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">{Wang_repeat_WWW19} Chenyang Wang, Min Zhang, Weizhi Ma, Yiqun Liu, and Shaoping Ma. “Modeling item-specific temporal dynamics of repeat consumption for recommender systems.” Proc. World Wide Web Conf. WWW 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#deep-multi-view-spatial-temporal-network-for-taxi-demand-predictionaaai18"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">{Deep Multi-View Spatial-Temporal Network for Taxi Demand Prediction，AAAI18}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#fates-of-microscopic-social-ecosystems-keep-alive-or-deadkdd19"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">{Fates of Microscopic Social Ecosystems: Keep Alive or Dead?，KDD19}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#predicting-dynamic-embedding-trajectory-in-temporal-interaction-networks_srijan_kdd19"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">{Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks_Srijan_KDD19}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#bhagat_buy_again_kdd18-rahul-bhagat-alex-lobzhanidze-srevatsan-muralidharan-and-shankar-vishwanath-buy-it-again-modeling-repeat-purchase-recommendations-in-proceedings-of-the-acm-sigkdd-international-conference-on-knowledge-discovery-and-data-mining-62702018"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">{Bhagat_buy_again_kdd18} Rahul Bhagat, Alex Lobzhanidze, Srevatsan Muralidharan, and Shankar Vishwanath. “Buy it again: Modeling repeat purchase recommendations.” In Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 62–70.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#diversity-of-a-users-friend-circle-in-osns-and-h1-its-use-for-profiling"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">Diversity of a User’s Friend Circle in OSNs and H1 Its Use for Proﬁling</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding-group-event-scheduling-via-the-outwithfriendz-mobile-applicationubicomp2018"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">Understanding Group Event Scheduling via the OutWithFriendz Mobile Application，Ubicomp2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-weakly-supervised-learning-framework-for-detecting-social-anxiety-and-depressionasifubicomp-2018"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">{A Weakly Supervised Learning Framework for Detecting Social Anxiety and Depression.ASIF.UbiComp 2018}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#liu_imputation_www19-zongtao-liu-zhongyi-tang-yang-yang-ning-li-wei-huang-and-fei-wu-how-do-your-neighbors-disclose-your-information-social-aware-time-series-imputation-proc-world-wide-web-conf-www-2019"><span class="toc-nav-number">29.</span> <span class="toc-nav-text">{Liu_imputation_www19} Zongtao Liu, Zhongyi Tang, Yang Yang, Ning Li, Wei Huang, and Fei Wu. “How do your neighbors disclose your information: Social-aware time series imputation.” Proc. World Wide Web Conf. WWW 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sadri-amin-et-al-what-will-you-do-for-the-rest-of-the-day-an-approach-to-continuous-trajectory-prediction-ubicomp2019"><span class="toc-nav-number">30.</span> <span class="toc-nav-text">{} Sadri, Amin, et al. “What will you do for the rest of the day?: An approach to continuous trajectory prediction.” UbiComp2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#privcheck-privacy-preserving-check-in-data-publishing-for-personalized-location-based-services-ubicomp16"><span class="toc-nav-number">31.</span> <span class="toc-nav-text">{PrivCheck: Privacy-Preserving Check-in Data Publishing for Personalized Location Based Services. Ubicomp’16}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chen_learning-usage-patterns-of-emojis-from-large-scale-android-users_www18"><span class="toc-nav-number">32.</span> <span class="toc-nav-text">{Chen_Learning Usage Patterns of Emojis from Large-Scale Android Users_WWW’18}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cheng_good_team_www19-cheng-ziqiang-et-al-what-makes-a-good-team-a-large-scale-study-on-the-effect-of-team-composition-in-honor-of-kings-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">33.</span> <span class="toc-nav-text">{Cheng_good_team_www19} Cheng, Ziqiang, et al. “What Makes a Good Team? A Large-scale Study on the Effect of Team Composition in Honor of Kings.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#costa_engaging_cscw18-costa-figueiredo-mayara-et-al-engaging-with-health-data-the-interplay-between-self-tracking-activities-and-emotions-in-fertility-struggles-proceedings-of-the-acm-on-human-computer-interaction-2cscw-2018-40"><span class="toc-nav-number">34.</span> <span class="toc-nav-text">{Costa_Engaging_CSCW18} Costa Figueiredo, Mayara, et al. “Engaging with Health Data: The Interplay Between Self-Tracking Activities and Emotions in Fertility Struggles.” Proceedings of the ACM on Human-Computer Interaction 2.CSCW (2018): 40.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cunha_successful_community_www19-cunha-tiago-et-al-are-all-successful-communities-alike-characterizing-and-predicting-the-success-of-online-communities-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">35.</span> <span class="toc-nav-text">{Cunha_successful_community_www19} Cunha, Tiago, et al. “Are All Successful Communities Alike? Characterizing and Predicting the Success of Online Communities.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mackenzie_email_refind_www19-mackenzie-j-gupta-k-qiao-f-et-al-exploring-user-behavior-in-email-re-finding-taskscthe-world-wide-web-conference-acm-2019-1245-1255"><span class="toc-nav-number">36.</span> <span class="toc-nav-text">{Mackenzie_email_refind_www19} Mackenzie J, Gupta K, Qiao F, et al. Exploring User Behavior in Email Re-Finding Tasks[C]//The World Wide Web Conference. ACM, 2019: 1245-1255.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ibosiola_complaint_www19-ibosiola-damilola-et-al-who-watches-the-watchmen-exploring-complaints-on-the-web-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">37.</span> <span class="toc-nav-text">{Ibosiola_complaint_www19} Ibosiola, Damilola, et al. “Who watches the watchmen: Exploring complaints on the web.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mental_well_being_www17-mobile-sensing-at-the-service-of-mental-well-being-a-large-scale-longitudinal-studywww17"><span class="toc-nav-number">38.</span> <span class="toc-nav-text">{mental_well_being_www17} Mobile Sensing at the Service of Mental Well-being: a Large-scale Longitudinal Study.WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#private_www17-how-public-is-my-private-life-privacy-in-online-dating-www17"><span class="toc-nav-number">39.</span> <span class="toc-nav-text">{private_www17} How Public Is My Private Life? Privacy in Online Dating. WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#return_explore_www19-to-return-or-to-explore-modelling-human-mobility-and-dynamics-in-cyberspace-www19"><span class="toc-nav-number">40.</span> <span class="toc-nav-text">{return_explore_www19} To Return or to Explore: Modelling Human Mobility and Dynamics in Cyberspace. WWW19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ma_trust_facebook_chi19-xiao-ma-et-al-when-do-people-trust-their-social-groups-chi-2019"><span class="toc-nav-number">41.</span> <span class="toc-nav-text">{Ma_trust_facebook_CHI19} Xiao Ma, et al. “When Do People Trust Their Social Groups?” CHI 2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lbsn_hypergraph_www19-dingqi-yang-et-al-revisiting-user-mobility-and-social-relationships-in-lbsns-a-hypergraph-embedding-approach-www19"><span class="toc-nav-number">42.</span> <span class="toc-nav-text">{LBSN_hypergraph_www19} Dingqi, Yang, et al. Revisiting user mobility and social relationships in lbsns: a hypergraph embedding approach. WWW’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nba_cscw18-zhang-jason-shuo-chenhao-tan-and-qin-lv-this-is-why-we-play-characterizing-online-fan-communities-of-the-nba-teams-cscw-2018"><span class="toc-nav-number">43.</span> <span class="toc-nav-text">{NBA_CSCW18} Zhang, Jason Shuo, Chenhao Tan, and Qin Lv. “This is why we play: Characterizing Online Fan Communities of the NBA Teams.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stucheckin_kdd18-hang-mengyue-ian-pytlarz-and-jennifer-neville-exploring-student-check-in-behavior-for-improved-point-of-interest-prediction-kdd-2018"><span class="toc-nav-number">44.</span> <span class="toc-nav-text">{stuCheckin_KDD18} Hang, Mengyue, Ian Pytlarz, and Jennifer Neville. “Exploring student check-in behavior for improved point-of-interest prediction.” KDD 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hashtag_www17-y-zhang-language-in-our-time-an-empirical-analysis-of-hashtags-www17"><span class="toc-nav-number">45.</span> <span class="toc-nav-text">{Hashtag_www17} Y Zhang, Language in Our Time: An Empirical Analysis of Hashtags. WWW’17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#name_reuse_www17-mariconti-enrico-et-al-whats-in-a-name-understanding-profile-name-reuse-on-twitter-www-2017"><span class="toc-nav-number">46.</span> <span class="toc-nav-text">{name_reuse_www17} Mariconti, Enrico, et al. “What’s in a Name?: Understanding Profile Name Reuse on Twitter.” www 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding_ubicomp17-mehrotra-abhinav-et-al-understanding-the-role-of-places-and-activities-on-mobile-phone-interaction-and-usage-patterns-ubicomp-2017"><span class="toc-nav-number">47.</span> <span class="toc-nav-text">{understanding_ubicomp17} Mehrotra, Abhinav, et al. “Understanding the role of places and activities on mobile phone interaction and usage patterns.” UbiComp 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#what_is_public_cscw17-fiesler-casey-et-al-what-or-who-is-public-privacy-settings-and-social-media-content-sharing-cscw-2017"><span class="toc-nav-number">48.</span> <span class="toc-nav-text">{what_is_public_cscw17} Fiesler, Casey, et al. “What (or who) is public?: Privacy settings and social media content sharing.” CSCW 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#urban_migrants_www18-yang-yang-et-al-to-stay-or-to-leave-churn-prediction-for-urban-migrants-in-the-initial-period-www-2018"><span class="toc-nav-number">49.</span> <span class="toc-nav-text">{Urban_Migrants_www18} Yang, Yang, et al. “To Stay or to Leave: Churn Prediction for Urban Migrants in the Initial Period.” WWW 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#spatio_temporal_early_destination_prediction_ubicomp18-imai-ryo-et-al-early-destination-prediction-with-spatio-temporal-user-behavior-patterns-ubicomp-2018"><span class="toc-nav-number">50.</span> <span class="toc-nav-text">{spatio_temporal_early_destination_prediction_UbiComp18} Imai, Ryo, et al. “Early Destination Prediction with Spatio-temporal User Behavior Patterns.” UbiComp 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#anyone_troll_cscw17-cheng-justin-et-al-anyone-can-become-a-troll-causes-of-trolling-behavior-in-online-discussions-cscw-2017"><span class="toc-nav-number">51.</span> <span class="toc-nav-text">{anyone_troll_cscw17} Cheng, Justin, et al. “Anyone can become a troll: Causes of trolling behavior in online discussions.” CSCW 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ne-natcom18-wang-bo-et-al-network-enhancement-a-general-method-to-denoise-weighted-biological-networks-arxiv-preprint-arxiv180503327-2018"><span class="toc-nav-number">52.</span> <span class="toc-nav-text">{ne-natcom18} Wang, Bo, et al. “Network Enhancement: a general method to denoise weighted biological networks.” arXiv preprint arXiv:1805.03327 (2018).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#couchsurfing_aribnb_cscw18-klein-m-zhao-j-ni-j-johnson-i-hill-bm-zhu-h-quality-standards-service-orientation-and-power-in-airbnb-and-couchsurfing-cscw-2017"><span class="toc-nav-number">53.</span> <span class="toc-nav-text">{Couchsurfing_Aribnb_CSCW18} KLEIN M, ZHAO J, NI J, JOHNSON I, HILL BM, ZHU H. Quality Standards, Service Orientation, and Power in Airbnb and Couchsurfing. CSCW, 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#patterns_online_discussion_cscw18-zhang-justine-et-al-characterizing-online-public-discussions-through-patterns-of-participant-interactions-cscw-2018"><span class="toc-nav-number">54.</span> <span class="toc-nav-text">{patterns_online_discussion_cscw18} Zhang, Justine, et al. “Characterizing Online Public Discussions through Patterns of Participant Interactions.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#app_give_away_ubicomp18-tu-zhen-et-al-your-apps-give-you-away-distinguishing-mobile-users-by-their-app-usage-fingerprints-ubicomp-2018"><span class="toc-nav-number">55.</span> <span class="toc-nav-text">{App_Give_Away_UbiComp18} Tu, Zhen, et al. “Your apps give you away: distinguishing mobile users by their app usage fingerprints.” Ubicomp 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#trajectory_recovery_www17xu-fengli-et-al-trajectory-recovery-from-ash-user-privacy-is-not-preserved-in-aggregated-mobility-data-www-2017"><span class="toc-nav-number">56.</span> <span class="toc-nav-text">{Trajectory_Recovery_www17}Xu, Fengli, et al. “Trajectory recovery from ash: User privacy is not preserved in aggregated mobility data.” www, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#motivations_check-ins_cscw18-xu-f-zhang-g-chen-zet-al-understanding-motivations-behind-inaccurate-check-ins-cscw18"><span class="toc-nav-number">57.</span> <span class="toc-nav-text">{Motivations_Check-ins_CSCW18} Xu, F., Zhang, G., Chen, Z.et al. Understanding Motivations behind Inaccurate Check-ins. CSCW’18</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#packloc_ubicomp18-cherian-jim-jun-luo-and-shen-shyang-ho-parkloc-light-weight-graph-based-vehicular-localization-in-parking-garages-ubicomp18"><span class="toc-nav-number">58.</span> <span class="toc-nav-text">{PackLoc_UbiComp18} Cherian, Jim, Jun Luo, and Shen-Shyang Ho. “ParkLoc: Light-weight Graph-based Vehicular Localization in Parking Garages.” UbiComp’18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sybil_user_review_ndss18-zheng-haizhong-et-al-smoke-screener-or-straight-shooter-detecting-elite-sybil-attacks-in-user-review-social-networks-ndss18"><span class="toc-nav-number">59.</span> <span class="toc-nav-text">{Sybil_user_review_ndss18} Zheng, Haizhong, et al. “Smoke screener or straight shooter: Detecting elite sybil attacks in user-review social networks.” NDSS18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#drn_www18-zhao-xiangyu-et-al-deep-reinforcement-learning-for-page-wise-recommendations-www-2018"><span class="toc-nav-number">60.</span> <span class="toc-nav-text">{DRN_www18} Zhao, Xiangyu, et al. “Deep reinforcement learning for page-wise recommendations.” www, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#surprise_model_chi18-niu-xi-et-al-surprise-me-if-you-can-serendipity-in-health-information-chi-2018"><span class="toc-nav-number">61.</span> <span class="toc-nav-text">{surprise_model_CHI18} Niu, Xi, et al. “Surprise me if you can: Serendipity in health information.” CHI, 2018.</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sommese_manycast2_imc20-raffaele-sommese-leandro-bertholdo-gautam-akiwate-et-al-manycast2-using-anycast-to-measure-anycast-proc-of-imc-456463-2020"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">{Sommese_MAnycast2_IMC20} Raffaele Sommese, Leandro Bertholdo, Gautam Akiwate, et al. MAnycast2: Using Anycast to Measure Anycast. Proc. of IMC: 456–463. 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#dixit13-advait-dixit-pawan-prakash-y-charlie-hu-ramana-rao-kompella-on-the-impact-of-packet-spraying-in-data-center-networks-ieee-infocom-2013"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">{Dixit’13} Advait Dixit, Pawan Prakash, Y. Charlie Hu, Ramana Rao Kompella. On the Impact of Packet Spraying in Data Center Networks. IEEE INFOCOM, 2013.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#matthew-k-mukerjee-david-naylor-junchen-jiang-dongsu-han-srinivasan-seshan-hui-zhang-practical-real-time-centralized-control-for-cdn-based-live-video-delivery-proc-of-sigcomm-2015"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Matthew K. Mukerjee, David Naylor, Junchen Jiang, Dongsu Han, Srinivasan Seshan, Hui Zhang. Practical, Real-time Centralized Control for CDN-based Live Video Delivery. Proc. of SIGCOMM, 2015.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#agarwal20-neil-agarwal-matteo-varvello-andrius-aucinas-fabián-bustamante-ravi-netravali-mind-the-delay-the-adverse-effects-of-delay-based-tcp-on-http-acm-conext-2020"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">{Agarwal’20} Neil Agarwal, Matteo Varvello, Andrius Aucinas, Fabián Bustamante, Ravi Netravali. Mind the Delay: The Adverse Effects of Delay-Based TCP on HTTP. ACM CoNEXT, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#yu-yang-yi-ding-dengpan-yuan-guang-wang-xiaoyang-xie-yunhuai-liu-tian-he-desheng-zhang-transloc-transparent-indoor-localization-with-uncertain-human-participation-for-instant-delivery-proc-of-mobicom-2020"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Yu Yang, Yi Ding, Dengpan Yuan, Guang Wang, Xiaoyang Xie, Yunhuai Liu, Tian He, Desheng Zhang. TransLoc: Transparent Indoor Localization with Uncertain Human Participation for Instant Delivery. Proc. of Mobicom, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sherif-elazzouni-fei-wu-ness-shroff-eylem-ekici-predictive-caching-at-the-wireless-edge-using-near-zero-caches-acmieee-mobihoc-2020"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Sherif ElAzzouni, Fei Wu, Ness Shroff, Eylem Ekici. Predictive Caching at The Wireless Edge Using Near-Zero Caches. ACM/IEEE Mobihoc, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#khaled-m-diab-mohamed-hefeeda-joint-content-distribution-and-traffic-engineering-of-adaptive-videos-in-telco-cdns-proc-of-infocom-2019"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Khaled M. Diab, Mohamed Hefeeda. Joint Content Distribution and Traffic Engineering of Adaptive Videos in Telco-CDNs. Proc. of INFOCOM 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#jia-zhang-enhuan-dong-zili-meng-et-al-wisetrans-adaptive-transport-protocol-selection-for-mobile-web-service-proc-of-www-2021"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">Jia Zhang, Enhuan Dong, Zili Meng, et al. WiseTrans : Adaptive Transport Protocol Selection for Mobile Web Service. Proc. of WWW. 2021.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#feldmann2020-eldmann-anja-and-gasser-oliver-and-lichtblau-franziska-and-pujol-enric-and-poese-ingmar-and-dietzel-christoph-and-wagner-daniel-and-wichtlhuber-matthias-and-tapiador-juan-and-vallina-rodriguez-narseo-and-others-the-lockdown-effectimplications-of-the-covid-19-pandemic-on-internet-traffic"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">{feldmann2020} eldmann, Anja and Gasser, Oliver and Lichtblau, Franziska and Pujol, Enric and Poese, Ingmar and Dietzel, Christoph and Wagner, Daniel and Wichtlhuber, Matthias and Tapiador, Juan and Vallina-Rodriguez, Narseo and others.** The Lockdown Effect:Implications of the COVID-19 Pandemic on Internet Traffic</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lutu2020-lutu-andra-and-perino-diego-and-bagnulo-marcelo-and-frias-martinez-enrique-and-khangosstar-javad-a-characterization-of-the-covid-19-pandemic-impact-on-a-mobile-network-operator-traffic-imc-2020"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">{lutu2020} Lutu, Andra and Perino, Diego and Bagnulo, Marcelo and Frias-Martinez, Enrique and Khangosstar, Javad.** A Characterization of the COVID-19 Pandemic Impact on a Mobile Network Operator Traffic**. IMC, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#muller2019-muller-moritz-and-thomas-matthew-and-wessels-duane-and-hardaker-wes-and-chung-taejoong-and-toorop-willem-and-rijswijk-deij-roland-van-roll-roll-roll-your-root-a-comprehensive-analysis-of-the-first-ever-dnssec-root-ksk-rollover-imc-2020"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">{muller2019} Muller, Moritz and Thomas, Matthew and Wessels, Duane and Hardaker, Wes and Chung, Taejoong and Toorop, Willem and Rijswijk-Deij, Roland van.** Roll, Roll, Roll your Root: A Comprehensive Analysis of the First Ever DNSSEC Root KSK Rollover **. IMC, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lu2019-lu-chaoyi-and-liu-baojun-and-li-zhou-and-hao-shuang-and-duan-haixin-and-zhang-mingming-and-leng-chunying-and-liu-ying-and-zhang-zaifeng-and-wu-jianping-an-end-to-end-large-scale-measurement-of-dns-over-encryption-how-far-have-we-come-imc-2019"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">{lu2019} Lu, Chaoyi and Liu, Baojun and Li, Zhou and Hao, Shuang and Duan, Haixin and Zhang, Mingming and Leng, Chunying and Liu, Ying and Zhang, Zaifeng and Wu, Jianping.** An end-to-end, large-scale measurement of dns-over-encryption: How far have we come? **. IMC, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#brand2019-brandon-schlinker-italo-cunhayi-ching-chiusrikanth-sundaresanethan-katz-bassett-internet-performance-from-facebooks-edge-imc-2019"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">{brand2019} Brandon Schlinker ,Italo Cunha,Yi-Ching Chiu,Srikanth Sundaresan,Ethan Katz-Bassett.** Internet Performance from Facebook’s Edge **. IMC, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chun-yu-daniel-chen-bo-yao-lin-junding-wang-kang-g-shi-keep-others-from-peeking-at-your-mobile-device-screen-proc-of-mobicom-2019"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">Chun-Yu (Daniel) Chen, Bo-Yao Lin, Junding Wang, Kang G. Shi. Keep Others from Peeking at Your Mobile Device Screen! Proc. of MobiCom, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#tom-barbette-and-chen-tang-and-haoran-yao-and-dejan-kostic-and-gerald-q-maguire-jr-and-panagiotis-papadimitratos-and-marco-chiesa-a-high-speed-load-balancer-design-with-guaranteed-per-connection-consistency-proc-of-nsdi-2020"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">Tom Barbette and Chen Tang and Haoran Yao and Dejan Kosti{&#39;c} and Gerald Q. Maguire Jr. and Panagiotis Papadimitratos and Marco Chiesa. A High-Speed Load-Balancer Design with Guaranteed Per-Connection-Consistency. Proc. of NSDI, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#yeganeh2019cloud-yeganeh-bahador-and-durairajan-ramakrishnan-and-rejaie-reza-and-willinger-walter-how-cloud-traffic-goes-hiding-a-study-of-amazons-peering-fabric-imc-2019"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">{yeganeh2019cloud} Yeganeh, Bahador and Durairajan, Ramakrishnan and Rejaie, Reza and Willinger, Walter** How Cloud Traffic Goes Hiding: A Study of Amazon’s Peering Fabric**. IMC, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#scheitle18-quirin-scheitle-oliver-hohlfeld-julien-gamba-jonas-jelten-torsten-zimmermann-stephen-d-strowes-narseo-vallina-rodriguez-a-long-way-to-the-top-significance-structure-and-stability-of-internet-top-lists-acm-imc-2018"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">{Scheitle18} Quirin Scheitle, Oliver Hohlfeld, Julien Gamba, Jonas Jelten, Torsten Zimmermann, Stephen D. Strowes, Narseo Vallina-Rodriguez. A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists. ACM IMC, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chaoyue-niu-fan-wu-shaojie-tang-lifeng-hua-rongfei-jia-chengfei-lv-zhihua-wu-guihai-chen-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy-proc-of-mobicom-2020"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">Chaoyue Niu, Fan Wu, Shaojie Tang, Lifeng Hua, Rongfei Jia, Chengfei Lv, Zhihua Wu, Guihai Chen. Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy. Proc. of MobiCom. 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sommer_coverup_nsdi19-david-sommer-aritra-dhar-luka-malisa-esfandiar-mohammadi-daniel-ronzani-and-srdjan-čapkun-deniable-upload-and-download-via-passive-participation-proc-of-nsdi-649666-2019"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">{Sommer_Coverup_NSDI19} David Sommer, Aritra Dhar, Luka Malisa, Esfandiar Mohammadi, Daniel Ronzani, and Srdjan Čapkun. “Deniable upload and download via passive participation.” Proc. of NSDI: 649–666. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#pachilakis2019-michalis-pachilakis-panagiotis-papadopoulos-evangelos-p-markatos-nicolas-kourtellis-no-more-chasing-waterfalls-a-measurement-study-of-the-header-bidding-ad-ecosystem-imc-2017"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">{pachilakis2019} Michalis Pachilakis , Panagiotis Papadopoulos, Evangelos P. Markatos , Nicolas Kourtellis.** No More Chasing Waterfalls: A Measurement Study of the Header Bidding Ad-Ecosystem **. IMC, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sivakumar17-ashiwan-sivakumar-chuan-jiang-yun-seong-nam-shankaranarayanan-pn-vijay-gopalakrishnan-sanjay-g-rao-subhabrata-sen-mithuna-thottethodi-tn-vijaykumar-nutshell-scalable-whittled-proxy-execution-for-low-latency-web-over-cellular-networks-acm-mobicom-2017"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">{Sivakumar17} Ashiwan Sivakumar, Chuan Jiang, Yun Seong Nam, Shankaranarayanan P.N., Vijay Gopalakrishnan, Sanjay G Rao, Subhabrata Sen, Mithuna Thottethodi, T.N. Vijaykumar. NutShell: Scalable Whittled Proxy Execution for Low-Latency Web over Cellular Networks. ACM MobiCom, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ruamviboonsuk17-vaspol-ruamviboonsuk-ravi-netravali-muhammed-uluyol-harsha-v-madhyastha-vroom-accelerating-the-mobile-web-with-server-aided-dependency-resolution-acm-sigcomm-2017"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">{Ruamviboonsuk17} Vaspol Ruamviboonsuk, Ravi Netravali, Muhammed Uluyol, Harsha V. Madhyastha. VROOM: Accelerating the Mobile Web with Server-Aided Dependency Resolution. ACM SIGCOMM, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#kelton17-conor-kelton-jihoon-ryoo-aruna-balasubramanian-and-samir-r-das-improving-user-perceived-page-load-time-using-gaze-usenix-nsdi-2017"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">{Kelton17} Conor Kelton, Jihoon Ryoo, Aruna Balasubramanian, and Samir R. Das. Improving User Perceived Page Load Time Using Gaze. USENIX NSDI, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chang-lou-peng-huang-scott-smith-understanding-detecting-and-localizing-partial-failures-in-large-system-software-nsdi-2020"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">Chang Lou, Peng Huang, Scott Smith. Understanding, Detecting and Localizing Partial Failures in Large System Software, NSDI, 2020</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#guo2018-peizhen-guo-bo-hu-rui-li-wenjun-hu-foggycache-cross-device-approximate-computation-reuse-proc-of-acm-international-conference-on-mobile-computing-and-networking-2018"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">​	{Guo2018} Peizhen Guo, Bo Hu, Rui Li, Wenjun Hu. FoggyCache: Cross-Device Approximate Computation Reuse. Proc. of ACM International Conference on Mobile Computing and Networking, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#shan_device_mobicom19-zhiyong-shan-raina-samuel-and-iulian-neamtiu-device-administrator-use-and-abuse-in-android-detection-and-characterization-proc-of-mobicom-116-2019"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">{Shan_device_MobiCom19} Zhiyong Shan, Raina Samuel, and Iulian Neamtiu. “Device Administrator Use and Abuse in Android: Detection and Characterization.” Proc. of MobiCom, 1–16. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mardani20-shaghayegh-mardani-mayank-singh-ravi-netravali-fawkes-faster-mobile-page-loads-via-app-inspired-static-templating-usenix-nsdi-2020"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">{Mardani20} Shaghayegh Mardani, Mayank Singh, Ravi Netravali. Fawkes: Faster Mobile Page Loads via App-Inspired Static Templating. USENIX NSDI, 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#netravali18-ravi-netravali-vikram-nathan-james-mickens-hari-balakrishnan-vesper-measuring-time-to-interactivity-for-modern-web-pages-usenix-nsdi-2018"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">{Netravali18} Ravi Netravali, Vikram Nathan, James Mickens, Hari Balakrishnan. Vesper: Measuring Time-to-Interactivity for Modern Web Pages. USENIX NSDI, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-zhang_flash_mobisys19-tao-zhang-donald-e-porter-aviad-zuck-and-dan-tsafrir-apps-can-quickly-destroy-your-mobiles-flash-why-they-dont-and-how-to-keep-it-that-way-proc-of-mobisys-535536-2019"><span class="toc-nav-number">29.</span> <span class="toc-nav-text">1. {Zhang_Flash_MobiSys19} Tao Zhang, Donald E. Porter, Aviad Zuck, and Dan Tsafrir. “Apps can quickly destroy your mobile’s flash – Why they don’t, and how to keep it that way.” Proc. of MobiSys, 535–536. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-liu_dns_imc19-chaoyi-lu-baojun-liu-zhou-li-et-al-an-end-to-end-large-scale-measurement-of-dns-over-encryption-how-far-have-we-come-proc-of-imc-2019"><span class="toc-nav-number">30.</span> <span class="toc-nav-text">2. {Liu_DNS_IMC19} Chaoyi Lu, Baojun Liu, Zhou Li, et al. “An End-to-End , Large-Scale Measurement of DNS-over-Encryption : How Far Have We Come ?” Proc. of IMC. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-ray_vantage_sigcomm19-devdeep-ray-jack-kosaian-k-v-rashmi-and-srinivasan-seshan-vantage-optimizing-video-upload-for-time-shifted-viewing-of-social-live-streams-proc-of-sigcomm-380393-2019"><span class="toc-nav-number">31.</span> <span class="toc-nav-text">3. {Ray_Vantage_SIGCOMM19} Devdeep Ray, Jack Kosaian, K. V. Rashmi, and Srinivasan Seshan. “Vantage: Optimizing video upload for time-shifted viewing of social live streams.” Proc. of SIGCOMM, 380–393. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-ren_optimise_infocom17-jie-ren-ling-gao-hai-wang-and-zheng-wang-optimise-web-browsing-on-heterogeneous-mobile-platforms-a-machine-learning-based-approach-proc-of-infocom-2017"><span class="toc-nav-number">32.</span> <span class="toc-nav-text">4. {Ren_Optimise_INFOCOM17} Jie Ren, Ling Gao, Hai Wang, and Zheng Wang. “Optimise web browsing on heterogeneous mobile platforms: A machine learning based approach.” Proc. of INFOCOM. 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-jiao_diversion_mobihoc19-lei-jiao-ruiting-zhou-xiaojun-lin-and-xu-chen-online-scheduling-of-trafic-diversion-and-cloud-scrubbing-with-uncertainty-in-current-inputs-2019-proc-of-mobihoc-271280"><span class="toc-nav-number">33.</span> <span class="toc-nav-text">5. {Jiao_Diversion_Mobihoc19} Lei Jiao, Ruiting Zhou, Xiaojun Lin, and Xu Chen. Online scheduling of trafic diversion and cloud scrubbing with uncertainty in current inputs. 2019. Proc. of MobiHoc, 271–280.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#6-yan_puffer_nsdi20-francis-y-yan-hudson-ayers-chenzhi-zhu-et-al-learning-in-situ-a-randomized-experiment-in-video-streaming-proc-of-nsdi-2019"><span class="toc-nav-number">34.</span> <span class="toc-nav-text">6. {Yan_Puffer_NSDI20} Francis Y. Yan, Hudson Ayers, Chenzhi Zhu, et al. “Learning in situ: a randomized experiment in video streaming.” Proc. of NSDI. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#7-naseer_disruption-free_sigcomm20-usama-naseer-luca-niccolini-alan-frindell-and-theophilus-a-benson-zero-downtime-release-disruption-free-load-balancing-of-a-multi-billion-user-website-proc-of-sigcomm-529541-2020"><span class="toc-nav-number">35.</span> <span class="toc-nav-text">7. {Naseer_disruption-free_SIGCOMM20} Usama Naseer, Luca Niccolini, Alan Frindell, and Theophilus A Benson. Zero Downtime Release : Disruption-free Load Balancing of a Multi-Billion User Website. Proc. of SIGCOMM, 529–541. 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#8-zhang_e2e_sigcomm19-xu-zhang-siddhartha-sen-daniar-kurniawan-haryadi-gunawi-and-junchen-jiang-e2e-embracing-user-heterogeneity-to-improve-quality-of-experience-on-theweb-proc-of-sigcomm-289302-2019"><span class="toc-nav-number">36.</span> <span class="toc-nav-text">8. {Zhang_E2E_SIGCOMM19} Xu Zhang, Siddhartha Sen, Daniar Kurniawan, Haryadi Gunawi, and Junchen Jiang. “E2E: Embracing user heterogeneity to improve quality of experience on theweb.” Proc. of SIGCOMM: 289–302. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#9-li_bridging_sigcomm19-yuanjie-li-kyu-han-kim-christina-vlachou-and-junqing-xie-bridging-the-data-charging-gap-in-the-cellular-edge-proc-of-sigcomm-1528-2019"><span class="toc-nav-number">37.</span> <span class="toc-nav-text">9. {Li_Bridging_SIGCOMM19} Yuanjie Li, Kyu Han Kim, Christina Vlachou, and Junqing Xie. “Bridging the data charging gap in the cellular edge.” Proc. of SIGCOMM: 15–28. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#10-xue_deepfussion_mobihoc19-hongfei-xue-wenjun-jiang-chenglin-miao-ye-yuan-fenglong-ma-xin-ma-yijiang-wang-shuochao-yao-wenyao-xu-aidong-zhang-and-lu-su-deepfusion-a-deep-learning-framework-for-the-fusion-of-heterogeneous-sensory-data-in-proc-of-mobihoc-1511602019"><span class="toc-nav-number">38.</span> <span class="toc-nav-text">10. {Xue_deepfussion_MobiHoc19} Hongfei Xue, Wenjun Jiang, Chenglin Miao, Ye Yuan, Fenglong Ma, Xin Ma, Yijiang Wang, Shuochao Yao, Wenyao Xu, Aidong Zhang, and Lu Su. “Deepfusion: A deep learning framework for the fusion of heterogeneous sensory data.” In Proc. of MobiHoc, 151–160.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-li_anomaly_mobihoc19-zhijing-li-zhujun-xiao-bolun-wang-ben-y-zhao-and-haitao-zheng-scaling-deep-learning-models-for-spectrum-anomaly-detection-proc-of-mobihoc-291300-2019"><span class="toc-nav-number">39.</span> <span class="toc-nav-text">11. {Li_Anomaly_MobiHoc19} Zhijing Li, Zhujun Xiao, Bolun Wang, Ben Y. Zhao, and Haitao Zheng. “Scaling deep learning models for spectrum anomaly detection.” Proc. of MobiHoc: 291–300. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#12-zhou_slim_nsdi19-danyang-zhuo-kaiyuan-zhang-yibo-zhu-et-al-slim-os-kernel-support-for-a-low-overhead-container-overlay-network-proc-of-nsdi-331344-2019"><span class="toc-nav-number">40.</span> <span class="toc-nav-text">12. {Zhou_Slim_NSDI19} Danyang Zhuo, Kaiyuan Zhang, Yibo Zhu, et al. “SlIM: OS kernel support for a low-overhead container overlay network.” Proc. of NSDI: 331–344. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#13-perino_experience_mobicom20-diego-perino-xiaoyuan-yang-joan-serra-andra-lutu-and-ilias-leontiadis-experience-advanced-network-operations-in-un-connected-remote-communities-proc-of-mobicom-204213-2020"><span class="toc-nav-number">41.</span> <span class="toc-nav-text">13. {Perino_Experience_MobiCom20} Diego Perino, Xiaoyuan Yang, Joan Serra, Andra Lutu, and Ilias Leontiadis. “Experience: Advanced network operations in (Un)-connected remote communities.” Proc. of MobiCom, 204–213. 2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-gu_tiresias_nsdi19-juncheng-gu-mosharaf-chowdhury-kang-g-shin-et-al-tiresias-a-gpu-cluster-manager-for-distributed-deep-learning-proc-of-nsdi-485500-2019"><span class="toc-nav-number">42.</span> <span class="toc-nav-text">14. {Gu_tiresias_NSDI19} Juncheng Gu, Mosharaf Chowdhury, Kang G. Shin, et al. “Tiresias: A GPU cluster manager for distributed deep learning.” Proc. of NSDI, 485–500. 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hu_cablemon_nsdi20-jiyao-hu-zhenyu-zhou-xiaowei-yang-jacob-malone-jonathan-w-williams-chapel-hill-implementation-nsdi-and-jacob-malone-cablemon-improving-the-reliability-of-cable-broadband-networks-via-proactive-network-maintenance-in-proc-of-nsdi2020"><span class="toc-nav-number">43.</span> <span class="toc-nav-text">{Hu_CableMon_NSDI20} Jiyao Hu, Zhenyu Zhou, Xiaowei Yang, Jacob Malone, Jonathan W Williams, Chapel Hill, Implementation Nsdi, and Jacob Malone. “CableMon : Improving the Reliability of Cable Broadband Networks via Proactive Network Maintenance.” In Proc. of NSDI.2020.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mackenzie_email_refind_www19-mackenzie-j-gupta-k-qiao-f-et-al-exploring-user-behavior-in-email-re-finding-taskscthe-world-wide-web-conference-acm-2019-1245-1255"><span class="toc-nav-number">44.</span> <span class="toc-nav-text">{Mackenzie_email_refind_www19} Mackenzie J, Gupta K, Qiao F, et al. Exploring User Behavior in Email Re-Finding Tasks[C]//The World Wide Web Conference. ACM, 2019: 1245-1255.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#110039-dukic_flow_size_nsdi19-vojislav-ðukić-zurich-sangeetha-abdu-jyothi-bojan-karlaš-muhsen-owaida-ce-zhang-ankit-singla-eth-zurich-vojislav-ðuki-́cðuki-́c-and-sangeetha-abdu-jyothi-is-advance-knowledge-of-flow-sizes-a-plausible-assumption-in-proc-of-nsdi-5655802019"><span class="toc-nav-number">45.</span> <span class="toc-nav-text">11.0.0.39. {Dukic_flow_size_NSDI19} Vojislav Ðukić, Zurich Sangeetha, Abdu Jyothi, Bojan Karlaš, Muhsen Owaida, Ce Zhang, Ankit Singla, Eth Zurich, Vojislav Ðuki´cðuki´c, and Sangeetha Abdu Jyothi. “Is advance knowledge of flow sizes a plausible assumption?” In Proc. of NSDI, 565–580.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#110040-liu_edge_mobicom19-luyang-liu-hongyu-li-and-marco-gruteser-edge-assisted-real-time-object-detection-for-mobile-augmented-reality-in-proc-of-mobicom2019"><span class="toc-nav-number">46.</span> <span class="toc-nav-text">11.0.0.40. {Liu_edge_MobiCom19} Luyang Liu, Hongyu Li, and Marco Gruteser. “Edge assisted real-time object detection for mobile augmented reality.” In Proc. of MobiCom.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#110041-mao_decima_sigcomm19-hongzi-mao-malte-schwarzkopf-shaileshh-bojja-venkatakrishnan-zili-meng-mohammad-alizadeh-learning-scheduling-algorithms-for-data-processing-clusters-sigcomm19"><span class="toc-nav-number">47.</span> <span class="toc-nav-text">11.0.0.41. {Mao_Decima_SIGCOMM19} Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng ⋆ , Mohammad Alizadeh. Learning Scheduling Algorithms for Data Processing Clusters. SIGCOMM’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#kalia_erpc_nsdi19-anuj-kalia-michael-kaminsky-intel-labs-david-andersen-implementation-nsdi-and-david-g-andersen-datacenter-rpcs-can-be-general-and-fast-this-paper-is-included-in-the-proceedings-of-the-in-proc-of-nsdi2019"><span class="toc-nav-number">48.</span> <span class="toc-nav-text">{Kalia_eRPC_NSDI19} Anuj Kalia, Michael Kaminsky, Intel Labs, David Andersen, Implementation Nsdi, and David G Andersen. “Datacenter RPCs can be General and Fast This paper is included in the Proceedings of the.” In Proc. of NSDI.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wang_flash_conext19-peng-wanghong-xuxin-jintao-wang-flash-efficient-dynamic-routing-for-offchain-networks-conext-19"><span class="toc-nav-number">49.</span> <span class="toc-nav-text">{Wang_flash_coNEXT19} Peng Wang,Hong Xu,Xin Jin,Tao Wang “Flash: efficient dynamic routing for offchain networks” CoNEXT &#39;19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#kim_freeflow_nsdi19-daehyeok-kim-tianlong-yu-hongqiang-harry-liu-yibo-zhu-jitu-padhye-shachar-raindel-chuanxiong-guo-vyas-sekar-and-srinivasan-seshan-freeflow-software-based-virtual-rdma-networking-for-containerized-clouds-in-proc-of-nsdi-1131252019"><span class="toc-nav-number">50.</span> <span class="toc-nav-text">{Kim_FreeFlow_NSDI19} Daehyeok Kim, Tianlong Yu, Hongqiang Harry Liu, Yibo Zhu, Jitu Padhye, Shachar Raindel, Chuanxiong Guo, Vyas Sekar, and Srinivasan Seshan. “Freeflow: Software-based virtual RDMA networking for containerized clouds.” In Proc. of NSDI, 113–125.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#liang_neurocuts_sigcomm19-eric-lian-hang-zhu-xin-jin-ion-stoica-neural-packet-classifications-sigcomm-2019"><span class="toc-nav-number">51.</span> <span class="toc-nav-text">{Liang_NeuroCuts_SIGCOMM19} Eric Lian, Hang Zhu, Xin Jin, Ion Stoica. Neural Packet Classifications. SIGCOMM 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#woo_elastic_nsdi18-shinae-woo-justine-sherry-sangjin-han-sue-moon-sylvia-ratnasamy-and-scott-shenker-elastic-scaling-of-stateful-network-functions-in-proc-of-nsdi2018"><span class="toc-nav-number">52.</span> <span class="toc-nav-text">{Woo_Elastic_NSDI18} Shinae Woo, Justine Sherry, Sangjin Han, Sue Moon, Sylvia Ratnasamy, and Scott Shenker. “Elastic Scaling of Stateful Network Functions.” In Proc. of NSDI.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wang_plover_nsdi18-cheng-wang-xusheng-chen-weiwei-jia-boxuan-li-haoran-qiu-shixiong-zhao-and-heming-cui-plover-fast-multi-core-scalable-virtual-machine-fault-tolerance-in-proc-of-nsdi2018"><span class="toc-nav-number">53.</span> <span class="toc-nav-text">{Wang_PLOVER_NSDI18} Cheng Wang, Xusheng Chen, Weiwei Jia, Boxuan Li, Haoran Qiu, Shixiong Zhao, and Heming Cui. “PLOVER: Fast, Multi-core Scalable Virtual Machine Fault-tolerance.” In Proc. of NSDI.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chen_bikegps_mobisys18-kongyang-chen-and-guang-tan-bikegps-accurate-localization-of-shared-bikes-in-street-canyons-via-low-level-gps-cooperation-in-proc-of-mobisys-1501622018"><span class="toc-nav-number">54.</span> <span class="toc-nav-text">{Chen_BikeGPS_MobiSys18} Kongyang Chen and Guang Tan. “BikeGPS: Accurate localization of shared bikes in street canyons via low-level GPS cooperation.” In Proc. of MobiSys, 150–162.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#gediminas-adomavicius-and-alexander-tuzhilin-toward-the-next-generation-of-recommender-systems-a-survey-of-the-state-of-the-art-and-possible-extensions-ieee-trans-knowl-data-eng2005"><span class="toc-nav-number">55.</span> <span class="toc-nav-text">Gediminas Adomavicius and Alexander Tuzhilin. “Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions.” IEEE Trans. Knowl. Data Eng.2005</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#luyang-liu-hongyu-li-and-marco-gruteser-edge-assisted-real-time-object-detection-for-mobile-augmented-reality-in-proc-of-mobicom2019"><span class="toc-nav-number">56.</span> <span class="toc-nav-text">Luyang Liu, Hongyu Li, and Marco Gruteser. “Edge assisted real-time object detection for mobile augmented reality.” In Proc. of MobiCom.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wenyi-xiao-huan-zhao-haojie-pan-yangqiu-song-vincent-w-zheng-and-qiang-yang-beyond-personalization-social-content-recommendation-for-creator-equality-and-consumer-satisfaction-in-proc-of-kdd-2352452019"><span class="toc-nav-number">57.</span> <span class="toc-nav-text">Wenyi Xiao, Huan Zhao, Haojie Pan, Yangqiu Song, Vincent W. Zheng, and Qiang Yang. “Beyond personalization: Social content recommendation for creator equality and consumer satisfaction.” In Proc. of KDD, 235–245.2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#yang_interpretable_kdd18-carl-yang-xiaolin-shi-jie-luo-and-jiawei-han-i-know-youll-be-back-interpretable-new-user-clustering-and-churn-prediction-on-a-mobile-social-application-in-proc-of-kdd-9149222018"><span class="toc-nav-number">58.</span> <span class="toc-nav-text">{Yang_Interpretable_KDD18} Carl Yang, Xiaolin Shi, Jie Luo, and Jiawei Han. “I know you’ll be back: Interpretable new user clustering and churn prediction on a mobile social application.” In Proc. of KDD, 914–922.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rediet-abebe-david-parkes-jon-kleinberg-and-charalampos-e-tsourakakis-opinion-dynamics-with-varying-susceptibility-to-persuasion-proc-kdd2018"><span class="toc-nav-number">59.</span> <span class="toc-nav-text">Rediet Abebe, David Parkes, Jon Kleinberg, and Charalampos E. Tsourakakis. “Opinion dynamics with varying susceptibility to persuasion.” Proc. KDD.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hongzi-mao-malte-schwarzkopf-shaileshh-bojja-venkatakrishnan-zili-meng-mohammad-alizadeh-learning-scheduling-algorithms-for-data-processing-clusters-sigcomm19"><span class="toc-nav-number">60.</span> <span class="toc-nav-text">Hongzi Mao, Malte Schwarzkopf, Shaileshh Bojja Venkatakrishnan, Zili Meng ⋆ , Mohammad Alizadeh. Learning Scheduling Algorithms for Data Processing Clusters. SIGCOMM’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rosaria-conte-nigel-gilbert-giulia-bonelli-claudio-cioffi-revilla-guillaume-deffuant-janos-kertesz-vittorio-loreto-suzy-moat-jean-pierre-nadal-anxo-sanchez-andrzej-nowak-andreas-flache-maxi-san-miguel-and-dirk-helbing-manifesto-of-computational-social-science-the-european-physical-journal-special-topics-2012"><span class="toc-nav-number">61.</span> <span class="toc-nav-text">Rosaria Conte, Nigel Gilbert, Giulia Bonelli, Claudio Cioﬃ-Revilla, Guillaume Deﬀuant, Janos Kertesz, Vittorio Loreto, Suzy Moat, Jean-Pierre Nadal, Anxo Sanchez, Andrzej Nowak, Andreas Flache, Maxi San Miguel, and Dirk Helbing. “Manifesto of computational social science.” The European Physical Journal Special Topics, 2012</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#pog-personalized-outfit-generation-for-fashion-recommendation-at-alibaba-ifashion_kdd19"><span class="toc-nav-number">62.</span> <span class="toc-nav-text">POG: Personalized Outfit Generation for Fashion Recommendation at Alibaba iFashion_KDD19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#wang_repeat_www19-chenyang-wang-min-zhang-weizhi-ma-yiqun-liu-and-shaoping-ma-modeling-item-specific-temporal-dynamics-of-repeat-consumption-for-recommender-systems-proc-world-wide-web-conf-www-2019"><span class="toc-nav-number">63.</span> <span class="toc-nav-text">{Wang_repeat_WWW19} Chenyang Wang, Min Zhang, Weizhi Ma, Yiqun Liu, and Shaoping Ma. “Modeling item-specific temporal dynamics of repeat consumption for recommender systems.” Proc. World Wide Web Conf. WWW 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#deep-multi-view-spatial-temporal-network-for-taxi-demand-predictionaaai18"><span class="toc-nav-number">64.</span> <span class="toc-nav-text">{Deep Multi-View Spatial-Temporal Network for Taxi Demand Prediction，AAAI18}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#fates-of-microscopic-social-ecosystems-keep-alive-or-deadkdd19"><span class="toc-nav-number">65.</span> <span class="toc-nav-text">{Fates of Microscopic Social Ecosystems: Keep Alive or Dead?，KDD19}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#predicting-dynamic-embedding-trajectory-in-temporal-interaction-networks_srijan_kdd19"><span class="toc-nav-number">66.</span> <span class="toc-nav-text">{Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks_Srijan_KDD19}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#bhagat_buy_again_kdd18-rahul-bhagat-alex-lobzhanidze-srevatsan-muralidharan-and-shankar-vishwanath-buy-it-again-modeling-repeat-purchase-recommendations-in-proceedings-of-the-acm-sigkdd-international-conference-on-knowledge-discovery-and-data-mining-62702018"><span class="toc-nav-number">67.</span> <span class="toc-nav-text">{Bhagat_buy_again_kdd18} Rahul Bhagat, Alex Lobzhanidze, Srevatsan Muralidharan, and Shankar Vishwanath. “Buy it again: Modeling repeat purchase recommendations.” In Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 62–70.2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#diversity-of-a-users-friend-circle-in-osns-and-h1-its-use-for-profiling"><span class="toc-nav-number">68.</span> <span class="toc-nav-text">Diversity of a User’s Friend Circle in OSNs and H1 Its Use for Proﬁling</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding-group-event-scheduling-via-the-outwithfriendz-mobile-applicationubicomp2018"><span class="toc-nav-number">69.</span> <span class="toc-nav-text">Understanding Group Event Scheduling via the OutWithFriendz Mobile Application，Ubicomp2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#a-weakly-supervised-learning-framework-for-detecting-social-anxiety-and-depressionasifubicomp-2018"><span class="toc-nav-number">70.</span> <span class="toc-nav-text">{A Weakly Supervised Learning Framework for Detecting Social Anxiety and Depression.ASIF.UbiComp 2018}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#liu_imputation_www19-zongtao-liu-zhongyi-tang-yang-yang-ning-li-wei-huang-and-fei-wu-how-do-your-neighbors-disclose-your-information-social-aware-time-series-imputation-proc-world-wide-web-conf-www-2019"><span class="toc-nav-number">71.</span> <span class="toc-nav-text">{Liu_imputation_www19} Zongtao Liu, Zhongyi Tang, Yang Yang, Ning Li, Wei Huang, and Fei Wu. “How do your neighbors disclose your information: Social-aware time series imputation.” Proc. World Wide Web Conf. WWW 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sadri-amin-et-al-what-will-you-do-for-the-rest-of-the-day-an-approach-to-continuous-trajectory-prediction-ubicomp2019"><span class="toc-nav-number">72.</span> <span class="toc-nav-text">{} Sadri, Amin, et al. “What will you do for the rest of the day?: An approach to continuous trajectory prediction.” UbiComp2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#privcheck-privacy-preserving-check-in-data-publishing-for-personalized-location-based-services-ubicomp16"><span class="toc-nav-number">73.</span> <span class="toc-nav-text">{PrivCheck: Privacy-Preserving Check-in Data Publishing for Personalized Location Based Services. Ubicomp’16}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#chen_learning-usage-patterns-of-emojis-from-large-scale-android-users_www18"><span class="toc-nav-number">74.</span> <span class="toc-nav-text">{Chen_Learning Usage Patterns of Emojis from Large-Scale Android Users_WWW’18}</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cheng_good_team_www19-cheng-ziqiang-et-al-what-makes-a-good-team-a-large-scale-study-on-the-effect-of-team-composition-in-honor-of-kings-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">75.</span> <span class="toc-nav-text">{Cheng_good_team_www19} Cheng, Ziqiang, et al. “What Makes a Good Team? A Large-scale Study on the Effect of Team Composition in Honor of Kings.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#costa_engaging_cscw18-costa-figueiredo-mayara-et-al-engaging-with-health-data-the-interplay-between-self-tracking-activities-and-emotions-in-fertility-struggles-proceedings-of-the-acm-on-human-computer-interaction-2cscw-2018-40"><span class="toc-nav-number">76.</span> <span class="toc-nav-text">{Costa_Engaging_CSCW18} Costa Figueiredo, Mayara, et al. “Engaging with Health Data: The Interplay Between Self-Tracking Activities and Emotions in Fertility Struggles.” Proceedings of the ACM on Human-Computer Interaction 2.CSCW (2018): 40.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cunha_successful_community_www19-cunha-tiago-et-al-are-all-successful-communities-alike-characterizing-and-predicting-the-success-of-online-communities-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">77.</span> <span class="toc-nav-text">{Cunha_successful_community_www19} Cunha, Tiago, et al. “Are All Successful Communities Alike? Characterizing and Predicting the Success of Online Communities.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mackenzie_email_refind_www19-mackenzie-j-gupta-k-qiao-f-et-al-exploring-user-behavior-in-email-re-finding-taskscthe-world-wide-web-conference-acm-2019-1245-1255"><span class="toc-nav-number">78.</span> <span class="toc-nav-text">{Mackenzie_email_refind_www19} Mackenzie J, Gupta K, Qiao F, et al. Exploring User Behavior in Email Re-Finding Tasks[C]//The World Wide Web Conference. ACM, 2019: 1245-1255.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ibosiola_complaint_www19-ibosiola-damilola-et-al-who-watches-the-watchmen-exploring-complaints-on-the-web-the-world-wide-web-conference-acm-2019"><span class="toc-nav-number">79.</span> <span class="toc-nav-text">{Ibosiola_complaint_www19} Ibosiola, Damilola, et al. “Who watches the watchmen: Exploring complaints on the web.” The World Wide Web Conference. ACM, 2019.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mental_well_being_www17-mobile-sensing-at-the-service-of-mental-well-being-a-large-scale-longitudinal-studywww17"><span class="toc-nav-number">80.</span> <span class="toc-nav-text">{mental_well_being_www17} Mobile Sensing at the Service of Mental Well-being: a Large-scale Longitudinal Study.WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#private_www17-how-public-is-my-private-life-privacy-in-online-dating-www17"><span class="toc-nav-number">81.</span> <span class="toc-nav-text">{private_www17} How Public Is My Private Life? Privacy in Online Dating. WWW17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#return_explore_www19-to-return-or-to-explore-modelling-human-mobility-and-dynamics-in-cyberspace-www19"><span class="toc-nav-number">82.</span> <span class="toc-nav-text">{return_explore_www19} To Return or to Explore: Modelling Human Mobility and Dynamics in Cyberspace. WWW19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ma_trust_facebook_chi19-xiao-ma-et-al-when-do-people-trust-their-social-groups-chi-2019"><span class="toc-nav-number">83.</span> <span class="toc-nav-text">{Ma_trust_facebook_CHI19} Xiao Ma, et al. “When Do People Trust Their Social Groups?” CHI 2019</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lbsn_hypergraph_www19-dingqi-yang-et-al-revisiting-user-mobility-and-social-relationships-in-lbsns-a-hypergraph-embedding-approach-www19"><span class="toc-nav-number">84.</span> <span class="toc-nav-text">{LBSN_hypergraph_www19} Dingqi, Yang, et al. Revisiting user mobility and social relationships in lbsns: a hypergraph embedding approach. WWW’19</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nba_cscw18-zhang-jason-shuo-chenhao-tan-and-qin-lv-this-is-why-we-play-characterizing-online-fan-communities-of-the-nba-teams-cscw-2018"><span class="toc-nav-number">85.</span> <span class="toc-nav-text">{NBA_CSCW18} Zhang, Jason Shuo, Chenhao Tan, and Qin Lv. “This is why we play: Characterizing Online Fan Communities of the NBA Teams.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stucheckin_kdd18-hang-mengyue-ian-pytlarz-and-jennifer-neville-exploring-student-check-in-behavior-for-improved-point-of-interest-prediction-kdd-2018"><span class="toc-nav-number">86.</span> <span class="toc-nav-text">{stuCheckin_KDD18} Hang, Mengyue, Ian Pytlarz, and Jennifer Neville. “Exploring student check-in behavior for improved point-of-interest prediction.” KDD 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hashtag_www17-y-zhang-language-in-our-time-an-empirical-analysis-of-hashtags-www17"><span class="toc-nav-number">87.</span> <span class="toc-nav-text">{Hashtag_www17} Y Zhang, Language in Our Time: An Empirical Analysis of Hashtags. WWW’17</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#name_reuse_www17-mariconti-enrico-et-al-whats-in-a-name-understanding-profile-name-reuse-on-twitter-www-2017"><span class="toc-nav-number">88.</span> <span class="toc-nav-text">{name_reuse_www17} Mariconti, Enrico, et al. “What’s in a Name?: Understanding Profile Name Reuse on Twitter.” www 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#understanding_ubicomp17-mehrotra-abhinav-et-al-understanding-the-role-of-places-and-activities-on-mobile-phone-interaction-and-usage-patterns-ubicomp-2017"><span class="toc-nav-number">89.</span> <span class="toc-nav-text">{understanding_ubicomp17} Mehrotra, Abhinav, et al. “Understanding the role of places and activities on mobile phone interaction and usage patterns.” UbiComp 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#what_is_public_cscw17-fiesler-casey-et-al-what-or-who-is-public-privacy-settings-and-social-media-content-sharing-cscw-2017"><span class="toc-nav-number">90.</span> <span class="toc-nav-text">{what_is_public_cscw17} Fiesler, Casey, et al. “What (or who) is public?: Privacy settings and social media content sharing.” CSCW 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#urban_migrants_www18-yang-yang-et-al-to-stay-or-to-leave-churn-prediction-for-urban-migrants-in-the-initial-period-www-2018"><span class="toc-nav-number">91.</span> <span class="toc-nav-text">{Urban_Migrants_www18} Yang, Yang, et al. “To Stay or to Leave: Churn Prediction for Urban Migrants in the Initial Period.” WWW 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#spatio_temporal_early_destination_prediction_ubicomp18-imai-ryo-et-al-early-destination-prediction-with-spatio-temporal-user-behavior-patterns-ubicomp-2018"><span class="toc-nav-number">92.</span> <span class="toc-nav-text">{spatio_temporal_early_destination_prediction_UbiComp18} Imai, Ryo, et al. “Early Destination Prediction with Spatio-temporal User Behavior Patterns.” UbiComp 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#anyone_troll_cscw17-cheng-justin-et-al-anyone-can-become-a-troll-causes-of-trolling-behavior-in-online-discussions-cscw-2017"><span class="toc-nav-number">93.</span> <span class="toc-nav-text">{anyone_troll_cscw17} Cheng, Justin, et al. “Anyone can become a troll: Causes of trolling behavior in online discussions.” CSCW 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ne-natcom18-wang-bo-et-al-network-enhancement-a-general-method-to-denoise-weighted-biological-networks-arxiv-preprint-arxiv180503327-2018"><span class="toc-nav-number">94.</span> <span class="toc-nav-text">{ne-natcom18} Wang, Bo, et al. “Network Enhancement: a general method to denoise weighted biological networks.” arXiv preprint arXiv:1805.03327 (2018).</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#couchsurfing_aribnb_cscw18-klein-m-zhao-j-ni-j-johnson-i-hill-bm-zhu-h-quality-standards-service-orientation-and-power-in-airbnb-and-couchsurfing-cscw-2017"><span class="toc-nav-number">95.</span> <span class="toc-nav-text">{Couchsurfing_Aribnb_CSCW18} KLEIN M, ZHAO J, NI J, JOHNSON I, HILL BM, ZHU H. Quality Standards, Service Orientation, and Power in Airbnb and Couchsurfing. CSCW, 2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#patterns_online_discussion_cscw18-zhang-justine-et-al-characterizing-online-public-discussions-through-patterns-of-participant-interactions-cscw-2018"><span class="toc-nav-number">96.</span> <span class="toc-nav-text">{patterns_online_discussion_cscw18} Zhang, Justine, et al. “Characterizing Online Public Discussions through Patterns of Participant Interactions.” CSCW 2018</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#app_give_away_ubicomp18-tu-zhen-et-al-your-apps-give-you-away-distinguishing-mobile-users-by-their-app-usage-fingerprints-ubicomp-2018"><span class="toc-nav-number">97.</span> <span class="toc-nav-text">{App_Give_Away_UbiComp18} Tu, Zhen, et al. “Your apps give you away: distinguishing mobile users by their app usage fingerprints.” Ubicomp 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#trajectory_recovery_www17xu-fengli-et-al-trajectory-recovery-from-ash-user-privacy-is-not-preserved-in-aggregated-mobility-data-www-2017"><span class="toc-nav-number">98.</span> <span class="toc-nav-text">{Trajectory_Recovery_www17}Xu, Fengli, et al. “Trajectory recovery from ash: User privacy is not preserved in aggregated mobility data.” www, 2017.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#motivations_check-ins_cscw18-xu-f-zhang-g-chen-zet-al-understanding-motivations-behind-inaccurate-check-ins-cscw18"><span class="toc-nav-number">99.</span> <span class="toc-nav-text">{Motivations_Check-ins_CSCW18} Xu, F., Zhang, G., Chen, Z.et al. Understanding Motivations behind Inaccurate Check-ins. CSCW’18</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#packloc_ubicomp18-cherian-jim-jun-luo-and-shen-shyang-ho-parkloc-light-weight-graph-based-vehicular-localization-in-parking-garages-ubicomp18"><span class="toc-nav-number">100.</span> <span class="toc-nav-text">{PackLoc_UbiComp18} Cherian, Jim, Jun Luo, and Shen-Shyang Ho. “ParkLoc: Light-weight Graph-based Vehicular Localization in Parking Garages.” UbiComp’18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sybil_user_review_ndss18-zheng-haizhong-et-al-smoke-screener-or-straight-shooter-detecting-elite-sybil-attacks-in-user-review-social-networks-ndss18"><span class="toc-nav-number">101.</span> <span class="toc-nav-text">{Sybil_user_review_ndss18} Zheng, Haizhong, et al. “Smoke screener or straight shooter: Detecting elite sybil attacks in user-review social networks.” NDSS18.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#drn_www18-zhao-xiangyu-et-al-deep-reinforcement-learning-for-page-wise-recommendations-www-2018"><span class="toc-nav-number">102.</span> <span class="toc-nav-text">{DRN_www18} Zhao, Xiangyu, et al. “Deep reinforcement learning for page-wise recommendations.” www, 2018.</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#surprise_model_chi18-niu-xi-et-al-surprise-me-if-you-can-serendipity-in-health-information-chi-2018"><span class="toc-nav-number">103.</span> <span class="toc-nav-text">{surprise_model_CHI18} Niu, Xi, et al. “Surprise me if you can: Serendipity in health information.” CHI, 2018.</span></a></li></ol>
         
         </div>
       </aside>
