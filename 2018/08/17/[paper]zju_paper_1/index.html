@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码 - Aerber Joy
+        
+    </title>
+
+    <link rel="canonical" href="https://mengyingzhou.github.io/2018/08/17/[paper]zju_paper_1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('bg.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Paper" title="Paper">Paper</a>
+                            
+                              <a class="tag" href="/tags/#Internship" title="Internship">Internship</a>
+                            
+                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                            
+                              <a class="tag" href="/tags/#Knowledge Graph" title="Knowledge Graph">Knowledge Graph</a>
+                            
+                              <a class="tag" href="/tags/#CNN" title="CNN">CNN</a>
+                            
+                        </div>
+                        <h1>[Paper Notes]  01-浙江大学实习期间看的一些论文和写的一些代码</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Aerber Zhou on
+                            2018-08-17
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Aerber Joy</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="outline">Outline</h1>
+<p>主要会讲几篇论文的aims，background，innovation，model details，毕竟概述性质将，有兴趣的可以自己找paper看一下，数学公式或者证明的相对来说比较少。</p>
+<p>一方面毕竟machine learning这一块本来解释性也不是很多，照着实现就行；另一方面我一两周中看的论文比较多，比较粗略，这个只是用来做一个总结记录。</p>
+<p>第一篇主要是针对NLP任务的一些比较出色的典型Model</p>
+<ol>
+<li>（TextCNN）Convolutional Neural Networks for Sentence Classification</li>
+<li>Convolutional 2D Knowledge Graph Embeddings</li>
+<li>Bilateral Multi-Perspective Matching for Natural Language Sentences</li>
+</ol>
+<h1 id="textcnnconvolutional-neural-networks-for-sentence-classification">(TextCNN）Convolutional Neural Networks for Sentence Classification</h1>
+<h2 id="aims_1">Aims_1</h2>
+<p>众所周知，CNN神经网络在计算机视觉方面(Krizhevsky et al., 2012)和语音识别(Graves et al., 2013)表现很出色，这是因为CNN可以提取local feature的能力很强。</p>
+<p>所以作者就想说，NLP中也有这样的任务是需要提取相关的局部特征的，CNN正好提供了这样优秀的能力，反倒是LSTM、GRU这种的可能就不是很适合。因此尝试着用一层卷积层来做分类任务。</p>
+<h2 id="innovation_1">Innovation_1</h2>
+<p>提出将CV中的CNN的模型运用在NLP中。</p>
+<h2 id="model_1">Model_1</h2>
+<p>整个模型十分的简单。<br>
+一层embedding，一层CNN，一层full connection，做分类的话最后还有一层softmax。<br>
+<img src="text_cnn_model.png" alt="text cnn model"></p>
+<p>和普通的CNN的区别有2点：</p>
+<ol>
+<li>就图上而言，普通做CV的CNN是图像长度x图像宽带xRGB三色通道的，然而对于序列来说，一方面图像宽度是固定的，是每个词的word embedding，另一方面是word embedding中的每一个数值都是最小单位，所有句子所构成的这个图是只有一个通道的，不像图片是有RGB三通道，或者是带透明四通道的。</li>
+<li>一般做TextCNN的时候卷积核的大小会选择和embedding size 一样大，原因是embedding代表的是一个词在文字向量空间位置综合体现，embedding中的每一个数值单独进行操作都是没有实际意义的。</li>
+</ol>
+<h2 id="implemention">Implemention</h2>
+<p><strong>具体实现：<a href="https://github.com/gaussic/text-classification-cnn-rnn" target="_blank" rel="noopener">TextCNN</a></strong></p>
+<p><strong>输入:</strong></p>
+<p>影评文字</p>
+<p><strong>输出:</strong></p>
+<p>情感倾向，正面评价还是负面评价。</p>
+<p><strong>PS.:</strong></p>
+<p>这边我提供了两种的TextCNN的实现方式，一种比较简单易明白，另一种比较难看懂，但是更加灵活。</p>
+<p>同时word embedding那一块训练的预料是Google的text8，<a href="http://mattmahoney.net/dc/text8.zip" target="_blank" rel="noopener">下载地址在这</a> word embedding训练的代码已经在代码中写好了。</p>
+<h1 id="convolutional-2d-knowledge-graph-embeddings">Convolutional 2D Knowledge Graph Embeddings</h1>
+<p>上一篇CNN在NLP中表现的还算不错，因此后面有人想到用CNN延伸到Knowledge Graph（KG）中。甚至最近机器之心发了一篇推文说CNN基本上已经可以取代RNN的一系列模型。</p>
+<h2 id="aims_2">Aims_2</h2>
+<p>在许多的大型知识图谱中，实体一般比较齐全，但是实体和实体之间的关系则相对来说比较少，缺少度比较大，一些关系人类是可以通过一定的推理和解析得到的。但是由于现实实体之间的关系千千万万种，目前机器不可能通过硬规则实现。因此考虑通过CNN的方式学习相关的实体关系链路。</p>
+<h2 id="innovation_2">Innovation_2</h2>
+<ol>
+<li>
+<p>该模型的主要特点是通过2D embedding CNN来得出分数。</p>
+<p><strong>对于这个2D的解释，我们可以先简单理解为将一维的embedding通过复制、交互进行维数拓展。</strong></p>
+<p>接下来我们进行详细的解释。</p>
+<p>使用2D而不是1D增加了模型通过embedding之间的附加的相互作用的表达性。例如，考虑concat两行1D embedding，a和b的shape为[m,n] = [1,3]：<br>
+<img src="1D.png" alt="1D"></p>
+<p>在这种情况下，filter size为k = 3的过滤器可以获取到a和b之间的交互。</p>
+<p>那么如果采用堆的方式进行对embedding进行复制，例如此时a和b的shape为[m,n] = [2,3]:<br>
+<img src="2D.png" alt="2D"></p>
+<p>此时，filter size为k = 3×3的2D卷积将能够模拟整个级联线周围的相互作用（与n和k成比例的相互作用的数目）。</p>
+<p>甚至可以采用其他交替模式，例如：</p>
+<p><img src="2D_2.png" alt="2D interaction"></p>
+<p>在这种情况下，2D卷积运算能够模拟a和b之间的更多相互作用（具有与m、n和k成比例的相互作用的数目）。因此，与1D卷积相比，2D卷积能够提取两个嵌入之间的更多特征交互。</p>
+</li>
+<li>
+<p>不同于采取实体对和关系作为三重（e1，rel，e2）的其他链路预测模型和得分方式（1-1 score），此文章采取（e1，rel）二元组的方式，并且得分为（1-N score）。</p>
+<p>1-1 score的意思是一个sample只有一个分数，即(e1,rel,e2)三者限定出的一个分数。</p>
+<p>1-N score则是一个sample会有N个分数，即(e1,rel)两者同N个e2候选者之间进行计算得到的N个分数。</p>
+<p>下图的模型可以解释的更清晰。</p>
+</li>
+</ol>
+<h2 id="model_2">Model_2</h2>
+<p><img src="2D_CNN_linker_prediction.png" alt="2D_CNN_linker_prediction"></p>
+<ol>
+<li>Embedding layer：将（实体，关系）对的两者分别进行embedding得到其向量。</li>
+<li>Concat：将embedding后的(e1,rel)从1D扩充到2D，用innovation中的提到的几种拓展方式进行拓展。</li>
+<li>CNN：普通CNN layer。</li>
+<li>Full connection： 普通的全连接层。</li>
+<li>Logits：将full connection后得到的值和需要预测的tail实体candidates矩阵进行矩阵相乘。就是full connection的结果乘上候选实体的embedding矩阵得到值。</li>
+<li>Predict score： 得到最终的预测结果，根据分数高低，在candidates中得出最终和此(e1,rel)相匹配的e2。</li>
+</ol>
+<h1 id="bilateral-multi-perspective-matching-for-natural-language-sentences">Bilateral Multi-Perspective Matching for Natural Language Sentences</h1>
+<h2 id="aims_3">Aims_3</h2>
+<p>为了针对NLP文本匹配任务在传统的RNN，CNN是单向匹配、交互方式单粒度的弊端，提出了双向多粒度匹配模型（BIMPM Model）</p>
+<h2 id="innovation_3">Innovation_3</h2>
+<ol>
+<li>
+<p>双向匹配<br>
+在一般的文本匹配问题中，一般都是A匹配B，或者是B去匹配A，而不是两者进行交互，相互进行匹配。因此在本文中采用了A against B，同时B against A的形式。</p>
+</li>
+<li>
+<p>多粒度<br>
+在一般的文本匹配问题中，都是word和word之间或者sentence和sentence之间进行交互，很少有小粒度和大粒度之间的交互。在此文中则体现了word和sentence之间的交互。</p>
+</li>
+</ol>
+<h2 id="model_3">Model_3</h2>
+<p><img src="BIMPM1.png" alt="BIMPM"></p>
+<ol>
+<li>
+<p>word embedding layer： 普通的embedding layer。</p>
+</li>
+<li>
+<p>Context representation layer： 将embedding layer的结果输入到BiLSTM中。</p>
+</li>
+<li>
+<p>Mathcing layer： 这一层重点体现了前面的innovbilstmation。<br>
+首先，bilstm得到隐藏状态hidden states（图中向上的箭头），最终状态final states（bilstm最终引出的）。</p>
+<p>其次，hidden states代表的还是word粒度，final states代表的则是sentence粒度。两者在红色的x(multi-perspective matching operation)进行了多粒度交互。这种多粒度交互的方式也有四种：<br>
+<img src="BIMPM2.png" alt="BIMPM"></p>
+<p>分别是full-matching(取final state)、maxpooling-matching（取最大值）、attention-matching（做attention取值）、max-attention-matching（attention后取最大）。</p>
+<p>然后，双向匹配体现在，上述的多粒度交互不仅仅是P对Q进行，Q也会对P进行，图中体现的比较清楚。</p>
+<p>最终输出双向多粒度匹配的结果。</p>
+</li>
+<li>
+<p>Aggregation layer： 对于双向多粒度匹配的结果再进行BiLSTM，并将得到的四个final states（P的正向、反向2个，Q的正向、反向2个）取出进行concat。</p>
+</li>
+<li>
+<p>Prediction： 将上一层的结果输入softmaxs输出预测结果。</p>
+</li>
+</ol>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/08/18/[paper]zju_paper_2/" data-toggle="tooltip" data-placement="top" title="[Paper Notes]  02-浙江大学实习期间看的一些论文和写的一些代码">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/07/21/[latex]BiBTeX_found_no _itation_commands/" data-toggle="tooltip" data-placement="top" title="[LaTeX] Latex中 BiBTeX found no citation commands 解决办法">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+				<div id="vcomments"></div>
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#outline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#textcnnconvolutional-neural-networks-for-sentence-classification"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">(TextCNN）Convolutional Neural Networks for Sentence Classification</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims_1"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Aims_1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation_1"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Innovation_1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model_1"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Model_1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#implemention"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Implemention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#convolutional-2d-knowledge-graph-embeddings"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Convolutional 2D Knowledge Graph Embeddings</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims_2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Aims_2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation_2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Innovation_2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model_2"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Model_2</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#bilateral-multi-perspective-matching-for-natural-language-sentences"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aims_3"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Aims_3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#innovation_3"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Innovation_3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#model_3"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Model_3</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Paper" title="Paper">Paper</a>
+                        
+                          <a class="tag" href="/tags/#Internship" title="Internship">Internship</a>
+                        
+                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                        
+                          <a class="tag" href="/tags/#Knowledge Graph" title="Knowledge Graph">Knowledge Graph</a>
+                        
+                          <a class="tag" href="/tags/#CNN" title="CNN">CNN</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="undefined" target="_blank">Mobile Systems and Networking Group @ Fudan University</a></li>
+                    
+                        <li><a href="https://chenyang03.wordpress.com/" target="_blank">Prof. Yang Chen</a></li>
+                    
+                        <li><a href="http://oss.lzu.edu.cn" target="_blank">LZU OSS</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://mengyingzhou.github.io/2018/08/17/[paper]zju_paper_1/";
+    var disqus_url = "https://mengyingzhou.github.io/2018/08/17/[paper]zju_paper_1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'm5p6CEtnvzR6RDsAFpGiPHAl-gzGzoHsz',
+            appKey: 'x2eG8658wwQQLsj0r5wqh5xm',
+			placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+			visitor: true
+        })
+    </script>	
+<script type="text/javascript" src="/js/zooming.js"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/myzhou97">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/aerber.zhou.9">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/mengyingzhou">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/aerber-zhou-600bb4175">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Aerber Zhou 2021 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://github.com/NullAerber">NullAerber</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=NullAerber&repo=NullAerber.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://mengyingzhou.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://mengyingzhou.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
