@@ -1,0 +1,448 @@
+﻿/* 标题与首图并排区域 */
+.host-media-row{
+  display: flex;
+  align-items: center;          /* 让图片与标题垂直居中对齐 */
+  justify-content: space-between;
+  gap: 10%;                     /* 中间空 10%，两侧各 45% */
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;              /* 小屏可换行 */
+}
+
+.host-media, .host-title{
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+
+/* 图片自适应容器宽度 */
+.host-media img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;           /* 可选：圆角 */
+}
+
+/* 可选：微调 h2 外边距，避免过密 */
+.host-title h2{
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* 响应式：小屏改为上下排列并全宽 */
+@media (max-width: 768px){
+  .host-media-row{
+    gap: 1rem;
+  }
+  .host-media, .host-title{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* =============================================================
+   GENERAL STYLES
+ ============================================================ */
+
+#speaker {
+  overflow: auto;
+}
+
+body {
+  line-height: 30px;
+  color: #555;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0em;
+  padding: 0 0 0px 0;
+}
+
+h3 {
+  font-size: 160%;
+  padding: 2px 0 2px 0;
+  color: #009FBC;
+}
+
+h3 a {
+    text-decoration: none;
+    color: #009FBC;
+}
+
+h5 {
+  color: #009FBC;
+  padding: 0 0 0 0;
+  font: normal 120% arial;
+}
+
+td {
+    text-align: justify;
+}
+
+h6 {
+  color: #888;
+  font: normal 95% arial;
+  letter-spacing: normal;
+  margin: -7px 0 0 0;
+  padding: 0 0 15px 0;
+}
+
+hr {
+    display: block;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    -moz-margin-before: 0.5em;
+    -moz-margin-after: 0.5em;
+    -moz-margin-start: auto;
+    -moz-margin-end: auto;
+    border:0;
+    height:0px;
+    border-width:10px;
+    box-shadow: 0 0 10px 1px #0047BC;
+
+}
+
+
+.set-radius-zero {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.content-wrapper {
+  margin-top: 40px;
+  min-height: 600px;
+  padding-bottom: 60px;
+}
+
+.
+
+
+/* =============================================================
+   HEADER SECTION STYLES
+ ============================================================ */
+header {
+  background-color: #323534;
+  color: #fff;
+  padding: 10px;
+  text-align: right;
+}
+
+header > h4 {
+  display: inline-block;
+  font-weight: bold;
+  }
+
+header span {
+  text-align: right;
+  margin-right: 2%;
+}
+
+table div {
+  display: none;
+}
+
+.singletitle {
+  vertical-align: middle;
+}
+
+
+.logo_colour {
+  color: #FFBB00;
+}
+
+#header h1{
+  font: normal 250% 'century gothic', arial;
+  margin: 0 0 15px 5px;
+  padding: 15px 0 5px 0;
+  color: #FFFFFF;
+}
+
+#header h2 {
+  font: normal 130% 'century gothic', arial;
+  margin: 0 0 15px 5px;
+  padding: 5px 0 0 0;
+  color: #919292;
+}
+
+/* MENU LINKS SECTION*/
+
+.menu-section {
+  background-color: #5A5A5A;
+}
+
+#menu-top a {
+  color: #FFF;
+  font-size: 140%;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 10px 10px 10px;
+  /* text-transform: uppercase; */
+}
+
+.menu-top-active {
+  background-color: #FFBB00;
+}
+
+.menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
+  background-color: #FFCC40!important;
+}
+
+.menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
+  background-color: #FFCC40!important;
+}
+
+.navbar-inverse {
+  background-color: #323534;
+  border-color: transparent;
+}
+
+.navbar-toggle {
+  background-color: #FFBB00;
+  border: 1px solid #fff;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+
+
+/* =============================================================
+   BODY
+ ============================================================ */
+
+#content p {
+	font-family: 'Abel Regular', sans-serif;
+	font-size: 108%;
+}
+
+#content ul li {
+  list-style-type: none;
+  list-style-image: url(../resources/bullet.png);
+  padding: 0 0 0px 0px;
+  line-height: 1.5em;
+}
+
+.text-justify {
+  text-align: justify;
+	line-height: initial;
+}
+
+#poster-link {
+  font-size: 90%
+}
+
+#keynote p {
+  font-size: 95%;
+  line-height: 18px;
+}
+
+.href-color {
+  color: #488AC7;
+}
+
+#day1 {
+  display: block;
+
+}
+
+#day2 {
+  display: none;
+
+}
+
+#day3 {
+  display: none;
+
+}
+
+
+/* =============================================================
+   FOOTER SECTION STYLES
+ ============================================================ */
+footer {
+  padding: 10px;
+  color: #fff;
+  font-size: 15px;
+  background-color: #323534;
+}
+
+footer a, footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* =============================================================
+   STYLES FOR SPEAKERS PAGE
+ ============================================================ */
+
+/* Rows Optimization */
+/*.row2 {*/
+	/*display: none;*/
+/*}*/
+
+.row1 .col-md-4, .row2 .col-md-4, .row3 .col-md-4, .row4 .col-md-4, .row5 .col-md-4, .row6 .col-md-4{
+	padding-bottom: 40px;
+}
+
+.clear {clear: both;}
+
+/* Mobile Devices Optimization */
+@media (min-width: 568px) and (max-width: 992px) {
+
+	.row1 .col-md-4, .row2 .col-md-4, .row3 .col-md-4, .row4 .col-md-4, .row5 .col-md-4, .row6 .col-md-4 {
+		display: inline-block;
+		max-width: 50%;
+	}
+
+	.speakers img {max-width: 300px;}
+
+}
+
+#eemil {
+  margin-left: -145px;
+}
+
+#jussi {
+  padding: 0 0 0 15%;
+}
+
+/* 03. SPEAKERS SETTINGS ============================================ */
+
+.speakers {
+	padding: 0px 0;
+	/*background: #4593e3;*/
+	text-align: center;
+}
+
+.speakers p {
+	padding: 20px 0 60px;
+	color: rgba(255,255,255, 0.85);
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	letter-spacing: 0.2px;
+}
+
+.speakers h3 {
+	padding: 0 0 15px;
+	font-family: 'norwester';
+	font-size: 36px;
+	text-transform: uppercase;
+}
+
+.speakers h4  {
+	margin-top: -20px;
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.speakers h4 span {
+	display: block;
+	position: relative;
+	left: 0px;
+	top: 10px;
+	font-size: 20px;
+	background: none;
+	padding: 0;
+}
+
+.speakers-img {
+	width: 100%;
+	max-width: 240px;
+	border-radius: 50%;
+	border: 15px solid transparent;
+	box-shadow: 2px 2px 0px rgba(0,0,0, 0.18);
+	transition: all 0.1s ease-in;
+}
+
+/*#speakers img:hover {*/
+	/*/!*border: 15px solid #3980C9;*!/*/
+	/*position: relative;*/
+	/*z-index: 10;*/
+	/*transition: all 0.1s ease-in;*/
+/*}*/
+
+.speakers span {
+	padding: 8px 20px;
+	position: relative;
+	top: -64px;
+	left: -42px;
+	display: inline-block;
+    margin-top: 50px;
+	/*background: #4593e3;*/
+	border-radius: 0 16px 16px 0;
+	font-size: 16px;
+}
+
+/* 03. SPEAKERS OVERLAY ============================================ */
+
+
+.container-ov {
+  position: relative;
+  width: auto;
+}
+
+.image-ov {
+  display: block;
+  width: 200px;
+  height: 280px;
+  max-width: 240px;
+  border:2px solid #5a5a5a;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  opacity: 0;
+  transition: .5s ease;
+  vertical-align: middle;
+  background-color: #5a5a5a;
+}
+
+.container-ov:hover .overlay {
+  opacity: 1;
+}
+
+.text-ov {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: medium;
+  text-align: center;
+  line-height: 90%;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.text-faculty-ov {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-align: center;
+  line-height: 90%;
+  font-size: medium;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  -ms-transform: translate(-50%, -75%);
+}
+
+.text-country-ov {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-align: center;
+  line-height: 90%;
+  font-size: medium;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  -ms-transform: translate(-50%, -75%);
+}
